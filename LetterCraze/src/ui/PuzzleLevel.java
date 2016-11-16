@@ -48,6 +48,7 @@ public class PuzzleLevel extends DefaultJFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(20, 17, 410, 399);
 		contentPane.add(panel);
+		panel.setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(493, 29, 124, 27);
@@ -83,22 +84,59 @@ public class PuzzleLevel extends DefaultJFrame {
 		
 		JPanel panel_star_1 = new JPanel();
 		panel_star_1.setBounds(524, 119, 34, 27);
-		panel_star_1.add(new DrawStarShapePanel());
+		StarRater starRater1 = new StarRater(1, 1 );
+		starRater1.setBounds(0, 6, 48, 16);
+		starRater1.addStarListener(new StarRater.StarListener() {
+
+			@Override
+			public void handleSelection(int selection) {
+				// TODO Auto-generated method stub
+				
+			}
 		
-//		panel_star_1.setSize(600, 600);
-//		panel_star_1.setLocationRelativeTo(null);
-		panel_star_1.setVisible(true);
+		});
+		panel_star_1.add(starRater1);
 		contentPane.add(panel_star_1);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(524, 182, 34, 27);
+		panel_2.setBounds(524, 182, 53, 27);
+		StarRater starRater2 = new StarRater(2, 2 );
+		starRater2.setBounds(0, 6, 48, 16);
+		starRater2.addStarListener(new StarRater.StarListener() {
+
+			@Override
+			public void handleSelection(int selection) {
+				// TODO Auto-generated method stub
+				
+			}
+		
+		});
+		panel_2.add(starRater2);
 		contentPane.add(panel_2);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(524, 247, 34, 27);
+		panel_3.setBounds(524, 247, 69, 27);
+		StarRater starRater3 = new StarRater(3, 3 );
+		starRater3.setBounds(0, 6, 48, 16);
+		starRater3.addStarListener(new StarRater.StarListener() {
+
+			@Override
+			public void handleSelection(int selection) {
+				// TODO Auto-generated method stub
+				
+			}
+		
+		});
+		
+		panel_3.add(starRater3);
+		
 		contentPane.add(panel_3);
 		
 		contentPane.add(new DrawStarShapePanel());
+		
+		JLabel lblLevelType = new JLabel("Level Type");
+		lblLevelType.setBounds(503, 17, 90, 16);
+		contentPane.add(lblLevelType);
 //        f.setSize(600, 600);
 //        f.setLocationRelativeTo(null);
 //        f.setVisible(true);
