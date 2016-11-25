@@ -1,7 +1,19 @@
+// Done 
+
 package lettercraze.model;
 
-import java.util.ArrayList;
 
+/**
+ * Abstract Level class. Serves as the superclass of all the different types
+ * of levels in the LetterCraze game. 
+ * <p>
+ * Each subclass will have a specific method for determining how that type of level is
+ * won along with a few level specific attributes to assist with setting up the level.
+ * 
+ * Creation Date: (11/25/16 3:05 PM)
+ * @author Hoodie
+ *
+ */
 abstract public class Level {
 	
 	/** Stores the level number */
@@ -16,8 +28,12 @@ abstract public class Level {
 	/** Stores the High Score for the level*/
 	protected int highScore;
 	
-	/** Stores the required score to each each Star */
-	protected ArrayList<Integer> starThreshold;
+	/** Stores the required score to each each Star
+	 * Puzzle = number of points
+	 * Lightning = number of words 
+	 * Theme = number of theme words found 
+	 *  */
+	protected int[] starThreshold = new int[3]; 
 	
 	/** True if level has been unlocked and available to be played */
 	protected boolean isUnlocked;
@@ -27,6 +43,35 @@ abstract public class Level {
 	 */
 	protected Level(){
 		super() ;
+	}
+	
+	/** Method to determine how a Player beats each level, varies per type of level */
+	public abstract boolean isCompleted(int score);
+	
+	/**
+	 * If the score from the last played game by the Player is higher
+	 * than the previous high score of the level just played. 
+	 * 
+	 * @param score is the score from the most recent round played by
+	 * the Player 
+	 */
+	public void updateHighScore(int score){
+		if(score > this.highScore){ this.highScore = score;}
+	}
+	
+	/**
+	 * Determines the number of Stars currently earned on the Level
+	 * 
+	 * @param score is either the current high score to determine the number of stars earned
+	 * to display on the menu or the current score in a level the Player is currently playing.
+	 * @return the number of stars the Player has earned based on the score
+	 */
+	public int getHighStars(int score){
+		int stars = 0;
+		if(score > this.starThreshold[0]) {stars = 1;}
+		if(score > this.starThreshold[1]) {stars = 2;}
+		if(score > this.starThreshold[2]) {stars = 3;}
+		return stars;
 	}
 
 }
