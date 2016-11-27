@@ -46,7 +46,10 @@ abstract public class Level {
 	}
 	
 	/** Method to determine how a Player beats each level, varies per type of level */
-	public abstract boolean isCompleted(int score);
+	public boolean isCompleted(int score){
+		if(score > this.starThreshold[0]){ return true;}
+		return false ;
+	}
 	
 	/**
 	 * If the score from the last played game by the Player is higher
