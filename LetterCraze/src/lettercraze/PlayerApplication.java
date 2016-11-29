@@ -34,10 +34,10 @@ public class PlayerApplication extends JFrame {
 	protected String currentUser = "test";
 
 	/** Initial width for the window. Must never shrink less than this. */
-	protected int initialWidth = 769;
+	protected static int initialWidth = 769;
 
 	/** Initial height for the window. Must never shrink less than this. */
-	protected int initialHeight = 635;
+	protected static int initialHeight = 635;
 
 	/** Last height for the window. Start with initial height. */
 	protected int lastHeight = 635;
@@ -110,15 +110,14 @@ public class PlayerApplication extends JFrame {
         panelMain.setPreferredSize(new Dimension(initialWidth, initialHeight));
         add(panelMain);
         
-		panelMain.add(menuView, menuView.getName());
-		panelMain.add(splashView, splashView.getName());
+		panelMain.add(menuView, menuView.getPanelName());
+//		panelMain.add(splashView, splashView.getName());
         
         pack();
 
 	}
 	
 	public void initializeViewClasses(){
-		splashView = new SplashScreen();
 		menuView = new MenuView(model);
 		
 	}
@@ -137,6 +136,18 @@ public class PlayerApplication extends JFrame {
 	 * @param args
 	 */
 	public static void main(String[] args){
+        Dimension size = new Dimension(initialWidth, initialHeight);
+
+		JFrame splashFrame = SplashScreen.createAndShowGUI(size);
+		try {
+			// here is wher eit appes
+			System.out.println("splash screeb");
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		splashFrame.setVisible(false);
 		PlayerApplication frame = new PlayerApplication();
         frame.setVisible(true);
 		

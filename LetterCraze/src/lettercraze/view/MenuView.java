@@ -154,6 +154,10 @@ public class MenuView extends DefaultViewPanel {
 	}
 	
 	public boolean addMenuItem(LevelThumbnail levelTmb){
+		
+		levels.add(levelTmb);
+//		gbc
+		
 		return false;
 	}
 

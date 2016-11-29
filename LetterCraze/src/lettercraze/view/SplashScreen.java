@@ -1,5 +1,6 @@
 package lettercraze.view;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -54,10 +55,31 @@ public class SplashScreen extends DefaultViewPanel{
 		lblDeanSchifilliti.setBounds(163, 197, 144, 16);
 		add(lblDeanSchifilliti);
 	}
+	
+	
+	public static JFrame createAndShowGUI(Dimension size) {
+        //Create and set up the window.
+        JFrame frame = new JFrame("SplashScreen");
+        frame.setPreferredSize(size);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        SplashScreen splashScreen = new SplashScreen();
+
+        //Add the ubiquitous "Hello World" label.
+        frame.getContentPane().add(splashScreen);
+
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
+        
+        return frame;
+    }
+
 
 	@Override
 	public String getPanelName() {
 		// TODO Auto-generated method stub
-		return "SplashScreen";
+		return "SplashView";
 	}
+
 }
