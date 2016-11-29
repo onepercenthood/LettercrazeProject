@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import net.miginfocom.swing.MigLayout;
 
-public class LevelPreviewView extends DefaultViewPanel implements ModelChangedView {
+public class LevelPreviewView extends DefaultViewPanel implements IModelChangedView {
 	
 	/**
 	 * The level type for the boxView

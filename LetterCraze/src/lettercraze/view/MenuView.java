@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 import net.miginfocom.swing.MigLayout;
 
-public class MenuView extends DefaultViewPanel implements ModelChangedView {
+public class MenuView extends DefaultViewPanel implements IModelChangedView {
 
 
 	/**
