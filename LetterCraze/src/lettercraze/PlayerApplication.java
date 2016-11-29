@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import lettercraze.model.Model;
+import lettercraze.view.LevelThumbnail;
 import lettercraze.view.MenuView;
 import lettercraze.view.SplashScreen;
 
@@ -112,6 +113,8 @@ public class PlayerApplication extends JFrame {
         
 		panelMain.add(menuView, menuView.getPanelName());
 //		panelMain.add(splashView, splashView.getName());
+		
+		loadInLevels();
         
         pack();
 
@@ -120,6 +123,40 @@ public class PlayerApplication extends JFrame {
 	public void initializeViewClasses(){
 		menuView = new MenuView(model);
 		
+	}
+	
+	/**
+	 * Load in the levels to the menu object.
+	 */
+	public void loadInLevels(){
+		int col =5;
+		int row = 4;
+
+		int total_count = 0;
+
+		String[] levelTypes = {"Puzzle", "Lightning", "Theme"};
+		Color[] levelColors = {Color.GREEN, Color.ORANGE, Color.PINK};
+
+		String levelType;
+		int levelI;
+		for( int rowi = 1; rowi < row; rowi++ ){
+
+			for( int coli=0; coli < col; coli++){
+				levelI = total_count % 3;
+				levelType = levelTypes[levelI];
+				total_count += 1;
+				
+				LevelThumbnail level = new LevelThumbnail(levelType, levelColors[levelI], total_count, 0);
+				
+				level.setEnabled(true);
+				
+				menuView.addMenuItemToDefault(level);
+				
+			}
+
+		}
+		
+		panelMain.repaint();
 	}
 	
 	/**
@@ -142,7 +179,7 @@ public class PlayerApplication extends JFrame {
 		try {
 			// here is wher eit appes
 			System.out.println("splash screeb");
-			Thread.sleep(4000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
