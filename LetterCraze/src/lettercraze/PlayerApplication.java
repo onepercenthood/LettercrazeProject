@@ -11,20 +11,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import lettercraze.view.MainMenu;
+import lettercraze.model.Model;
+import lettercraze.view.MenuView;
 import lettercraze.view.SplashScreen;
 
 
 /**
  * 
+ * PlayerApplication class which will run the LetterCraze Player
+ * 
  * Creation Date: (11/24/16 11:20 AM) 
  * @author ddeisadze
  *
  */
-public class LetterCrazePlayer extends JFrame {
-	
-	SplashScreen splashscreen = new SplashScreen();
-	MainMenu mainMenu = new MainMenu();
+public class PlayerApplication extends JFrame {
 	
 	private static final long serialVersionUID = 3544957666427353398L;
 	private java.awt.Panel ivjContentsPane = null;
@@ -44,34 +44,60 @@ public class LetterCrazePlayer extends JFrame {
 
 	/** Last width for the window. Start with initial width. */
 	protected int lastWidth = 769;
-
 	
-	/** Enable tester to try out new games. */
-	private Button newGameButton = null;
-	
-	private Button solveButton = null;
-
-	boolean includeSolver = false;
-	private JPanel panelMain;
-	private CardLayout cardLayout = new CardLayout();
-
-
-
 	/**
-	 * Main method to launch our LetterCraze swing application
-	 * @param args
+	 * Application wide model for storing application data
 	 */
-	public static void main(String[] args){
-		LetterCrazePlayer frame = new LetterCrazePlayer();
-        frame.setVisible(true);
-		
-	}
+	Model model = new Model();
 	
-	public LetterCrazePlayer(){
+	/**
+	 * SplashScreen view class 
+	 */
+	SplashScreen splashView;
+	
+	/**
+	 * Menu view class
+	 */
+	MenuView menuView;
+
+	
+	/**
+	 * 
+	 * This is the main Panel which will hold all the other views inside of.
+	 * 
+	 * The Cardlayout will be hosted in this panel.
+	 */
+	private JPanel panelMain;
+	
+	/**
+	 * CardLayout will be used for switching views.
+	 * 
+	 * CardLayout works by storing different JPanels with names, as <Name, JPanel>
+	 * 
+	 * Whenever cardLayout.show(parent, name) is called, it will switch views and maintain
+	 * 
+	 * the last parent moved. 
+	 * 
+	 */
+	private CardLayout cardLayout = new CardLayout();
+	
+	
+
+	
+	/**
+	 * Will call initialize
+	 */
+	public PlayerApplication(){
 		initialize();
 	}
 	
-	public void initialize(){
+	/**
+	 * Initializes all the components of the ApplicationPlayer
+	 */
+	private void initialize(){
+		
+        initializeViewClasses();
+
 		setTitle("LetterCraze | Team Manganese");
 		setLayout(null);
         setPreferredSize(new Dimension(initialWidth, initialHeight));
@@ -84,35 +110,35 @@ public class LetterCrazePlayer extends JFrame {
         panelMain.setPreferredSize(new Dimension(initialWidth, initialHeight));
         add(panelMain);
         
-        initializeViews();
+		panelMain.add(menuView, menuView.getName());
+		panelMain.add(splashView, splashView.getName());
         
         pack();
-        
-        ActionListener taskPerformer = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                //...Perform a task...
-
-                System.out.println("Reading SMTP Info.");
-            }
-        };
-        
-        Timer timer = new Timer(100 ,taskPerformer);
-        timer.setRepeats(false);
-        timer.start();
-
-        try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 	}
 	
-	public void initializeViews(){
-		panelMain.add(splashscreen, splashscreen.getName());
-		panelMain.add(mainMenu, mainMenu.getName());
+	public void initializeViewClasses(){
+		splashView = new SplashScreen();
+		menuView = new MenuView(model);
 		
+	}
+	
+	/**
+	 * Invoked whenever model is changed and the application needs to refresh
+	 * 
+	 * @return Model instance
+	 */
+	public Model modelChanged(){
+		return model;
+	}
+	
+	/**
+	 * Main method to launch our LetterCraze swing application
+	 * @param args
+	 */
+	public static void main(String[] args){
+		PlayerApplication frame = new PlayerApplication();
+        frame.setVisible(true);
 		
 	}
 }
