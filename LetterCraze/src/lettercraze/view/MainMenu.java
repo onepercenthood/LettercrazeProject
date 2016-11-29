@@ -1,4 +1,4 @@
-package ui;
+package lettercraze.view;
 import java.awt.BorderLayout;
 
 import java.awt.Color;
@@ -34,45 +34,21 @@ import javax.swing.BoxLayout;
 import javax.swing.SpringLayout;
 import net.miginfocom.swing.MigLayout;
 
-public class MainMenu extends DefaultJFrame {
+public class MainMenu extends DefaultViewPanel {
 
-	private JPanel contentPane;
-	
+
 	/**
-	 * Launch the application.
+	 * 
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainMenu frame = new MainMenu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private static final long serialVersionUID = -1199792392732674767L;
 
 	/**
-	 * Create the frame.
+	 * Create the Panel.
 	 */
 	public MainMenu() {
-		super();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		this.getContentPane().setPreferredSize(new Dimension(800, 600));
-	    this.pack();
-
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
 		
 		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.CENTER);
+		add(panel, BorderLayout.CENTER);
 		
 		JLabel lblLettercrazeMainMenu = new JLabel("LetterCraze Main Menu");
 		
@@ -274,4 +250,11 @@ public class MainMenu extends DefaultJFrame {
 
 		panel.setLayout(gl_panel);
 	}
+
+	@Override
+	public String getPanelName() {
+		// TODO Auto-generated method stub
+		return "MainMenu";
+	}
+	
 }

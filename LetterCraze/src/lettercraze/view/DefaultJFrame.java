@@ -1,4 +1,4 @@
-package ui;
+package lettercraze.view;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
