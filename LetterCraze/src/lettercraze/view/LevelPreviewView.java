@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import net.miginfocom.swing.MigLayout;
 
-public class LevelThumbnail extends DefaultViewPanel {
+public class LevelPreviewView extends DefaultViewPanel implements ModelChangedView {
 	
 	/**
 	 * The level type for the boxView
@@ -31,11 +31,13 @@ public class LevelThumbnail extends DefaultViewPanel {
 
 	private JLabel levelLabel;
 
-	private Component levelTypeLabel;
+	private JLabel levelTypeLabel;
 
 	private JButton levelButton;
 	
-	public LevelThumbnail(String levelType, Color color, Integer levelNumber, Integer numStars){
+	private StarRater starRater;
+	
+	public LevelPreviewView(String levelType, Color color, Integer levelNumber, Integer numStars){
 		this.levelType = levelType;
 		this.levelNumber = levelNumber;
 		this.numStars = numStars;
@@ -59,8 +61,8 @@ public class LevelThumbnail extends DefaultViewPanel {
 		
 		// setup star view here
 		JPanel starView = new JPanel();
-		StarRater starRater21 = new StarRater(3, this.numStars );
-		starRater21.addStarListener(new StarRater.StarListener() {
+		starRater = new StarRater(3, this.numStars );
+		starRater.addStarListener(new StarRater.StarListener() {
 
 			@Override
 			public void handleSelection(int selection) {
@@ -70,16 +72,13 @@ public class LevelThumbnail extends DefaultViewPanel {
 
 		});
 //				
-		starView.add(starRater21);
+		starView.add(starRater);
 		add(starView, "cell 0 2,grow");
 		
 	}
 
 	@Override
 	public String getPanelName() {
-		// TODO Auto-generated method stub
-
-
 		return "BoxView";
 	}
 	
@@ -88,6 +87,48 @@ public class LevelThumbnail extends DefaultViewPanel {
 	    super.setEnabled(enabled);
 	    for (Component component : getComponents())
 	        component.setEnabled(enabled);
+	}
+	
+	/**
+	 * Gets the level number text field
+	 * 
+	 * @return JLabel
+	 */
+	public JLabel getLevelNumTextField(){
+		return this.levelLabel;
+	}
+	
+	/**
+	 * Gets the starRater module
+	 * 
+	 * @return StarRater
+	 */
+	public StarRater getStarField(){
+		return this.starRater;
+	}
+	
+	/**
+	 * Gets the levelType textField
+	 * 
+	 * @return
+	 */
+	public JLabel getLevelTypeLabel(){
+		return levelTypeLabel;
+	}
+	
+	/**
+	 * Returns the button for the level.
+	 * 
+	 * @return
+	 */
+	public JButton getLevelButton(){
+		return  this.levelButton;
+	}
+
+	@Override
+	public void modelChanged() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 import net.miginfocom.swing.MigLayout;
 
-public class MenuView extends DefaultViewPanel {
+public class MenuView extends DefaultViewPanel implements ModelChangedView {
 
 
 	/**
@@ -33,13 +33,12 @@ public class MenuView extends DefaultViewPanel {
 	 */
 	private Model model;
 	
-	private ArrayList<LevelThumbnail> levels = new ArrayList<LevelThumbnail>();
+	private ArrayList<LevelPreviewView> levels = new ArrayList<LevelPreviewView>();
 
 	private JLabel lblCustomLevels;
 
 	private JPanel regularLevelsPanel;
 	private JPanel customLevelsPanel;
-
 
 	private GridBagLayout gbl_panel_defaultLevels;
 
@@ -47,9 +46,6 @@ public class MenuView extends DefaultViewPanel {
 
 	private GroupLayout gl_panel;
 
-	private int col;
-	private int row;
-	
 	private int rowCountDef = 0;
 	private int colCountDef = 1;
 	
@@ -160,9 +156,7 @@ public class MenuView extends DefaultViewPanel {
 	 * @param col
 	 * @return
 	 */
-	private boolean addMenuItem(LevelThumbnail level, boolean isDefaultLevel, JPanel panel, Integer row, Integer col){
-
-		System.out.println(rowCountDef);
+	private boolean addMenuItem(LevelPreviewView level, boolean isDefaultLevel, JPanel panel, Integer row, Integer col){
 		
 		GridBagConstraints gdb = new GridBagConstraints();
 		gdb.insets = new Insets(0, 0, 5, 5);
@@ -186,7 +180,7 @@ public class MenuView extends DefaultViewPanel {
 	 * @param level
 	 * @return
 	 */
-	public boolean addMenuItemToCustom(LevelThumbnail level){
+	public boolean addMenuItemToCustom(LevelPreviewView level){
 		if(rowCountCus == 5-1){
 			rowCountCus = 0;
 			colCountCus++;
@@ -201,7 +195,7 @@ public class MenuView extends DefaultViewPanel {
 	 * @param level
 	 * @return
 	 */
-	public boolean addMenuItemToDefault(LevelThumbnail level){
+	public boolean addMenuItemToDefault(LevelPreviewView level){
 		if(rowCountDef == 5-1){
 			rowCountDef = 0;
 			colCountDef++;
@@ -215,6 +209,12 @@ public class MenuView extends DefaultViewPanel {
 	public String getPanelName() {
 		// TODO Auto-generated method stub
 		return "MainMenu";
+	}
+
+	@Override
+	public void modelChanged() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

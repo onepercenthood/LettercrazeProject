@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import lettercraze.model.Model;
-import lettercraze.view.LevelThumbnail;
+import lettercraze.view.LevelPreviewView;
 import lettercraze.view.MenuView;
 import lettercraze.view.SplashScreen;
 
@@ -146,7 +146,7 @@ public class PlayerApplication extends JFrame {
 				levelType = levelTypes[levelI];
 				total_count += 1;
 				
-				LevelThumbnail level = new LevelThumbnail(levelType, levelColors[levelI], total_count, 0);
+				LevelPreviewView level = new LevelPreviewView(levelType, levelColors[levelI], total_count, 0);
 				
 				level.setEnabled(true);
 				
