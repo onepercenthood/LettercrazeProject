@@ -37,6 +37,7 @@ public class Model {
 	 */
 	public Model() {
 		super();
+		
 		letterFrequency.put("E", 12.70);
 		letterFrequency.put("T", 9.06);
 		letterFrequency.put("A", 8.17);
@@ -61,9 +62,38 @@ public class Model {
 		letterFrequency.put("K", 0.77);
 		letterFrequency.put("J", 0.15);
 		letterFrequency.put("X", 0.15);
-		letterFrequency.put("Q", 0.10);
+		letterFrequency.put("Qu", 0.10);
 		letterFrequency.put("Z", 0.07);
-		letterFrequency.put("Qu", 0.01);
+		//letterFrequency.put("Qu", 0.01);
+	}
+	
+	// Get Functions 
+	
+	
+	// Set Functions 
+	
+	/**
+	 * Each solitaire game provides its own initialization routine.
+	 * <p>
+	 * By the time this method is called, the game is part of its Container.
+	 */
+	public void initialize(){
+		initializeModel();
+		initializeView(); 
+		initializeControllers(); 
+		
+	}
+	
+	private void initializeModel(){
+		
+	}
+	
+	private void initializeView(){
+		
+	}
+	
+	private void initializeControllers(){
+
 	}
 	
 	/**
