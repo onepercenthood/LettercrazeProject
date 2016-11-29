@@ -30,7 +30,20 @@ public class MenuView extends DefaultViewPanel {
 	 */
 	private Model model;
 	
-	private ArrayList<BoxView> levels = new ArrayList<BoxView>();
+	private ArrayList<LevelThumbnail> levels = new ArrayList<LevelThumbnail>();
+
+	private JLabel lblCustomLevels;
+
+	private JPanel regularLevelsPanel;
+
+	private GridBagLayout gbl_panel_2;
+
+	private GridBagConstraints gbc_lblDefaultLevels;
+
+	private GroupLayout gl_panel;
+
+	private int col;
+	private int row;
 
 	public MenuView(Model m){
 		model = m;
@@ -41,6 +54,7 @@ public class MenuView extends DefaultViewPanel {
 
 	/**
 	 * Create the Panel.
+	 * @param row 
 	 */
 	public void createPanel() {
 
@@ -51,7 +65,7 @@ public class MenuView extends DefaultViewPanel {
 
 		JScrollPane scrollPane = new JScrollPane();
 
-		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
@@ -74,27 +88,27 @@ public class MenuView extends DefaultViewPanel {
 				);
 
 
-		JPanel panel_2 = new JPanel();
-		scrollPane.setViewportView(panel_2);
-		GridBagLayout gbl_panel_2 = new GridBagLayout();
+		regularLevelsPanel = new JPanel();
+		scrollPane.setViewportView(regularLevelsPanel);
+		gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{0, 0, 0, 0, 0};
 		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 0, 0};
 		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel_2.setLayout(gbl_panel_2);
+		regularLevelsPanel.setLayout(gbl_panel_2);
 
 		JLabel lblDefaultLevels = new JLabel("Default Levels");
-		GridBagConstraints gbc_lblDefaultLevels = new GridBagConstraints();
+		gbc_lblDefaultLevels = new GridBagConstraints();
 		gbc_lblDefaultLevels.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDefaultLevels.gridx = 0;
 		gbc_lblDefaultLevels.gridy = 0;
-		panel_2.add(lblDefaultLevels, gbc_lblDefaultLevels);
+		regularLevelsPanel.add(lblDefaultLevels, gbc_lblDefaultLevels);
 
 
 		
 		// initialize all the menu boxes here
-		int col =5;
-		int row = 4;
+		col =5;
+		row = 4;
 
 		int total_count = 0;
 
@@ -113,7 +127,7 @@ public class MenuView extends DefaultViewPanel {
 
 				total_count += 1;
 				
-				BoxView level = new BoxView(levelType, levelColors[levelI], total_count, 0);
+				LevelThumbnail level = new LevelThumbnail(levelType, levelColors[levelI], total_count, 0);
 
 				levels.add(level);
 		
@@ -121,22 +135,26 @@ public class MenuView extends DefaultViewPanel {
 				gbc_panel_41.insets = new Insets(0, 0, 5, 5);
 				gbc_panel_41.gridx = coli;
 				gbc_panel_41.gridy = rowi;
-				panel_2.add(level, gbc_panel_41);
+				regularLevelsPanel.add(level, gbc_panel_41);
 				
 			}
 
 
 		}
 
-		JLabel lblCustomLevels = new JLabel("Custom Levels");
+		lblCustomLevels = new JLabel("Custom Levels");
 
 		GridBagConstraints gbc_lblCustomLevels = new GridBagConstraints();
 		gbc_lblCustomLevels.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCustomLevels.gridx = 0;
 		gbc_lblCustomLevels.gridy = row+1;
-		panel_2.add(lblCustomLevels, gbc_lblCustomLevels);
+		regularLevelsPanel.add(lblCustomLevels, gbc_lblCustomLevels);
 
 		panel.setLayout(gl_panel);
+	}
+	
+	public boolean addMenuItem(LevelThumbnail levelTmb){
+		return false;
 	}
 
 	@Override

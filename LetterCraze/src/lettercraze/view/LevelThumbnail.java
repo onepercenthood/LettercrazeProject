@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import net.miginfocom.swing.MigLayout;
 
-public class BoxView extends DefaultViewPanel {
+public class LevelThumbnail extends DefaultViewPanel {
 	
 	/**
 	 * The level type for the boxView
@@ -33,9 +33,9 @@ public class BoxView extends DefaultViewPanel {
 
 	private Component levelTypeLabel;
 
-	private JButton levelNumberLabel;
+	private JButton levelButton;
 	
-	public BoxView(String levelType, Color color, Integer levelNumber, Integer numStars){
+	public LevelThumbnail(String levelType, Color color, Integer levelNumber, Integer numStars){
 		this.levelType = levelType;
 		this.levelNumber = levelNumber;
 		this.numStars = numStars;
@@ -54,8 +54,8 @@ public class BoxView extends DefaultViewPanel {
 		levelTypeLabel = new JLabel(levelType);
 		add(levelTypeLabel, "cell 0 0");
 		
-		levelNumberLabel = new JButton("Level " + this.levelNumber);
-		add(levelNumberLabel, "cell 0 1");
+		levelButton = new JButton("Level " + this.levelNumber);
+		add(levelButton, "cell 0 1");
 		
 		// setup star view here
 		JPanel starView = new JPanel();
@@ -82,6 +82,14 @@ public class BoxView extends DefaultViewPanel {
 
 		return "BoxView";
 	}
+	
+	@Override
+	public void setEnabled(boolean enabled) {
+	    super.setEnabled(enabled);
+	    for (Component component : getComponents())
+	        component.setEnabled(enabled);
+	}
+	
 }
 
 
