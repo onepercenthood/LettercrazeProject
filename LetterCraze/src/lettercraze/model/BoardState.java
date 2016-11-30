@@ -36,7 +36,14 @@ public class BoardState {
 	 * @param shape is the initial shape of the board taken from the Level
 	 */
 	public BoardState(boolean[][] shape){
-		
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col++){
+				squares[row][col]= new Square(row, col);
+				if(shape[row][col]){
+					squares[row][col].toggleSelected();
+				}				
+			}
+		}	
 	}
 	
 	/**

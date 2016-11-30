@@ -27,8 +27,9 @@ public class BasicFiller implements IBoardFiller{
 	public void initialFill() {
 		// TODO Auto-generated method stub
 		// for each square
-		// check to see if is square isActive 
-		// 
+		// check to see if square isActive 
+		// run random 
+		// cycle through frequencies
 	}
 
 }

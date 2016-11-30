@@ -1,4 +1,4 @@
-package controller;
+package lettercraze.controller;
 
 public class BuilderCreateNewLevelController {
 
