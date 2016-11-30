@@ -18,6 +18,9 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
+
+import lettercraze.model.Model;
+
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
@@ -32,6 +35,7 @@ public class BuilderView extends DefaultViewPanel {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private Model model;
 
 	/**
 	 * Launch the application.
@@ -40,7 +44,8 @@ public class BuilderView extends DefaultViewPanel {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BuilderView frame = new BuilderView();
+					Model model = new Model();
+					BuilderView frame = new BuilderView(model);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,10 +56,14 @@ public class BuilderView extends DefaultViewPanel {
 
 	/**
 	 * Create the frame.
+	 * @param model 
 	 */
-	public BuilderView() {
+	public BuilderView(Model model) {
 		super();
 		setBackground(Color.GRAY);
+		
+		
+		this.model = model;
 		
 		setBounds(100, 100, 816, 491);
 		contentPane = new JPanel();
