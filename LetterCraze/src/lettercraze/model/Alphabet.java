@@ -16,10 +16,8 @@ import java.util.Random;
 public class Alphabet {
 	/** LinkedHasMap of the frequency for each letter to appear [key = letter, object = frequency (Double)] 
 	 * Allows for iteration in order of entry. */
-	protected LinkedHashMap<String,Letter> letters = new LinkedHashMap<String,Letter>();
+	protected static LinkedHashMap<String,Letter> letters = new LinkedHashMap<String,Letter>();
 	
-	/** Create a random sequence of doubles */
-	protected Random r = new Random();
 	
 	public Alphabet(){
 	letters.put("A", new Letter("A", 2, 8.17)); 
@@ -54,7 +52,8 @@ public class Alphabet {
 	 * Get a new random Letter according to letter frequencies.
 	 * @return new random Letter
 	 * */
-	public Letter getRandomLetter(){
+	public static Letter getRandomLetter(){
+		Random r = new Random();
 		double randCumulativeFreq = r.nextDouble();
 		int freqSum = 0;
 		Iterator<Letter> vals = letters.values().iterator();
