@@ -1,6 +1,5 @@
 package lettercraze.view;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -27,16 +26,19 @@ public class LetterView extends DefaultViewPanel{
 
 	private void initialize(){
 
-		JLabel lblA = new JLabel("A");
+		JLabel lblA = new JLabel(letter.getLetter());
 		lblA.setBounds(41, 11, 59, 120);
 		lblA.setFont(new Font("Tahoma", Font.PLAIN, 99));
 		add(lblA);
 		
-		JLabel label = new JLabel("2");
+		JLabel label = new JLabel(Integer.toString(letter.getValue()));
 		label.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		label.setBounds(112, 59, 59, 120);
 		add(label);
-
+	}
+	
+	public Letter getLetter(){
+		return letter;
 	}
 
 	@Override
