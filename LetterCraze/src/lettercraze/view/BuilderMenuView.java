@@ -1,5 +1,6 @@
 package lettercraze.view;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -17,6 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import lettercraze.BuilderApplication;
+import lettercraze.model.Model;
+
 import java.awt.Font;
 
 public class BuilderMenuView extends DefaultViewPanel{
@@ -25,9 +30,17 @@ public class BuilderMenuView extends DefaultViewPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 4467150633130963753L;
+	private JPanel cardLayoutPanel;
+	private Model model;
+	private BuilderApplication app;
 
-	public BuilderMenuView() {
+	public BuilderMenuView(JPanel cardLayoutPanel, Model m, BuilderApplication app) {
 		setLayout(null);
+		
+		this.cardLayoutPanel = cardLayoutPanel;
+		this.model = m;
+		this.app = app;
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 800, 600);
@@ -43,6 +56,8 @@ public class BuilderMenuView extends DefaultViewPanel{
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
+				
+				
 				
 			}
 		});
