@@ -22,15 +22,14 @@ public class SquareView extends DefaultViewPanel{
 		this.letter = letter;
 		setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.windowBorder);
-		panel.setBounds(0, 0, 150, 150);
-		add(panel);
-
 		initialize();
 	}
 
 	private void initialize(){
+		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.windowBorder);
+		panel.setBounds(0, 0, 150, 150);
+		add(panel);
 	}
 
 	public Letter getLetter(){

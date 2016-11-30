@@ -21,6 +21,8 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BuilderView extends DefaultJFrame {
 
@@ -367,6 +369,12 @@ public class BuilderView extends DefaultJFrame {
 		contentPane.add(textField_3);
 		
 		JButton btnCloseWithoutSaving = new JButton("Close Without Saving");
+		btnCloseWithoutSaving.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				
+			}
+		});
 		btnCloseWithoutSaving.setBounds(543, 444, 155, 29);
 		contentPane.add(btnCloseWithoutSaving);
 		
