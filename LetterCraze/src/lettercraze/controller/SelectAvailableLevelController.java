@@ -34,6 +34,10 @@ public class SelectAvailableLevelController implements ActionListener{
 	
 	public SelectAvailableLevelController(Integer levelNumber, CardLayout cardLayout, PlayerApplication app2) {
 		// TODO Auto-generated constructor stub
+		
+		this.levelNum = levelNumber;
+		this.cardlayout = cardLayout;
+		this.app = app2;
 	}
 
 	/**
@@ -50,7 +54,7 @@ public class SelectAvailableLevelController implements ActionListener{
 		 */
 		//mod.intiateLevel(levelNum);
 		//switch to GameView
-		cardlayout.show(app.getContentPane(), "GameView");
+		cardlayout.show(app.getCardLayoutParent(), "GameView");
 		
 	}
 }

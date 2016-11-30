@@ -72,6 +72,10 @@ public class PlayerApplication extends JFrame {
 	 */
 	private JPanel panelMain;
 	
+	public JPanel getCardLayoutParent() {
+		return panelMain;
+	}
+
 	/**
 	 * CardLayout will be used for switching views.
 	 * 
@@ -112,13 +116,15 @@ public class PlayerApplication extends JFrame {
         panelMain.setBackground(Color.GRAY);
         panelMain.setBounds(0, 0, initialWidth, initialHeight);
         panelMain.setPreferredSize(new Dimension(initialWidth, initialHeight));
-        add(panelMain);
+        setContentPane(panelMain);
                 
 		
 //		panelMain.add(splashView, splashView.getName());
 		gameView = new GameView(model);
 		//panelMain.add(gameView, gameView.getPanelName());
 		panelMain.add(menuView, menuView.getPanelName());
+		panelMain.add(gameView, gameView.getPanelName());
+		
 		loadInLevels();
         
         pack();
@@ -126,7 +132,7 @@ public class PlayerApplication extends JFrame {
 	}
 	
 	public void initializeViewClasses(){
-		menuView = new MenuView(model);
+		menuView = new MenuView(panelMain, model, this);
 		
 	}
 	
@@ -151,9 +157,12 @@ public class PlayerApplication extends JFrame {
 				levelType = levelTypes[levelI];
 				total_count += 1;
 				
-				LevelPreviewView level = new LevelPreviewView(levelType, levelColors[levelI], total_count, 0, cardLayout, this);
+				LevelPreviewView level = new LevelPreviewView(levelType, levelColors[levelI], total_count, 0, panelMain, this);
 				
-				level.setEnabled(true);
+				if( total_count != 1){
+					level.setEnabled(false);
+
+				}
 				
 				menuView.addMenuItemToDefault(level);
 				
