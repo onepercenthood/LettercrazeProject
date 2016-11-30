@@ -21,7 +21,7 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.SystemColor;
 
-public class PuzzleLevel extends DefaultJFrame {
+public class BuilderView extends DefaultJFrame {
 
 
 	private JPanel contentPane;
@@ -37,7 +37,7 @@ public class PuzzleLevel extends DefaultJFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PuzzleLevel frame = new PuzzleLevel();
+					BuilderView frame = new BuilderView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class PuzzleLevel extends DefaultJFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PuzzleLevel() {
+	public BuilderView() {
 		super();
 		setBackground(Color.GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
