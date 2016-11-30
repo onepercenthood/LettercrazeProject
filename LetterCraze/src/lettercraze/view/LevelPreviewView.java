@@ -10,8 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.SelectAvailableLevelController;
 import lettercraze.PlayerApplication;
+import lettercraze.controller.SelectAvailableLevelController;
 import net.miginfocom.swing.MigLayout;
 
 public class LevelPreviewView extends DefaultViewPanel implements IModelChangedView {
