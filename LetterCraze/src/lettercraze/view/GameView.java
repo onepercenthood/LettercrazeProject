@@ -77,7 +77,14 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	private void loadBoardView() {
 		// TODO Auto-generated method stub
 		
-		playerPanel.add(boardview);
+		JPanel boardViewPanel = boardview.getBoardPanel();
+		
+		Dimension size = playerPanel.getSize();
+		size.height = size.height - 5;
+		
+		boardViewPanel.setPreferredSize(size);
+		
+		playerPanel.add(boardview.getBoardPanel());
 	}
 
 	/**

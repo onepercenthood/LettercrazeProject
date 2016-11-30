@@ -1,8 +1,11 @@
 package lettercraze.view;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -20,6 +23,23 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 		loadInPlayerGrid();
 		
 		
+	}
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JFrame frame = new JFrame();
+			        frame.setPreferredSize(new Dimension(800,800));
+			        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+			        Model m = new Model();
+			        frame.getContentPane().add(new BoardView(Color.RED, m));
+			        frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
 	public void createPanel(){
@@ -67,5 +87,9 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	public String getPanelName() {
 		// TODO Auto-generated method stub
 		return "BoardView";
+	}
+
+	public JPanel getBoardPanel() {
+		return boardPanel;
 	}
 }
