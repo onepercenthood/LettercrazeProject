@@ -22,7 +22,7 @@ public class SplashScreen extends DefaultViewPanel{
 	/**
 	 * Create the frame.
 	 */
-	public SplashScreen() {
+	public SplashScreen(String builderOrPlayer) {
 		super();
 		setBounds(100, 100, 450, 300);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -55,16 +55,21 @@ public class SplashScreen extends DefaultViewPanel{
 		JLabel lblDeanSchifilliti = new JLabel("Dean Schifilliti");
 		lblDeanSchifilliti.setBounds(163, 197, 144, 16);
 		add(lblDeanSchifilliti);
+		
+		
+		JLabel JbuilderOrPlayer = new JLabel(builderOrPlayer);
+		lblDeanSchifilliti.setBounds(163, 300, 144, 16);
+		add(lblDeanSchifilliti);
 	}
 	
 	
-	public static JFrame createAndShowGUI(Dimension size) {
+	public static JFrame createAndShowGUI(Dimension size, String builderOrPlayer) {
         //Create and set up the window.
         JFrame frame = new JFrame("SplashScreen");
         frame.setPreferredSize(size);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        SplashScreen splashScreen = new SplashScreen();
+        SplashScreen splashScreen = new SplashScreen(builderOrPlayer);
 
         //Add the ubiquitous "Hello World" label.
         frame.getContentPane().add(splashScreen);
