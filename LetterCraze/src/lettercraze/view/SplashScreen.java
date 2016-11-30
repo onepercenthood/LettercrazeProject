@@ -15,6 +15,7 @@ import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import java.awt.Font;
 
 public class SplashScreen extends DefaultViewPanel{
 
@@ -58,8 +59,9 @@ public class SplashScreen extends DefaultViewPanel{
 		
 		
 		JLabel JbuilderOrPlayer = new JLabel(builderOrPlayer);
-		lblDeanSchifilliti.setBounds(163, 300, 144, 16);
-		add(lblDeanSchifilliti);
+		JbuilderOrPlayer.setFont(new Font("Lucida Grande", Font.PLAIN, 19));
+		JbuilderOrPlayer.setBounds(140, 25, 167, 28);
+		add(JbuilderOrPlayer);
 	}
 	
 	
