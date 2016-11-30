@@ -10,15 +10,22 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import lettercraze.model.Model;
+import lettercraze.model.Square;
  
 public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	private JPanel boardPanel;
-	Color colorPlayer;
+	protected Color colorPlayer;
+	protected Model model;
+	protected int levelNum;
+	
 	SquareView[][] squareBoxes = new SquareView[6][6];
 	JPanel[][] squareBoxesPanels = new JPanel[6][6];
+	
 
-	public BoardView(Color colorPlayer, Model model) {
+	public BoardView(Color colorPlayer, Model model, int levelNum) {
 		this.colorPlayer = colorPlayer;
+		this.model = model;
+		this.levelNum = levelNum;
 		createPanel();
 		loadInPlayerGrid();
 		
@@ -33,7 +40,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 			        frame.setPreferredSize(new Dimension(800,800));
 			        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 			        Model m = new Model();
-			        frame.getContentPane().add(new BoardView(Color.RED, m));
+			        frame.getContentPane().add(new BoardView(Color.RED, m, 1)); //change from 1 later
 			        frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,23 +65,20 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	
 	public void loadInPlayerGrid(){
 		
-		int row = 6;
-		int col = 6;
-		
-
-		
-		for( int i = 1; i <= col; i++ ){
-			for( int j = 1; j <= row; j++){
-				JPanel newPanel = new JPanel();
-				newPanel.setBackground(SystemColor.activeCaption);
-				newPanel.setBorder(new LineBorder(colorPlayer));
-				boardPanel.add(newPanel);
-				squareBoxesPanels[i-1][j-1] = newPanel;
-
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col++){
+				//squares[row][col]= new Square(row, col);
+				if(model.getLevel(levelNum).getBoardShape()[row][col]){
+					JPanel newPanel = new JPanel();
+					newPanel.setBackground(SystemColor.activeCaption);
+					newPanel.setBorder(new LineBorder(colorPlayer));
+					boardPanel.add(newPanel);
+					squareBoxesPanels[row-1][col-1] = newPanel;
+					//squareBoxes[i-1][j-1] = new SquareView(model.getLevel(levelNum));
+					//what even is a squareBox? our terminology is messed
+				}				
 			}
-		}
-		
-		
+		}	
 	}
 
 	@Override

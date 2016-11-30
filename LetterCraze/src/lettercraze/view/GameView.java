@@ -42,6 +42,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	private BoardView boardview;
 
 	private Model model;
+	
+	protected int levelNum;
 
 	/**
 	 * Launch the application.
@@ -54,7 +56,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 			        frame.setPreferredSize(new Dimension(800,800));
 			        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 			        Model m = new Model();
-			        frame.getContentPane().add(new GameView(m));
+			        frame.getContentPane().add(new GameView(m, 1)); //using just lev1 for now, change later
 			        frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,9 +68,10 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	/**
 	 * Create the frame.
 	 */
-	public GameView(Model m) {
+	public GameView(Model m, int levelNum) {
 		this.model = m;
-		this.boardview = new BoardView(colorPlayer, this.model);
+		this.levelNum = levelNum;
+		this.boardview = new BoardView(colorPlayer, this.model, levelNum);
 		createPanel();
 		loadBoardView();
 

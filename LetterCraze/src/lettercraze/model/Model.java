@@ -48,7 +48,14 @@ public class Model {
 	}
 	
 	// Get Functions 
-	
+	/**
+	 * 
+	 * @param int levelNum
+	 * @return level corresponding to the given level number
+	 */
+	public Level getLevel(int levelNum){
+		return levels.get(levelNum - 1);
+	}
 	
 	// Set Functions 
 	
