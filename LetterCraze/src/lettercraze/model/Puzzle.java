@@ -30,10 +30,10 @@ public class Puzzle extends Level{
 		this.maxWords = maxWords;
 	}
 
-	@Override
-	public boolean isCompleted(int score) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean isCompleted(int score) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 }

@@ -26,7 +26,9 @@ public class BasicFiller implements IBoardFiller{
 	@Override
 	public void initialFill() {
 		// TODO Auto-generated method stub
-		
+		// for each square
+		// check to see if is square isActive 
+		// 
 	}
 
 }

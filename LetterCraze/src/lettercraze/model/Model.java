@@ -37,33 +37,36 @@ public class Model {
 	 */
 	public Model() {
 		super();
-		letterFrequency.put("E", 12.70);
-		letterFrequency.put("T", 9.06);
-		letterFrequency.put("A", 8.17);
-		letterFrequency.put("O", 7.51);
-		letterFrequency.put("I", 6.97);
-		letterFrequency.put("N", 6.75);
-		letterFrequency.put("S", 6.33);
-		letterFrequency.put("H", 6.09);
-		letterFrequency.put("R", 5.99);
-		letterFrequency.put("D", 4.25);
-		letterFrequency.put("L", 4.03);
-		letterFrequency.put("C", 2.78);
-		letterFrequency.put("U", 2.76);
-		letterFrequency.put("M", 2.41);
-		letterFrequency.put("W", 2.36);
-		letterFrequency.put("F", 2.23);
-		letterFrequency.put("G", 2.02);
-		letterFrequency.put("Y", 1.97);
-		letterFrequency.put("P", 1.93);
-		letterFrequency.put("B", 1.49);
-		letterFrequency.put("V", 0.98);
-		letterFrequency.put("K", 0.77);
-		letterFrequency.put("J", 0.15);
-		letterFrequency.put("X", 0.15);
-		letterFrequency.put("Q", 0.10);
-		letterFrequency.put("Z", 0.07);
-		letterFrequency.put("Qu", 0.01);
+		
+	}
+	
+	// Get Functions 
+	
+	
+	// Set Functions 
+	
+	/**
+	 * Each solitaire game provides its own initialization routine.
+	 * <p>
+	 * By the time this method is called, the game is part of its Container.
+	 */
+	public void initialize(){
+		initializeModel();
+		initializeView(); 
+		initializeControllers(); 
+		
+	}
+	
+	private void initializeModel(){
+		
+	}
+	
+	private void initializeView(){
+		
+	}
+	
+	private void initializeControllers(){
+
 	}
 	
 	/**
