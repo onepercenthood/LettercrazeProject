@@ -24,7 +24,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class BuilderView extends DefaultJFrame {
+public class BuilderView extends DefaultViewPanel {
 
 
 	private JPanel contentPane;
@@ -55,14 +55,11 @@ public class BuilderView extends DefaultJFrame {
 	public BuilderView() {
 		super();
 		setBackground(Color.GRAY);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.getContentPane().setPreferredSize(new Dimension(800, 600));
-	    this.pack();
+		
 		setBounds(100, 100, 816, 491);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel_39 = new JPanel();
@@ -384,5 +381,10 @@ public class BuilderView extends DefaultJFrame {
 //        f.setSize(600, 600);
 //        f.setLocationRelativeTo(null);
 //        f.setVisible(true);
+	}
+
+	@Override
+	public String getPanelName() {
+		return "BuilderView";
 	}
 }
