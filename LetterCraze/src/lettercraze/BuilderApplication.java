@@ -104,9 +104,7 @@ public class BuilderApplication extends JFrame {
 	 */
 	private void initialize(){
 		
-        initializeViewClasses();
-
-		setTitle("LetterCraze | Team Manganese");
+        setTitle("LetterCraze | Team Manganese");
 		setLayout(null);
         setPreferredSize(new Dimension(initialWidth, initialHeight));
         setResizable(false);
@@ -121,13 +119,11 @@ public class BuilderApplication extends JFrame {
         
         add(panelMain);
                 
-		
-//		panelMain.add(splashView, splashView.getName());
         builderView = new BuilderView(model);
-		//panelMain.add(gameView, gameView.getPanelName());
-        
-        // 
+        menuView = new BuilderMenuView(panelMain, model, this);
 		panelMain.add(menuView, menuView.getPanelName());
+		panelMain.add(builderView, builderView.getPanelName());
+		cardLayout.show(panelMain, menuView.getPanelName());
 		loadInLevels();
         
         pack();
@@ -135,7 +131,7 @@ public class BuilderApplication extends JFrame {
 	}
 	
 	public void initializeViewClasses(){
-		menuView = new BuilderMenuView(panelMain, model, this );
+		
 		
 	}
 	
@@ -180,6 +176,14 @@ public class BuilderApplication extends JFrame {
 	 */
 	public Model modelChanged(){
 		return model;
+	}
+
+	/**
+	 * Returns the parent container (a JPanel) of the CardLayout object
+	 * @return
+	 */
+	public JPanel getCardLayoutParent(){
+		return panelMain;
 	}
 	
 	/**

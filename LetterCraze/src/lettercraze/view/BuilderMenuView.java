@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import lettercraze.BuilderApplication;
+import lettercraze.controller.BuilderCreateNewLevelController;
 import lettercraze.model.Model;
 
 import java.awt.Font;
@@ -52,17 +53,10 @@ public class BuilderMenuView extends DefaultViewPanel{
 		lblLettercrazeBuilder.setFont(new Font("Tahoma", Font.PLAIN, 60));
 		panel.add(lblLettercrazeBuilder);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				
-				
-				
-			}
-		});
-		btnNewButton.setBounds(213, 319, 126, 53);
-		panel.add(btnNewButton);
+		JButton btnCreatNewLevel = new JButton("Creat New Level");
+		btnCreatNewLevel.addMouseListener(new BuilderCreateNewLevelController(app, cardLayoutPanel, model));
+		btnCreatNewLevel.setBounds(213, 319, 126, 53);
+		panel.add(btnCreatNewLevel);
 		
 		JButton btnEditExistingLevel = new JButton("Edit Existing Level");
 		btnEditExistingLevel.setBounds(412, 319, 126, 53);
