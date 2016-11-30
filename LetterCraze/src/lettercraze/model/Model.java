@@ -29,16 +29,12 @@ public class Model {
 	/** Dictionary that stores all possible words that can be played */
 	protected Dictionary possibleWords;
 	
-	
-	
-	
-	
 	/**
 	 * Model Constructor
 	 */
 	public Model() {
 		super();
-		
+		levels = new ArrayList<Level>();
 		boolean[][] sampleShape = new boolean[6][6];
 		for(int row = 0; row < 6; row++){
 			for(int col = 0; col < 6; col++){
@@ -48,9 +44,7 @@ public class Model {
 		Puzzle level1 = new Puzzle(1, new int[]{1, 2, 3} , 10);
 		level1.setBoardShape(sampleShape);
 		level1.setUnLocked(true);
-		levels.add(level1);
-		
-		
+		levels.add(level1);	
 	}
 	
 	// Get Functions 
@@ -89,6 +83,7 @@ public class Model {
 		//simple sample shape with a 6x6 grid
 
 		boardstates.add(new BoardState(levels.get(levelNum - 1).getBoardShape()));
+		
 	}
 
 	/**
