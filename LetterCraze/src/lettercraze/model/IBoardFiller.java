@@ -1,7 +1,7 @@
 // Needs to commented  
 
 package lettercraze.model;
-
+//
 /**
  * 
  * <p>
