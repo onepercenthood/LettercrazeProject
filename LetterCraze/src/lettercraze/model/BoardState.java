@@ -66,5 +66,13 @@ public class BoardState{
 	}
 	
 	
+	/**
+	 * 
+	 * Return the squares in this board state
+	 * @return squares[][]
+	 */
+	public Square[][] getSquares(){
+		return squares;
+	}
 
 }

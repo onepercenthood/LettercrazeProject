@@ -24,6 +24,13 @@ public class SquareView extends DefaultViewPanel{
 		
 		initialize();
 	}
+	
+	public SquareView(Square square){
+		this.square = square;
+		setLayout(null);
+		
+		initialize();
+	}
 
 	private void initialize(){
 		JPanel panel = new JPanel();

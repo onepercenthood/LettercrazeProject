@@ -120,7 +120,7 @@ public class PlayerApplication extends JFrame {
                 
 		
 //		panelMain.add(splashView, splashView.getName());
-		gameView = new GameView(model);
+		gameView = new GameView(model, 1); //using level 1 for now
 		//panelMain.add(gameView, gameView.getPanelName());
 		panelMain.add(menuView, menuView.getPanelName());
 		panelMain.add(gameView, gameView.getPanelName());
