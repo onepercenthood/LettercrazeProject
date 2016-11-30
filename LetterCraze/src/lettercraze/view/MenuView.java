@@ -6,6 +6,8 @@ import java.awt.Container;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
+import lettercraze.PlayerApplication;
 import lettercraze.model.Model;
 
 import javax.swing.GroupLayout;
@@ -55,9 +57,17 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	private GridBagLayout gbl_panel_customLevels;
 
 	private GridBagConstraints gbc_lblCustomLevels;
+
+	private JPanel cardLayoutPanel;
+
+	private PlayerApplication app;
 	
-	public MenuView(Model m){
+	public MenuView(JPanel cardLayoutPanel, Model m, PlayerApplication app){
 		model = m;
+		
+		this.cardLayoutPanel = cardLayoutPanel;
+		
+		this.app = app;
 		
 		createPanel();
 

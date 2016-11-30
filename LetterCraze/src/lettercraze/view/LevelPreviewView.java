@@ -43,13 +43,14 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	private CardLayout cardlayout;
 	
 	private PlayerApplication app;
-	
-	public LevelPreviewView(String levelType, Color color, Integer levelNumber, Integer numStars, CardLayout cl, PlayerApplication app){
+		
+	public LevelPreviewView(String levelType, Color color, Integer levelNumber, Integer numStars, JPanel cl, PlayerApplication app){
 		this.levelType = levelType;
 		this.levelNumber = levelNumber;
 		this.numStars = numStars;
 		this.color = color;
-		this.cardlayout = cl;
+//		this.parenCl = cl;
+		this.cardlayout = (CardLayout) cl.getLayout();
 		this.app = app;
 		initialize();
 	}
@@ -65,7 +66,7 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		add(levelTypeLabel, "cell 0 0");
 		
 		levelButton = new JButton("Level " + this.levelNumber);
-		levelButton.addActionListener(new SelectAvailableLevelController(levelNumber, cardlayout, app));
+		levelButton.addActionListener(new SelectAvailableLevelController(levelNumber, this.cardlayout, app));
 		add(levelButton, "cell 0 1");
 		
 		// setup star view here
