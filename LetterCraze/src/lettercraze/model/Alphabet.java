@@ -4,12 +4,20 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Random;
 
+/**
+ * The Alphabet class contains a LinkedHashMap of all the letters, frequencies and values.
+ * <p>
+ * This class has a getRandomLetter() function which is used to fill the board according to the letter frequencies.
+ * <p>
+ * Creation Data: (11/24/16 10:58 AM)
+ * @author Derek
+ */
+
 public class Alphabet {
 	/** LinkedHasMap of the frequency for each letter to appear [key = letter, object = frequency (Double)] 
 	 * Allows for iteration in order of entry. */
-	protected LinkedHashMap<String,Letter> letters = new LinkedHashMap<String,Letter>();
+	protected static LinkedHashMap<String,Letter> letters = new LinkedHashMap<String,Letter>();
 	
-	protected Random r = new Random();
 	
 	public Alphabet(){
 	letters.put("A", new Letter("A", 2, 8.17)); 
@@ -44,7 +52,8 @@ public class Alphabet {
 	 * Get a new random Letter according to letter frequencies.
 	 * @return new random Letter
 	 * */
-	public Letter getRandomLetter(){
+	public static Letter getRandomLetter(){
+		Random r = new Random();
 		double randCumulativeFreq = r.nextDouble();
 		int freqSum = 0;
 		Iterator<Letter> vals = letters.values().iterator();

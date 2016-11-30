@@ -40,7 +40,7 @@ public class Square {
 	/** Removes the current letter from the Square and randomly places a new one */
 	public void newLetter(){
 		
-		
+		letter = Alphabet.getRandomLetter();
 		
 	}
 	
