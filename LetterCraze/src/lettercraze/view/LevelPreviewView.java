@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.SelectAvailableLevelController;
+import lettercraze.PlayerApplication;
 import net.miginfocom.swing.MigLayout;
 
 public class LevelPreviewView extends DefaultViewPanel implements IModelChangedView {
@@ -39,14 +40,17 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	
 	private StarRater starRater;
 	
-	CardLayout cardlayout;
-	public LevelPreviewView(String levelType, Color color, Integer levelNumber, Integer numStars, CardLayout cl){
+	private CardLayout cardlayout;
+	
+	private PlayerApplication app;
+	
+	public LevelPreviewView(String levelType, Color color, Integer levelNumber, Integer numStars, CardLayout cl, PlayerApplication app){
 		this.levelType = levelType;
 		this.levelNumber = levelNumber;
 		this.numStars = numStars;
 		this.color = color;
-		cardlayout = cl;
-		
+		this.cardlayout = cl;
+		this.app = app;
 		initialize();
 	}
 	
@@ -61,7 +65,7 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		add(levelTypeLabel, "cell 0 0");
 		
 		levelButton = new JButton("Level " + this.levelNumber);
-		levelButton.addActionListener(new SelectAvailableLevelController(this, levelButton, levelNumber, cardlayout));
+		levelButton.addActionListener(new SelectAvailableLevelController(levelNumber, cardlayout, app));
 		add(levelButton, "cell 0 1");
 		
 		// setup star view here
