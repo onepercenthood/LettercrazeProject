@@ -17,7 +17,6 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	public BoardView(Color colorPlayer, Model model) {
 		this.colorPlayer = colorPlayer;
 		createPanel();
-		
 		loadInPlayerGrid();
 		
 		

@@ -69,12 +69,14 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	public GameView(Model m) {
 		this.model = m;
 		this.boardview = new BoardView(colorPlayer, this.model);
-		loadBoardView();
 		createPanel();
+		loadBoardView();
+
 	}
 	
 	private void loadBoardView() {
 		// TODO Auto-generated method stub
+		
 		playerPanel.add(boardview);
 	}
 
@@ -99,12 +101,12 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		scoreTextField.setBounds(56, 30, 94, 26);
 		add(scoreTextField);
 		
-		
 		playerPanel = new JPanel();
-//		playerPanel.setBackground(colorPlayer);
+
+		playerPanel.setBackground(colorPlayer);
 //		playerPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-//		playerPanel.setBounds(16, 82, 383, 414);
-//		add(playerPanel);
+		playerPanel.setBounds(16, 82, 383, 414);
+		add(playerPanel);
 //		playerPanel.setLayout(new GridLayout(6, 6, 0, 0));
 		
 //		loadInPlayerGrid();

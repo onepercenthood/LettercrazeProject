@@ -116,7 +116,7 @@ public class PlayerApplication extends JFrame {
                 
 		
 //		panelMain.add(splashView, splashView.getName());
-		gameView = new GameView();
+		gameView = new GameView(model);
 		//panelMain.add(gameView, gameView.getPanelName());
 		panelMain.add(menuView, menuView.getPanelName());
 		loadInLevels();
@@ -180,7 +180,7 @@ public class PlayerApplication extends JFrame {
 	public static void main(String[] args){
         Dimension size = new Dimension(initialWidth, initialHeight);
 
-		JFrame splashFrame = SplashScreen.createAndShowGUI(size);
+		JFrame splashFrame = SplashScreen.createAndShowGUI(size, "Player");
 		try {
 			// here is wher eit appes
 			System.out.println("splash screeb");
