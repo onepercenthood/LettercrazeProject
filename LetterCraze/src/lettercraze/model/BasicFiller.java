@@ -24,12 +24,16 @@ public class BasicFiller implements IBoardFiller{
 	}
 
 	@Override
-	public void initialFill() {
+	public void initialFill(Square[][] squares) {
 		// TODO Auto-generated method stub
 		// for each square
-		// check to see if square isActive 
-		// run random 
-		// cycle through frequencies
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col++){
+				if(squares[row][col].isActive){
+					squares[row][col].newLetter();
+				}
+			}
+		}
 	}
 
 }

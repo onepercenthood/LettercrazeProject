@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author Hoodie
  *
  */
-public class BoardState {
+public class BoardState{
 	
 	/** Current Score of the day */
 	protected int score;
@@ -29,7 +29,11 @@ public class BoardState {
 	/** Two dimensional representations of the squares on the board */
 	protected Square[][] squares = new Square[6][6] ;
 	
-	protected IBoardFiller boardFiller;
+	/** */
+	protected BasicFiller basicFiller;
+	
+	/** */ 
+	protected ThemeFiller themeFiller;
 	
 	/**
 	 * Construct entity for initial start of playing a level. 
@@ -44,6 +48,9 @@ public class BoardState {
 				}				
 			}
 		}	
+		basicFiller.initialFill(squares);
+		score = 0;
+		stars = 0;
 	}
 	
 	/**
