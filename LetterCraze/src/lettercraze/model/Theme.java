@@ -39,9 +39,9 @@ public class Theme extends Level{
 		this.starThreshold[2] = size;
 	}
 
-	@Override
-	public boolean isCompleted(int score) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean isCompleted(int score) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 }

@@ -40,10 +40,10 @@ public class Lightning extends Level{
 		this.roundTimer.startTimer();
 	}
 	
-	@Override
-	public boolean isCompleted(int score) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean isCompleted(int score) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 }

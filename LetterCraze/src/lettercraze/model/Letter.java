@@ -20,37 +20,36 @@ public class Letter {
 	/** Integer to store the value of the letter */
 	protected int value;
 	
-	public Letter(String letter, Integer value){
-		super();
-	}
+	/** Double to store the frequency of the letter appearing */
+	protected double frequency;
 	
-	/** Create letter objects */
-	 Letter A = new Letter ("A",2); 
-	 Letter B = new Letter ("B",4); 
-	 Letter C = new Letter ("C",3); 
-	 Letter D = new Letter ("D",3); 
-	 Letter E = new Letter ("E",1); 
-	 Letter F = new Letter ("F",4); 
-	 Letter G = new Letter ("G",4); 
-	 Letter H = new Letter ("H",2); 
-	 Letter I = new Letter ("I",2); 
-	 Letter J = new Letter ("J",7); 
-	 Letter K = new Letter ("K",5); 
-	 Letter L = new Letter ("L",3); 
-	 Letter M = new Letter ("M",3); 
-	 Letter N = new Letter ("N",2); 
-	 Letter O = new Letter ("O",2); 
-	 Letter P = new Letter ("P",4); 
-	 Letter Q = new Letter ("Q",8); 
-	 Letter R = new Letter ("R",2); 
-	 Letter S = new Letter ("S",2); 
-	 Letter T = new Letter ("T",1); 
-	 Letter U = new Letter ("U",3); 
-	 Letter V = new Letter ("V",5); 
-	 Letter W = new Letter ("W",3); 
-	 Letter X = new Letter ("X",7); 
-	 Letter Y = new Letter ("Y",4); 
-	 Letter Z = new Letter ("Z",8); 
-	 Letter Qu = new Letter ("Qu", 11);	
+	public Letter(String letter, Integer value, Double frequency){
+		super();
+	}	
 
+	 /**
+	  * Get The string of the Letter 
+	  * @return String with Letter 
+	  */
+	 public String getLetter(){
+		 return this.letter;
+	 }
+	 
+	 /**
+	  * Get Value of the Letter
+	  * @return Integer with value 
+	  */
+	 public int getValue(){
+		 return this.value;
+	 }
+	 
+	 /**
+	  * Get Frequency of the Letter
+	  * @return Double with frequency 
+	  */
+	 public double getFrequency(){
+		 return this.frequency;
+	 }
 }
+
+

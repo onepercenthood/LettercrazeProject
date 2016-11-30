@@ -1,4 +1,4 @@
-package lettercraze;
+//package lettercraze;
 
 import java.awt.Button;
 import java.awt.CardLayout;

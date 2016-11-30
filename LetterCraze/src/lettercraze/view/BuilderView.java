@@ -20,8 +20,11 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.SystemColor;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class BuilderView extends DefaultJFrame {
+public class BuilderView extends DefaultViewPanel {
 
 
 	private JPanel contentPane;
@@ -52,19 +55,25 @@ public class BuilderView extends DefaultJFrame {
 	public BuilderView() {
 		super();
 		setBackground(Color.GRAY);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.getContentPane().setPreferredSize(new Dimension(800, 600));
-	    this.pack();
+		
 		setBounds(100, 100, 816, 491);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JPanel panel_39 = new JPanel();
+		panel_39.setBounds(493, 360, 256, -281);
+		contentPane.add(panel_39);
+		panel_39.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Difficulty");
+		lblNewLabel.setBounds(0, -270, 61, 16);
+		panel_39.add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel.setBounds(20, 17, 410, 399);
+		panel.setBounds(20, 27, 410, 399);
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(6, 6, 0, 0));
 		
@@ -247,7 +256,7 @@ public class BuilderView extends DefaultJFrame {
 		panel_38.setBackground(SystemColor.activeCaption);
 		panel_38.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.add(panel_38);
-		
+
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Puzzle", "Lightning", "Theme"}));
 		comboBox.setToolTipText("");
@@ -266,10 +275,6 @@ public class BuilderView extends DefaultJFrame {
 		JLabel lblLevelType = new JLabel("Level Type");
 		lblLevelType.setBounds(587, 14, 90, 16);
 		contentPane.add(lblLevelType);
-		
-		JLabel lblNewLabel = new JLabel("Difficulty");
-		lblNewLabel.setBounds(503, 79, 61, 16);
-		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("points");
 		lblNewLabel_1.setBounds(670, 130, 79, 16);
@@ -360,12 +365,26 @@ public class BuilderView extends DefaultJFrame {
 		textField_3.setBounds(532, 319, 61, 20);
 		contentPane.add(textField_3);
 		
-		JPanel panel_39 = new JPanel();
-		panel_39.setBounds(493, 430, 256, -352);
-		contentPane.add(panel_39);
-		panel_39.setLayout(new GridLayout(4, 3, 0, 0));
+		JButton btnCloseWithoutSaving = new JButton("Close Without Saving");
+		btnCloseWithoutSaving.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				
+			}
+		});
+		btnCloseWithoutSaving.setBounds(543, 444, 155, 29);
+		contentPane.add(btnCloseWithoutSaving);
+		
+		System.out.print(Double.toString(panel_38.getSize().getHeight()));
+		System.out.print(Double.toString(panel_38.getSize().getWidth()));
+		
 //        f.setSize(600, 600);
 //        f.setLocationRelativeTo(null);
 //        f.setVisible(true);
+	}
+
+	@Override
+	public String getPanelName() {
+		return "BuilderView";
 	}
 }

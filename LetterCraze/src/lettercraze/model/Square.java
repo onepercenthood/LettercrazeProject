@@ -26,16 +26,21 @@ public class Square {
 	/** True if the square has been selected by the Player to form word */
 	protected boolean isSelected; 
 	
-	public Square(int r, int c, Letter l, boolean active, boolean selected){
+	public Square(int r, int c){
 		this.row = r;
 		this.column = c;
-		this.letter = l;
-		this.isActive = active;
-		this.isSelected = selected;
+		this.letter = null;
+		this.isActive = false;
+		this.isSelected = false;
+				
 	}
 	
+	
+	
 	/** Removes the current letter from the Square and randomly places a new one */
-	public void updateLetter(){
+	public void newLetter(){
+		
+		
 		
 	}
 	
@@ -46,6 +51,7 @@ public class Square {
 	 * @return True is isSelected is changed to true 
 	 */
 	public boolean toggleSelected(){
+		this.isActive = !this.isActive;
 		return true;
 	}
 	
