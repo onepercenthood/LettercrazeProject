@@ -48,9 +48,9 @@ public class SelectAvailableLevelController implements ActionListener{
 		 * no levels are currently open
 		 * level is unlocked
 		 */
-		//mod.intiateLevel(levelNum);
+		mod.intiateLevel(levelNum);
 		//switch to GameView
-		cardlayout.show(app.getContentPane(), "GameView");
+		//cardlayout.show(app.getContentPane(), "GameView");
 		
 	}
 }

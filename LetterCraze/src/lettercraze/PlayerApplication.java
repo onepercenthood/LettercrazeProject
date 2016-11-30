@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import lettercraze.model.Model;
+import lettercraze.view.GameView;
 import lettercraze.view.LevelPreviewView;
 import lettercraze.view.MenuView;
 import lettercraze.view.SplashScreen;
@@ -61,6 +62,7 @@ public class PlayerApplication extends JFrame {
 	 */
 	MenuView menuView;
 
+	GameView gameView;
 	
 	/**
 	 * 
@@ -106,14 +108,17 @@ public class PlayerApplication extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         panelMain = new JPanel(cardLayout);
+        
         panelMain.setBackground(Color.GRAY);
         panelMain.setBounds(0, 0, initialWidth, initialHeight);
         panelMain.setPreferredSize(new Dimension(initialWidth, initialHeight));
         add(panelMain);
-        
-		panelMain.add(menuView, menuView.getPanelName());
-//		panelMain.add(splashView, splashView.getName());
+                
 		
+//		panelMain.add(splashView, splashView.getName());
+		gameView = new GameView();
+		//panelMain.add(gameView, gameView.getPanelName());
+		panelMain.add(menuView, menuView.getPanelName());
 		loadInLevels();
         
         pack();
@@ -146,7 +151,7 @@ public class PlayerApplication extends JFrame {
 				levelType = levelTypes[levelI];
 				total_count += 1;
 				
-				LevelPreviewView level = new LevelPreviewView(levelType, levelColors[levelI], total_count, 0, cardLayout);
+				LevelPreviewView level = new LevelPreviewView(levelType, levelColors[levelI], total_count, 0, cardLayout, this);
 				
 				level.setEnabled(true);
 				

@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 
-public class Player extends JFrame {
+public class GameView extends JFrame {
 
 	private JPanel contentPane;
 
@@ -22,7 +22,7 @@ public class Player extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Player frame = new Player();
+					GameView frame = new GameView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class Player extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Player() {
+	public GameView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		this.getContentPane().setPreferredSize(new Dimension(800, 600));
@@ -89,6 +89,11 @@ public class Player extends JFrame {
 		//		
 		panel_stars.add(starRater21);
 		contentPane.add(panel_stars);
+	}
+	
+	@Override
+	public String getName(){
+		return "GameView";
 	}
 
 }
