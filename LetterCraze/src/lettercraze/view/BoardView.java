@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import lettercraze.model.Model;
-
+ 
 public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	private JPanel boardPanel;
 	Color colorPlayer;
