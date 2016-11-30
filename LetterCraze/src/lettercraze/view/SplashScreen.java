@@ -1,5 +1,7 @@
+
 package lettercraze.view;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -14,64 +16,71 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
-public class SplashScreen extends DefaultJFrame {
+public class SplashScreen extends DefaultViewPanel{
 
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SplashScreen frame = new SplashScreen();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public SplashScreen() {
 		super();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		setBorder(new EmptyBorder(5, 5, 5, 5));
+		setLayout(null);
 		
 		JLabel lblLettercraze = new JLabel("LetterCraze");
 		lblLettercraze.setBounds(182, 65, 105, 16);
-		contentPane.add(lblLettercraze);
+		add(lblLettercraze);
 		
 		JLabel lblGroupManganese = new JLabel("Group Manganese");
 		lblGroupManganese.setBounds(163, 90, 144, 16);
-		contentPane.add(lblGroupManganese);
+		add(lblGroupManganese);
 		
 		JLabel lblDavidDeisadze = new JLabel("David Deisadze");
 		lblDavidDeisadze.setBounds(163, 113, 144, 16);
-		contentPane.add(lblDavidDeisadze);
+		add(lblDavidDeisadze);
 		
 		JLabel lblDerekFeehrer = new JLabel("Derek Feehrer");
 		lblDerekFeehrer.setBounds(163, 136, 144, 16);
-		contentPane.add(lblDerekFeehrer);
+		add(lblDerekFeehrer);
 		
 		JLabel lblJackHarding = new JLabel("Jack Harding");
 		lblJackHarding.setBounds(163, 155, 144, 16);
-		contentPane.add(lblJackHarding);
+		add(lblJackHarding);
 		
 		JLabel lblZackHood = new JLabel("Zack Hood");
 		lblZackHood.setBounds(163, 176, 144, 16);
-		contentPane.add(lblZackHood);
+		add(lblZackHood);
 		
 		JLabel lblDeanSchifilliti = new JLabel("Dean Schifilliti");
 		lblDeanSchifilliti.setBounds(163, 197, 144, 16);
-		contentPane.add(lblDeanSchifilliti);
+		add(lblDeanSchifilliti);
 	}
+	
+	
+	public static JFrame createAndShowGUI(Dimension size) {
+        //Create and set up the window.
+        JFrame frame = new JFrame("SplashScreen");
+        frame.setPreferredSize(size);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        SplashScreen splashScreen = new SplashScreen();
+
+        //Add the ubiquitous "Hello World" label.
+        frame.getContentPane().add(splashScreen);
+
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
+        
+        return frame;
+    }
+
+
+	@Override
+	public String getPanelName() {
+		// TODO Auto-generated method stub
+		return "SplashView";
+	}
+
 }
