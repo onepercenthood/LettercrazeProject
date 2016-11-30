@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import lettercraze.model.Level;
 import lettercraze.model.Model;
 import lettercraze.view.LevelPreviewView;
-import lettercraze.view.LevelThumbnail;
 
 public class SelectAvailableLevelController implements ActionListener{
 
