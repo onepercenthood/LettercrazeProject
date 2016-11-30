@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -25,12 +26,15 @@ public class SelectAvailableLevelController implements ActionListener{
 	/** number of the level to be called when this button is pressed **/
 	int levelNum;
 	
-	public SelectAvailableLevelController(Model m, LevelPreviewView l, JButton b, int lvl){
+	CardLayout clay;
+	
+	public SelectAvailableLevelController(LevelPreviewView l, JButton b, int lvl, CardLayout cl){
 		super();
-		mod = m;
+		//mod = m;
 		ltnail = l;
 		lvlButt = b;
 		levelNum = lvl;
+		clay = cl;
 	}
 	
 	/**
@@ -46,5 +50,8 @@ public class SelectAvailableLevelController implements ActionListener{
 		 * level is unlocked
 		 */
 		mod.intiateLevel(levelNum);
+		//TODO switch to GameView
+		clay.show();
+		
 	}
 }
