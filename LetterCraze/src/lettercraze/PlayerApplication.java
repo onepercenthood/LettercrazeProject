@@ -146,7 +146,7 @@ public class PlayerApplication extends JFrame {
 				levelType = levelTypes[levelI];
 				total_count += 1;
 				
-				LevelPreviewView level = new LevelPreviewView(levelType, levelColors[levelI], total_count, 0);
+				LevelPreviewView level = new LevelPreviewView(levelType, levelColors[levelI], total_count, 0, cardLayout);
 				
 				level.setEnabled(true);
 				
