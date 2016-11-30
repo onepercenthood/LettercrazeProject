@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 
+import lettercraze.PlayerApplication;
 import lettercraze.model.Level;
 import lettercraze.model.Model;
 import lettercraze.view.LevelPreviewView;
@@ -16,27 +17,25 @@ public class SelectAvailableLevelController implements ActionListener{
 	/**the model object to be manipulated **/
 	Model mod;
 	
-	/** the levelThumbnail object to be associated with the level and levelView **/
-	/*TODO add button to add eventlistener */
-	LevelPreviewView ltnail;
-	
-	/** the button to be associated with the level **/
-	JButton lvlButt;
+	/** the top level application **/
+	PlayerApplication app;
 	
 	/** number of the level to be called when this button is pressed **/
 	int levelNum;
 	
-	CardLayout clay;
+	CardLayout cardlayout;
 	
-	public SelectAvailableLevelController(LevelPreviewView l, JButton b, int lvl, CardLayout cl){
+	public SelectAvailableLevelController(int lvl, CardLayout cl, PlayerApplication app){
 		super();
-		//mod = m;
-		ltnail = l;
-		lvlButt = b;
 		levelNum = lvl;
-		clay = cl;
+		cardlayout = cl;
+		this.app = app;
 	}
 	
+	public SelectAvailableLevelController(Integer levelNumber, CardLayout cardLayout, PlayerApplication app2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * When a mousePressed event occurs the level associated with the panel is loaded
 	 * to the gui and opened to be played 
@@ -49,9 +48,9 @@ public class SelectAvailableLevelController implements ActionListener{
 		 * no levels are currently open
 		 * level is unlocked
 		 */
-		mod.intiateLevel(levelNum);
-		//TODO switch to GameView
-		clay.show();
+		//mod.intiateLevel(levelNum);
+		//switch to GameView
+		cardlayout.show(app.getContentPane(), "GameView");
 		
 	}
 }
