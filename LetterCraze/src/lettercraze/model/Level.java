@@ -23,7 +23,7 @@ abstract public class Level {
 	protected String levelType;
 	
 	/** Active Squares in each level */
-	protected boolean[][] boardShape[][];
+	protected boolean[][] boardShape;
 	
 	/** Stores the High Score for the level*/
 	protected int highScore;
@@ -42,8 +42,41 @@ abstract public class Level {
 	 * Default Constructor for Level subclasses 
 	 */
 	protected Level(){
-		super() ;
+		super();
+		
 	}
+	
+	
+	/**
+	 * Set the board shape to the 2D boolean array passed in.
+	 * 
+	 * @param boolean[6][6]
+	 */
+	public void setBoardShape(boolean[][] boardShape){
+		this.boardShape = boardShape;
+	}
+	
+	/**
+	 * Return the 2D boolean array corresponding to the level's board shape.
+	 * 
+	 * @return boolean[6][6]
+	 */
+	public boolean[][] getBoardShape(){
+		return this.boardShape;
+	}
+	
+	
+	
+	
+	/**
+	 * Set the unlocked state of the level. True for unlocked, false for locked.
+	 * 
+	 * @param boolean
+	 */
+	public void setUnLocked(boolean unlocked){
+		isUnlocked = unlocked;
+	}
+	
 	
 	/** Method to determine how a Player beats each level, varies per type of level */
 	public boolean isCompleted(int score){

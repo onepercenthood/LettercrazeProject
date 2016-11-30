@@ -3,11 +3,7 @@
 package lettercraze.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Random;
+
 
 /**
  * The LetterCraze Model contains all the entity objects 
@@ -16,16 +12,15 @@ import java.util.Random;
  * to locate all entity objects by means of some relationship. 
  * It can be the view as a "container" for model elements 
  * <p>
- * Creation Data: (11/24/16 10:58 AM)
  * @author Hoodie
  */
 public class Model {
 	
 	/** List of the BoardStates */
-	protected ArrayList<BoardState> boardstate;
+	protected ArrayList<BoardState> boardstates;
 	
 	/** List of all the levels stored in the Game */
-	protected ArrayList<Level> level; 
+	protected ArrayList<Level> levels; 
 	
 	/** The Current Word being played */
 	protected Word currentWord;
@@ -34,11 +29,27 @@ public class Model {
 	/** Dictionary that stores all possible words that can be played */
 	protected Dictionary possibleWords;
 	
+	
+	
+	
+	
 	/**
 	 * Model Constructor
 	 */
 	public Model() {
 		super();
+		
+		boolean[][] sampleShape = new boolean[6][6];
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col++){
+				sampleShape[row][col] = true;
+			}
+		}
+		Puzzle level1 = new Puzzle(1, new int[]{1, 2, 3} , 10);
+		level1.setBoardShape(sampleShape);
+		level1.setUnLocked(true);
+		levels.add(level1);
+		
 		
 	}
 	
@@ -47,29 +58,7 @@ public class Model {
 	
 	// Set Functions 
 	
-	/**
-	 * Each solitaire game provides its own initialization routine.
-	 * <p>
-	 * By the time this method is called, the game is part of its Container.
-	 */
-	public void initialize(){
-		initializeModel();
-		initializeView(); 
-		initializeControllers(); 
-		
-	}
 	
-	private void initializeModel(){
-		
-	}
-	
-	private void initializeView(){
-		
-	}
-	
-	private void initializeControllers(){
-
-	}
 	
 	/**
 	 * 
@@ -91,11 +80,15 @@ public class Model {
 	}
 	
 	/**
-	 * 
+	 * Set up a new initial boardstate from a given level.
+	 * for the first deliverable, this is using the sample level 1
 	 * @param levelNum
 	 */
-	public void intiateLevel(int levelNum){
+	public void initiateLevel(int levelNum){
 		
+		//simple sample shape with a 6x6 grid
+
+		boardstates.add(new BoardState(levels.get(levelNum - 1).getBoardShape()));
 	}
 
 	/**
