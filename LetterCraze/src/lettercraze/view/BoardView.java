@@ -2,10 +2,12 @@ package lettercraze.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -18,8 +20,8 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	protected Model model;
 	protected int levelNum;
 	
-	SquareView[][] squareBoxes = new SquareView[6][6];
-	JPanel[][] squareBoxesPanels = new JPanel[6][6];
+	SquareView[][] squareViews = new SquareView[6][6];
+	JPanel[][] squarePanels = new JPanel[6][6];
 	
 
 	public BoardView(Color colorPlayer, Model model, int levelNum) {
@@ -71,10 +73,29 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				if(model.getLevel(levelNum).getBoardShape()[row][col]){
 					JPanel newPanel = new JPanel();
 					newPanel.setBackground(SystemColor.activeCaption);
+					newPanel.setLayout(new GridLayout(1, 1, 0, 0));
 					newPanel.setBorder(new LineBorder(colorPlayer));
+					squareViews[row][col] = new SquareView(model.getCurrentBoardState().getSquares()[row][col]);
+					
+					SquareView panelToAdd = squareViews[row][col];
+					
+					Dimension prefSize = new Dimension(10,10);
+					
+					
+					JLabel letter = panelToAdd.getLetterLabel();
+					
+					letter.setHorizontalAlignment(JLabel.CENTER);
+					newPanel.add(letter);
+					
+					newPanel.add(panelToAdd);
+					
+					System.out.println(newPanel.getBounds());
 					boardPanel.add(newPanel);
-					squareBoxesPanels[row][col] = newPanel;
+					//squareBoxesPanels[row][col] = newPanel;
 					//squareBoxes[i-1][j-1] = new SquareView(model.getLevel(levelNum));
+
+					squarePanels[row][col] = newPanel;
+
 					//what even is a squareBox? our terminology is messed
 				}				
 			}

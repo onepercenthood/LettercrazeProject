@@ -1,6 +1,7 @@
 package lettercraze.view;
 
 import java.awt.CardLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -75,4 +76,5 @@ public class BuilderMenuView extends DefaultViewPanel{
 		// TODO Auto-generated method stub
 		return "Builder Menu View";
 	}
+
 }

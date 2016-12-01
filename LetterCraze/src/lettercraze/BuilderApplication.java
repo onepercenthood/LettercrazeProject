@@ -1,6 +1,8 @@
+
 package lettercraze;
 
 import java.awt.Button;
+
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -200,4 +202,5 @@ public class BuilderApplication extends JFrame {
         frame.setVisible(true);
 		
 	}
+
 }

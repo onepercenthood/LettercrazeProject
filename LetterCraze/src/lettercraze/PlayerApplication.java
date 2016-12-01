@@ -102,6 +102,8 @@ public class PlayerApplication extends JFrame {
 	 * Initializes all the components of the ApplicationPlayer
 	 */
 	private void initialize(){
+	
+		initializeViewClasses();
 		
         setTitle("LetterCraze | Team Manganese");
 		setLayout(null);
@@ -119,7 +121,7 @@ public class PlayerApplication extends JFrame {
         initializeViewClasses();
 		
 //		panelMain.add(splashView, splashView.getName());
-		gameView = new GameView(model, panelMain);
+		gameView = new GameView(model, 1);
 		//panelMain.add(gameView, gameView.getPanelName());
 		panelMain.add(menuView, menuView.getPanelName());
 		panelMain.add(gameView, gameView.getPanelName());
