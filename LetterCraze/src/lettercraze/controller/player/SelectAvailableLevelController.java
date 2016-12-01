@@ -1,4 +1,4 @@
-package lettercraze.controller;
+package lettercraze.controller.player;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;

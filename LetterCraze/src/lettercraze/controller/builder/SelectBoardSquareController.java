@@ -1,11 +1,11 @@
-package lettercraze.controller;
+package lettercraze.controller.builder;
 
 import java.awt.event.MouseEvent;
 
 import lettercraze.PlayerApplication;
 import lettercraze.model.Model;
 
-public class BuilderSelectBoardSquareController{
+public class SelectBoardSquareController{
 
 	/** The game to be manipulated **/
 	Model model;
@@ -13,7 +13,7 @@ public class BuilderSelectBoardSquareController{
 	/** the top level application for navigation purposes **/
 	PlayerApplication application;
 	
-	public BuilderSelectBoardSquareController() {
+	public SelectBoardSquareController() {
 		super();
 		
 		// TODO Auto-generated constructor stub

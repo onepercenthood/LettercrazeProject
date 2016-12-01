@@ -1,4 +1,4 @@
-package lettercraze.controller;
+package lettercraze.controller.player;
 
 public class SelectLevelController {
 

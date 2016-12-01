@@ -1,4 +1,4 @@
-package lettercraze.controller;
+package lettercraze.controller.builder;
 
 import java.awt.CardLayout;
 
@@ -15,7 +15,7 @@ import lettercraze.model.Model;
  * @author Everett Harding
  * 
  */
-public class BuilderCreateNewLevelController extends MouseAdapter{
+public class CreateNewLevelController extends MouseAdapter{
 
 	/** The top level application **/
 	BuilderApplication app;
@@ -26,7 +26,7 @@ public class BuilderCreateNewLevelController extends MouseAdapter{
 	/**the layout manager, for switching "Active" views **/
 	CardLayout cardLayout;	
 	
-	public BuilderCreateNewLevelController(BuilderApplication app, CardLayout cardLayout, Model model) {
+	public CreateNewLevelController(BuilderApplication app, CardLayout cardLayout, Model model) {
 		super();
 		this.app = app;
 		this.cardLayout = cardLayout;
