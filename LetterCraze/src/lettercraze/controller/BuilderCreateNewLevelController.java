@@ -5,6 +5,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import lettercraze.BuilderApplication;
+import javax.swing.JPanel;
+
+import lettercraze.BuilderApplication;
 import lettercraze.model.Model;
 
 /**

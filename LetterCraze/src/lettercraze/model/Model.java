@@ -17,10 +17,10 @@ import java.util.ArrayList;
 public class Model {
 	
 	/** List of the BoardStates */
-	protected ArrayList<BoardState> boardstates;
+	protected ArrayList<BoardState> boardStates = new ArrayList<BoardState>();;
 	
 	/** List of all the levels stored in the Game */
-	protected ArrayList<Level> levels; 
+	protected ArrayList<Level> levels = new ArrayList<Level>(); 
 	
 	/** The Current Word being played */
 	protected Word currentWord;
@@ -34,7 +34,6 @@ public class Model {
 	 */
 	public Model() {
 		super();
-		levels = new ArrayList<Level>();
 		boolean[][] sampleShape = new boolean[6][6];
 		for(int row = 0; row < 6; row++){
 			for(int col = 0; col < 6; col++){
@@ -45,9 +44,19 @@ public class Model {
 		level1.setBoardShape(sampleShape);
 		level1.setUnLocked(true);
 		levels.add(level1);	
+		initiateLevel(1);
 	}
 	
 	// Get Functions 
+	/**
+	 * 
+	 * Return last board state in array list
+	 * @return level corresponding to the given level number
+	 */
+	public BoardState getCurrentBoardState(){
+		return boardStates.get(boardStates.size() - 1);
+	}
+	
 	/**
 	 * 
 	 * @param int levelNum
@@ -88,8 +97,9 @@ public class Model {
 	public void initiateLevel(int levelNum){
 		
 		//simple sample shape with a 6x6 grid
-
-		boardstates.add(new BoardState(levels.get(levelNum - 1).getBoardShape()));
+		System.out.println("value of level 0: "  + levels.get(0));
+		BoardState newState = new BoardState(levels.get(levelNum - 1).getBoardShape());
+		boardStates.add(newState);
 		
 	}
 

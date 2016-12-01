@@ -60,14 +60,14 @@ public class BuilderView extends DefaultViewPanel {
 	 */
 	public BuilderView(Model model) {
 		super();
-		setBackground(Color.GRAY);
+		//setBackground(Color.BLUE);
 		
 		
 		this.model = model;
 		
 		setBounds(100, 100, 816, 491);
 		contentPane = new JPanel();
-		contentPane.setBackground(SystemColor.control);
+		contentPane.setBackground(Color.GREEN);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		
@@ -383,13 +383,9 @@ public class BuilderView extends DefaultViewPanel {
 		});
 		btnCloseWithoutSaving.setBounds(543, 444, 155, 29);
 		contentPane.add(btnCloseWithoutSaving);
-		
-		System.out.print(Double.toString(panel_38.getSize().getHeight()));
-		System.out.print(Double.toString(panel_38.getSize().getWidth()));
-		
-//        f.setSize(600, 600);
-//        f.setLocationRelativeTo(null);
-//        f.setVisible(true);
+		contentPane.repaint();
+
+	
 	}
 
 	@Override

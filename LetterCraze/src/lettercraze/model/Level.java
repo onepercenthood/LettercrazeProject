@@ -66,8 +66,8 @@ abstract public class Level {
 	}
 	
 	
-	
-	
+	 
+	 
 	/**
 	 * Set the unlocked state of the level. True for unlocked, false for locked.
 	 * 

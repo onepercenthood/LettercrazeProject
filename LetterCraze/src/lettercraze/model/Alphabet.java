@@ -17,7 +17,7 @@ public class Alphabet {
 	/** LinkedHasMap of the frequency for each letter to appear [key = letter, object = frequency (Double)] 
 	 * Allows for iteration in order of entry. */
 	protected static LinkedHashMap<String,Letter> letters = new LinkedHashMap<String,Letter>();
-	
+	private static Alphabet instance;
 	
 	public Alphabet(){
 	letters.put("A", new Letter("A", 2, 8.17)); 
@@ -52,20 +52,31 @@ public class Alphabet {
 	 * Get a new random Letter according to letter frequencies.
 	 * @return new random Letter
 	 * */
-	public static Letter getRandomLetter(){
+	public Letter getRandomLetter(){
 		Random r = new Random();
 		double randCumulativeFreq = r.nextDouble();
-		int freqSum = 0;
+		double freqSum = 0.0;
+		
 		Iterator<Letter> vals = letters.values().iterator();
 		
 		Letter l = letters.get("A");
 		
 		while((freqSum < randCumulativeFreq) && vals.hasNext()){
-			l = letters.get(vals.next());
-			freqSum += l.frequency / 100;
+			l = vals.next();
+			freqSum += l.getFrequency() / 100;
+			System.out.println("freqSum: " + freqSum + "rand cum freq: " + l.getFrequency() / 100);
 		}
-		
+		System.out.println("freqSum: " + freqSum + "rand cum freq: " + randCumulativeFreq);
 		return l;
+		
+	}
+	
+	public static Alphabet getInstance(){
+		if( instance == null){
+			instance = new Alphabet();
+		}
+				
+		return instance;
 		
 	}
 }
