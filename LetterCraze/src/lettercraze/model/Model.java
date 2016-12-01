@@ -97,8 +97,9 @@ public class Model {
 	public void initiateLevel(int levelNum){
 		
 		//simple sample shape with a 6x6 grid
-
-		boardStates.add(new BoardState(levels.get(levelNum - 1).getBoardShape()));
+		System.out.println("value of level 0: "  + levels.get(0));
+		BoardState newState = new BoardState(levels.get(levelNum - 1).getBoardShape());
+		boardStates.add(newState);
 		
 	}
 

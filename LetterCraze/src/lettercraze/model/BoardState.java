@@ -47,8 +47,9 @@ public class BoardState{
 					squares[row][col].toggleSelected();
 				}				
 			}
-		}	
-		basicFiller.initialFill(squares);
+		}
+		basicFiller = new BasicFiller();
+		Square[][] square = basicFiller.initialFill(squares);
 		score = 0;
 		stars = 0;
 	}

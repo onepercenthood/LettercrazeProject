@@ -20,5 +20,5 @@ abstract public interface IBoardFiller {
 	public abstract void fillEmptySquares();
 	
 	/** */ 
-	public abstract void initialFill(Square[][] squares) ;
+	public abstract Square[][] initialFill(Square[][] squares) ;
 }

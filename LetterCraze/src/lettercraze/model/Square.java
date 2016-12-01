@@ -26,6 +26,8 @@ public class Square {
 	/** True if the square has been selected by the Player to form word */
 	protected boolean isSelected; 
 	
+	Alphabet alphInst = Alphabet.getInstance();
+	
 	public Square(int r, int c){
 		this.row = r;
 		this.column = c;
@@ -39,8 +41,20 @@ public class Square {
 	
 	/** Removes the current letter from the Square and randomly places a new one */
 	public void newLetter(){
+		this.letter = alphInst.getRandomLetter();
+		System.out.println(letter.letter);
+
 		
-		letter = Alphabet.getRandomLetter();
+	}
+	
+	
+	/** Return the letter in the given square.
+	 * @return Letter
+	 * 
+	 * */
+	public Letter getLetter(){
+		
+		return letter;
 		
 	}
 	

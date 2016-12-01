@@ -1,5 +1,6 @@
 package lettercraze.view;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.Box;
@@ -13,17 +14,8 @@ import java.awt.SystemColor;
 public class SquareView extends DefaultViewPanel{
 
 	private Square square;
-	private Box squareBox;
-	private LetterView letter;
-
-	public SquareView(Square square, Box squareBox, LetterView letter){
-		this.square = square;
-		this.squareBox = squareBox;
-		this.letter = letter;
-		setLayout(null);
-		
-		initialize();
-	}
+	private JLabel lblA;
+	private JLabel label;
 	
 	public SquareView(Square square){
 		this.square = square;
@@ -33,31 +25,44 @@ public class SquareView extends DefaultViewPanel{
 	}
 
 	private void initialize(){
-		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.windowBorder);
-		panel.setBounds(0, 0, 150, 150);
-		add(panel);
+		
+		if(square.getLetter() != null){
+			lblA = new JLabel(square.getLetter().getLetter());
+//			lblA.setBounds(41, 11, 59, 120);
+			lblA.setFont(new Font("Tahoma", Font.PLAIN, 10));
+			add(lblA);
+			
+			label = new JLabel(Integer.toString(square.getLetter().getValue()));
+			label.setFont(new Font("Tahoma", Font.PLAIN, 10));
+//			label.setBounds(112, 59, 59, 120);
+			add(label);
+		}
+		
+		
+//		JPanel panel = new JPanel();
+//		panel.setBackground(Color.LIGHT_GRAY);
+//		panel.setBounds(0, 0, 150, 150);
+//		add(panel);
 	}
 
 	public Letter getLetter(){
-		return letter.getLetter();
+		return square.getLetter();
 	}
 	
-	public LetterView getLetterView(){
-		return letter;
-	}
+
 	
 	public Square getSquare(){
 		return square;
 	}
-	
-	public Box getSquareBox(){
-		return squareBox;
-	}
+
 
 	@Override
 	public String getPanelName() {
 		return "SquareView";
+	}
+	
+	public JLabel getLetterLabel(){
+		return this.lblA;
 	}
 
 }

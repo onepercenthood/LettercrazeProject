@@ -384,8 +384,7 @@ public class BuilderView extends DefaultViewPanel {
 		btnCloseWithoutSaving.setBounds(543, 444, 155, 29);
 		contentPane.add(btnCloseWithoutSaving);
 		contentPane.repaint();
-		System.out.print(Double.toString(panel_38.getSize().getHeight()));
-		System.out.print(Double.toString(panel_38.getSize().getWidth()));
+
 	
 	}
 

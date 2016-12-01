@@ -25,6 +25,9 @@ public class Letter {
 	
 	public Letter(String letter, Integer value, Double frequency){
 		super();
+		this.letter = letter;
+		this.value = value;
+		this.frequency = frequency;
 	}	
 
 	 /**
