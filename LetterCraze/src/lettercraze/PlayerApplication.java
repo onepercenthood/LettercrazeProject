@@ -121,7 +121,7 @@ public class PlayerApplication extends JFrame {
         initializeViewClasses();
 		
 //		panelMain.add(splashView, splashView.getName());
-		gameView = new GameView(model, 1);
+		gameView = new GameView(model, panelMain);
 		//panelMain.add(gameView, gameView.getPanelName());
 		panelMain.add(menuView, menuView.getPanelName());
 		panelMain.add(gameView, gameView.getPanelName());
