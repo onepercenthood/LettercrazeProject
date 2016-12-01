@@ -93,7 +93,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 					boardPanel.add(newPanel);
 					//squareBoxesPanels[row][col] = newPanel;
 					//squareBoxes[i-1][j-1] = new SquareView(model.getLevel(levelNum));
-					squareBoxesPanels[row][col] = newPanel;
+					squarePanels[row][col] = newPanel;
 					//squareBoxes[i-1][j-1] = new SquareView(model.getLevel(levelNum));
 					//what even is a squareBox? our terminology is messed
 				}				
