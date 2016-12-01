@@ -76,6 +76,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	 * Create the frame.
 	 */
 	public GameView(Model m, int levelNum) {
+		super();
 		this.model = m;
 		this.levelNum = levelNum;
 		this.boardview = new BoardView(colorPlayer, this.model, levelNum);
@@ -152,7 +153,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		add(lblWords);
 		
 		btnExitLevel = new JButton("Exit Level");
-		btnExitLevel.setBounds(660, 6, 117, 29);
+
 		btnExitLevel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent me){
@@ -160,6 +161,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 				clay.first(parent); //revert to the menu screen
 			}
 		});
+		btnExitLevel.setBounds(660, 6, 117, 29);
 		add(btnExitLevel);
 		
 		JPanel panel_stars = new JPanel();
@@ -205,6 +207,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 
 			}
 		}
+		
+		repaint();
 		
 		
 	}

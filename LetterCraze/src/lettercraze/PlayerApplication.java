@@ -36,7 +36,7 @@ public class PlayerApplication extends JFrame {
 	protected String currentUser = "test";
 
 	/** Initial width for the window. Must never shrink less than this. */
-	protected static int initialWidth = 769;
+	protected static int initialWidth = 900;
 
 	/** Initial height for the window. Must never shrink less than this. */
 	protected static int initialHeight = 635;
@@ -102,6 +102,8 @@ public class PlayerApplication extends JFrame {
 	 * Initializes all the components of the ApplicationPlayer
 	 */
 	private void initialize(){
+	
+		initializeViewClasses();
 		
         setTitle("LetterCraze | Team Manganese");
 		setLayout(null);

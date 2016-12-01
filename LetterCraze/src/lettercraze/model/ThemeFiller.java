@@ -24,9 +24,11 @@ public class ThemeFiller implements IBoardFiller{
 	}
 
 	@Override
-	public void initialFill(Square[][] squares) {
+	public Square[][] initialFill(Square[][] squares) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
+
+
 
 }
