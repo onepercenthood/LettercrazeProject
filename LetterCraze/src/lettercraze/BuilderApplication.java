@@ -41,7 +41,7 @@ public class BuilderApplication extends JFrame {
 	protected String currentUser = "test";
 
 	/** Initial width for the window. Must never shrink less than this. */
-	protected static int initialWidth = 769;
+	protected static int initialWidth = 1088;
 
 	/** Initial height for the window. Must never shrink less than this. */
 	protected static int initialHeight = 635;
@@ -130,7 +130,7 @@ public class BuilderApplication extends JFrame {
 	
 	public void initializeViewClasses(){
 		menuView = new BuilderMenuView(panelMain, model, this );
-		builderView = new BuilderView(model);
+		builderView = new BuilderView(model, panelMain);
 		panelMain.add(menuView, menuView.getPanelName());
 		panelMain.add(builderView, builderView.getPanelName()); 	
 		
@@ -188,8 +188,8 @@ public class BuilderApplication extends JFrame {
 
 		JFrame splashFrame = SplashScreen.createAndShowGUI(size, "Builder");
 		try {
-			// here is wher eit appes
-			System.out.println("splash screeb");
+			// here is where it appes
+			System.out.println("splash screen");
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

@@ -58,7 +58,7 @@ public class BuilderMenuView extends DefaultViewPanel{
 			public void mousePressed(MouseEvent arg0) {
 				CardLayout clay = (CardLayout) cardLayoutPanel.getLayout();			
 				clay.show(cardLayoutPanel, "BuilderView");
-				System.out.println("SwitchedBoardView");
+				System.out.println("Switched to BuilderView");
 			}
 		});
 		btnNewButton.setBounds(213, 319, 126, 53);
