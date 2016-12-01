@@ -103,9 +103,7 @@ public class PlayerApplication extends JFrame {
 	 */
 	private void initialize(){
 		
-        initializeViewClasses();
-
-		setTitle("LetterCraze | Team Manganese");
+        setTitle("LetterCraze | Team Manganese");
 		setLayout(null);
         setPreferredSize(new Dimension(initialWidth, initialHeight));
         setResizable(false);
@@ -117,10 +115,11 @@ public class PlayerApplication extends JFrame {
         panelMain.setBounds(0, 0, initialWidth, initialHeight);
         panelMain.setPreferredSize(new Dimension(initialWidth, initialHeight));
         setContentPane(panelMain);
-                
+        
+        initializeViewClasses();
 		
 //		panelMain.add(splashView, splashView.getName());
-		gameView = new GameView(model);
+		gameView = new GameView(model, panelMain);
 		//panelMain.add(gameView, gameView.getPanelName());
 		panelMain.add(menuView, menuView.getPanelName());
 		panelMain.add(gameView, gameView.getPanelName());

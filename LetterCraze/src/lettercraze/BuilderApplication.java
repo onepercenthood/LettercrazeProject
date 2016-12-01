@@ -104,9 +104,7 @@ public class BuilderApplication extends JFrame {
 	 */
 	private void initialize(){
 		
-        initializeViewClasses();
-
-		setTitle("LetterCraze | Team Manganese");
+        setTitle("LetterCraze | Team Manganese");
 		setLayout(null);
         setPreferredSize(new Dimension(initialWidth, initialHeight));
         setResizable(false);
@@ -123,11 +121,7 @@ public class BuilderApplication extends JFrame {
                 
 		
 //		panelMain.add(splashView, splashView.getName());
-        builderView = new BuilderView(model);
-		//panelMain.add(gameView, gameView.getPanelName());
-        
-        // 
-		panelMain.add(menuView, menuView.getPanelName());
+        initializeViewClasses();
 		loadInLevels();
         
         pack();
@@ -136,6 +130,9 @@ public class BuilderApplication extends JFrame {
 	
 	public void initializeViewClasses(){
 		menuView = new BuilderMenuView(panelMain, model, this );
+		builderView = new BuilderView(model);
+		panelMain.add(menuView, menuView.getPanelName());
+		panelMain.add(builderView, builderView.getPanelName()); 	
 		
 	}
 	

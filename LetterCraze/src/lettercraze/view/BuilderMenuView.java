@@ -52,13 +52,13 @@ public class BuilderMenuView extends DefaultViewPanel{
 		lblLettercrazeBuilder.setFont(new Font("Tahoma", Font.PLAIN, 60));
 		panel.add(lblLettercrazeBuilder);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Create New Level");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				
-				
-				
+				CardLayout clay = (CardLayout) cardLayoutPanel.getLayout();			
+				clay.show(cardLayoutPanel, "BuilderView");
+				System.out.println("SwitchedBoardView");
 			}
 		});
 		btnNewButton.setBounds(213, 319, 126, 53);

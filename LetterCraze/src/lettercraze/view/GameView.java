@@ -1,12 +1,15 @@
 package lettercraze.view;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.Window;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -45,6 +48,10 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	
 	protected int levelNum;
 
+	private JButton btnExitLevel;
+	
+	private JPanel parent;
+
 	/**
 	 * Launch the application.
 	 */
@@ -72,6 +79,19 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		this.model = m;
 		this.levelNum = levelNum;
 		this.boardview = new BoardView(colorPlayer, this.model, levelNum);
+		createPanel();
+		loadBoardView();
+
+	}
+	
+	/**
+	 * Create the frame.
+	 */
+	public GameView(Model m, JPanel parent) {
+		this.model = m;
+		this.levelNum = 1;
+		this.boardview = new BoardView(colorPlayer, this.model, levelNum);
+		this.parent = parent;
 		createPanel();
 		loadBoardView();
 
@@ -131,8 +151,15 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		lblWords.setBounds(439, 49, 61, 16);
 		add(lblWords);
 		
-		JButton btnExitLevel = new JButton("Exit Level");
+		btnExitLevel = new JButton("Exit Level");
 		btnExitLevel.setBounds(660, 6, 117, 29);
+		btnExitLevel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent me){
+				CardLayout clay = (CardLayout) parent.getLayout();
+				clay.first(parent); //revert to the menu screen
+			}
+		});
 		add(btnExitLevel);
 		
 		JPanel panel_stars = new JPanel();
@@ -158,6 +185,9 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		
 	}
 	
+	public void getExitButton(){
+		
+	}
 	public void loadInPlayerGrid(){
 		
 		int row = 6;

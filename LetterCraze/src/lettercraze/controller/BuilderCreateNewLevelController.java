@@ -4,6 +4,7 @@ import java.awt.CardLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import lettercraze.BuilderApplication;
 import lettercraze.model.Model;
 
 /**
@@ -22,7 +23,7 @@ public class BuilderCreateNewLevelController extends MouseAdapter{
 	/**the layout manager, for switching "Active" views **/
 	CardLayout cardLayout;	
 	
-	public BuilderCreateNewLevelController(BuilderApplicaiton app, CardLayout cardLayout, Model model) {
+	public BuilderCreateNewLevelController(BuilderApplication app, CardLayout cardLayout, Model model) {
 		super();
 		this.app = app;
 		this.cardLayout = cardLayout;

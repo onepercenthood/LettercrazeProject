@@ -73,7 +73,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 					newPanel.setBackground(SystemColor.activeCaption);
 					newPanel.setBorder(new LineBorder(colorPlayer));
 					boardPanel.add(newPanel);
-					squareBoxesPanels[row-1][col-1] = newPanel;
+					squareBoxesPanels[row][col] = newPanel;
 					//squareBoxes[i-1][j-1] = new SquareView(model.getLevel(levelNum));
 					//what even is a squareBox? our terminology is messed
 				}				
