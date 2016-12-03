@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import lettercraze.BuilderApplication;
+import lettercraze.controller.builder.CreateNewLevelController;
 import lettercraze.model.Model;
 
 import java.awt.Font;
@@ -54,19 +55,20 @@ public class BuilderMenuView extends DefaultViewPanel{
 		panel.add(lblLettercrazeBuilder);
 		
 		JButton btnNewButton = new JButton("Create New Level");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				CardLayout clay = (CardLayout) cardLayoutPanel.getLayout();			
-				clay.show(cardLayoutPanel, "BuilderView");
-				System.out.println("Switched to BuilderView");
-			}
-		});
-		btnNewButton.setBounds(213, 319, 126, 53);
+//		btnNewButton.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mousePressed(MouseEvent arg0) {
+//				CardLayout clay = (CardLayout) cardLayoutPanel.getLayout();			
+//				clay.show(cardLayoutPanel, "BuilderView");
+//				System.out.println("Switched to BuilderView");
+//			}
+//		});
+		btnNewButton.addMouseListener(new CreateNewLevelController(app, cardLayoutPanel, model));
+		btnNewButton.setBounds(163, 319, 180, 53);
 		panel.add(btnNewButton);
 		
 		JButton btnEditExistingLevel = new JButton("Edit Existing Level");
-		btnEditExistingLevel.setBounds(412, 319, 126, 53);
+		btnEditExistingLevel.setBounds(450, 319, 180, 53);
 		panel.add(btnEditExistingLevel);
 		
 	}
