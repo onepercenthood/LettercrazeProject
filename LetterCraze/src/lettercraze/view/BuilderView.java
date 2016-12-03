@@ -32,6 +32,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class BuilderView extends DefaultViewPanel {
 
@@ -43,7 +44,10 @@ public class BuilderView extends DefaultViewPanel {
 	private JTextField textField_2;
 	private JTextField txtFldInputMaxMoves;
 	private Model model;
-
+	private Font labelFont;
+	private Font titleFont;
+	private Color bgColor;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -71,14 +75,18 @@ public class BuilderView extends DefaultViewPanel {
 	public BuilderView(Model model) {
 		super();
 		this.model = model;
-		setBackground(Color.GRAY);
+		this.bgColor = new Color(178, 34, 34);
+		this.labelFont = new Font("Times New Roman", Font.BOLD, 18);
+		setBackground(bgColor);
 		initialize();
 	}
 	public BuilderView(Model model, JPanel parent) {
 		super();
 		this.model = model;
 		this.parent = parent;
-		setBackground(Color.GRAY);
+		this.bgColor = new Color(178, 34, 34);
+		this.labelFont = new Font("Times New Roman", Font.BOLD, 18);
+		setBackground(bgColor);
 		initialize();
 	}
 	
@@ -97,9 +105,9 @@ public class BuilderView extends DefaultViewPanel {
 		add(panel_39);
 		panel_39.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Difficulty");
-		lblNewLabel.setBounds(0, -270, 61, 16);
-		panel_39.add(lblNewLabel);
+		JLabel lblDifficulty = new JLabel("Difficulty");
+		lblDifficulty.setBounds(0, -270, 61, 16);
+		panel_39.add(lblDifficulty);
 		
 		//build the image of the board for toggling the active squares
 		buildBoardImage();
@@ -111,35 +119,40 @@ public class BuilderView extends DefaultViewPanel {
 		comboBox.setBounds(836, 166, 97, 26);
 		add(comboBox);
 		
-		JButton btnNewButton = new JButton("Reset");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnReset = new JButton("Reset");
+		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(789, 495, 71, 29);
-		add(btnNewButton);
+		btnReset.setBounds(789, 495, 71, 29);
+		add(btnReset);
 		
 		JButton btnSaveLevel = new JButton("Save Level");
 		btnSaveLevel.setBounds(875, 495, 107, 29);
 		add(btnSaveLevel);
 		
 		JLabel lblLevelType = new JLabel("Level Type");
+		lblLevelType.setFont(labelFont);
 		lblLevelType.setBounds(973, 169, 76, 20);
 		add(lblLevelType);
 		
 		JLabel lblOneStarPoints = new JLabel("points");
+		lblOneStarPoints.setFont(labelFont);
 		lblOneStarPoints.setBounds(1006, 233, 43, 20);
 		add(lblOneStarPoints);
 		
 		JLabel lblTwoStarPoints = new JLabel("points");
+		lblTwoStarPoints.setFont(labelFont);
 		lblTwoStarPoints.setBounds(1006, 311, 43, 20);
 		add(lblTwoStarPoints);
 		
 		JLabel lblThreeStarPoints = new JLabel("points");
+		lblThreeStarPoints.setFont(labelFont);
 		lblThreeStarPoints.setBounds(1006, 381, 43, 20);
 		add(lblThreeStarPoints);
 		
 		JLabel lblMaxMoves = new JLabel("max moves");
+		lblOneStarPoints.setFont(labelFont);
 		lblMaxMoves.setBounds(805, 456, 81, 20);
 		add(lblMaxMoves);
 		
@@ -221,8 +234,13 @@ public class BuilderView extends DefaultViewPanel {
 				clay.first(parent);
 			}
 		});
-		btnCloseWithoutSaving.setBounds(50, 91, 193, 29);
+		btnCloseWithoutSaving.setBounds(789, 540, 193, 29);
 		add(btnCloseWithoutSaving);
+		
+		JLabel lblTitle = new JLabel("LetterCraze: Builder");
+		lblTitle.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 40));
+		lblTitle.setBounds(127, 32, 522, 109);
+		add(lblTitle);
 		contentPane.setVisible(true);
 		contentPane.repaint();
 		repaint();
@@ -234,7 +252,7 @@ public class BuilderView extends DefaultViewPanel {
 	public void buildBoardImage(){
 		JPanel pnlBoardArrangement = new JPanel();
 		pnlBoardArrangement.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		pnlBoardArrangement.setBounds(50, 150, 408, 398);
+		pnlBoardArrangement.setBounds(127, 157, 408, 398);
 		add(pnlBoardArrangement);
 		pnlBoardArrangement.setLayout(null);
 		
