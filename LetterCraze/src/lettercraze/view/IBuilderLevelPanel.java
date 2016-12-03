@@ -25,8 +25,8 @@ public interface IBuilderLevelPanel {
 	public int getThreeStarThreshhold();
 	
 	/*
-	 * returns a level with the parameters as specified from user inputs
+	 * returns a level with the given boardShape and the user-specified parameters
 	 */
-	public Level makeLevelFromInputs();
+	public Level makeLevel(boolean[][] boardShape, int levelNum);
 	
 }

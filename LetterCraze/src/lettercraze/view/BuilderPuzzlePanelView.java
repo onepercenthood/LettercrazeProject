@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import lettercraze.model.Level;
+import lettercraze.model.Puzzle;
 
 public class BuilderPuzzlePanelView extends DefaultViewPanel implements IBuilderLevelPanel{
 
@@ -18,7 +19,7 @@ public class BuilderPuzzlePanelView extends DefaultViewPanel implements IBuilder
 	private JTextField txtfldOneStar;
 	private JTextField txtfldTwoStar;
 	private JTextField txtfldThreeStar;
-	private JTextField txtFldInputMaxMoves;
+	private JTextField txtfldInputMaxMoves;
 	private Font labelFont;
 
 	public BuilderPuzzlePanelView(Font labelFont){
@@ -111,39 +112,49 @@ public class BuilderPuzzlePanelView extends DefaultViewPanel implements IBuilder
 		add(txtfldThreeStar);
 		txtfldThreeStar.setColumns(10);
 		
-		txtFldInputMaxMoves = new JTextField();
-		txtFldInputMaxMoves.setBounds(78, 133, 86, 20);
-		add(txtFldInputMaxMoves);
-		txtFldInputMaxMoves.setColumns(10);
+		txtfldInputMaxMoves = new JTextField();
+		txtfldInputMaxMoves.setBounds(78, 133, 86, 20);
+		add(txtfldInputMaxMoves);
+		txtfldInputMaxMoves.setColumns(10);
 	}
 
 	@Override
 	public String getPanelName() {
 		// TODO Auto-generated method stub
-		return null;
+		return "Puzzle";
 	}
 
 	@Override
 	public int getOneStarThreshhold() {
-		// TODO Auto-generated method stub
-		return 0;
+		//check that the input is a positive number
+		//check the input is a possible threshhold to reach
+		return Integer.parseInt(txtfldOneStar.getText());
 	}
 
 	@Override
 	public int getTwoStarThreshhold() {
-		// TODO Auto-generated method stub
-		return 0;
+		//check that the input is a positive number
+		//check the input is a possible threshhold to reach
+		return Integer.parseInt(txtfldTwoStar.getText());
 	}
 
 	@Override
 	public int getThreeStarThreshhold() {
-		// TODO Auto-generated method stub
-		return 0;
+		//TODO check that the input is a positive number
+		// TODOcheck the input is a possible threshhold to reach
+		return Integer.parseInt(txtfldThreeStar.getText());
 	}
 
 	@Override
-	public Level makeLevelFromInputs() {
-		// TODO Auto-generated method stub
-		return null;
+	public Level makeLevel(boolean[][] boardShape, int levelNum) {
+		//Create a level object to be constructed
+		int threshholds[] = {getOneStarThreshhold(), getTwoStarThreshhold(), getThreeStarThreshhold()};
+		int maxMoves = Integer.parseInt(txtfldInputMaxMoves.getText());
+		Puzzle puzzle = new Puzzle(levelNum, threshholds, maxMoves);
+		puzzle.setBoardShape(boardShape);
+		puzzle.setUnLocked(true);
+		return puzzle;
 	}
+	
+
 }
