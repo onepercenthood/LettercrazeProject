@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Word {
 	
 	/** An Array List to track all the letters contained in a word */
-	protected ArrayList<Letter> letter = new ArrayList<Letter>();
+	protected ArrayList<Letter> letters = new ArrayList<Letter>();
 	
 	/**
 	 * Model Constructor 
@@ -26,16 +26,36 @@ public class Word {
 	 * @param l the first letter in the word to create a word instance 
 	 */
 	public Word(Letter l){
-		letter.add(l);
+		letters.add(l);
 	}
 	
+	public boolean addLetter(Letter l){
+		letters.add(l);
+		return true;
+	}
+	
+	/**
+	 * A word is only valid if it is at least 3 letters long and 
+	 * 
+	 * @return true if both conditions states above are met 
+	 */
+	public boolean isValid(){
+		String word = this.getWordString();
+		if(letters.size() >= 3 && WordTable.isWord(word)){ return true; }
+		return false; 
+	}
 	/**
 	 * A word has a value based on the letters it consist of
 	 * <p> 
 	 * @return the total calculated value of the word 
 	 */
 	public int calculateValue(){
-		return 0 ;
+		int wordScore = 0 ;
+		int wordLength = letters.size();
+		for(Letter l : letters){
+			wordScore += l.getValue();
+		}
+		return wordScore * (wordLength-2);
 	}
 	
 	/**
@@ -44,7 +64,11 @@ public class Word {
 	 * @return a String object of the word 
 	 */
 	public String getWordString(){
-		return "";
+		String wordString = "";
+		for(Letter l : letters){
+			wordString += l.getLetter();
+		}
+		return wordString;
 	}
 	
 

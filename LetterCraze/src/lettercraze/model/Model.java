@@ -2,6 +2,7 @@
 
 package lettercraze.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -23,17 +24,25 @@ public class Model {
 	protected ArrayList<Level> levels = new ArrayList<Level>(); 
 	
 	/** The Current Word being played */
-	protected Word currentWord;
+	protected TestWord currentWord;
 
-	
 	/** Dictionary that stores all possible words that can be played */
-	protected Dictionary possibleWords;
+	protected WordTable possibleWords;
 	
 	/**
 	 * Model Constructor
 	 */
 	public Model() {
 		super();
+		
+		// Create Dictionary 
+		try {
+			WordTable.loadWordTable();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		boolean[][] sampleShape = new boolean[6][6];
 		for(int row = 0; row < 6; row++){
 			for(int col = 0; col < 6; col++){
@@ -77,7 +86,7 @@ public class Model {
 	 * @return boolean true if the Move has been successfully played
 	 * 	and a new BoardState 
 	 */
-	public boolean addMove(BoardState bs, Word played){
+	public boolean addMove(BoardState bs, TestWord played){
 		return true ;
 	}
 	
@@ -134,7 +143,7 @@ public class Model {
 	 * @param w
 	 * @return
 	 */
-	public boolean checkPlayedWord(Word w){
+	public boolean checkPlayedWord(TestWord w){
 		return true;
 	}
 	
