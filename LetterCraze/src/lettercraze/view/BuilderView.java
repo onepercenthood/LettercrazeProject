@@ -22,6 +22,8 @@ import java.awt.Insets;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
+import lettercraze.BuilderApplication;
+import lettercraze.controller.builder.SaveLevelController;
 import lettercraze.model.Model;
 
 import java.awt.Color;
@@ -40,6 +42,10 @@ import javax.swing.JTextArea;
 
 public class BuilderView extends DefaultViewPanel implements ItemListener{
 
+
+	public JPanel getPnlLevelSwitch() {
+		return pnlLevelSwitch;
+	}
 
 	private JPanel contentPane;
 	private JPanel parent;
@@ -60,6 +66,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	private BuilderApplication app;
 	
 	/**
 	 * Launch the application.
@@ -93,11 +100,12 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		setBackground(bgColor);
 		initialize();
 	}
-	public BuilderView(Model model, JPanel parent) {
+	public BuilderView(Model model, JPanel parent, BuilderApplication app) {
 		super();
 		this.model = model;
 		this.parent = parent;
 		this.bgColor = new Color(178, 34, 34);
+		this.app = app;
 		this.labelFont = new Font("Times New Roman", Font.BOLD, 18);
 		setBackground(bgColor);
 		initialize();
@@ -114,12 +122,13 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		setLayout(null);
 		
 		//build the image of the board for toggling the active squares
-		buildBoardImage();
+		//buildBoardImage();
 		
-//		BoardView boardView = new BoardView(new Color(20,200,160), model, 1);
-//		boardView.setSize(408, 440);
-//		boardView.setLocation(39, 158);
-//		add(boardView);
+		BoardView boardView = new BoardView(new Color(20,200,160), model, 1, app);
+		boardView.builderInitialize(app);
+		boardView.setSize(408, 440);
+		boardView.setLocation(39, 158);
+		add(boardView);
 
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
@@ -132,6 +141,10 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		JButton btnReset = new JButton("Reset Level");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				boolean shape[][] = {{true,true,true,true,true,true},{true,true,true,true,true,true},{true,true,true,true,true,true},{true,true,true,true,true,true},{true,true,true,true,true,true},{true,true,true,true,true,true}};
+				CardLayout cl = (CardLayout) pnlLevelSwitch.getLayout();
+				BuilderPuzzlePanelView test = (BuilderPuzzlePanelView) pnlLevelSwitch.getComponent(0);
+				System.out.println(test.makeLevel(shape, 1));
 			}
 		});
 		btnReset.setBounds(39, 118, 107, 29);
@@ -139,6 +152,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		
 		JButton btnSaveLevel = new JButton("Save Level");
 		btnSaveLevel.setBounds(156, 118, 107, 29);
+		btnSaveLevel.addMouseListener(new SaveLevelController(app, parent, model));
 		add(btnSaveLevel);
 		
 		JLabel lblLevelType = new JLabel("Level Type");
@@ -164,6 +178,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		add(lblTitle);
 		
 		pnlLevelSwitch = new JPanel();
+		pnlLevelSwitch.setName("pnlLevelSwitch");
 		pnlLevelSwitch.setBounds(479, 192, 379, 362);
 		pnlLevelSwitch.setLayout(new CardLayout());
 		add(pnlLevelSwitch);

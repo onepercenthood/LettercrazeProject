@@ -39,12 +39,28 @@ public class Square {
 	
 	
 	
+	public int getRow() {
+		return row;
+	}
+
+
+
+	public int getColumn() {
+		return column;
+	}
+
+
+
+	public Alphabet getAlphInst() {
+		return alphInst;
+	}
+
+
+
 	/** Removes the current letter from the Square and randomly places a new one */
 	public void newLetter(){
 		this.letter = alphInst.getRandomLetter();
-		System.out.println(letter.letter);
-
-		
+		System.out.println(letter.letter);		
 	}
 	
 	
@@ -78,6 +94,24 @@ public class Square {
 	 */
 	public boolean isAdjacent(Square s1, Square s2){
 		return true;
+	}
+
+
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+
+
+	public boolean isSelected() {
+		return isSelected;
 	}
 
 }

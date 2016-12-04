@@ -15,9 +15,9 @@ public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderL
 	 * Serial ID
 	 */
 	private static final long serialVersionUID = 8471595327519170917L;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField txtfldOneStar;
+	private JTextField txtfldTwoStar;
+	private JTextField txtfldThreeStar;
 	private JTextField txtfldThemeTitle;
 	private JTextArea txtAreaWordList;
 	private Font labelFont;
@@ -61,20 +61,20 @@ public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderL
 		txtAreaWordList.setBounds(35, 205, 295, 135);
 		add(txtAreaWordList);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(93, 14, 86, 20);
-		add(textField_4);
+		txtfldOneStar = new JTextField();
+		txtfldOneStar.setColumns(10);
+		txtfldOneStar.setBounds(93, 14, 86, 20);
+		add(txtfldOneStar);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(93, 51, 86, 20);
-		add(textField_5);
+		txtfldTwoStar = new JTextField();
+		txtfldTwoStar.setColumns(10);
+		txtfldTwoStar.setBounds(93, 51, 86, 20);
+		add(txtfldTwoStar);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(93, 91, 86, 20);
-		add(textField_6);
+		txtfldThreeStar = new JTextField();
+		txtfldThreeStar.setColumns(10);
+		txtfldThreeStar.setBounds(93, 91, 86, 20);
+		add(txtfldThreeStar);
 		
 		JPanel pnlTheme_star_1 = new JPanel();
 		pnlTheme_star_1.setBounds(44, 11, 26, 26);
@@ -145,13 +145,13 @@ public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderL
 	}
 
 	@Override
-	public Level makeLevelFromInputs() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String getPanelName() {
+		// TODO Auto-generated method stub
+		return "Theme";
+	}
+	
+	@Override
+	public Level makeLevel(boolean[][] boardShape, int levelNum) {
 		// TODO Auto-generated method stub
 		return null;
 	}

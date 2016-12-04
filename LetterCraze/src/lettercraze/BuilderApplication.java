@@ -71,6 +71,10 @@ public class BuilderApplication extends JFrame {
 
 	BuilderView builderView;
 	
+	public BuilderView getBuilderView() {
+		return builderView;
+	}
+
 	/**
 	 * 
 	 * This is the main Panel which will hold all the other views inside of.
@@ -132,7 +136,7 @@ public class BuilderApplication extends JFrame {
 	
 	public void initializeViewClasses(){
 		menuView = new BuilderMenuView(panelMain, model, this );
-		builderView = new BuilderView(model, panelMain);
+		builderView = new BuilderView(model, panelMain, this);
 		panelMain.add(menuView, menuView.getPanelName());
 		panelMain.add(builderView, builderView.getPanelName()); 	
 		

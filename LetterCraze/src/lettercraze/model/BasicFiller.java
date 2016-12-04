@@ -35,6 +35,7 @@ public class BasicFiller implements IBoardFiller{
 			for(int col = 0; col < 6; col++){
 				if(squares[row][col].isActive){
 					squares[row][col].newLetter();
+					int x =1;
 				}
 			}
 		}

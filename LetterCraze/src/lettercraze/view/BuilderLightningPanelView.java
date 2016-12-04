@@ -21,7 +21,7 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 	private JTextField txtfldmaxTimer;
 	
 	public BuilderLightningPanelView(){
-		setBackground(new Color(0, 255, 0));
+		setBackground(new Color(255, 140, 0));
 		setLayout(null);
 		initialize();				
 	}
@@ -119,30 +119,34 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 	
 	@Override
 	public String getPanelName(){
-		return "Puzzle Panel";
+		return "Lightning";
 	}
 
 	@Override
 	public int getOneStarThreshhold() {
-		// TODO Auto-generated method stub
-		return 0;
+		//check that the input is a positive number
+		//check the input is a possible threshhold to reach
+		return Integer.parseInt(txtfldOneStarPoints.getText());
 	}
 
 	@Override
 	public int getTwoStarThreshhold() {
-		// TODO Auto-generated method stub
-		return 0;
+		//check that the input is a positive number
+		//check the input is a possible threshhold to reach
+		return Integer.parseInt(txtfldTwoStarPoints.getText());
 	}
 
 	@Override
 	public int getThreeStarThreshhold() {
-		// TODO Auto-generated method stub
-		return 0;
+		//check that the input is a positive number
+		//check the input is a possible threshhold to reach
+		return Integer.parseInt(txtfldThreeStarPoints.getText());
 	}
 
 	@Override
-	public Level makeLevelFromInputs() {
+	public Level makeLevel(boolean[][] boardShape, int levelNum) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

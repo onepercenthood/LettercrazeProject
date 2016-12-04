@@ -55,14 +55,6 @@ public class BuilderMenuView extends DefaultViewPanel{
 		panel.add(lblLettercrazeBuilder);
 		
 		JButton btnNewButton = new JButton("Create New Level");
-//		btnNewButton.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mousePressed(MouseEvent arg0) {
-//				CardLayout clay = (CardLayout) cardLayoutPanel.getLayout();			
-//				clay.show(cardLayoutPanel, "BuilderView");
-//				System.out.println("Switched to BuilderView");
-//			}
-//		});
 		btnNewButton.addMouseListener(new CreateNewLevelController(app, cardLayoutPanel, model));
 		btnNewButton.setBounds(163, 319, 180, 53);
 		panel.add(btnNewButton);

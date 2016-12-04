@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import javafx.scene.shape.Box;
+import lettercraze.PlayerApplication;
 import lettercraze.model.Model;
 import lettercraze.view.BoardView;
 
@@ -63,7 +64,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 			        frame.setPreferredSize(new Dimension(800,800));
 			        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 			        Model m = new Model();
-			        frame.getContentPane().add(new GameView(m, 1)); //using just lev1 for now, change later
+			        //frame.getContentPane().add(new GameView(m, 1)); //using just lev1 for now, change later
 			        frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -75,41 +76,26 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	/**
 	 * Create the frame.
 	 */
-	public GameView(Model m, int levelNum) {
+	public GameView(Model m, int levelNum, PlayerApplication app) {
 		super();
 		this.model = m;
 		this.levelNum = levelNum;
-		this.boardview = new BoardView(colorPlayer, this.model, levelNum);
+		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
 		createPanel();
-		loadBoardView();
-
 	}
 	
 	/**
 	 * Create the frame.
+	 * @wbp.parser.constructor
 	 */
-	public GameView(Model m, JPanel parent) {
+	public GameView(Model m, JPanel parent, PlayerApplication app) {
 		this.model = m;
 		this.levelNum = 1;
-		this.boardview = new BoardView(colorPlayer, this.model, levelNum);
+		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
 		this.parent = parent;
 		createPanel();
-		loadBoardView();
-
 	}
 	
-	private void loadBoardView() {
-		// TODO Auto-generated method stub
-		
-		JPanel boardViewPanel = boardview.getBoardPanel();
-		
-		Dimension size = playerPanel.getSize();
-		size.height = size.height - 5;
-		
-		boardViewPanel.setPreferredSize(size);
-		
-		playerPanel.add(boardview.getBoardPanel());
-	}
 
 	/**
 	 * Loads in all the GUI elements
@@ -117,8 +103,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	public void createPanel(){
 				
 		setBorder(new EmptyBorder(5, 5, 5, 5));
-//		setContentPane(contentPane);
 		setLayout(null);
+		add(boardview);
 		
 		titleTextField = new JLabel("LetterCraze");
 		titleTextField.setBounds(6, 6, 94, 26);
@@ -131,23 +117,11 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		scoreTextField = new JLabel("400");
 		scoreTextField.setBounds(56, 30, 94, 26);
 		add(scoreTextField);
-		
-		playerPanel = new JPanel();
-
-		playerPanel.setBackground(colorPlayer);
-//		playerPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		playerPanel.setBounds(16, 82, 383, 414);
-		add(playerPanel);
-//		playerPanel.setLayout(new GridLayout(6, 6, 0, 0));
-		
-//		loadInPlayerGrid();
-		
+				
 		JScrollPane wordsScrollPane = new JScrollPane();
 		wordsScrollPane.setBounds(439, 82, 338, 414);
 		add(wordsScrollPane);
-		
-//		Box box = Box.createVerticalBox();
-		
+			
 		JLabel lblWords = new JLabel("Words");
 		lblWords.setBounds(439, 49, 61, 16);
 		add(lblWords);
@@ -187,31 +161,42 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		
 	}
 	
+	public JPanel getPlayerPanel() {
+		return playerPanel;
+	}
+
+	public ArrayList<JPanel> getGridPanels() {
+		return gridPanels;
+	}
+
+	public JLabel getLevelType() {
+		return levelType;
+	}
+
+	public JLabel getScoreTextField() {
+		return scoreTextField;
+	}
+
+	public Model getModel() {
+		return model;
+	}
+
+	public int getLevelNum() {
+		return levelNum;
+	}
+
+	public JButton getBtnExitLevel() {
+		return btnExitLevel;
+	}
+
+	public JPanel getParent() {
+		return parent;
+	}
+
 	public void getExitButton(){
 		
 	}
-	public void loadInPlayerGrid(){
-		
-		int row = 6;
-		int col = 6;
-		
-
-		
-		for( int i = 1; i <= col; i++ ){
-			for( int j = 1; j <= row; j++){
-				JPanel newPanel = new JPanel();
-				newPanel.setBackground(SystemColor.activeCaption);
-				newPanel.setBorder(new LineBorder(colorPlayer));
-				playerPanel.add(newPanel);
-				gridPanels.add(newPanel);
-
-			}
-		}
-		
-		repaint();
-		
-		
-	}
+	
 	
 
 	@Override

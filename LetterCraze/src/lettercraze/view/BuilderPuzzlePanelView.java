@@ -147,12 +147,17 @@ public class BuilderPuzzlePanelView extends DefaultViewPanel implements IBuilder
 
 	@Override
 	public Level makeLevel(boolean[][] boardShape, int levelNum) {
-		//Create a level object to be constructed
+		//gather score threshholds 
 		int threshholds[] = {getOneStarThreshhold(), getTwoStarThreshhold(), getThreeStarThreshhold()};
 		int maxMoves = Integer.parseInt(txtfldInputMaxMoves.getText());
+		
+		//create a puzzle level with the specified threshholds, maximum moves, and level number
 		Puzzle puzzle = new Puzzle(levelNum, threshholds, maxMoves);
+		
+		//assign the given boardShape, set it to unlocked
 		puzzle.setBoardShape(boardShape);
 		puzzle.setUnLocked(true);
+		System.out.println(puzzle.debugString());
 		return puzzle;
 	}
 	

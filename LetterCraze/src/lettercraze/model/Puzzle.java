@@ -30,6 +30,36 @@ public class Puzzle extends Level{
 		this.maxWords = maxWords;
 	}
 
+	@Override
+	public String toString() {
+		
+		return null;
+	}
+
+	/**
+	 * 
+	 * @return a string that shows the state of all the variables for use in debugging
+	 */
+	public String debugString(){
+		String s = levelType + ", ";
+		s = s + "Level Number: " + Integer.toString(levelNum) +",\n";
+		s = s + "First Threshold: " + Integer.toString(starThreshold[0]) + ",";
+		s = s + "Second Threshold: " + Integer.toString(starThreshold[1]) + ", ";
+		s = s + "Third Threshold: " + Integer.toString(starThreshold[2]) + ", \n";
+		s = s + "Max Words: " + Integer.toString(maxWords) + ", \n";
+		s = s + "Board Shape: \n";
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col ++){
+				if(boardShape[row][col]){
+					s = s + "[X]";
+				} else {
+					s = s + "[ ]";
+				}
+			}
+			s = s + "\n";
+		}
+		return s;
+	}
 //	@Override
 //	public boolean isCompleted(int score) {
 //		// TODO Auto-generated method stub
