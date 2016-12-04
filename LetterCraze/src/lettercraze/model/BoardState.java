@@ -24,7 +24,7 @@ public class BoardState{
 	protected int stars;
 	
 	/** Array List of the words that have been played so far */ 
-	protected ArrayList<Word> foundWords = new ArrayList<Word>();
+	protected ArrayList<TestWord> foundWords = new ArrayList<TestWord>();
 	
 	/** Two dimensional representations of the squares on the board */
 	protected Square[][] squares = new Square[6][6] ;
@@ -62,7 +62,7 @@ public class BoardState{
 	 * @param oldState is the current state the board is in
 	 * @param playedWord is the word submitted to be played
 	 */
-	public BoardState(BoardState oldState, Word playedWord){
+	public BoardState(BoardState oldState, TestWord playedWord){
 		
 	}
 	
