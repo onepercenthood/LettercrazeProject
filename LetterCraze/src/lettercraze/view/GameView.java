@@ -115,7 +115,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		JLabel scoreLabelTextField = new JLabel("Score:");
 		scoreLabelTextField.setBounds(6, 30, 94, 26);
 		add(scoreLabelTextField);
-		
+		 
 		scoreTextField = new JLabel("400");
 		scoreTextField.setBounds(56, 30, 94, 26);
 		add(scoreTextField);
