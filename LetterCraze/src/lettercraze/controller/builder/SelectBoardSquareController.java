@@ -28,12 +28,6 @@ public class SelectBoardSquareController extends MouseAdapter{
 		this.squareView = squareView;
 	}
 	
-	public SelectBoardSquareController() {
-		this.model = null;
-		this.application = null;
-		this.squareView = null;
-	}
-
 	public void mousePressed(MouseEvent me){
 		Square toEdit = squareView.getSquare();
 		//toggle whether the square is active
@@ -41,5 +35,6 @@ public class SelectBoardSquareController extends MouseAdapter{
 		squareView.repaintSquare();
 		System.out.println("Square " + toEdit.getRow() + toEdit.getColumn()+ " set to " + toEdit.isActive());
 	}
+	
 
 }

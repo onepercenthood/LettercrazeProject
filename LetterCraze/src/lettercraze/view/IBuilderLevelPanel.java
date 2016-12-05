@@ -27,6 +27,6 @@ public interface IBuilderLevelPanel {
 	/*
 	 * returns a level with the given boardShape and the user-specified parameters
 	 */
-	public Level makeLevel(boolean[][] boardShape, int levelNum);
+	public Level compileLevelInfo(boolean[][] boardShape, int levelNum);
 	
 }

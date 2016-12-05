@@ -151,7 +151,7 @@ public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderL
 	}
 	
 	@Override
-	public Level makeLevel(boolean[][] boardShape, int levelNum) {
+	public Level compileLevelInfo(boolean[][] boardShape, int levelNum) {
 		// TODO Auto-generated method stub
 		return null;
 	}

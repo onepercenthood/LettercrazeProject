@@ -81,6 +81,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		this.model = m;
 		this.levelNum = levelNum;
 		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
+		boardview.playerInitialize(app);
 		createPanel();
 	}
 	
@@ -92,6 +93,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		this.model = m;
 		this.levelNum = 1;
 		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
+		boardview.playerInitialize(app);
 		this.parent = parent;
 		createPanel();
 	}

@@ -146,7 +146,7 @@ public class BuilderPuzzlePanelView extends DefaultViewPanel implements IBuilder
 	}
 
 	@Override
-	public Level makeLevel(boolean[][] boardShape, int levelNum) {
+	public Level compileLevelInfo(boolean[][] boardShape, int levelNum) {
 		//gather score threshholds 
 		int threshholds[] = {getOneStarThreshhold(), getTwoStarThreshhold(), getThreeStarThreshhold()};
 		int maxMoves = Integer.parseInt(txtfldInputMaxMoves.getText());
