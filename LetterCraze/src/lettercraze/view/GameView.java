@@ -166,19 +166,19 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		
 		JPanel panel_stars = new JPanel();
 		panel_stars.setBounds(6, 56, 94, 26);
-		starRater = new StarRater(3, 3 );
+		starRater = new StarRater(3, 0 );
 		starRater.setBounds(0, 6, 48, 16);
-		starRater.addStarListener(new StarRater.StarListener() {
+		//starRater.addStarListener(new StarRater.StarListener() {
 
-			@Override
-			public void handleSelection(int selection) {
+		//	@Override
+			//public void handleSelection(int selection) {
 				// TODO Auto-generated method stub
 				
-			}
-		
-		});
+		//	}
+	//}
+
 		panel_stars.setLayout(null);
-		panel_stars.add(starRater);
+	    panel_stars.add(starRater);
 		add(panel_stars);
 		
 		levelType = new JLabel("N/A");
