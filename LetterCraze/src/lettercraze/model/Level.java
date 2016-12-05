@@ -110,6 +110,7 @@ abstract public class Level {
 		return stars;
 	}
 	
+	
 //	/**TODO
 //	 * Converts the level to a string describing the values of each field
 //	 */
