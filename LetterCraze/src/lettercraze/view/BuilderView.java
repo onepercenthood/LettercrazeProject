@@ -22,6 +22,8 @@ import java.awt.Insets;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
+import lettercraze.BuilderApplication;
+import lettercraze.controller.builder.SaveLevelController;
 import lettercraze.model.Model;
 
 import java.awt.Color;
@@ -31,22 +33,40 @@ import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.FlowLayout;
+import javax.swing.JTextArea;
 
-public class BuilderView extends DefaultViewPanel {
+public class BuilderView extends DefaultViewPanel implements ItemListener{
 
+
+	public JPanel getPnlLevelSwitch() {
+		return pnlLevelSwitch;
+	}
 
 	private JPanel contentPane;
 	private JPanel parent;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtfldTwoStar;
+	private JTextField txtfldOneStar;
+	private JTextField txtfldThreeStar;
 	private JTextField txtFldInputMaxMoves;
 	private Model model;
 	private Font labelFont;
 	private Font titleFont;
 	private Color bgColor;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JPanel pnlLevelSwitch;
+	private JTextField txtfldThemeTitle;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private BuilderApplication app;
 	
 	/**
 	 * Launch the application.
@@ -80,11 +100,12 @@ public class BuilderView extends DefaultViewPanel {
 		setBackground(bgColor);
 		initialize();
 	}
-	public BuilderView(Model model, JPanel parent) {
+	public BuilderView(Model model, JPanel parent, BuilderApplication app) {
 		super();
 		this.model = model;
 		this.parent = parent;
 		this.bgColor = new Color(178, 34, 34);
+		this.app = app;
 		this.labelFont = new Font("Times New Roman", Font.BOLD, 18);
 		setBackground(bgColor);
 		initialize();
@@ -93,140 +114,54 @@ public class BuilderView extends DefaultViewPanel {
 	/** set up the whole board view **/
 	public void initialize(){		
 		
-		setBounds(100, 100, 1092, 620);
+		setBounds(100, 100, 900, 620);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setLayout(null);
 		
-		JPanel panel_39 = new JPanel();
-		panel_39.setBounds(9, 19, 1, 1);
-		add(panel_39);
-		panel_39.setLayout(null);
-		
-		JLabel lblDifficulty = new JLabel("Difficulty");
-		lblDifficulty.setBounds(0, -270, 61, 16);
-		panel_39.add(lblDifficulty);
-		
 		//build the image of the board for toggling the active squares
-		buildBoardImage();
+		//buildBoardImage();
+		
+		BoardView boardView = new BoardView(new Color(20,200,160), model, 1, app);
+		boardView.builderInitialize(app);
+		boardView.setSize(408, 440);
+		boardView.setLocation(39, 158);
+		add(boardView);
 
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
 		comboBox.setToolTipText("");
 		comboBox.setMaximumRowCount(3);
-		comboBox.setBounds(836, 166, 97, 26);
+		comboBox.setBounds(593, 158, 97, 26);
+		comboBox.addItemListener(this);
 		add(comboBox);
 		
-		JButton btnReset = new JButton("Reset");
+		JButton btnReset = new JButton("Reset Level");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				boolean shape[][] = {{true,true,true,true,true,true},{true,true,true,true,true,true},{true,true,true,true,true,true},{true,true,true,true,true,true},{true,true,true,true,true,true},{true,true,true,true,true,true}};
+				CardLayout cl = (CardLayout) pnlLevelSwitch.getLayout();
+				BuilderPuzzlePanelView test = (BuilderPuzzlePanelView) pnlLevelSwitch.getComponent(0);
+				System.out.println(test.makeLevel(shape, 1));
 			}
 		});
-		btnReset.setBounds(789, 495, 71, 29);
+		btnReset.setBounds(39, 118, 107, 29);
 		add(btnReset);
 		
 		JButton btnSaveLevel = new JButton("Save Level");
-		btnSaveLevel.setBounds(875, 495, 107, 29);
+		btnSaveLevel.setBounds(156, 118, 107, 29);
+		btnSaveLevel.addMouseListener(new SaveLevelController(app, parent, model));
 		add(btnSaveLevel);
 		
 		JLabel lblLevelType = new JLabel("Level Type");
 		lblLevelType.setFont(labelFont);
-		lblLevelType.setBounds(973, 169, 76, 20);
+		lblLevelType.setBounds(491, 158, 92, 26);
 		add(lblLevelType);
 		
-		JLabel lblOneStarPoints = new JLabel("points");
-		lblOneStarPoints.setFont(labelFont);
-		lblOneStarPoints.setBounds(1006, 233, 43, 20);
-		add(lblOneStarPoints);
-		
-		JLabel lblTwoStarPoints = new JLabel("points");
-		lblTwoStarPoints.setFont(labelFont);
-		lblTwoStarPoints.setBounds(1006, 311, 43, 20);
-		add(lblTwoStarPoints);
-		
-		JLabel lblThreeStarPoints = new JLabel("points");
-		lblThreeStarPoints.setFont(labelFont);
-		lblThreeStarPoints.setBounds(1006, 381, 43, 20);
-		add(lblThreeStarPoints);
-		
-		JLabel lblMaxMoves = new JLabel("max moves");
-		lblOneStarPoints.setFont(labelFont);
-		lblMaxMoves.setBounds(805, 456, 81, 20);
-		add(lblMaxMoves);
-		
-		JPanel panel_star_1 = new JPanel();
-		panel_star_1.setBounds(789, 233, 26, 26);
-		StarRater starRater1 = new StarRater(1, 1 );
-		starRater1.setBounds(0, 6, 48, 16);
-		starRater1.addStarListener(new StarRater.StarListener() {
-
-			@Override
-			public void handleSelection(int selection) {
-				// TODO Auto-generated method stub
-				
-			}
-		
-		});
-		panel_star_1.add(starRater1);
-		add(panel_star_1);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(773, 305, 42, 26);
-		StarRater starRater2 = new StarRater(2, 2 );
-		starRater2.setBounds(0, 6, 48, 16);
-		starRater2.addStarListener(new StarRater.StarListener() {
-
-			@Override
-			public void handleSelection(int selection) {
-				// TODO Auto-generated method stub
-				
-			}
-		
-		});
-		panel_2.add(starRater2);
-		add(panel_2);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(763, 378, 58, 29);
-		StarRater starRater3 = new StarRater(3, 3 );
-		starRater3.setBounds(0, 6, 48, 16);
-		starRater3.addStarListener(new StarRater.StarListener() {
-
-			@Override
-			public void handleSelection(int selection) {
-				// TODO Auto-generated method stub
-				
-			}
-		
-		});
-		
-		panel_3.add(starRater3);
-		
-		add(panel_3);
-		
-		textField = new JTextField();
-		textField.setBounds(836, 308, 146, 26);
-		add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(836, 378, 146, 26);
-		add(textField_1);
-		textField_1.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(836, 230, 146, 26);
-		add(textField_2);
-		
-		txtFldInputMaxMoves = new JTextField();
-		txtFldInputMaxMoves.setColumns(10);
-		txtFldInputMaxMoves.setBounds(903, 453, 146, 26);
-		add(txtFldInputMaxMoves);
-		
 		JButton btnCloseWithoutSaving = new JButton("Close Without Saving");
+		//TODO replace with close builder controller
 		btnCloseWithoutSaving.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
@@ -234,13 +169,36 @@ public class BuilderView extends DefaultViewPanel {
 				clay.first(parent);
 			}
 		});
-		btnCloseWithoutSaving.setBounds(789, 540, 193, 29);
+		btnCloseWithoutSaving.setBounds(273, 118, 174, 29);
 		add(btnCloseWithoutSaving);
 		
 		JLabel lblTitle = new JLabel("LetterCraze: Builder");
 		lblTitle.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 40));
-		lblTitle.setBounds(127, 32, 522, 109);
+		lblTitle.setBounds(39, 11, 522, 109);
 		add(lblTitle);
+		
+		pnlLevelSwitch = new JPanel();
+		pnlLevelSwitch.setName("pnlLevelSwitch");
+		pnlLevelSwitch.setBounds(479, 192, 379, 362);
+		pnlLevelSwitch.setLayout(new CardLayout());
+		add(pnlLevelSwitch);
+		
+		JPanel pnlPuzzle = new BuilderPuzzlePanelView(labelFont);
+		pnlLevelSwitch.add(pnlPuzzle, "Puzzle");
+		pnlPuzzle.setBackground(new Color(0, 128, 0));
+		pnlPuzzle.setLayout(null);
+				
+		JPanel pnlLightning = new BuilderLightningPanelView();
+		pnlLightning.setBackground(new Color(255, 140, 0));
+		pnlLevelSwitch.add(pnlLightning, "Lightning");
+		pnlLightning.setLayout(null);
+		
+		
+		JPanel pnlTheme = new BuilderThemePanelView(labelFont);
+		pnlTheme.setBackground(new Color(255, 0, 255));
+		pnlLevelSwitch.add(pnlTheme, "Theme");
+		pnlTheme.setLayout(null);
+		
 		contentPane.setVisible(true);
 		contentPane.repaint();
 		repaint();
@@ -252,7 +210,7 @@ public class BuilderView extends DefaultViewPanel {
 	public void buildBoardImage(){
 		JPanel pnlBoardArrangement = new JPanel();
 		pnlBoardArrangement.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		pnlBoardArrangement.setBounds(127, 157, 408, 398);
+		pnlBoardArrangement.setBounds(39, 158, 408, 398);
 		add(pnlBoardArrangement);
 		pnlBoardArrangement.setLayout(null);
 		
@@ -478,6 +436,14 @@ public class BuilderView extends DefaultViewPanel {
 	@Override
 	public String getPanelName() {
 		return "BuilderView";
+	}
+
+	//when the combo box triggers an item state change, switch the input panels
+	@Override
+	public void itemStateChanged(ItemEvent evt) {
+		CardLayout cl = (CardLayout) pnlLevelSwitch.getLayout();
+		cl.show(pnlLevelSwitch, (String) evt.getItem());
+		
 	}
 }
 

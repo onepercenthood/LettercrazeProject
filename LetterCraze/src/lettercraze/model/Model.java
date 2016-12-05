@@ -44,10 +44,13 @@ public class Model {
 		}
 		
 		boolean[][] sampleShape = new boolean[6][6];
+		boolean active = true;
 		for(int row = 0; row < 6; row++){
 			for(int col = 0; col < 6; col++){
-				sampleShape[row][col] = true;
+				sampleShape[row][col] = active;
+				//active = !active;
 			}
+			//active = !active;
 		}
 		Puzzle level1 = new Puzzle(1, new int[]{1, 2, 3} , 10);
 		level1.setBoardShape(sampleShape);
@@ -126,7 +129,7 @@ public class Model {
 	 * @param s
 	 * @return
 	 */
-	public boolean removeSelectedSquare( Square s){
+	public boolean removeSelectedSquare(Square s){
 		return false;
 	}
 	

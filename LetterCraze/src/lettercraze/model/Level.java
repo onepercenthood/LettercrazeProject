@@ -109,5 +109,10 @@ abstract public class Level {
 		if(score > this.starThreshold[2]) {stars = 3;}
 		return stars;
 	}
+	
+//	/**TODO
+//	 * Converts the level to a string describing the values of each field
+//	 */
+//	public abstract String toString();
 
 }

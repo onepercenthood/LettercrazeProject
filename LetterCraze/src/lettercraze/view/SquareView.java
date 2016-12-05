@@ -1,6 +1,7 @@
 package lettercraze.view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.Box;
@@ -14,55 +15,38 @@ import java.awt.SystemColor;
 public class SquareView extends DefaultViewPanel{
 
 	private Square square;
-	private JLabel lblA;
-	private JLabel label;
+	Color defaultColor;
 	
-	public SquareView(Square square){
+	public SquareView(Square square, Color defaultColor){
 		this.square = square;
+		this.defaultColor = defaultColor;
 		setLayout(null);
-		
-		initialize();
-	}
-
-	private void initialize(){
-		
-		if(square.getLetter() != null){
-			lblA = new JLabel(square.getLetter().getLetter());
-//			lblA.setBounds(41, 11, 59, 120);
-			lblA.setFont(new Font("Tahoma", Font.PLAIN, 10));
-			add(lblA);
-			
-			label = new JLabel(Integer.toString(square.getLetter().getValue()));
-			label.setFont(new Font("Tahoma", Font.PLAIN, 10));
-//			label.setBounds(112, 59, 59, 120);
-			add(label);
-		}
-		
-		
-//		JPanel panel = new JPanel();
-//		panel.setBackground(Color.LIGHT_GRAY);
-//		panel.setBounds(0, 0, 150, 150);
-//		add(panel);
 	}
 
 	public Letter getLetter(){
 		return square.getLetter();
 	}
 	
-
-	
 	public Square getSquare(){
 		return square;
 	}
-
 
 	@Override
 	public String getPanelName() {
 		return "SquareView";
 	}
 	
-	public JLabel getLetterLabel(){
-		return this.lblA;
+	
+	public void repaintSquare(){
+		super.repaint();
+		if(square.isActive()){
+			if(square.isSelected()){
+				this.setBackground(Color.YELLOW);
+			} else {
+				this.setBackground(defaultColor);
+			}
+		} else {
+				this.setBackground(Color.GRAY);
+		}
 	}
-
 }
