@@ -92,7 +92,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				squareViews[row][col].setPreferredSize(new Dimension(64,64));
 				squareViews[row][col].setLayout(null);
 				squareViews[row][col].setBorder(BorderFactory.createLineBorder(Color.black));
-				squareViews[row][col].addMouseListener(new SelectBoardSquareController());
+				//squareViews[row][col].addMouseListener(new SelectBoardSquareController());
 				
 				//check if the square is active for this level
 				if(thisSquare.isActive()){

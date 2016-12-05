@@ -144,7 +144,7 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 	}
 
 	@Override
-	public Level makeLevel(boolean[][] boardShape, int levelNum) {
+	public Level compileLevelInfo(boolean[][] boardShape, int levelNum) {
 		// TODO Auto-generated method stub
 		return null;
 	}
