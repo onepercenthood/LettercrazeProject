@@ -97,9 +97,9 @@ public class StarRater extends JPanel {
     // set look
     setOpaque(false);
     setLayout(null);
-    
+  }
     // listen to selections
-    addMouseMotionListener(new MouseMotionAdapter() {
+    /*addMouseMotionListener(new MouseMotionAdapter() {
       public void mouseMoved(MouseEvent event) {
         if (isEnabled()) {
           if (!done) {
@@ -138,7 +138,7 @@ public class StarRater extends JPanel {
       }
     });
   }
-  
+  */
   /**
    * Called to enable/disable.
    * 
