@@ -16,6 +16,7 @@ import javax.swing.border.LineBorder;
 import lettercraze.BuilderApplication;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.builder.SelectBoardSquareController;
+import lettercraze.controller.player.ToggleSquareController;
 import lettercraze.model.Model;
 import lettercraze.model.Square;
  
@@ -92,15 +93,18 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				squareViews[row][col].setPreferredSize(new Dimension(64,64));
 				squareViews[row][col].setLayout(null);
 				squareViews[row][col].setBorder(BorderFactory.createLineBorder(Color.black));
-				//squareViews[row][col].addMouseListener(new SelectBoardSquareController());
+				squareViews[row][col].addMouseListener(new ToggleSquareController(playerApp, squareViews[row][col], model));
 				
 				//check if the square is active for this level
 				if(thisSquare.isActive()){
 					LetterView lv = new LetterView(thisSquare.getLetter());
+					ValueView vv = new ValueView(thisSquare.getLetter());
 					int halfWidth = squareViews[row][col].getWidth() / 2;
 					int halfHeight = squareViews[row][col].getHeight() / 2;
 					lv.setBounds(halfWidth, halfHeight,64,64);
+					vv.setBounds(halfWidth, halfHeight,100,100);
 					squareViews[row][col].add(lv);
+					squareViews[row][col].add(vv);
 					if(thisSquare.isSelected()){
 						//active, selected squares are colored yellow
 						squareViews[row][col].setBackground(Color.YELLOW);

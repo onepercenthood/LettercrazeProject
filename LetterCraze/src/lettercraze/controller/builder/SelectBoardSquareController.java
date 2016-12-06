@@ -33,7 +33,7 @@ public class SelectBoardSquareController extends MouseAdapter{
 		//toggle whether the square is active
 		toEdit.setActive(!toEdit.isActive());
 		squareView.repaintSquare();
-		System.out.println("Square " + toEdit.getRow() + toEdit.getColumn()+ " set to " + toEdit.isActive());
+		System.out.println("Selected: " + toEdit.isSelected() + "Active: " + toEdit.isActive());
 	}
 	
 
