@@ -2,6 +2,12 @@
 
 package lettercraze.model;
 
+import java.io.File;
+import java.io.IOException;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Abstract Level class. Serves as the superclass of all the different types
@@ -110,4 +116,24 @@ abstract public class Level {
 		return stars;
 	}
 
+	
+	 public void saveToDisk(){
+		 ObjectMapper mapper = new ObjectMapper(); 
+		 System.out.println("in save to disk");
+		 try {
+			mapper.writeValue(new File("result.json"), this);
+			System.out.println("Wrote file to disk");
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		 System.out.println("level obj: " + this);
+	 }
 }
