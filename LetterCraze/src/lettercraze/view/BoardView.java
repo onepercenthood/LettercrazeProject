@@ -96,7 +96,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				squareViews[row][col].addMouseListener(new ToggleSquareController(playerApp, squareViews[row][col], model));
 				
 				//check if the square is active for this level
-				if(thisSquare.isActive()){
+				if(thisSquare.isActive()){ 
 					LetterView lv = new LetterView(thisSquare.getLetter());
 					int halfWidth = squareViews[row][col].getWidth() / 2;
 					int halfHeight = squareViews[row][col].getHeight() / 2;
