@@ -28,7 +28,6 @@ public class Puzzle extends Level{
 		this.starThreshold[1] = starThreshold[1];
 		this.starThreshold[2] = starThreshold[2];
 		this.maxWords = maxWords;
-		saveToDisk();
 	}
 
 //	@Override

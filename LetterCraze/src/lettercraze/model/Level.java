@@ -72,6 +72,50 @@ abstract public class Level {
 	}
 	
 	
+	/**
+	 * Return the level type string of this level
+	 * 
+	 * @return String levelType
+	 */
+	public String getLevelType(){
+		return this.levelType;
+	}
+	
+	/**
+	 * Return the given star threshold array for this level
+	 * 
+	 * @return int starThreshold
+	 */
+	public int[] getStarThreshold(){
+		return this.starThreshold;
+	}
+	
+	/**
+	 * Return the value for isUnlocked for this level
+	 * 
+	 * @return boolean starThreshold
+	 */
+	public boolean getIsUnlocked(){
+		return this.isUnlocked;
+	}
+	
+	/**
+	 * Return the current high score on this level
+	 * 
+	 * @return int highScore
+	 */
+	public int getHighScore(){
+		return this.highScore;
+	}
+	
+	/**
+	 * Return the level number of this level
+	 * 
+	 * @return int levelNum
+	 */
+	public int getLevelNum(){
+		return this.levelNum;
+	}
 	 
 	 
 	/**
@@ -116,24 +160,4 @@ abstract public class Level {
 		return stars;
 	}
 
-	
-	 public void saveToDisk(){
-		 ObjectMapper mapper = new ObjectMapper(); 
-		 System.out.println("in save to disk");
-		 try {
-			mapper.writeValue(new File("result.json"), this);
-			System.out.println("Wrote file to disk");
-		} catch (JsonGenerationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-		 System.out.println("level obj: " + this);
-	 }
 }
