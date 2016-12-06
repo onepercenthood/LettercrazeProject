@@ -42,7 +42,8 @@ abstract public class Level {
 	 * Default Constructor for Level subclasses 
 	 */
 	protected Level(){
-		super();
+		this.highScore = 0;
+		this.isUnlocked = false;
 		
 	}
 	
@@ -104,9 +105,9 @@ abstract public class Level {
 	 */
 	public int getHighStars(int score){
 		int stars = 0;
-		if(score > this.starThreshold[0]) {stars = 1;}
-		if(score > this.starThreshold[1]) {stars = 2;}
-		if(score > this.starThreshold[2]) {stars = 3;}
+		if(score >= this.starThreshold[0]) {stars = 1;}
+		if(score >= this.starThreshold[1]) {stars = 2;}
+		if(score >= this.starThreshold[2]) {stars = 3;}
 		return stars;
 	}
 	
