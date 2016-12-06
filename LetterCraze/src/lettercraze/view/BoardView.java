@@ -16,6 +16,7 @@ import javax.swing.border.LineBorder;
 import lettercraze.BuilderApplication;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.builder.SelectBoardSquareController;
+import lettercraze.controller.player.ToggleSquareController;
 import lettercraze.model.Model;
 import lettercraze.model.Square;
  
@@ -92,7 +93,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				squareViews[row][col].setPreferredSize(new Dimension(64,64));
 				squareViews[row][col].setLayout(null);
 				squareViews[row][col].setBorder(BorderFactory.createLineBorder(Color.black));
-				//squareViews[row][col].addMouseListener(new SelectBoardSquareController());
+				squareViews[row][col].addMouseListener(new ToggleSquareController(playerApp, squareViews[row][col], model));
 				
 				//check if the square is active for this level
 				if(thisSquare.isActive()){

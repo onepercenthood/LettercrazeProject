@@ -80,8 +80,13 @@ public class Square {
 	 * 
 	 * @return True is isSelected is changed to true 
 	 */
-	public boolean toggleSelected(){
+	public boolean toggleActive(){
 		this.isActive = !this.isActive;
+		return true;
+	}
+	
+	public boolean toggleSelected(){
+		this.isSelected = !this.isSelected;
 		return true;
 	}
 	

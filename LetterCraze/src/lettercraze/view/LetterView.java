@@ -21,19 +21,27 @@ public class LetterView extends JLabel{
 	private Letter letter;
 
 	public LetterView(Letter letter){
+		setHorizontalAlignment(SwingConstants.CENTER);
 		this.letter = letter;
 		initialize();
 	}
 
 	private void initialize(){
 		this.setText(letter.getLetter());
-		this.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		this.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 30));
 	}
 	
-
+	public String numToSubscript(){
+		int value = letter.getValue();
+		//String subscript = "\u2082" + Integer.toString(value);
+		String subscript = "\u2082";
+		return subscript;
+	}
+	
 	public Letter getLetter(){
 		return letter;
 	}
+
 
 	public void setLetter(Letter letter){
 		this.letter = letter;
