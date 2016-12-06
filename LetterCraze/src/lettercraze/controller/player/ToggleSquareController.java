@@ -10,6 +10,7 @@ import lettercraze.PlayerApplication;
 import lettercraze.view.SquareView;
 import lettercraze.model.Model;
 import lettercraze.model.Square;
+import lettercraze.model.Word;
 
 public class ToggleSquareController extends MouseAdapter{
 
@@ -31,9 +32,27 @@ public class ToggleSquareController extends MouseAdapter{
 
 	public void mousePressed(MouseEvent me){
 		Square toEdit = squareView.getSquare();
+		Word word = model.getCurrentWord();
+		
+		if(word != null){
+			Square lastSquare = word.getLastSquare();
+			if(toEdit.isAdjacent(lastSquare, toEdit)){
+				word.addSquare(toEdit);
+				model.setCurrentWord(word);
+				toEdit.toggleSelected();
+				squareView.repaintSquare();
+			}
+			else{}
+		}
+		else{
+			word = new Word(toEdit);
+			model.setCurrentWord(word);
+			toEdit.toggleSelected();
+			squareView.repaintSquare();
+		}
+		
 		//toggle whether the square is active
-		toEdit.toggleSelected();
-		squareView.repaintSquare();
+		System.out.println(word.getWordString());
 		System.out.println("Selected: " + toEdit.isSelected() + "Active: " + toEdit.isActive());
 	}
 	

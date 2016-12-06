@@ -24,7 +24,7 @@ public class Model {
 	protected ArrayList<Level> levels = new ArrayList<Level>(); 
 	
 	/** The Current Word being played */
-	protected TestWord currentWord;
+	protected Word currentWord;
 
 	/** Dictionary that stores all possible words that can be played */
 	protected WordTable possibleWords;
@@ -112,7 +112,6 @@ public class Model {
 		System.out.println("value of level 0: "  + levels.get(0));
 		BoardState newState = new BoardState(levels.get(levelNum - 1).getBoardShape());
 		boardStates.add(newState);
-		
 	}
 
 	/**
@@ -137,6 +136,14 @@ public class Model {
 	 * 
 	 * @return
 	 */
+	public Word getCurrentWord(){
+		return this.currentWord;
+	}
+	
+	public void setCurrentWord(Word wordIn){
+		this.currentWord = wordIn;
+	}
+	
 	public boolean clearCurrentWord(){
 		return true;
 	}

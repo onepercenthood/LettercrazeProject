@@ -16,21 +16,21 @@ import java.util.ArrayList;
 public class Word {
 	
 	/** An Array List to track all the letters contained in a word */
-	protected ArrayList<Letter> letters = new ArrayList<Letter>();
+	private ArrayList<Square> letters = new ArrayList<Square>();
 	
 	/**
 	 * Model Constructor 
 	 * <p>
 	 * A word needs at least one letter to exits.
 	 * <p>
-	 * @param l the first letter in the word to create a word instance 
+	 * @param s the first letter in the word to create a word instance 
 	 */
-	public Word(Letter l){
-		letters.add(l);
+	public Word(Square s){
+		letters.add(s);
 	}
 	
-	public boolean addLetter(Letter l){
-		letters.add(l);
+	public boolean addSquare(Square s){
+		letters.add(s);
 		return true;
 	}
 	
@@ -52,8 +52,8 @@ public class Word {
 	public int calculateValue(){
 		int wordScore = 0 ;
 		int wordLength = letters.size();
-		for(Letter l : letters){
-			wordScore += l.getValue();
+		for(Square s : letters){
+			wordScore += s.getLetter().getValue();
 		}
 		return wordScore * (wordLength-2);
 	}
@@ -65,12 +65,22 @@ public class Word {
 	 */
 	public String getWordString(){
 		String wordString = "";
-		for(Letter l : letters){
-			wordString += l.getLetter();
+		for(Square s : letters){
+			wordString += s.getLetter().getLetter();
 		}
 		return wordString;
 	}
 	
+	public Square getLastSquare(){
+		Square lastSquare = this.letters.get(letters.size() - 1);
+		return lastSquare;
+	}
+	
+	public int getWordLength(){
+		int length = this.letters.size();
+		return length;
+	}
+
 
 }
 
