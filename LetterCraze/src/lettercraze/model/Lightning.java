@@ -40,6 +40,27 @@ public class Lightning extends Level{
 		this.roundTimer.startTimer();
 	}
 	
+	@Override
+	public String debugString(){
+		String s = levelType + ", ";
+		s = s + "Level Number: " + Integer.toString(levelNum) +",\n";
+		s = s + "First Threshold: " + Integer.toString(starThreshold[0]) + ",";
+		s = s + "Second Threshold: " + Integer.toString(starThreshold[1]) + ", ";
+		s = s + "Third Threshold: " + Integer.toString(starThreshold[2]) + ", \n";
+		s = s + "TimerStart: " + Integer.toString(roundTimer.counter) + ", \n";
+		s = s + "Board Shape: \n";
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col ++){
+				if(boardShape[row][col]){
+					s = s + "[X]";
+				} else {
+					s = s + "[ ]";
+				}
+			}
+			s = s + "\n";
+		}
+		return s;
+	}
 //	@Override
 //	public boolean isCompleted(int score) {
 //		// TODO Auto-generated method stub

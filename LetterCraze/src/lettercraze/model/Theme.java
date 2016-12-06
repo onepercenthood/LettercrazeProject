@@ -12,13 +12,13 @@ import java.util.ArrayList;
  *
  */
 public class Theme extends Level{
-	
+
 	/** Holds the Theme Word/Phrase of the level */
 	protected String themeCategory;
-	
+
 	/** Holds the targetWords needed to be found to complete the Level */
 	protected ArrayList<String> targetWords = new ArrayList<String>();
-	
+
 	/**
 	 * Constructor for Theme Level 
 	 * 
@@ -26,12 +26,15 @@ public class Theme extends Level{
 	 * @param theme is the theme word/phrase for the level 
 	 * @param targetWords are the words needed to be found to compete the level
 	 */
-	public Theme(int levelNum, String theme, ArrayList<String> targetWords){
+	public Theme(int levelNum, int[] starThresholds, String theme, ArrayList<String> targetWords){
 		super();
 		this.levelNum = levelNum;
+		this.levelType = "Theme";
 		this.themeCategory = theme;
 		this.targetWords = targetWords;
-		
+		for(int i = 0; i < 3; i++)
+			this.starThreshold[i] = starThresholds[i];
+
 		// Determine star threshold based on the number of words required to find 
 		int size = targetWords.size();
 		this.starThreshold[0] = size - 2;
@@ -39,9 +42,34 @@ public class Theme extends Level{
 		this.starThreshold[2] = size;
 	}
 
-//	@Override
-//	public boolean isCompleted(int score) {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
+	@Override
+	public String debugString(){
+		String s = levelType + ", ";
+		s = s + "Level Number: " + Integer.toString(levelNum) +",\n";
+		s = s + "First Threshold: " + Integer.toString(starThreshold[0]) + ",";
+		s = s + "Second Threshold: " + Integer.toString(starThreshold[1]) + ", ";
+		s = s + "Third Threshold: " + Integer.toString(starThreshold[2]) + ", \n";
+		s = s + "Target Words: ";
+		for(String word: targetWords){
+			s = s + word+", ";
+		}
+		s = s + "\n";
+		s = s + "Board Shape: \n";
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col ++){
+				if(boardShape[row][col]){
+					s = s + "[X]";
+				} else {
+					s = s + "[ ]";
+				}
+			}
+			s = s + "\n";
+		}
+		return s;
+	}
+	//	@Override
+	//	public boolean isCompleted(int score) {
+	//		// TODO Auto-generated method stub
+	//		return false;
+	//	}
 }

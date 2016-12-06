@@ -27,6 +27,7 @@ import lettercraze.controller.builder.SaveLevelController;
 import lettercraze.model.Model;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
@@ -108,36 +109,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		comboBox.addItemListener(this);
 		add(comboBox);
 		
-		JButton btnReset = new JButton("Reset Level");
-		btnReset.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		btnReset.setBounds(39, 118, 107, 29);
-		add(btnReset);
 		
-		JButton btnSaveLevel = new JButton("Save Level");
-		btnSaveLevel.setBounds(156, 118, 107, 29);
-		btnSaveLevel.addMouseListener(new SaveLevelController(app, cardLayoutPanel, model));
-		add(btnSaveLevel);
-		
-		JLabel lblLevelType = new JLabel("Level Type");
-		lblLevelType.setFont(labelFont);
-		lblLevelType.setBounds(491, 158, 92, 26);
-		add(lblLevelType);
-		
-		JButton btnCloseWithoutSaving = new JButton("Close Without Saving");
-		//TODO replace with close builder controller
-		btnCloseWithoutSaving.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				CardLayout clay = (CardLayout) cardLayoutPanel.getLayout();
-				clay.first(cardLayoutPanel);
-			}
-		});
-		btnCloseWithoutSaving.setBounds(273, 118, 174, 29);
-		add(btnCloseWithoutSaving);
 		
 		JLabel lblTitle = new JLabel("LetterCraze: Builder");
 		lblTitle.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 40));
@@ -168,9 +140,58 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		
 		contentPane.setVisible(true);
 		contentPane.repaint();
+		JButton btnReset = new JButton("Reset Level");
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		btnReset.setBounds(39, 118, 107, 29);
+		add(btnReset);
+		
+		JButton btnSaveLevel = new JButton("Save Level");
+		btnSaveLevel.setBounds(156, 118, 107, 29);
+		btnSaveLevel.addMouseListener(new SaveLevelController(this, model));
+		add(btnSaveLevel);
+		
+		JLabel lblLevelType = new JLabel("Level Type");
+		lblLevelType.setFont(labelFont);
+		lblLevelType.setBounds(491, 158, 92, 26);
+		add(lblLevelType);
+		
+		JButton btnCloseWithoutSaving = new JButton("Close Without Saving");
+		//TODO replace with close builder controller
+		btnCloseWithoutSaving.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				CardLayout clay = (CardLayout) cardLayoutPanel.getLayout();
+				clay.first(cardLayoutPanel);
+			}
+		});
+		btnCloseWithoutSaving.setBounds(273, 118, 174, 29);
+		add(btnCloseWithoutSaving);
 		repaint();
 	}
+	
+	/**
+	 * returns the active level panel for inputting level-specific information
+	 * @return
+	 */
+	public IBuilderLevelPanel getCurrentLevelPanel()
+	{
+	    IBuilderLevelPanel card = null;
 
+	    //find the component that is set to visible (will be a JPanel
+	    for (Component comp : pnlLevelSwitch.getComponents() ) {
+	        if (comp.isVisible() == true) {
+	            card = (IBuilderLevelPanel)comp;
+	        }
+	    }
+	  
+	    return card;
+	}
+
+//Getter Methods
 	public JPanel getContentPane() {
 		return contentPane;
 	}

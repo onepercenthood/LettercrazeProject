@@ -42,8 +42,7 @@ abstract public class Level {
 	 * Default Constructor for Level subclasses 
 	 */
 	protected Level(){
-		super();
-		
+		super();		
 	}
 	
 	
@@ -109,6 +108,12 @@ abstract public class Level {
 		if(score > this.starThreshold[2]) {stars = 3;}
 		return stars;
 	}
+	
+	/**
+	 * 
+	 * @return a string that shows the state of all the variables for use in debugging
+	 */
+	abstract public String debugString();
 	
 	
 //	/**TODO

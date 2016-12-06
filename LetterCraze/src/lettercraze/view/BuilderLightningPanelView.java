@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import lettercraze.model.Level;
+import lettercraze.model.Lightning;
+import lettercraze.model.Puzzle;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -19,54 +21,54 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 	private JTextField txtfldTwoStarPoints;
 	private JTextField txtfldThreeStarPoints;
 	private JTextField txtfldmaxTimer;
-	
+
 	public BuilderLightningPanelView(){
 		setBackground(new Color(255, 140, 0));
 		setLayout(null);
 		initialize();				
 	}
-	
+
 	void initialize(){
 		txtfldOneStarPoints = new JTextField();
 		txtfldOneStarPoints.setBounds(78, 14, 86, 20);
 		add(txtfldOneStarPoints);
 		txtfldOneStarPoints.setColumns(10);
-		
+
 		txtfldTwoStarPoints = new JTextField();
 		txtfldTwoStarPoints.setColumns(10);
 		txtfldTwoStarPoints.setBounds(78, 51, 86, 20);
 		add(txtfldTwoStarPoints);
-		
+
 		txtfldThreeStarPoints = new JTextField();
 		txtfldThreeStarPoints.setColumns(10);
 		txtfldThreeStarPoints.setBounds(78, 91, 86, 20);
 		add(txtfldThreeStarPoints);
-		
+
 		txtfldmaxTimer= new JTextField();
 		txtfldmaxTimer.setColumns(10);
 		txtfldmaxTimer.setBounds(78, 133, 86, 20);
 		add(txtfldmaxTimer);
-		
+
 		JLabel lblOneWords = new JLabel("words");
 		lblOneWords.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblOneWords.setBounds(174, 12, 63, 22);
 		add(lblOneWords);
-		
+
 		JLabel lblTwoWords = new JLabel("words");
 		lblTwoWords.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblTwoWords.setBounds(174, 48, 63, 22);
 		add(lblTwoWords);
-		
+
 		JLabel lblThreeWords = new JLabel("words");
 		lblThreeWords.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblThreeWords.setBounds(174, 88, 63, 22);
 		add(lblThreeWords);
-		
+
 		JLabel lblTimerseconds = new JLabel("Timer (seconds)");
 		lblTimerseconds.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblTimerseconds.setBounds(174, 131, 138, 22);
 		add(lblTimerseconds);
-		
+
 		JPanel pnlLightning_star_1 = new JPanel();
 		pnlLightning_star_1.setBounds(44, 11, 26, 26);
 		add(pnlLightning_star_1);
@@ -77,12 +79,12 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 			@Override
 			public void handleSelection(int selection) {
 				// TODO Auto-generated method stub
-				
+
 			}
-		
+
 		});
 		pnlLightning_star_1.add(ltngStarRater1);
-		
+
 		JPanel pnlLightning_star_2 = new JPanel();
 		pnlLightning_star_2.setBounds(26, 48, 42, 26);
 		add(pnlLightning_star_2);
@@ -93,12 +95,12 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 			@Override
 			public void handleSelection(int selection) {
 				// TODO Auto-generated method stub
-				
+
 			}
-		
+
 		});
 		pnlLightning_star_2.add(ltngStarRater2);
-		
+
 		JPanel pnlLightning_star_3 = new JPanel();
 		pnlLightning_star_3.setBounds(10, 88, 58, 26);
 		add(pnlLightning_star_3);
@@ -109,14 +111,14 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 			@Override
 			public void handleSelection(int selection) {
 				// TODO Auto-generated method stub
-				
+
 			}
-		
+
 		});
-		
+
 		pnlLightning_star_3.add(ltngStarRater3);
 	}
-	
+
 	@Override
 	public String getPanelName(){
 		return "Lightning";
@@ -145,8 +147,17 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 
 	@Override
 	public Level compileLevelInfo(boolean[][] boardShape, int levelNum) {
-		// TODO Auto-generated method stub
-		return null;
+		//gather score threshholds 
+		int threshholds[] = {getOneStarThreshhold(), getTwoStarThreshhold(), getThreeStarThreshhold()};
+		int maxTime = Integer.parseInt(this.txtfldmaxTimer.getText());
+
+		//create a puzzle level with the specified threshholds, maximum moves, and level number
+		Lightning lightning = new Lightning(levelNum, threshholds, maxTime);
+
+		//assign the given boardShape, set it to unlocked
+		lightning.setBoardShape(boardShape);
+		lightning.setUnLocked(true);
+		return lightning;
 	}
 
 }

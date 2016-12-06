@@ -157,7 +157,6 @@ public class BuilderPuzzlePanelView extends DefaultViewPanel implements IBuilder
 		//assign the given boardShape, set it to unlocked
 		puzzle.setBoardShape(boardShape);
 		puzzle.setUnLocked(true);
-		System.out.println(puzzle.debugString());
 		return puzzle;
 	}
 	

@@ -40,6 +40,7 @@ public class Puzzle extends Level{
 	 * 
 	 * @return a string that shows the state of all the variables for use in debugging
 	 */
+	@Override
 	public String debugString(){
 		String s = levelType + ", ";
 		s = s + "Level Number: " + Integer.toString(levelNum) +",\n";

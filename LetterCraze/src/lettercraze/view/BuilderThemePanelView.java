@@ -1,6 +1,8 @@
 package lettercraze.view;
 
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -8,6 +10,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import lettercraze.model.Level;
+import lettercraze.model.Theme;
 
 public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderLevelPanel{
 
@@ -152,7 +155,18 @@ public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderL
 	
 	@Override
 	public Level compileLevelInfo(boolean[][] boardShape, int levelNum) {
-		// TODO Auto-generated method stub
-		return null;
+		//obatin the text from the area word list
+		String s[] = txtAreaWordList.getText().split("\\r?\\n");
+	    ArrayList<String>targetWords = new ArrayList<>(Arrays.asList(s)) ;
+	    
+	    //get the star thresholds
+	    int starThresholds[] = {getOneStarThreshhold(), getTwoStarThreshhold(), getThreeStarThreshhold()};
+	    
+	    String title = this.txtfldThemeTitle.getText();
+	    //build new themelevel from the info and set its board shape
+	    Theme themeLevel = new Theme(levelNum, starThresholds, title, targetWords);
+	    themeLevel.setBoardShape(boardShape);
+	    themeLevel.setUnLocked(true);
+		return themeLevel;
 	}
 }
