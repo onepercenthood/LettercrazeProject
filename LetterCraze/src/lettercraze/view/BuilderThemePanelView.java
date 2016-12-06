@@ -160,11 +160,12 @@ public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderL
 	    ArrayList<String>targetWords = new ArrayList<>(Arrays.asList(s)) ;
 	    
 	    //get the star thresholds
-	    int starThresholds[] = {getOneStarThreshhold(), getTwoStarThreshhold(), getThreeStarThreshhold()};
+	    //int starThresholds[] = {getOneStarThreshhold(), getTwoStarThreshhold(), getThreeStarThreshhold()};
 	    
 	    String title = this.txtfldThemeTitle.getText();
 	    //build new themelevel from the info and set its board shape
-	    Theme themeLevel = new Theme(levelNum, starThresholds, title, targetWords);
+	    //Theme themeLevel = new Theme(levelNum, starThresholds, title, targetWords);
+	    Theme themeLevel = new Theme(levelNum, title, targetWords);
 	    themeLevel.setBoardShape(boardShape);
 	    themeLevel.setUnLocked(true);
 		return themeLevel;

@@ -61,6 +61,8 @@ public class Puzzle extends Level{
 		}
 		return s;
 	}
+	
+	
 //	@Override
 //	public boolean isCompleted(int score) {
 //		// TODO Auto-generated method stub
