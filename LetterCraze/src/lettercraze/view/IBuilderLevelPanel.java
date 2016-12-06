@@ -9,24 +9,29 @@ import lettercraze.model.Level;
  */
 public interface IBuilderLevelPanel {
 
-	/*
-	 * returns the integer value of the required achievement to reach one star
+	/**
+	 * returns the integer value of the required achievement to reach one star.
 	 */
 	public int getOneStarThreshhold();
 	
-	/*
-	 * returns the integer value of the required achievement to reach two stars
+	/**
+	 * returns the integer value of the required achievement to reach two stars.
 	 */
 	public int getTwoStarThreshhold();
 	
-	/*
-	 * returns the integer value of the required achievement to reach three stars
+	/**
+	 * returns the integer value of the required achievement to reach three stars.
 	 */
 	public int getThreeStarThreshhold();
 	
-	/*
-	 * returns a level with the given boardShape and the user-specified parameters
+	/**
+	 * returns a level with the given boardShape and the user-specified parameters.
 	 */
 	public Level compileLevelInfo(boolean[][] boardShape, int levelNum);
+	
+	/**
+	 * resets all the text fields in the level builder panel
+	 */
+	public void resetFields();
 	
 }

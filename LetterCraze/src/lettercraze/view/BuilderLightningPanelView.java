@@ -159,5 +159,13 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 		lightning.setUnLocked(true);
 		return lightning;
 	}
+	
+	@Override
+	public void resetFields(){
+		this.txtfldmaxTimer.setText("");
+		this.txtfldOneStarPoints.setText("");
+		this.txtfldTwoStarPoints.setText("");
+		this.txtfldThreeStarPoints.setText("");
+	}
 
 }

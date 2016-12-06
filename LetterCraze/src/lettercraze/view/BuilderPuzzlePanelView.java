@@ -160,5 +160,13 @@ public class BuilderPuzzlePanelView extends DefaultViewPanel implements IBuilder
 		return puzzle;
 	}
 	
+	@Override
+	public void resetFields(){
+		this.txtfldInputMaxMoves.setText("");
+		this.txtfldOneStar.setText("");
+		this.txtfldTwoStar.setText("");
+		this.txtfldThreeStar.setText("");
+	}
+	
 
 }

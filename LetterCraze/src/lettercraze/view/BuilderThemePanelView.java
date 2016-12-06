@@ -169,4 +169,14 @@ public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderL
 	    themeLevel.setUnLocked(true);
 		return themeLevel;
 	}
+	
+	@Override
+	public void resetFields(){
+		//set all textfields to the empty string
+		this.txtAreaWordList.setText("");
+		this.txtfldOneStar.setText("");
+		this.txtfldTwoStar.setText("");
+		this.txtfldThreeStar.setText("");
+		this.txtfldThemeTitle.setText("");
+	}
 }

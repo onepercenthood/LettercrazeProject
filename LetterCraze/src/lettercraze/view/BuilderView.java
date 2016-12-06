@@ -23,6 +23,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 import lettercraze.BuilderApplication;
+import lettercraze.controller.builder.ResetBoardSquaresController;
 import lettercraze.controller.builder.SaveLevelController;
 import lettercraze.model.Model;
 
@@ -69,8 +70,8 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 	private JTextField textField_6;
 	private BuilderApplication app;
 	private BoardView boardView;
-	
-	
+
+
 	public BuilderView(Model model, JPanel parent, BuilderApplication app) {
 		super();
 		this.model = model;
@@ -81,20 +82,20 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		setBackground(bgColor);
 		initialize();
 	}
-	
+
 	/** set up the whole board view **/
 	public void initialize(){		
-		
+
 		setBounds(100, 100, 900, 620);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.control);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setLayout(null);
-		
+
 		//build the image of the board for toggling the active squares
 		//buildBoardImage();
-		
+
 		boardView = new BoardView(new Color(20,200,160), model, 1, app);
 		boardView.builderInitialize(app);
 		boardView.setSize(408, 440);
@@ -108,57 +109,53 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		comboBox.setBounds(593, 158, 97, 26);
 		comboBox.addItemListener(this);
 		add(comboBox);
-		
-		
-		
+
+
+
 		JLabel lblTitle = new JLabel("LetterCraze: Builder");
 		lblTitle.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 40));
 		lblTitle.setBounds(39, 11, 522, 109);
 		add(lblTitle);
-		
+
 		pnlLevelSwitch = new JPanel();
 		pnlLevelSwitch.setName("pnlLevelSwitch");
 		pnlLevelSwitch.setBounds(479, 192, 379, 362);
 		pnlLevelSwitch.setLayout(new CardLayout());
 		add(pnlLevelSwitch);
-		
+
 		JPanel pnlPuzzle = new BuilderPuzzlePanelView(labelFont);
 		pnlLevelSwitch.add(pnlPuzzle, "Puzzle");
 		pnlPuzzle.setBackground(new Color(0, 128, 0));
 		pnlPuzzle.setLayout(null);
-				
+
 		JPanel pnlLightning = new BuilderLightningPanelView();
 		pnlLightning.setBackground(new Color(255, 140, 0));
 		pnlLevelSwitch.add(pnlLightning, "Lightning");
 		pnlLightning.setLayout(null);
-		
-		
+
+
 		JPanel pnlTheme = new BuilderThemePanelView(labelFont);
 		pnlTheme.setBackground(new Color(255, 0, 255));
 		pnlLevelSwitch.add(pnlTheme, "Theme");
 		pnlTheme.setLayout(null);
-		
+
 		contentPane.setVisible(true);
 		contentPane.repaint();
 		JButton btnReset = new JButton("Reset Level");
-		btnReset.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
+		btnReset.addMouseListener(new ResetBoardSquaresController(this, model));
 		btnReset.setBounds(39, 118, 107, 29);
 		add(btnReset);
-		
+
 		JButton btnSaveLevel = new JButton("Save Level");
 		btnSaveLevel.setBounds(156, 118, 107, 29);
 		btnSaveLevel.addMouseListener(new SaveLevelController(this, model));
 		add(btnSaveLevel);
-		
+
 		JLabel lblLevelType = new JLabel("Level Type");
 		lblLevelType.setFont(labelFont);
 		lblLevelType.setBounds(491, 158, 92, 26);
 		add(lblLevelType);
-		
+
 		JButton btnCloseWithoutSaving = new JButton("Close Without Saving");
 		//TODO replace with close builder controller
 		btnCloseWithoutSaving.addMouseListener(new MouseAdapter() {
@@ -172,26 +169,26 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		add(btnCloseWithoutSaving);
 		repaint();
 	}
-	
+
 	/**
 	 * returns the active level panel for inputting level-specific information
 	 * @return
 	 */
 	public IBuilderLevelPanel getCurrentLevelPanel()
 	{
-	    IBuilderLevelPanel card = null;
+		IBuilderLevelPanel card = null;
 
-	    //find the component that is set to visible (will be a JPanel
-	    for (Component comp : pnlLevelSwitch.getComponents() ) {
-	        if (comp.isVisible() == true) {
-	            card = (IBuilderLevelPanel)comp;
-	        }
-	    }
-	  
-	    return card;
+		//find the component that is set to visible (will be a JPanel
+		for (Component comp : pnlLevelSwitch.getComponents() ) {
+			if (comp.isVisible() == true) {
+				card = (IBuilderLevelPanel)comp;
+			}
+		}
+
+		return card;
 	}
 
-//Getter Methods
+	//Getter Methods
 	public JPanel getContentPane() {
 		return contentPane;
 	}
@@ -256,7 +253,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		return boardView;
 	}
 
-	
+
 	@Override
 	public String getPanelName() {
 		return "BuilderView";
@@ -267,7 +264,20 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 	public void itemStateChanged(ItemEvent evt) {
 		CardLayout cl = (CardLayout) pnlLevelSwitch.getLayout();
 		cl.show(pnlLevelSwitch, (String) evt.getItem());
+
+	}
+
+	public boolean resetAllFields(){
+		//first reset all the squares in the board to true
+		boardView.setAllSquaresActive(this);
 		
+		//next make sure all the textFields in every panel are set to empty
+		for(Component comp: pnlLevelSwitch.getComponents()){
+			IBuilderLevelPanel panel = (IBuilderLevelPanel) comp;
+			panel.resetFields();
+		}
+		
+		return true;
 	}
 }
 

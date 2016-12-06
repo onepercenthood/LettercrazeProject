@@ -151,8 +151,21 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	}
 	
 	/**
+	 * sets all the squares associated with the squareViews in this boardView to active = true.
+	 */
+	public void setAllSquaresActive(BuilderView bv){
+		for(int i = 0; i < 6; i++){
+			for(int j = 0; j < 6; j++){
+				squareViews[i][j].getSquare().setActive(true);
+				squareViews[i][j].repaintSquare();
+			}
+		}
+	}
+	
+	
+	/**
 	 * loads the board view with square views that each contain a JButton
-	 * the text on the JButton representing the letter stored in that square
+	 * the text on the JButton representing the letter stored in that square.
 	 */
 	public void loadInPlayerGrid(){
 		for(int row = 0; row < 6; row++){

@@ -1,5 +1,11 @@
 // Done 
-
+/*
+ * Move timer to model.selectLevelController
+ * Start it with lightning max seconds
+ * Add two action listeners:
+ * 	-onTick (updates gui)
+ *  -finished (ends level, provides pop-up notification that level is over)
+ */
 package lettercraze.model;
 
 import java.awt.event.ActionEvent;
