@@ -54,7 +54,7 @@ public class ToggleSquareController extends MouseAdapter{
 		else if(word != null && word.getWordLength()==0){
 			word.addSquare(toEdit);
 			model.setCurrentWord(word);
-			toEdit.toggleSelected();
+			toEdit.toggleSelected(); 
 			squareView.repaintSquare();
 		}
 		else{
