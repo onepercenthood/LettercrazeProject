@@ -34,15 +34,28 @@ public class ToggleSquareController extends MouseAdapter{
 		Square toEdit = squareView.getSquare();
 		Word word = model.getCurrentWord();
 		
-		if(word != null){
+		if(word != null && word.getWordLength()>0){
 			Square lastSquare = word.getLastSquare();
-			if(toEdit.isAdjacent(lastSquare, toEdit)){
+			if(toEdit.getRow() == word.getLastSquare().getRow() && toEdit.getColumn() == word.getLastSquare().getColumn()){
+				word.removeSquare();
+				model.setCurrentWord(word);
+				toEdit.toggleSelected();
+				squareView.repaintSquare();
+			}
+			
+			else if(toEdit.isAdjacent(lastSquare, toEdit) && !(toEdit.isSelected())){
 				word.addSquare(toEdit);
 				model.setCurrentWord(word);
 				toEdit.toggleSelected();
 				squareView.repaintSquare();
 			}
 			else{}
+		}
+		else if(word != null && word.getWordLength()==0){
+			word.addSquare(toEdit);
+			model.setCurrentWord(word);
+			toEdit.toggleSelected();
+			squareView.repaintSquare();
 		}
 		else{
 			word = new Word(toEdit);

@@ -34,6 +34,11 @@ public class Word {
 		return true;
 	}
 	
+	public boolean removeSquare(){
+		letters.remove(getWordLength()-1);
+		return true;
+	}
+	
 	/**
 	 * A word is only valid if it is at least 3 letters long and 
 	 * 
@@ -76,9 +81,15 @@ public class Word {
 		return lastSquare;
 	}
 	
+	
 	public int getWordLength(){
 		int length = this.letters.size();
 		return length;
+	}
+	
+	public Square getCertainSquare(int num){
+		Square retSquare = this.letters.get(num - 1);
+		return retSquare;
 	}
 
 
