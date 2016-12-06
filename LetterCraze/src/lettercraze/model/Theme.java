@@ -26,14 +26,12 @@ public class Theme extends Level{
 	 * @param theme is the theme word/phrase for the level 
 	 * @param targetWords are the words needed to be found to compete the level
 	 */
-	public Theme(int levelNum, int[] starThresholds, String theme, ArrayList<String> targetWords){
+	public Theme(int levelNum, String theme, ArrayList<String> targetWords){
 		super();
 		this.levelNum = levelNum;
 		this.levelType = "Theme";
 		this.themeCategory = theme;
 		this.targetWords = targetWords;
-		for(int i = 0; i < 3; i++)
-			this.starThreshold[i] = starThresholds[i];
 
 		// Determine star threshold based on the number of words required to find 
 		int size = targetWords.size();
