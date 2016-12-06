@@ -52,7 +52,7 @@ public class ToggleSquareController extends MouseAdapter{
 		}
 		
 		//toggle whether the square is active
-		System.out.println(word.getWordString());
+		System.out.println(word.getWordString()); 
 		System.out.println("Selected: " + toEdit.isSelected() + "Active: " + toEdit.isActive());
 	}
 	
