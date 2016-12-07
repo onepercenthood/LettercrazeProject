@@ -75,7 +75,7 @@ public class Alphabet {
 		if( instance == null){
 			instance = new Alphabet();
 		}
-				
+				 
 		return instance;
 		
 	}
