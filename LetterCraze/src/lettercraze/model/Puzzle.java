@@ -61,6 +61,16 @@ public class Puzzle extends Level{
 		}
 		return s;
 	}
+
+	public int getMaxWords() {
+		return maxWords;
+	}
+
+	public void setMaxWords(int maxWords) {
+		this.maxWords = maxWords;
+	}
+	
+	
 	
 	
 //	@Override
