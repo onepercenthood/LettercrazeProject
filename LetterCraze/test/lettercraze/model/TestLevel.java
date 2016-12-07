@@ -8,6 +8,15 @@ public class TestLevel extends TestCase {
 
 		public void testLevel(){
 			
+			boolean[][] sampleShape = new boolean[6][6];
+			boolean active = true;
+			for(int row = 0; row < 6; row++){
+				for(int col = 0; col < 6; col++){
+					sampleShape[row][col] = active;
+					//active = !active;
+				}
+			}
+				
 			// test puzzle level 
 			Level testPuzzle = new Puzzle(1, new int[]{10, 20, 30} , 10);
 			
@@ -41,5 +50,18 @@ public class TestLevel extends TestCase {
 			
 			Level testLightning = new Lightning(3,new int[]{1, 2, 3}, 30);
 			
+			
+			Level testPuzzleDebug = new Puzzle(9, new int[]{100, 200, 300}, 15);
+			testPuzzleDebug.setBoardShape(sampleShape);
+			String testPuzzleString = testPuzzleDebug.debugString();
+			System.out.println(testPuzzleString);
+			Level testThemeDebug = new Theme(10, "Schools", testThemeWords);
+			testThemeDebug.setBoardShape(sampleShape);
+			String testThemeString = testThemeDebug.debugString();
+			System.out.println(testThemeString);
+			Level testLightningDebug = new Lightning(11, new int[]{5, 10, 15}, 30);
+			testLightningDebug.setBoardShape(sampleShape);
+			String testLightningString = testLightningDebug.debugString();
+			System.out.println(testLightningString);
 		}
 }
