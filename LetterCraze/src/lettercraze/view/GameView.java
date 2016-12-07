@@ -19,12 +19,18 @@ import javax.swing.border.LineBorder;
 
 import javafx.scene.shape.Box;
 import lettercraze.PlayerApplication;
+import lettercraze.controller.player.PlayWordController;
+import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.model.Model;
+import lettercraze.model.Word;
 import lettercraze.view.BoardView;
 
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JList;
 
 public class GameView extends DefaultViewPanel implements IModelChangedView {
 
@@ -50,34 +56,22 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	protected int levelNum;
 
 	private JButton btnExitLevel;
-	
+		
 	private JPanel parent;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JFrame frame = new JFrame();
-			        frame.setPreferredSize(new Dimension(800,800));
-			        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-			        Model m = new Model();
-			        //frame.getContentPane().add(new GameView(m, 1)); //using just lev1 for now, change later
-			        frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JButton btnAddWord;
+
+	private PlayerApplication app;
+
+	private JList<Word> validWordsJList;
+
 
 	/**
 	 * Create the frame.
 	 */
 	public GameView(Model m, int levelNum, PlayerApplication app) {
 		super();
+		this.app = app;
 		this.model = m;
 		this.levelNum = levelNum;
 		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
@@ -119,8 +113,16 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		scoreTextField = new JLabel("400");
 		scoreTextField.setBounds(56, 30, 94, 26);
 		add(scoreTextField);
+		
+		DefaultListModel<Word> jListModel = new DefaultListModel<Word>();
+
+		
+		validWordsJList = new JList<Word>(jListModel);
+		validWordsJList.setCellRenderer(new WordJListRenderer());
+
+		validWordsJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				
-		JScrollPane wordsScrollPane = new JScrollPane();
+		JScrollPane wordsScrollPane = new JScrollPane(validWordsJList);
 		wordsScrollPane.setBounds(439, 82, 338, 414);
 		add(wordsScrollPane);
 			
@@ -161,6 +163,12 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		levelType.setBounds(383, 11, 61, 16);
 		add(levelType);
 		
+		btnAddWord = new JButton("Add Word");
+		btnAddWord.setBounds(282, 49, 117, 29);
+		add(btnAddWord);
+		
+		btnAddWord.addMouseListener(new PlayWordController(app, model,this ));
+		
 	}
 	
 	public JPanel getPlayerPanel() {
@@ -194,11 +202,18 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	public JPanel getParent() {
 		return parent;
 	}
-
-	public void getExitButton(){
-		
+	
+	public JButton getExitButton(){
+		return this.btnExitLevel;
 	}
 	
+	public JButton getAddWordBtn(){
+		return this.btnAddWord;
+	}
+	
+	public JList<Word> getWordsJList(){
+		return this.validWordsJList;
+	}
 	
 
 	@Override

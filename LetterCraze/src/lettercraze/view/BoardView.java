@@ -230,20 +230,5 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 		return boardPanel;
 	}
 	
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					JFrame frame = new JFrame();
-//			        frame.setPreferredSize(new Dimension(800,800));
-//			        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-//			        Model m = new Model();
-//			        //frame.getContentPane().add(new BoardView(Color.GREEN, m, 1,app)); //change from 1 later
-//			        frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	
 }

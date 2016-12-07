@@ -46,6 +46,7 @@ public class Word {
 	 */
 	public boolean isValid(){
 		String word = this.getWordString();
+		System.out.println(WordTable.wordTable);
 		if(letters.size() >= 3 && WordTable.isWord(word)){ return true; }
 		return false; 
 	}
