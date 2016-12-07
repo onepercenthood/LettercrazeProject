@@ -18,12 +18,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import javafx.scene.shape.Box;
+import lettercraze.PlayerApplication;
+import lettercraze.controller.player.PlayWordController;
+import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.model.Model;
+import lettercraze.model.Word;
 import lettercraze.view.BoardView;
 
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JList;
 
 public class GameView extends DefaultViewPanel implements IModelChangedView {
 
@@ -49,67 +56,42 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	protected int levelNum;
 
 	private JButton btnExitLevel;
-	
+		
 	private JPanel parent;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JFrame frame = new JFrame();
-			        frame.setPreferredSize(new Dimension(800,800));
-			        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-			        Model m = new Model();
-			        frame.getContentPane().add(new GameView(m, 1)); //using just lev1 for now, change later
-			        frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JButton btnAddWord;
+
+	private PlayerApplication app;
+
+	private JList<Word> validWordsJList;
+
 
 	/**
 	 * Create the frame.
 	 */
-	public GameView(Model m, int levelNum) {
+	public GameView(Model m, int levelNum, PlayerApplication app) {
 		super();
+		this.app = app;
 		this.model = m;
 		this.levelNum = levelNum;
-		this.boardview = new BoardView(colorPlayer, this.model, levelNum);
+		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
+		boardview.playerInitialize(app);
 		createPanel();
-		loadBoardView();
-
 	}
 	
 	/**
 	 * Create the frame.
+	 * @wbp.parser.constructor
 	 */
-	public GameView(Model m, JPanel parent) {
+	public GameView(Model m, JPanel parent, PlayerApplication app) {
 		this.model = m;
 		this.levelNum = 1;
-		this.boardview = new BoardView(colorPlayer, this.model, levelNum);
+		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
+		boardview.playerInitialize(app);
 		this.parent = parent;
 		createPanel();
-		loadBoardView();
-
 	}
 	
-	private void loadBoardView() {
-		// TODO Auto-generated method stub
-		
-		JPanel boardViewPanel = boardview.getBoardPanel();
-		
-		Dimension size = playerPanel.getSize();
-		size.height = size.height - 5;
-		
-		boardViewPanel.setPreferredSize(size);
-		
-		playerPanel.add(boardview.getBoardPanel());
-	}
 
 	/**
 	 * Loads in all the GUI elements
@@ -117,8 +99,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	public void createPanel(){
 				
 		setBorder(new EmptyBorder(5, 5, 5, 5));
-//		setContentPane(contentPane);
 		setLayout(null);
+		add(boardview);
 		
 		titleTextField = new JLabel("LetterCraze");
 		titleTextField.setBounds(6, 6, 94, 26);
@@ -127,27 +109,23 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		JLabel scoreLabelTextField = new JLabel("Score:");
 		scoreLabelTextField.setBounds(6, 30, 94, 26);
 		add(scoreLabelTextField);
-		
+		 
 		scoreTextField = new JLabel("400");
 		scoreTextField.setBounds(56, 30, 94, 26);
 		add(scoreTextField);
 		
-		playerPanel = new JPanel();
+		DefaultListModel<Word> jListModel = new DefaultListModel<Word>();
 
-		playerPanel.setBackground(colorPlayer);
-//		playerPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		playerPanel.setBounds(16, 82, 383, 414);
-		add(playerPanel);
-//		playerPanel.setLayout(new GridLayout(6, 6, 0, 0));
 		
-//		loadInPlayerGrid();
-		
-		JScrollPane wordsScrollPane = new JScrollPane();
+		validWordsJList = new JList<Word>(jListModel);
+		validWordsJList.setCellRenderer(new WordJListRenderer());
+
+		validWordsJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				
+		JScrollPane wordsScrollPane = new JScrollPane(validWordsJList);
 		wordsScrollPane.setBounds(439, 82, 338, 414);
 		add(wordsScrollPane);
-		
-//		Box box = Box.createVerticalBox();
-		
+			
 		JLabel lblWords = new JLabel("Words");
 		lblWords.setBounds(439, 49, 61, 16);
 		add(lblWords);
@@ -166,51 +144,79 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		
 		JPanel panel_stars = new JPanel();
 		panel_stars.setBounds(6, 56, 94, 26);
-		starRater = new StarRater(3, 3 );
+		starRater = new StarRater(3, 0 );
 		starRater.setBounds(0, 6, 48, 16);
-		starRater.addStarListener(new StarRater.StarListener() {
+		//starRater.addStarListener(new StarRater.StarListener() {
 
-			@Override
-			public void handleSelection(int selection) {
+		//	@Override
+			//public void handleSelection(int selection) {
 				// TODO Auto-generated method stub
 				
-			}
-		
-		});
+		//	}
+	//}
+
 		panel_stars.setLayout(null);
-		panel_stars.add(starRater);
+	    panel_stars.add(starRater);
 		add(panel_stars);
 		
 		levelType = new JLabel("N/A");
 		levelType.setBounds(383, 11, 61, 16);
 		add(levelType);
 		
+		btnAddWord = new JButton("Add Word");
+		btnAddWord.setBounds(278, 42, 117, 29);
+		add(btnAddWord);
+		
+		btnAddWord.addMouseListener(new PlayWordController(app, model,this ));
+		
+		JButton btnClearWord = new JButton("Clear Word");
+		btnClearWord.setBounds(131, 43, 117, 29);
+		add(btnClearWord);
+		
 	}
 	
-	public void getExitButton(){
-		
+	public JPanel getPlayerPanel() {
+		return playerPanel;
 	}
-	public void loadInPlayerGrid(){
-		
-		int row = 6;
-		int col = 6;
-		
 
-		
-		for( int i = 1; i <= col; i++ ){
-			for( int j = 1; j <= row; j++){
-				JPanel newPanel = new JPanel();
-				newPanel.setBackground(SystemColor.activeCaption);
-				newPanel.setBorder(new LineBorder(colorPlayer));
-				playerPanel.add(newPanel);
-				gridPanels.add(newPanel);
+	public ArrayList<JPanel> getGridPanels() {
+		return gridPanels;
+	}
 
-			}
-		}
-		
-		repaint();
-		
-		
+	public JLabel getLevelType() {
+		return levelType;
+	}
+
+	public JLabel getScoreTextField() {
+		return scoreTextField;
+	}
+
+	public Model getModel() {
+		return model;
+	}
+
+	public int getLevelNum() {
+		return levelNum;
+	}
+
+	public JButton getBtnExitLevel() {
+		return btnExitLevel;
+	}
+
+	public JPanel getParent() {
+		return parent;
+	}
+	
+	public JButton getExitButton(){
+		return this.btnExitLevel;
+	}
+	
+	public JButton getAddWordBtn(){
+		return this.btnAddWord;
+	}
+	
+	public JList<Word> getWordsJList(){
+		return this.validWordsJList;
 	}
 	
 

@@ -64,9 +64,9 @@ public class Alphabet {
 		while((freqSum < randCumulativeFreq) && vals.hasNext()){
 			l = vals.next();
 			freqSum += l.getFrequency() / 100;
-			//System.out.println("freqSum: " + freqSum + "rand cum freq: " + l.getFrequency() / 100);
+	
 		}
-		//System.out.println("freqSum: " + freqSum + "rand cum freq: " + randCumulativeFreq);
+		
 		return l;
 		
 	}

@@ -32,7 +32,7 @@ abstract public class Level {
 	protected boolean[][] boardShape;
 	
 	/** Stores the High Score for the level*/
-	protected int highScore;
+	protected int highScore = 0;
 	
 	/** Stores the required score to each each Star
 	 * Puzzle = number of points
@@ -42,14 +42,13 @@ abstract public class Level {
 	protected int[] starThreshold = new int[3]; 
 	
 	/** True if level has been unlocked and available to be played */
-	protected boolean isUnlocked;
+	protected boolean isUnlocked = false;
 	
 	/**
 	 * Default Constructor for Level subclasses 
 	 */
 	protected Level(){
-		super();
-		
+		super();		
 	}
 	
 	
@@ -154,10 +153,22 @@ abstract public class Level {
 	 */
 	public int getHighStars(int score){
 		int stars = 0;
-		if(score > this.starThreshold[0]) {stars = 1;}
-		if(score > this.starThreshold[1]) {stars = 2;}
-		if(score > this.starThreshold[2]) {stars = 3;}
+		if(score >= this.starThreshold[0]) {stars = 1;}
+		if(score >= this.starThreshold[1]) {stars = 2;}
+		if(score >= this.starThreshold[2]) {stars = 3;}
 		return stars;
 	}
+	
+	/**
+	 * 
+	 * @return a string that shows the state of all the variables for use in debugging
+	 */
+	abstract public String debugString();
+	
+	
+//	/**TODO
+//	 * Converts the level to a string describing the values of each field
+//	 */
+//	public abstract String toString();
 
 }

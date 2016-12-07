@@ -31,7 +31,7 @@ public class Model {
 	protected ArrayList<Level> levels = new ArrayList<Level>(); 
 	
 	/** The Current Word being played */
-	protected TestWord currentWord;
+	protected Word currentWord;
 
 	/** Dictionary that stores all possible words that can be played */
 	protected WordTable possibleWords;
@@ -51,10 +51,13 @@ public class Model {
 		}
 		
 		boolean[][] sampleShape = new boolean[6][6];
+		boolean active = true;
 		for(int row = 0; row < 6; row++){
 			for(int col = 0; col < 6; col++){
-				sampleShape[row][col] = true;
+				sampleShape[row][col] = active;
+				//active = !active;
 			}
+			//active = !active;
 		}
 		//Puzzle level1 = new Puzzle(1, new int[]{1, 2, 3} , 10);
 		//level1.setBoardShape(sampleShape);
@@ -118,7 +121,6 @@ public class Model {
 		System.out.println("value of level 0: "  + levels.get(0));
 		BoardState newState = new BoardState(levels.get(levelNum - 1).getBoardShape());
 		boardStates.add(newState);
-		
 	}
 	
 	/**
@@ -200,7 +202,7 @@ public class Model {
 	 * @param s
 	 * @return
 	 */
-	public boolean removeSelectedSquare( Square s){
+	public boolean removeSelectedSquare(Square s){
 		return false;
 	}
 	
@@ -208,6 +210,14 @@ public class Model {
 	 * 
 	 * @return
 	 */
+	public Word getCurrentWord(){
+		return this.currentWord;
+	}
+	
+	public void setCurrentWord(Word wordIn){
+		this.currentWord = wordIn;
+	}
+	
 	public boolean clearCurrentWord(){
 		return true;
 	}

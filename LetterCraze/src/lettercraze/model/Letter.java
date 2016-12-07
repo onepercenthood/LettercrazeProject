@@ -53,6 +53,11 @@ public class Letter {
 	 public double getFrequency(){
 		 return this.frequency;
 	 }
+	 
+	 @Override
+	 public String toString(){
+		 return this.letter + ", " +Integer.toString(value);
+	 }
 }
 
 

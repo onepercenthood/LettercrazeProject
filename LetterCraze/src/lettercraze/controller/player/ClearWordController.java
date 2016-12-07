@@ -1,4 +1,4 @@
-package lettercraze.controller.builder;
+package lettercraze.controller.player;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -6,35 +6,40 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import lettercraze.BuilderApplication;
+import lettercraze.PlayerApplication;
 import lettercraze.view.SquareView;
 import lettercraze.model.Model;
 import lettercraze.model.Square;
+import lettercraze.model.Word;
 
-public class SelectBoardSquareController extends MouseAdapter{
+public class ClearWordController extends MouseAdapter{
 
 	/** The game to be manipulated **/
 	Model model;
-	
+
 	/** the top level application for navigation purposes **/
-	BuilderApplication application;
-	
+	PlayerApplication application;
+
 	/** the squareview that was clicked **/
 	SquareView squareView;
-	
-	public SelectBoardSquareController(BuilderApplication app, SquareView squareView, Model model) {
+
+	public ClearWordController(PlayerApplication playerApp, SquareView squareView, Model model) {
 		super();
 		this.model = model;
-		this.application = app;
+		this.application = playerApp;
 		this.squareView = squareView;
 	}
-	
-	public void mousePressed(MouseEvent me){
-		Square toEdit = squareView.getSquare();
-		//toggle whether the square is active
-		toEdit.setActive(!toEdit.isActive());
-		squareView.repaintSquare();
-		System.out.println("Selected: " + toEdit.isSelected() + "Active: " + toEdit.isActive());
-	}
-	
 
+	public void mousePressed(MouseEvent me){
+		Word word = model.getCurrentWord();
+		Square toEdit = squareView.getSquare();
+		while(word.getWordLength() > 0){
+			word = model.getCurrentWord();
+			word.removeSquare();
+			model.setCurrentWord(word);
+			toEdit.toggleSelected();
+			squareView.repaintSquare();
+		}
+
+	}
 }

@@ -44,7 +44,7 @@ public class BoardState{
 			for(int col = 0; col < 6; col++){
 				squares[row][col]= new Square(row, col);
 				if(shape[row][col]){
-					squares[row][col].toggleSelected();
+					squares[row][col].toggleActive();
 				}				
 			}
 		}

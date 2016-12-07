@@ -21,6 +21,7 @@ import java.awt.Insets;
 import java.util.ArrayList;
 
 import net.miginfocom.swing.MigLayout;
+import javax.swing.ScrollPaneConstants;
 
 public class MenuView extends DefaultViewPanel implements IModelChangedView {
 
@@ -85,28 +86,29 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		JLabel lblLettercrazeMainMenu = new JLabel("LetterCraze Main Menu");
 
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
 		gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-						.addContainerGap(328, Short.MAX_VALUE)
-						.addComponent(lblLettercrazeMainMenu)
-						.addGap(319))
+			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-						.addGap(45)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 692, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(53, Short.MAX_VALUE))
-				);
+					.addContainerGap(360, Short.MAX_VALUE)
+					.addComponent(lblLettercrazeMainMenu)
+					.addGap(319))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(45)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 692, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(53, Short.MAX_VALUE))
+		);
 		gl_panel.setVerticalGroup(
-				gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(lblLettercrazeMainMenu)
-						.addGap(18)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 377, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(173, Short.MAX_VALUE))
-				);
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblLettercrazeMainMenu)
+					.addGap(18)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 446, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(104, Short.MAX_VALUE))
+		);
 		
 		
 		Container cont = new Container();

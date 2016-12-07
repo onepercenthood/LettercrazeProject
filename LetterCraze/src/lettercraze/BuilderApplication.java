@@ -71,6 +71,10 @@ public class BuilderApplication extends JFrame {
 
 	BuilderView builderView;
 	
+	public BuilderView getBuilderView() {
+		return builderView;
+	}
+
 	/**
 	 * 
 	 * This is the main Panel which will hold all the other views inside of.
@@ -124,7 +128,6 @@ public class BuilderApplication extends JFrame {
 		
 //		panelMain.add(splashView, splashView.getName());
         initializeViewClasses();
-		loadInLevels();
         
         pack();
 
@@ -132,45 +135,12 @@ public class BuilderApplication extends JFrame {
 	
 	public void initializeViewClasses(){
 		menuView = new BuilderMenuView(panelMain, model, this );
-		builderView = new BuilderView(model, panelMain);
+		builderView = new BuilderView(model, panelMain, this);
 		panelMain.add(menuView, menuView.getPanelName());
 		panelMain.add(builderView, builderView.getPanelName()); 	
 		
 	}
 	
-	/**
-	 * Load in the levels to the menu object.
-	 */
-	public void loadInLevels(){
-//		int col =5;
-//		int row = 4;
-//
-//		int total_count = 0;
-//
-//		String[] levelTypes = {"Puzzle", "Lightning", "Theme"};
-//		Color[] levelColors = {Color.GREEN, Color.ORANGE, Color.PINK};
-//
-//		String levelType;
-//		int levelI;
-//		for( int rowi = 1; rowi < row; rowi++ ){
-//
-//			for( int coli=0; coli < col; coli++){
-//				levelI = total_count % 3;
-//				levelType = levelTypes[levelI];
-//				total_count += 1;
-//				
-//				LevelPreviewView level = new LevelPreviewView(levelType, levelColors[levelI], total_count, 0, cardLayout, this);
-//				
-//				level.setEnabled(true);
-//				
-//				menuView.addMenuItemToDefault(level);
-//				
-//			}
-//
-//		}
-		
-		panelMain.repaint();
-	}
 	
 	/**
 	 * Invoked whenever model is changed and the application needs to refresh

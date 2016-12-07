@@ -27,6 +27,7 @@ public class WordTable {
 			word = word.trim();
 			table.put(word, Boolean.TRUE);
 		}
+
 	}
 	
 	/**
