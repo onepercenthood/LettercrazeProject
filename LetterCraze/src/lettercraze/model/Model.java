@@ -59,11 +59,11 @@ public class Model {
 			}
 			//active = !active;
 		}
-		//Puzzle level1 = new Puzzle(1, new int[]{1, 2, 3} , 10);
-		//level1.setBoardShape(sampleShape);
-		//level1.setUnLocked(true);
-		//levels.add(level1);	
-		loadLevelsFromDisk();
+		Puzzle level1 = new Puzzle(1, new int[]{1, 2, 3} , 10);
+		level1.setBoardShape(sampleShape);
+		level1.setUnLocked(true);
+		levels.add(level1);	
+		//loadLevelsFromDisk();
 		initiateLevel(1);
 		//saveLevelsToDisk();
 	}
@@ -126,7 +126,7 @@ public class Model {
 	/**
 	 * Write all the levels to disk in JSON format
 	 */
-	public void saveLevelsToDisk(){
+	/*public void saveLevelsToDisk(){
 		ObjectMapper mapper = new ObjectMapper(); 
 		Level currentLevel;
 		for (Iterator<Level> i = levels.iterator(); i.hasNext(); ) {
@@ -151,7 +151,7 @@ public class Model {
 	/**
 	 * Convert all levels from persistent JSON files to java objects stored in levels ArrayList
 	 */
-	public void loadLevelsFromDisk(){
+	/*public void loadLevelsFromDisk(){
 		File levelFolder = new File("levels");
 		File[] levelFiles = levelFolder.listFiles();
 		ObjectMapper mapper = new ObjectMapper();
@@ -186,7 +186,7 @@ public class Model {
 					e.printStackTrace();
 				}
 		    }
-	}
+	}*/
 
 	/**
 	 * 
