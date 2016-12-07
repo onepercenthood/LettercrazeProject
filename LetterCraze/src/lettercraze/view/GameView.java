@@ -164,10 +164,14 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		add(levelType);
 		
 		btnAddWord = new JButton("Add Word");
-		btnAddWord.setBounds(282, 49, 117, 29);
+		btnAddWord.setBounds(278, 42, 117, 29);
 		add(btnAddWord);
 		
 		btnAddWord.addMouseListener(new PlayWordController(app, model,this ));
+		
+		JButton btnClearWord = new JButton("Clear Word");
+		btnClearWord.setBounds(131, 43, 117, 29);
+		add(btnClearWord);
 		
 	}
 	

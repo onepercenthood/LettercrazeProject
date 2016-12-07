@@ -16,6 +16,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class SplashScreen extends DefaultViewPanel{
 
@@ -25,43 +27,132 @@ public class SplashScreen extends DefaultViewPanel{
 	 */
 	public SplashScreen(String builderOrPlayer) {
 		super();
-		setBounds(100, 100, 450, 300);
+		setBackground(new Color(204, 255, 255));
+		setBounds(100, 100, 876, 564);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(null);
 		
-		JLabel lblLettercraze = new JLabel("LetterCraze");
-		lblLettercraze.setBounds(182, 65, 105, 16);
-		add(lblLettercraze);
-		
 		JLabel lblGroupManganese = new JLabel("Group Manganese");
-		lblGroupManganese.setBounds(163, 90, 144, 16);
+		lblGroupManganese.setForeground(new Color(255, 69, 0));
+		lblGroupManganese.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblGroupManganese.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGroupManganese.setBounds(357, 280, 144, 16);
 		add(lblGroupManganese);
 		
 		JLabel lblDavidDeisadze = new JLabel("David Deisadze");
-		lblDavidDeisadze.setBounds(163, 113, 144, 16);
+		lblDavidDeisadze.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDavidDeisadze.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDavidDeisadze.setBounds(357, 307, 144, 16);
 		add(lblDavidDeisadze);
 		
 		JLabel lblDerekFeehrer = new JLabel("Derek Feehrer");
-		lblDerekFeehrer.setBounds(163, 136, 144, 16);
+		lblDerekFeehrer.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDerekFeehrer.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDerekFeehrer.setBounds(357, 330, 144, 16);
 		add(lblDerekFeehrer);
 		
 		JLabel lblJackHarding = new JLabel("Jack Harding");
-		lblJackHarding.setBounds(163, 155, 144, 16);
+		lblJackHarding.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblJackHarding.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJackHarding.setBounds(357, 349, 144, 16);
 		add(lblJackHarding);
 		
 		JLabel lblZackHood = new JLabel("Zack Hood");
-		lblZackHood.setBounds(163, 176, 144, 16);
+		lblZackHood.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblZackHood.setHorizontalAlignment(SwingConstants.CENTER);
+		lblZackHood.setBounds(357, 370, 144, 16);
 		add(lblZackHood);
 		
 		JLabel lblDeanSchifilliti = new JLabel("Dean Schifilliti");
-		lblDeanSchifilliti.setBounds(163, 197, 144, 16);
+		lblDeanSchifilliti.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDeanSchifilliti.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDeanSchifilliti.setBounds(357, 391, 144, 16);
 		add(lblDeanSchifilliti);
 		
 		
 		JLabel JbuilderOrPlayer = new JLabel(builderOrPlayer);
+		JbuilderOrPlayer.setForeground(new Color(0, 0, 255));
+		JbuilderOrPlayer.setHorizontalAlignment(SwingConstants.CENTER);
 		JbuilderOrPlayer.setFont(new Font("Lucida Grande", Font.PLAIN, 19));
-		JbuilderOrPlayer.setBounds(140, 25, 167, 28);
+		JbuilderOrPlayer.setBounds(344, 228, 167, 28);
 		add(JbuilderOrPlayer);
+		
+		JLabel label = new JLabel("L");
+		label.setForeground(new Color(255, 0, 0));
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("Tahoma", Font.ITALIC, 50));
+		label.setBounds(202, 118, 208, 40);
+		add(label);
+		
+		JLabel lblLettercraze = new JLabel("e");
+		lblLettercraze.setForeground(new Color(0, 0, 255));
+		lblLettercraze.setFont(new Font("Tahoma", Font.ITALIC, 50));
+		lblLettercraze.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLettercraze.setBounds(227, 118, 208, 40);
+		add(lblLettercraze);
+		
+		JLabel lblT = new JLabel("t");
+		lblT.setForeground(new Color(255, 140, 0));
+		lblT.setHorizontalAlignment(SwingConstants.CENTER);
+		lblT.setFont(new Font("Tahoma", Font.ITALIC, 50));
+		lblT.setBounds(247, 118, 208, 40);
+		add(lblT);
+		
+		JLabel label_1 = new JLabel("t");
+		label_1.setForeground(new Color(0, 255, 0));
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setFont(new Font("Tahoma", Font.ITALIC, 50));
+		label_1.setBounds(263, 118, 208, 40);
+		add(label_1);
+		
+		JLabel label_2 = new JLabel("e");
+		label_2.setForeground(new Color(255, 0, 255));
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setFont(new Font("Tahoma", Font.ITALIC, 50));
+		label_2.setBounds(285, 118, 208, 40);
+		add(label_2);
+		
+		JLabel lblR = new JLabel("r");
+		lblR.setForeground(new Color(255, 255, 0));
+		lblR.setHorizontalAlignment(SwingConstants.CENTER);
+		lblR.setFont(new Font("Tahoma", Font.ITALIC, 50));
+		lblR.setBounds(307, 118, 208, 40);
+		add(lblR);
+		
+		JLabel lblC = new JLabel("C");
+		lblC.setForeground(new Color(0, 0, 255));
+		lblC.setHorizontalAlignment(SwingConstants.CENTER);
+		lblC.setFont(new Font("Tahoma", Font.ITALIC, 50));
+		lblC.setBounds(342, 118, 208, 40);
+		add(lblC);
+		
+		JLabel label_3 = new JLabel("r");
+		label_3.setForeground(new Color(138, 43, 226));
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
+		label_3.setFont(new Font("Tahoma", Font.ITALIC, 50));
+		label_3.setBounds(364, 118, 208, 40);
+		add(label_3);
+		
+		JLabel lblA = new JLabel("a");
+		lblA.setForeground(new Color(255, 0, 0));
+		lblA.setHorizontalAlignment(SwingConstants.CENTER);
+		lblA.setFont(new Font("Tahoma", Font.ITALIC, 50));
+		lblA.setBounds(386, 118, 208, 40);
+		add(lblA);
+		
+		JLabel lblZ = new JLabel("z");
+		lblZ.setForeground(new Color(0, 255, 0));
+		lblZ.setHorizontalAlignment(SwingConstants.CENTER);
+		lblZ.setFont(new Font("Tahoma", Font.ITALIC, 50));
+		lblZ.setBounds(409, 118, 208, 40);
+		add(lblZ);
+		
+		JLabel label_4 = new JLabel("e");
+		label_4.setForeground(new Color(255, 140, 0));
+		label_4.setHorizontalAlignment(SwingConstants.CENTER);
+		label_4.setFont(new Font("Tahoma", Font.ITALIC, 50));
+		label_4.setBounds(432, 118, 208, 40);
+		add(label_4);
 	}
 	
 	
@@ -89,5 +180,4 @@ public class SplashScreen extends DefaultViewPanel{
 		// TODO Auto-generated method stub
 		return "SplashView";
 	}
-
 }
