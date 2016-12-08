@@ -49,7 +49,7 @@ public class PlayWordController extends MouseAdapter{
 				
 			}
 			else{
-				System.out.println("Word is not valid.");
+				System.out.println("Word is not valid."); 
 			}
 		}
 			
