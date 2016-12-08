@@ -65,6 +65,16 @@ public class Theme extends Level{
 		}
 		return s;
 	}
+
+	public String getThemeCategory() {
+		return themeCategory;
+	}
+
+	public ArrayList<String> getTargetWords() {
+		return targetWords;
+	}
+	
+	
 	//	@Override
 	//	public boolean isCompleted(int score) {
 	//		// TODO Auto-generated method stub

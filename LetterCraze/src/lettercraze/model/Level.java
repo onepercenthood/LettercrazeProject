@@ -2,6 +2,12 @@
 
 package lettercraze.model;
 
+import java.io.File;
+import java.io.IOException;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Abstract Level class. Serves as the superclass of all the different types
@@ -65,6 +71,50 @@ abstract public class Level {
 	}
 	
 	
+	/**
+	 * Return the level type string of this level
+	 * 
+	 * @return String levelType
+	 */
+	public String getLevelType(){
+		return this.levelType;
+	}
+	
+	/**
+	 * Return the given star threshold array for this level
+	 * 
+	 * @return int starThreshold
+	 */
+	public int[] getStarThreshold(){
+		return this.starThreshold;
+	}
+	
+	/**
+	 * Return the value for isUnlocked for this level
+	 * 
+	 * @return boolean starThreshold
+	 */
+	public boolean getIsUnlocked(){
+		return this.isUnlocked;
+	}
+	
+	/**
+	 * Return the current high score on this level
+	 * 
+	 * @return int highScore
+	 */
+	public int getHighScore(){
+		return this.highScore;
+	}
+	
+	/**
+	 * Return the level number of this level
+	 * 
+	 * @return int levelNum
+	 */
+	public int getLevelNum(){
+		return this.levelNum;
+	}
 	 
 	 
 	/**

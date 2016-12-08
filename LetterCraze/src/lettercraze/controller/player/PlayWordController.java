@@ -31,17 +31,18 @@ public class PlayWordController extends MouseAdapter{
 	
 	public void mousePressed(MouseEvent me){
 		Word word = model.getCurrentWord();
-				
+		DefaultListModel wordsListModel = (DefaultListModel) gameView.getWordsJList().getModel();
+
 		if( word != null){
-			if(word.isValid()){
+			if(word.isValid() && !wordsListModel.contains(word)){
 				System.out.println("Word is valid");
 				System.out.println(word);
 				
-				DefaultListModel wordsListModel = (DefaultListModel) gameView.getWordsJList().getModel();
 				
 				wordsListModel.addElement(word);
 				
-//				gameView.get
+				model.setCurrentWord(null);
+				
 			}
 			else{
 				System.out.println("Word is not valid.");

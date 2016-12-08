@@ -189,6 +189,20 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 		}	
 	}
 	
+	/**
+	 * @return the desired boardShape from the squares pointed to by the gui
+	 */
+	public boolean[][] getBoardShape(){
+		boolean shape[][] = new boolean[6][6];
+		//get all the squareViews from the GUI
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col++){
+				shape[row][col] = squareViews[row][col].getSquare().isActive();
+			}
+		}
+		return shape;
+	}
+	
 	public Color getColorPlayer() {
 		return colorPlayer;
 	}
