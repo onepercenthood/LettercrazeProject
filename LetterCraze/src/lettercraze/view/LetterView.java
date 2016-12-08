@@ -30,7 +30,8 @@ public class LetterView extends JLabel{
 		if(letter != null){
 			this.setText(letter.getLetter());
 			this.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 30));
-		} else {
+		} 
+		else{
 			this.setText("");
 		}
 	}

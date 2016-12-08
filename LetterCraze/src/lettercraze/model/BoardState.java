@@ -16,25 +16,25 @@ import java.util.ArrayList;
  *
  */
 public class BoardState{
-	
+
 	/** Current Score of the day */
 	protected int score;
-	
+
 	/** Current number of stars earned */
 	protected int stars;
-	
+
 	/** Array List of the words that have been played so far */ 
 	protected ArrayList<TestWord> foundWords = new ArrayList<TestWord>();
-	
+
 	/** Two dimensional representations of the squares on the board */
 	protected Square[][] squares = new Square[6][6] ;
-	
+
 	/** */
 	protected BasicFiller basicFiller;
-	
+
 	/** */ 
 	protected ThemeFiller themeFiller;
-	
+
 	/**
 	 * Construct entity for initial start of playing a level. 
 	 * @param shape is the initial shape of the board taken from the Level
@@ -49,11 +49,11 @@ public class BoardState{
 			}
 		}
 		basicFiller = new BasicFiller();
-		Square[][] square = basicFiller.initialFill(squares);
+		squares = basicFiller.initialFill(squares);
 		score = 0;
 		stars = 0;
 	}
-	
+
 	/**
 	 * Construct used to create a new BoardState when a word in played.
 	 * Produces a new BoardState which then becomes the current state the
@@ -63,10 +63,29 @@ public class BoardState{
 	 * @param playedWord is the word submitted to be played
 	 */
 	public BoardState(BoardState oldState, TestWord playedWord){
-		
+
 	}
-	
-	
+
+	/**
+	 * deselects all the squares in the board
+	 */
+	public void deselectAllSquares(){
+		for(int i = 0; i < 6; i++){
+			for(int j = 0; j < 6; j ++){
+				this.squares[i][j].setSelected(false);
+			}
+		}
+	}
+
+	public void removeLetterFromSquares(Word word){
+		
+		ArrayList<Square> squareArr = word.getLetters();
+ 
+		for(Square curSquare : squareArr){
+			
+			curSquare.setIsLetterAlreadyUsedInWord(true);
+		}
+	}
 	/**
 	 * 
 	 * Return the squares in this board state

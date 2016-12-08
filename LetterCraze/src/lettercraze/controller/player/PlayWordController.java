@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.DefaultListModel;
 
 import lettercraze.PlayerApplication;
+import lettercraze.model.BoardState;
 import lettercraze.model.Model;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
@@ -36,16 +37,22 @@ public class PlayWordController extends MouseAdapter{
 		if( word != null){
 			if(word.isValid() && !wordsListModel.contains(word)){
 				System.out.println("Word is valid");
-				System.out.println(word);
+				System.out.println(word.getWordString());
 				
+//				BoardView n
+				Word copyOfWord = word;
 				
-				wordsListModel.addElement(word);
-				
+				wordsListModel.addElement(copyOfWord);
+				BoardState tempBoard = model.getCurrentBoardState();
+				tempBoard.removeLetterFromSquares(word);
+				tempBoard.deselectAllSquares();
 				model.setCurrentWord(null);
+				model.setCurrentBoardState(tempBoard);
+				gameView.getBoardView().repaintAllSquares();
 				
 			}
 			else{
-				System.out.println("Word is not valid.");
+				System.out.println("Word is not valid."); 
 			}
 		}
 			

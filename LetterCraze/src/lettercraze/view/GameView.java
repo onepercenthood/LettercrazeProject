@@ -19,6 +19,7 @@ import javax.swing.border.LineBorder;
 
 import javafx.scene.shape.Box;
 import lettercraze.PlayerApplication;
+import lettercraze.controller.player.ClearWordController;
 import lettercraze.controller.player.PlayWordController;
 import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.model.Model;
@@ -165,12 +166,12 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		
 		btnAddWord = new JButton("Add Word");
 		btnAddWord.setBounds(278, 42, 117, 29);
-		add(btnAddWord);
-		
-		btnAddWord.addMouseListener(new PlayWordController(app, model,this ));
+		add(btnAddWord);		
+		btnAddWord.addMouseListener(new PlayWordController(app, model, this ));
 		
 		JButton btnClearWord = new JButton("Clear Word");
 		btnClearWord.setBounds(131, 43, 117, 29);
+		btnClearWord.addMouseListener(new ClearWordController(app, this.boardview, model));
 		add(btnClearWord);
 		
 	}
@@ -243,4 +244,9 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	public StarRater getStarRater() {
 		return starRater;
 	}
+	
+	public BoardView getBoardView(){
+		return boardview;
+	}
+
 }

@@ -25,6 +25,11 @@ public class Square {
 
 	/** True if the square has been selected by the Player to form word */
 	protected boolean isSelected; 
+	
+	/**
+	 * True if the square has been already used in a word
+	 */
+	protected boolean isLetterAlreadyUsedInWord;
 
 	Alphabet alphInst = Alphabet.getInstance();
 
@@ -34,6 +39,7 @@ public class Square {
 		this.letter = null;
 		this.isActive = false;
 		this.isSelected = false;
+		this.isLetterAlreadyUsedInWord = false;
 
 	}
 
@@ -72,6 +78,21 @@ public class Square {
 
 		return letter;
 
+	}
+	
+	public void setLetter(Letter letter){
+		this.letter = letter;
+	}
+	
+	/**
+	 * Updates the letter to null, because it was already used in a word
+	 */
+	public void setIsLetterAlreadyUsedInWord(Boolean val){
+		this.isLetterAlreadyUsedInWord = val;
+	}
+	
+	public boolean getIsLetterAlreadyUsedInWord(){
+		return this.isLetterAlreadyUsedInWord;
 	}
 
 	/**
@@ -127,5 +148,11 @@ public class Square {
 	public boolean isSelected() {
 		return isSelected;
 	}
+	
+	public void setSelected(boolean isSelected) {
+
+		this.isSelected = isSelected;
+	}
+
 
 }
