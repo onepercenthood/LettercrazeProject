@@ -73,6 +73,10 @@ public class Square {
 		return letter;
 
 	}
+	
+	public void setLetter(Letter letter){
+		this.letter = letter;
+	}
 
 	/**
 	 * Updates the isSelected variable if a Player performs a Mouse Clicks 

@@ -14,10 +14,10 @@ import java.util.ArrayList;
  *
  */
 public class Word {
-	
+
 	/** An Array List to track all the letters contained in a word */
 	private ArrayList<Square> letters = new ArrayList<Square>();
-	
+
 	/**
 	 * Model Constructor 
 	 * <p>
@@ -28,17 +28,17 @@ public class Word {
 	public Word(Square s){
 		letters.add(s);
 	}
-	
+
 	public boolean addSquare(Square s){
 		letters.add(s);
 		return true;
 	}
-	
+
 	public boolean removeSquare(){
 		letters.remove(getWordLength()-1);
 		return true;
 	}
-	
+
 	/**
 	 * A word is only valid if it is at least 3 letters long and 
 	 * 
@@ -63,7 +63,7 @@ public class Word {
 		}
 		return wordScore * (wordLength-2);
 	}
-	
+
 	/**
 	 * Changes the ArrayList of Letters into a String 
 	 * <p>
@@ -71,23 +71,28 @@ public class Word {
 	 */
 	public String getWordString(){
 		String wordString = "";
-		for(Square s : letters){
-			wordString += s.getLetter().getLetter();
-		}
-		return wordString;
+			for(Square s : letters){
+				if(s.getLetter() == null){
+					return wordString += "_";
+				}
+				else{
+				wordString += s.getLetter().getLetter();
+				}
+			}
+			return wordString;
 	}
-	
+
 	public Square getLastSquare(){
 		Square lastSquare = this.letters.get(letters.size() - 1);
 		return lastSquare;
 	}
-	
-	
+
+
 	public int getWordLength(){
 		int length = this.letters.size();
 		return length;
 	}
-	
+
 	public Square getCertainSquare(int num){
 		Square retSquare = this.letters.get(num - 1);
 		return retSquare;

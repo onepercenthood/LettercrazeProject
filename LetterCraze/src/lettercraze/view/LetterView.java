@@ -27,17 +27,22 @@ public class LetterView extends JLabel{
 	}
 
 	private void initialize(){
-		this.setText(letter.getLetter());
-		this.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 30));
+		if(letter != null){
+			this.setText(letter.getLetter());
+			this.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 30));
+		}
+		else{
+			this.setText("");
+		}
 	}
-	
+
 	public String numToSubscript(){
 		int value = letter.getValue();
 		//String subscript = "\u2082" + Integer.toString(value);
 		String subscript = "\u2082";
 		return subscript;
 	}
-	
+
 	public Letter getLetter(){
 		return letter;
 	}
