@@ -62,6 +62,9 @@ public class Puzzle extends Level{
 		return s;
 	}
 	
+	public int getMaxWords() {
+		return maxWords;
+	}
 	
 //	@Override
 //	public boolean isCompleted(int score) {

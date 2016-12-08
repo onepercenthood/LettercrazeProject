@@ -180,4 +180,9 @@ public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderL
 		this.txtfldThreeStar.setText("");
 		this.txtfldThemeTitle.setText("");
 	}
+	@Override
+	public void fillAllFields(Level level) {
+		// TODO Auto-generated method stub
+		
+	}
 }
