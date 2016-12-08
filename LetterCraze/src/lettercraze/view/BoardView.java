@@ -254,7 +254,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 			for(int j = 0; j < 6; j ++){
 				currentSquareView = squareViews[i][j];
 				
-				if( currentSquareView.getSquare().getIsLetterAlreadyUsedInWord()){
+				if( currentSquareView.getSquare().getLetter() == null){
 					
 //					Square nullSquare = new Square(i,j);
 //					nullSquare.setLetter(null);

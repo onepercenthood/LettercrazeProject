@@ -153,6 +153,14 @@ public class BuilderPuzzlePanelView extends DefaultViewPanel implements IBuilder
 		int threshholds[] = {getOneStarThreshhold(), getTwoStarThreshhold(), getThreeStarThreshhold()};
 		try{
 			int maxMoves = Integer.parseInt(txtfldInputMaxMoves.getText());
+			//create a puzzle level with the specified threshholds, maximum moves, and level number
+			Puzzle puzzle = new Puzzle(levelNum, threshholds, maxMoves);
+			
+			//assign the given boardShape, set it to unlocked
+			puzzle.setBoardShape(boardShape);
+			puzzle.setUnLocked(true);
+			return puzzle;
+			
 		}  catch(NullPointerException e){
 			JFrame errorFrame = new JFrame();
 			errorFrame.setTitle("Unfilled Level Fields");
@@ -161,16 +169,10 @@ public class BuilderPuzzlePanelView extends DefaultViewPanel implements IBuilder
 	        errorFrame.setResizable(false);
 	        errorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        errorFrame.show();
-	        
+	        return null;	        
 		}
 		
-		//create a puzzle level with the specified threshholds, maximum moves, and level number
-		Puzzle puzzle = new Puzzle(levelNum, threshholds, maxMoves);
 		
-		//assign the given boardShape, set it to unlocked
-		puzzle.setBoardShape(boardShape);
-		puzzle.setUnLocked(true);
-		return puzzle;
 	}
 	
 	@Override

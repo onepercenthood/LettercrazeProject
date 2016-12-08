@@ -83,20 +83,13 @@ public class Square {
 	public void setLetter(Letter letter){
 		this.letter = letter;
 	}
-<<<<<<< HEAD
 	
 	/**
 	 * Updates the letter to null, because it was already used in a word
 	 */
-	public void setIsLetterAlreadyUsedInWord(Boolean val){
-		this.isLetterAlreadyUsedInWord = val;
+	public void removeLetterFromSquare(Boolean val){
+		this.letter = null;
 	}
-	
-	public boolean getIsLetterAlreadyUsedInWord(){
-		return this.isLetterAlreadyUsedInWord;
-	}
-=======
->>>>>>> refs/heads/JackBranch
 
 	/**
 	 * Updates the isSelected variable if a Player performs a Mouse Clicks 
