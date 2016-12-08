@@ -239,9 +239,19 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 		// TODO Auto-generated method stub
 		return "BoardView";
 	}
+	
 
 	public JPanel getBoardPanel() {
 		return boardPanel;
+	}
+	
+	public void repaintAllSquares(){
+		//super.repaint();
+		for(int i = 0; i < 6; i++){
+			for(int j = 0; j < 6; j ++){
+				squareViews[i][j].repaintSquare();
+			}
+		}
 	}
 	
 	

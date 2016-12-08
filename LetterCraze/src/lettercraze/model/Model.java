@@ -78,6 +78,10 @@ public class Model {
 		return boardStates.get(boardStates.size() - 1);
 	}
 	
+	public void setCurrentBoardState(BoardState board){
+		this.boardStates.add(board);
+	}
+	
 	/**
 	 * 
 	 * @param int levelNum

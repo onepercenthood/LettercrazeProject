@@ -49,7 +49,7 @@ public class BoardState{
 			}
 		}
 		basicFiller = new BasicFiller();
-		Square[][] square = basicFiller.initialFill(squares);
+		squares = basicFiller.initialFill(squares);
 		score = 0;
 		stars = 0;
 	}
@@ -66,7 +66,16 @@ public class BoardState{
 		
 	}
 	
-	
+	/**
+	 * deselects all the squares in the board
+	 */
+	public void deselectAllSquares(){
+		for(int i = 0; i < 6; i++){
+			for(int j = 0; j < 6; j ++){
+				this.squares[i][j].setSelected(false);
+			}
+		}
+	}
 	/**
 	 * 
 	 * Return the squares in this board state
