@@ -13,12 +13,24 @@ package lettercraze.model;
  */
 abstract public interface IBoardFiller {
 
-	/** */
-	public abstract void floatTilesUp();
+	/**
+	 * 
+	 * @param squares
+	 * @return
+	 */
+	public abstract Square[][] floatTilesUp(Square[][] squares);
 	
-	/** */
-	public abstract void fillEmptySquares();
+	/**
+	 * 
+	 * @param squares
+	 * @return
+	 */
+	public abstract Square[][] fillEmptySquares(Square[][] squares);
 	
-	/** */ 
+	/**
+	 *  
+	 * @param squares
+	 * @return
+	 */
 	public abstract Square[][] initialFill(Square[][] squares) ;
 }

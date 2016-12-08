@@ -12,15 +12,15 @@ package lettercraze.model;
 public class ThemeFiller implements IBoardFiller{
 
 	@Override
-	public void floatTilesUp() {
+	public Square[][] floatTilesUp(Square[][] squares) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void fillEmptySquares() {
+	public Square[][] fillEmptySquares(Square[][] squares) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
@@ -28,6 +28,7 @@ public class ThemeFiller implements IBoardFiller{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 
 

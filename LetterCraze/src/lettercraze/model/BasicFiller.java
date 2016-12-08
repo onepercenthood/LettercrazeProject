@@ -12,34 +12,66 @@ package lettercraze.model;
 public class BasicFiller implements IBoardFiller{
 
 	@Override
-	public void floatTilesUp() {
+	public Square[][] floatTilesUp(Square[][] squares) {
 		// TODO Auto-generated method stub
-		
+		for(int col = 0; col < 6; col++){
+			
+			for(int row = 0; row < 6; row++){
+				
+				if((squares[row][col].isActive) & (squares[row][col].letter == null)& (squares[row][col].row != 5)){
+					
+					// If it is not the last row and the square below it does not contain a letter
+					if(squares[row+1][col].letter != null){
+						squares[row][col].letter = squares[row+1][col].letter;
+						squares[row+1][col].setLetter(null);
+					// If it is not the last row and the 2nd square below it does not contain a letter
+					} else if(squares[row+2][col].letter != null){
+						squares[row][col].letter = squares[row+2][col].letter;
+						squares[row+2][col].setLetter(null);
+					// If it is not the last row and the 3rd square below it does not contain a letter
+					} else if(squares[row+3][col].letter != null){
+						squares[row][col].letter = squares[row+3][col].letter;
+						squares[row+3][col].setLetter(null); 
+					// If it is not the last row and the 4th square below it does not contain a letter
+					} else if(squares[row+4][col].letter != null){
+						squares[row][col].letter = squares[row+4][col].letter;
+						squares[row+4][col].setLetter(null); 
+					// If it is not the last row and the 5th square below it does not contain a letter
+					} else if(squares[row+5][col].letter != null){
+						squares[row][col].letter = squares[row+5][col].letter;
+						squares[row+5][col].setLetter(null);
+					}
+				}
+			}		
+		}
+		return squares;	
 	}
 
 	@Override
-	public void fillEmptySquares() {
+	public Square[][] fillEmptySquares(Square[][] squares) {
 		// TODO Auto-generated method stub
 		
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col++){
+				if((squares[row][col].isActive) & (squares[row][col].letter == null)){
+					squares[row][col].newLetter();
+				}
+			}
+		}
+		return squares;
 	}
 
 	@Override
 	public Square[][] initialFill(Square[][] squares) {
-		// TODO Auto-generated method stub
 		// for each square
-		
-		Square[][] squares1 = squares;
-		
 	
 		for(int row = 0; row < 6; row++){
 			for(int col = 0; col < 6; col++){
 				if(squares[row][col].isActive){
 					squares[row][col].newLetter();
-					int x =1;
 				}
 			}
 		}
-		squares1 = squares;
 		return squares;
 	}
 
