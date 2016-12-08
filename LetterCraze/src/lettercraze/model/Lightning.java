@@ -2,6 +2,7 @@
 
 package lettercraze.model;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Lightning specific level class 
@@ -10,10 +11,15 @@ package lettercraze.model;
  * @author Hoodie
  *
  */
+@JsonTypeName("lightning")
 public class Lightning extends Level{
 	
 	/** Timer to keep track of time left (Using Swing Timer) */ 
 	CountdownTimer roundTimer;
+	
+	
+	/*Default constructor necessary for Jackson deserialization*/
+	public Lightning(){};
 	
 	/**
 	 * Constructor for the Lightning Level 

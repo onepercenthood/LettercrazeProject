@@ -2,6 +2,11 @@
 
 package lettercraze.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 /**
  * Puzzle specific level class 
  * 
@@ -9,10 +14,15 @@ package lettercraze.model;
  * @author Hoodie
  *
  */
+
+@JsonTypeName("puzzle")
 public class Puzzle extends Level{
 	
 	/** Holds the maximum number of Words the Player is allowed to play in this level */
 	protected int maxWords;
+	
+	/*Default constructor necessary for Jackson deserialization*/
+	public Puzzle(){};
 	
 	/**
 	 * Constructor for a Puzzle Level 
@@ -23,7 +33,7 @@ public class Puzzle extends Level{
 	public Puzzle (int levelNum, int[] starThreshold, int maxWords){
 		super();
 		this.levelNum = levelNum;
-		this.levelType = "Puzzle";
+		this.levelType = "puzzle";
 		this.starThreshold[0] = starThreshold[0];
 		this.starThreshold[1] = starThreshold[1];
 		this.starThreshold[2] = starThreshold[2];

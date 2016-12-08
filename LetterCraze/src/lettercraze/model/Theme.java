@@ -4,6 +4,8 @@ package lettercraze.model;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 /**
  * Theme specific level class
  * 
@@ -11,6 +13,7 @@ import java.util.ArrayList;
  * @author Hoodie
  *
  */
+@JsonTypeName("theme")
 public class Theme extends Level{
 
 	/** Holds the Theme Word/Phrase of the level */
@@ -19,6 +22,9 @@ public class Theme extends Level{
 	/** Holds the targetWords needed to be found to complete the Level */
 	protected ArrayList<String> targetWords = new ArrayList<String>();
 
+	/*Default constructor necessary for Jackson deserialization*/
+	public Theme(){};
+	
 	/**
 	 * Constructor for Theme Level 
 	 * 
