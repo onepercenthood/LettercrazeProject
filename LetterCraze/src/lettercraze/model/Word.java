@@ -87,7 +87,7 @@ public class Word {
 		return lastSquare;
 	}
 
-
+ 
 	public int getWordLength(){
 		int length = this.letters.size();
 		return length;
