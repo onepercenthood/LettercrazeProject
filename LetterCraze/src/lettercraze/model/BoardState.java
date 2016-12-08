@@ -57,13 +57,33 @@ public class BoardState{
 	/**
 	 * Construct used to create a new BoardState when a word in played.
 	 * Produces a new BoardState which then becomes the current state the
-	 * Player sees. 
+	 * Player sees. Assumes the given word is already determined to be valid word
 	 * 
 	 * @param oldState is the current state the board is in
 	 * @param playedWord is the word submitted to be played
 	 */
-	public BoardState(BoardState oldState, TestWord playedWord){
+	public BoardState(BoardState oldState, Word playedWord){
+		//first create copy of each square in the old board, with the same letters in it
+		for(int i = 0; i < 6; i ++){
+			for(int j = 0; j < 6; j ++){
+				this.squares[i][j] = oldState.getSquares()[i][j].copySquare();
+			}
+		}
+		//now add the filler objects to this boardState
+		this.basicFiller = oldState.basicFiller;
+		this.themeFiller = oldState.themeFiller;
+		//now use the remove word function to get rid of all the letters from the squares that were selected
 		
+		//and float all squares below them up...
+		
+		//...and fill in any open spaces on the bottom
+		for(int i = 0; i < 6; i ++){
+			for(int j = 0; j < 6; j ++){
+				if(this.squares[i][j].getLetter() == null){
+					this.squares[i][j].newLetter();
+				}
+			}
+		}
 	}
 	
 	/**
