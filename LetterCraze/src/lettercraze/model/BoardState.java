@@ -16,25 +16,25 @@ import java.util.ArrayList;
  *
  */
 public class BoardState{
-
+	
 	/** Current Score of the day */
 	protected int score;
-
+	
 	/** Current number of stars earned */
 	protected int stars;
-
+	
 	/** Array List of the words that have been played so far */ 
 	protected ArrayList<TestWord> foundWords = new ArrayList<TestWord>();
-
+	
 	/** Two dimensional representations of the squares on the board */
 	protected Square[][] squares = new Square[6][6] ;
-
+	
 	/** */
 	protected BasicFiller basicFiller;
-
+	
 	/** */ 
 	protected ThemeFiller themeFiller;
-
+	
 	/**
 	 * Construct entity for initial start of playing a level. 
 	 * @param shape is the initial shape of the board taken from the Level
@@ -53,17 +53,37 @@ public class BoardState{
 		score = 0;
 		stars = 0;
 	}
-
+	
 	/**
 	 * Construct used to create a new BoardState when a word in played.
 	 * Produces a new BoardState which then becomes the current state the
-	 * Player sees. 
+	 * Player sees. Assumes the given word is already determined to be valid word
 	 * 
 	 * @param oldState is the current state the board is in
 	 * @param playedWord is the word submitted to be played
 	 */
-	public BoardState(BoardState oldState, TestWord playedWord){
+	public BoardState(BoardState oldState, Word playedWord){
+		//first create copy of each square in the old board, with the same letters in it
+		for(int i = 0; i < 6; i ++){
+			for(int j = 0; j < 6; j ++){
+				this.squares[i][j] = oldState.getSquares()[i][j].copySquare();
+			}
+		}
+		//now add the filler objects to this boardState
+		this.basicFiller = oldState.basicFiller;
+		this.themeFiller = oldState.themeFiller;
+		//now use the remove word function to get rid of all the letters from the squares that were selected
+		
+		//and float all squares below them up...
 
+		//...and fill in any open spaces on the bottom
+		for(int i = 0; i < 6; i ++){
+			for(int j = 0; j < 6; j ++){
+				if(this.squares[i][j].getLetter() == null){
+					this.squares[i][j].newLetter();
+				}
+			}
+		}
 	}
 
 	/**

@@ -83,6 +83,7 @@ public class Square {
 	public void setLetter(Letter letter){
 		this.letter = letter;
 	}
+<<<<<<< HEAD
 	
 	/**
 	 * Updates the letter to null, because it was already used in a word
@@ -94,6 +95,8 @@ public class Square {
 	public boolean getIsLetterAlreadyUsedInWord(){
 		return this.isLetterAlreadyUsedInWord;
 	}
+=======
+>>>>>>> refs/heads/JackBranch
 
 	/**
 	 * Updates the isSelected variable if a Player performs a Mouse Clicks 
@@ -127,10 +130,20 @@ public class Square {
 			 (s1.getColumn() == s2.getColumn() +1)))
 				{return true;}
 		else{return false;}
-				
-		
 	}
 
+	/**
+	 * creates and returns a copy of this square for use in the next boardState
+	 * @return a new square whose fields match the values of this square's fields
+	 */
+	public Square copySquare(){
+		Square copy = new Square(this.row, this.column);
+		copy.setActive(isActive);
+		copy.setSelected(isSelected);
+		//give the copied square a copy of this letter
+		copy.setLetter(new Letter(letter.getLetter(), letter.getValue(), letter.getFrequency()));
+		return copy;
+	}
 
 
 	public boolean isActive() {
