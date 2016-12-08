@@ -16,25 +16,25 @@ import java.util.ArrayList;
  *
  */
 public class BoardState{
-	
+
 	/** Current Score of the day */
 	protected int score;
-	
+
 	/** Current number of stars earned */
 	protected int stars;
-	
+
 	/** Array List of the words that have been played so far */ 
 	protected ArrayList<TestWord> foundWords = new ArrayList<TestWord>();
-	
+
 	/** Two dimensional representations of the squares on the board */
 	protected Square[][] squares = new Square[6][6] ;
-	
+
 	/** */
 	protected BasicFiller basicFiller;
-	
+
 	/** */ 
 	protected ThemeFiller themeFiller;
-	
+
 	/**
 	 * Construct entity for initial start of playing a level. 
 	 * @param shape is the initial shape of the board taken from the Level
@@ -53,7 +53,7 @@ public class BoardState{
 		score = 0;
 		stars = 0;
 	}
-	
+
 	/**
 	 * Construct used to create a new BoardState when a word in played.
 	 * Produces a new BoardState which then becomes the current state the
@@ -63,9 +63,9 @@ public class BoardState{
 	 * @param playedWord is the word submitted to be played
 	 */
 	public BoardState(BoardState oldState, TestWord playedWord){
-		
+
 	}
-	
+
 	/**
 	 * deselects all the squares in the board
 	 */
@@ -74,6 +74,14 @@ public class BoardState{
 			for(int j = 0; j < 6; j ++){
 				this.squares[i][j].setSelected(false);
 			}
+		}
+	}
+
+	public void removeLetterFromSquares(Word word){
+		for(int letters = 1; letters < word.getWordLength(); letters++){
+			int row = word.getLastSquare().getRow();
+			int col = word.getLastSquare().getColumn();
+			this.squares[row][col].setLetter(null);
 		}
 	}
 	/**

@@ -14,9 +14,9 @@ import java.util.ArrayList;
  *
  */
 public class Word {
-	
+
 	/** An Array List to track all the letters contained in a word */
-	protected ArrayList<Square> letters = new ArrayList<Square>();
+	private ArrayList<Square> letters = new ArrayList<Square>();
 	
 	/**
 	 * Model Constructor 
