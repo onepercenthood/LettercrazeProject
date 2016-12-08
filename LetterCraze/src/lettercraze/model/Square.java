@@ -127,5 +127,11 @@ public class Square {
 	public boolean isSelected() {
 		return isSelected;
 	}
+	
+	public void setSelected(boolean isSelected) {
+
+		this.isSelected = isSelected;
+	}
+
 
 }

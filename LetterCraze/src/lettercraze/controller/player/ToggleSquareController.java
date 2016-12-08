@@ -32,14 +32,19 @@ public class ToggleSquareController extends MouseAdapter{
 
 	public void mousePressed(MouseEvent me){
 		Square toEdit = squareView.getSquare();
+		Square[][] boardSquares = model.getCurrentBoardState().getSquares();
+		Square checkSquare = boardSquares[toEdit.getRow()][toEdit.getColumn()];
 		Word word = model.getCurrentWord();
 		
+		//TODO check that letter is only added when toggled false -> true
 		if(word != null && word.getWordLength()>0){
 			Square lastSquare = word.getLastSquare();
 			if(toEdit.getRow() == word.getLastSquare().getRow() && toEdit.getColumn() == word.getLastSquare().getColumn()){
-				word.removeSquare();
-				model.setCurrentWord(word);
 				toEdit.toggleSelected();
+				//if(toEdit.isSelected()){
+					word.removeSquare();
+					model.setCurrentWord(word);
+				//}
 				squareView.repaintSquare();
 			}
 			
@@ -66,7 +71,7 @@ public class ToggleSquareController extends MouseAdapter{
 		
 		//toggle whether the square is active
 		System.out.println(word.getWordString()); 
-		System.out.println("Selected: " + toEdit.isSelected() + "Active: " + toEdit.isActive());
+		System.out.println("Selected: " + toEdit.isSelected() + " Active: " + toEdit.isActive());
 	}
 	
 	
