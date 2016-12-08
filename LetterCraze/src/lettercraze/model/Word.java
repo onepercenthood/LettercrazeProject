@@ -73,7 +73,8 @@ public class Word {
 		String wordString = "";
 			for(Square s : letters){
 				if(s.getLetter() == null){
-					return wordString += "_";
+//					return wordString += "_";
+					wordString += "_";
 				}
 				else{
 				wordString += s.getLetter().getLetter();
@@ -85,6 +86,10 @@ public class Word {
 	public Square getLastSquare(){
 		Square lastSquare = this.letters.get(letters.size() - 1);
 		return lastSquare;
+	}
+	
+	public ArrayList<Square> getLetters(){
+		return this.letters;
 	}
 
  

@@ -30,6 +30,10 @@ public class SquareView extends DefaultViewPanel{
 	public Square getSquare(){
 		return square;
 	}
+	
+	public void setSquare(Square square){
+		this.square = square;
+	}
 
 	@Override
 	public String getPanelName() {

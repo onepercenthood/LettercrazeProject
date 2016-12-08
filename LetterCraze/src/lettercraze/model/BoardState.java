@@ -78,10 +78,12 @@ public class BoardState{
 	}
 
 	public void removeLetterFromSquares(Word word){
-		for(int letters = 1; letters < word.getWordLength(); letters++){
-			int row = word.getLastSquare().getRow();
-			int col = word.getLastSquare().getColumn();
-			this.squares[row][col].setLetter(null);
+		
+		ArrayList<Square> squareArr = word.getLetters();
+ 
+		for(Square curSquare : squareArr){
+			
+			curSquare.setIsLetterAlreadyUsedInWord(true);
 		}
 	}
 	/**
