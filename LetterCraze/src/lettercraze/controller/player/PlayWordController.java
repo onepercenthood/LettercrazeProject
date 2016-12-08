@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.DefaultListModel;
 
 import lettercraze.PlayerApplication;
+import lettercraze.model.BoardState;
 import lettercraze.model.Model;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
@@ -40,8 +41,11 @@ public class PlayWordController extends MouseAdapter{
 				
 				
 				wordsListModel.addElement(word);
-				
+				BoardState tempBoard = model.getCurrentBoardState();
+				tempBoard.deselectAllSquares();
 				model.setCurrentWord(null);
+				model.setCurrentBoardState(tempBoard);
+				gameView.getBoardView().repaintAllSquares();
 				
 			}
 			else{

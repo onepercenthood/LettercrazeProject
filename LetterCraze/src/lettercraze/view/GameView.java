@@ -244,4 +244,9 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	public StarRater getStarRater() {
 		return starRater;
 	}
+	
+	public BoardView getBoardView(){
+		return boardview;
+	}
+
 }
