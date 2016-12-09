@@ -97,9 +97,9 @@ public class BoardState extends BasicFiller{
 		}
 	}
 
-	public void removeLetterFromSquares(Word word){
+public void removeLetterFromSquares(Word word){
 		
-		ArrayList<Square> squareArr = word.letters;
+		ArrayList<Square> squareArr = word.getLetters();
  
 		for(Square curSquare : squareArr){
 			curSquare.removeLetterFromSquare(null);
