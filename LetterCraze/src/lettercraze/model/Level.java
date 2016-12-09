@@ -43,7 +43,7 @@ abstract public class Level {
 	
 	/** Stores the High Score for the level*/
 	protected int highScore = 0;
-	
+		
 	/** Stores the required score to each each Star
 	 * Puzzle = number of points
 	 * Lightning = number of words 
@@ -88,15 +88,6 @@ abstract public class Level {
 	 */
 	public String getLevelType(){
 		return this.levelType;
-	}
-	
-	/**
-	 * Return the given star threshold array for this level
-	 * 
-	 * @return int starThreshold
-	 */
-	public int[] getStarThreshold(){
-		return this.starThreshold;
 	}
 	
 	/**
@@ -167,6 +158,10 @@ abstract public class Level {
 		if(score >= this.starThreshold[1]) {stars = 2;}
 		if(score >= this.starThreshold[2]) {stars = 3;}
 		return stars;
+	}
+	
+	public int[] getStarThreshold() {
+		return starThreshold;
 	}
 	
 	/**

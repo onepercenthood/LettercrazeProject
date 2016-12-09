@@ -23,6 +23,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 import lettercraze.BuilderApplication;
+import lettercraze.controller.builder.ExitWithoutSavingController;
 import lettercraze.controller.builder.ResetBoardSquaresController;
 import lettercraze.controller.builder.SaveLevelController;
 import lettercraze.model.Model;
@@ -70,6 +71,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 	private JTextField textField_6;
 	private BuilderApplication app;
 	private BoardView boardView;
+	private JComboBox<String> comboBox;
 
 
 	public BuilderView(Model model, JPanel parent, BuilderApplication app) {
@@ -102,15 +104,13 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		boardView.setLocation(39, 158);
 		add(boardView);
 
-		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox = new JComboBox<String>();
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Puzzle", "Lightning", "Theme"}));
 		comboBox.setToolTipText("");
 		comboBox.setMaximumRowCount(3);
 		comboBox.setBounds(593, 158, 97, 26);
 		comboBox.addItemListener(this);
-		add(comboBox);
-
-
+		this.add(comboBox, "ComboBox");
 
 		JLabel lblTitle = new JLabel("LetterCraze: Builder");
 		lblTitle.setFont(new Font("Impact", Font.BOLD | Font.ITALIC, 40));
@@ -158,13 +158,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 
 		JButton btnCloseWithoutSaving = new JButton("Close Without Saving");
 		//TODO replace with close builder controller
-		btnCloseWithoutSaving.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				CardLayout clay = (CardLayout) cardLayoutPanel.getLayout();
-				clay.first(cardLayoutPanel);
-			}
-		});
+		btnCloseWithoutSaving.addMouseListener(new ExitWithoutSavingController(this, cardLayoutPanel, model));
 		btnCloseWithoutSaving.setBounds(273, 118, 174, 29);
 		add(btnCloseWithoutSaving);
 		repaint();
@@ -259,6 +253,10 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		return "BuilderView";
 	}
 
+	public JComboBox<String> getComboBox() {
+		return comboBox;
+	}
+
 	//when the combo box triggers an item state change, switch the input panels
 	@Override
 	public void itemStateChanged(ItemEvent evt) {
@@ -276,7 +274,6 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 			IBuilderLevelPanel panel = (IBuilderLevelPanel) comp;
 			panel.resetFields();
 		}
-		
 		return true;
 	}
 }

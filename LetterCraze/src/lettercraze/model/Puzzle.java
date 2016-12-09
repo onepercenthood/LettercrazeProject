@@ -41,8 +41,7 @@ public class Puzzle extends Level{
 	}
 
 	@Override
-	public String toString() {
-		
+	public String toString() {		
 		return null;
 	}
 
@@ -72,16 +71,15 @@ public class Puzzle extends Level{
 		return s;
 	}
 
-	public int getMaxWords() {
-		return maxWords;
-	}
-
 	public void setMaxWords(int maxWords) {
 		this.maxWords = maxWords;
 	}
 	
 	
 	
+	public int getMaxWords() {
+		return maxWords;
+	}
 	
 //	@Override
 //	public boolean isCompleted(int score) {

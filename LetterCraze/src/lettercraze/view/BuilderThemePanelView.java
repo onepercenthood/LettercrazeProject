@@ -100,4 +100,9 @@ public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderL
 		this.txtAreaWordList.setText("");
 		this.txtfldThemeTitle.setText("");
 	}
+	@Override
+	public void fillAllFields(Level level) {
+		// TODO Auto-generated method stub
+		
+	}
 }

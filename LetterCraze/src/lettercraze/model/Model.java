@@ -102,7 +102,7 @@ public class Model {
 	 * @return boolean true if the Move has been successfully played
 	 * 	and a new BoardState 
 	 */
-	public boolean addMove(BoardState bs, TestWord played){
+	public boolean addMove(BoardState bs, Word played){
 		return true ;
 	}
 	
@@ -231,7 +231,7 @@ public class Model {
 	 * @param w
 	 * @return
 	 */
-	public boolean checkPlayedWord(TestWord w){
+	public boolean checkPlayedWord(Word w){
 		return true;
 	}
 	

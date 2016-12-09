@@ -24,7 +24,7 @@ public class BoardState extends BasicFiller{
 	protected int stars;
 	
 	/** Array List of the words that have been played so far */ 
-	protected ArrayList<TestWord> foundWords = new ArrayList<TestWord>();
+	protected ArrayList<Word> foundWords = new ArrayList<Word>();
 	
 	/** Two dimensional representations of the squares on the board */
 	protected Square[][] squares = new Square[6][6] ;
@@ -102,10 +102,10 @@ public class BoardState extends BasicFiller{
 		ArrayList<Square> squareArr = word.letters;
  
 		for(Square curSquare : squareArr){
-			
 			curSquare.removeLetterFromSquare(null);
 		}
 	}
+
 	/**
 	 * 
 	 * Return the squares in this board state

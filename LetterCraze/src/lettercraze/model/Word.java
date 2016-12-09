@@ -16,8 +16,8 @@ import java.util.ArrayList;
 public class Word {
 
 	/** An Array List to track all the letters contained in a word */
-	protected ArrayList<Square> letters = new ArrayList<Square>();
-	
+	private ArrayList<Square> letters = new ArrayList<Square>();
+
 	/**
 	 * Model Constructor 
 	 * <p>
@@ -71,9 +71,9 @@ public class Word {
 	 */
 	public String getWordString(){
 		String wordString = "";
-		
-		for(Square s : letters){
-			if(s.getLetter() == null){
+
+			for(Square s : letters){
+				if(null == s.getLetter()){
 //					return wordString += "_";
 				wordString += "_";
 			}
@@ -98,6 +98,19 @@ public class Word {
 	public Square getCertainSquare(int num){
 		Square retSquare = this.letters.get(num - 1);
 		return retSquare;
+	}
+	
+	/**
+	 * returns a deep copy of this word, with no common objects in the copy
+	 * @return
+	 */
+	public Word copyWord(){
+		Word copy = new Word(new Square(0, 0));
+		copy.removeSquare();
+		for(Square s: this.letters){
+			copy.addSquare(s.copySquare());
+		}
+		return copy;
 	}
 
 

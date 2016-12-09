@@ -168,4 +168,10 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 		this.txtfldThreeStarPoints.setText("");
 	}
 
+	@Override
+	public void fillAllFields(Level level) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

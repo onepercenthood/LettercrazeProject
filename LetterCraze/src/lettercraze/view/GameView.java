@@ -135,6 +135,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 
 		btnExitLevel.addMouseListener(new MouseAdapter() {
 			@Override
+			//TODO change to exit controller that resets the level as you exit, recording if you won or not
 			public void mousePressed(MouseEvent me){
 				CardLayout clay = (CardLayout) parent.getLayout();
 				clay.first(parent); //revert to the menu screen

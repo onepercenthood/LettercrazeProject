@@ -182,6 +182,23 @@ public class BuilderPuzzlePanelView extends DefaultViewPanel implements IBuilder
 		this.txtfldTwoStar.setText("");
 		this.txtfldThreeStar.setText("");
 	}
+
+	@Override
+	public void fillAllFields(Level level) throws Exception {
+		if(level instanceof Puzzle){
+		Puzzle pzl = (Puzzle) level;
+		String maxMoves = Integer.toString(pzl.getMaxWords());
+		int thresholds[] = pzl.getStarThreshold();
+		String oneStar = Integer.toString(thresholds[0]);
+		String twoStar = Integer.toString(thresholds[1]);
+		String threeStar = Integer.toString(thresholds[2]);
+		this.txtfldInputMaxMoves.setText(maxMoves);
+		this.txtfldOneStar.setText(oneStar);
+		this.txtfldTwoStar.setText(twoStar);
+		this.txtfldThreeStar.setText(threeStar);
+		} else throw new Exception();
+		
+	}
 	
 
 }

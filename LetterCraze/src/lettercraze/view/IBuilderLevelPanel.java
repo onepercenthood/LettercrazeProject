@@ -30,8 +30,15 @@ public interface IBuilderLevelPanel {
 	public Level compileLevelInfo(boolean[][] boardShape, int levelNum);
 	
 	/**
-	 * resets all the text fields in the level builder panel
+	 * resets all the text fields in the level builder panel.
 	 */
 	public void resetFields();
+	
+	/**
+	 * fill all text fields with the data prescribed in the given level.
+	 * @param level : the level information from which to fill the textfields
+	 * @throws Exception throws exception when the wrong level type is passed in
+	 */
+	public void fillAllFields(Level level) throws Exception;
 	
 }
