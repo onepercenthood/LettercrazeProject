@@ -71,8 +71,15 @@ public class Word {
 	 */
 	public String getWordString(){
 		String wordString = "";
+		
 		for(Square s : letters){
+			if(s.getLetter() == null){
+//					return wordString += "_";
+				wordString += "_";
+			}
+			else{
 			wordString += s.getLetter().getLetter();
+			}
 		}
 		return wordString;
 	}

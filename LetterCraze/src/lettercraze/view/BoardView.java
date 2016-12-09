@@ -17,6 +17,7 @@ import lettercraze.BuilderApplication;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.controller.player.ToggleSquareController;
+import lettercraze.model.Letter;
 import lettercraze.model.Model;
 import lettercraze.model.Square;
  
@@ -247,11 +248,32 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	
 	public void repaintAllSquares(){
 		//super.repaint();
+		SquareView currentSquareView ;
+		LetterView currentLetterView;
 		for(int i = 0; i < 6; i++){
 			for(int j = 0; j < 6; j ++){
-				squareViews[i][j].repaintSquare();
+				currentSquareView = squareViews[i][j];
+				
+				if( currentSquareView.getSquare().getLetter() == null){
+					
+//					Square nullSquare = new Square(i,j);
+//					nullSquare.setLetter(null);
+					currentSquareView.getSquare().setLetter(null);
+					currentLetterView = (LetterView) currentSquareView.getComponent(0);
+//					currentLetterView.setLetter(nullSquare.getLetter());
+					currentLetterView.setText(" ");
+					currentLetterView.repaint();
+				}
+				
+				currentSquareView.repaintSquare();
+
+				
+				squareViews[i][j] = currentSquareView;
+				
 			}
 		}
+		
+		this.repaint();
 	}
 	
 	

@@ -37,12 +37,14 @@ public class PlayWordController extends MouseAdapter{
 		if( word != null){
 			if(word.isValid() && !wordsListModel.contains(word)){
 				System.out.println("Word is valid");
-				System.out.println(word);
+				System.out.println(word.getWordString());
 				
+//				BoardView n
+				Word copyOfWord = word;
 				
-				wordsListModel.addElement(word);
+				wordsListModel.addElement(copyOfWord);
 				BoardState tempBoard = model.getCurrentBoardState();
-				//tempBoard.removeLetterFromSquares(word);
+				tempBoard.removeLetterFromSquares(word);
 				tempBoard.deselectAllSquares();
 				model.setCurrentWord(null);
 				model.setCurrentBoardState(tempBoard);

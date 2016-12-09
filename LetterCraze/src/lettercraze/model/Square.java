@@ -25,6 +25,11 @@ public class Square {
 
 	/** True if the square has been selected by the Player to form word */
 	protected boolean isSelected; 
+	
+	/**
+	 * True if the square has been already used in a word
+	 */
+	protected boolean isLetterAlreadyUsedInWord;
 
 	Alphabet alphInst = Alphabet.getInstance();
 
@@ -34,6 +39,7 @@ public class Square {
 		this.letter = null;
 		this.isActive = false;
 		this.isSelected = false;
+		this.isLetterAlreadyUsedInWord = false;
 
 	}
 
@@ -77,6 +83,13 @@ public class Square {
 	public void setLetter(Letter letter){
 		this.letter = letter;
 	}
+	
+	/**
+	 * Updates the letter to null, because it was already used in a word
+	 */
+	public void removeLetterFromSquare(Boolean val){
+		this.letter = null;
+	}
 
 	/**
 	 * Updates the isSelected variable if a Player performs a Mouse Clicks 
@@ -110,10 +123,20 @@ public class Square {
 			 (s1.getColumn() == s2.getColumn() +1)))
 				{return true;}
 		else{return false;}
-				
-		
 	}
 
+	/**
+	 * creates and returns a copy of this square for use in the next boardState
+	 * @return a new square whose fields match the values of this square's fields
+	 */
+	public Square copySquare(){
+		Square copy = new Square(this.row, this.column);
+		copy.setActive(isActive);
+		copy.setSelected(isSelected);
+		//give the copied square a copy of this letter
+		copy.setLetter(new Letter(letter.getLetter(), letter.getValue(), letter.getFrequency()));
+		return copy;
+	}
 
 
 	public boolean isActive() {
