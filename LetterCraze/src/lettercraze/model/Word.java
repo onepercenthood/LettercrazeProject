@@ -89,6 +89,9 @@ public class Word {
 		return lastSquare;
 	}
 	
+	public ArrayList<Square> getLetters(){
+		return this.letters;
+	}
 	
 	public int getWordLength(){
 		int length = this.letters.size();
