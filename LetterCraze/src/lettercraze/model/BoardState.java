@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author Hoodie
  *
  */
-public class BoardState{
+public class BoardState extends BasicFiller{
 	
 	/** Current Score of the day */
 	protected int score;
@@ -99,7 +99,7 @@ public class BoardState{
 
 	public void removeLetterFromSquares(Word word){
 		
-		ArrayList<Square> squareArr = word.getLetters();
+		ArrayList<Square> squareArr = word.letters;
  
 		for(Square curSquare : squareArr){
 			
