@@ -40,7 +40,7 @@ public class PlayWordController extends MouseAdapter{
 				System.out.println(word.getWordString());
 				
 //				BoardView n
-				Word copyOfWord = word;
+				Word copyOfWord = word.copyWord();
 				
 				wordsListModel.addElement(copyOfWord);
 				BoardState tempBoard = model.getCurrentBoardState();

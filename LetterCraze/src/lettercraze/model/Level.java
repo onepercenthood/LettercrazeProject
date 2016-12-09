@@ -91,15 +91,6 @@ abstract public class Level {
 	}
 	
 	/**
-	 * Return the given star threshold array for this level
-	 * 
-	 * @return int starThreshold
-	 */
-	public int[] getStarThreshold(){
-		return this.starThreshold;
-	}
-	
-	/**
 	 * Return the value for isUnlocked for this level
 	 * 
 	 * @return boolean starThreshold

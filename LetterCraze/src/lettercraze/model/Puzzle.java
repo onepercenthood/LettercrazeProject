@@ -41,8 +41,7 @@ public class Puzzle extends Level{
 	}
 
 	@Override
-	public String toString() {
-		
+	public String toString() {		
 		return null;
 	}
 
@@ -70,10 +69,6 @@ public class Puzzle extends Level{
 			s = s + "\n";
 		}
 		return s;
-	}
-
-	public int getMaxWords() {
-		return maxWords;
 	}
 
 	public void setMaxWords(int maxWords) {

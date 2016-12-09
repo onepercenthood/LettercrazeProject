@@ -63,8 +63,6 @@ public class BoardState{
 	 * @param playedWord is the word submitted to be played
 	 */
 	public BoardState(BoardState oldState, Word playedWord){
-<<<<<<< HEAD
-=======
 		//first create copy of each square in the old board, with the same letters in it
 		for(int i = 0; i < 6; i ++){
 			for(int j = 0; j < 6; j ++){
@@ -75,7 +73,6 @@ public class BoardState{
 		this.basicFiller = oldState.basicFiller;
 		this.themeFiller = oldState.themeFiller;
 		//now use the remove word function to get rid of all the letters from the squares that were selected
->>>>>>> refs/heads/development
 		
 		//and float all squares below them up...
 
@@ -105,10 +102,10 @@ public class BoardState{
 		ArrayList<Square> squareArr = word.getLetters();
  
 		for(Square curSquare : squareArr){
-			
 			curSquare.removeLetterFromSquare(null);
 		}
 	}
+
 	/**
 	 * 
 	 * Return the squares in this board state
