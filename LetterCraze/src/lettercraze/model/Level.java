@@ -5,6 +5,9 @@ package lettercraze.model;
 import java.io.File;
 import java.io.IOException;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,6 +23,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author Hoodie
  *
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="type")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Puzzle.class, name = "puzzle"),
+    @JsonSubTypes.Type(value = Lightning.class, name = "lightning"),
+    @JsonSubTypes.Type(value = Theme.class, name = "theme") 
+    }
+)
 abstract public class Level {
 	
 	/** Stores the level number */
