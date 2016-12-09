@@ -17,6 +17,7 @@ import lettercraze.BuilderApplication;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.controller.player.ToggleSquareController;
+import lettercraze.model.Letter;
 import lettercraze.model.Model;
 import lettercraze.model.Square;
  
@@ -189,6 +190,20 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 		}	
 	}
 	
+	/**
+	 * @return the desired boardShape from the squares pointed to by the gui
+	 */
+	public boolean[][] getBoardShape(){
+		boolean shape[][] = new boolean[6][6];
+		//get all the squareViews from the GUI
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col++){
+				shape[row][col] = squareViews[row][col].getSquare().isActive();
+			}
+		}
+		return shape;
+	}
+	
 	public Color getColorPlayer() {
 		return colorPlayer;
 	}
@@ -225,25 +240,41 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 		// TODO Auto-generated method stub
 		return "BoardView";
 	}
+	
 
 	public JPanel getBoardPanel() {
 		return boardPanel;
 	}
 	
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					JFrame frame = new JFrame();
-//			        frame.setPreferredSize(new Dimension(800,800));
-//			        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-//			        Model m = new Model();
-//			        //frame.getContentPane().add(new BoardView(Color.GREEN, m, 1,app)); //change from 1 later
-//			        frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	public void repaintAllSquares(){
+		//super.repaint();
+		SquareView currentSquareView ;
+		LetterView currentLetterView;
+		for(int i = 0; i < 6; i++){
+			for(int j = 0; j < 6; j ++){
+				currentSquareView = squareViews[i][j];
+				
+				if( currentSquareView.getSquare().getLetter() == null){
+					
+//					Square nullSquare = new Square(i,j);
+//					nullSquare.setLetter(null);
+					currentSquareView.getSquare().setLetter(null);
+					currentLetterView = (LetterView) currentSquareView.getComponent(0);
+//					currentLetterView.setLetter(nullSquare.getLetter());
+					currentLetterView.setText(" ");
+					currentLetterView.repaint();
+				}
+				
+				currentSquareView.repaintSquare();
+
+				
+				squareViews[i][j] = currentSquareView;
+				
+			}
+		}
+		
+		this.repaint();
+	}
+	
+	
 }

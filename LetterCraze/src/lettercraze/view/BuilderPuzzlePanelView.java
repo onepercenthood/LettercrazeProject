@@ -1,8 +1,10 @@
 package lettercraze.view;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -149,15 +151,28 @@ public class BuilderPuzzlePanelView extends DefaultViewPanel implements IBuilder
 	public Level compileLevelInfo(boolean[][] boardShape, int levelNum) {
 		//gather score threshholds 
 		int threshholds[] = {getOneStarThreshhold(), getTwoStarThreshhold(), getThreeStarThreshhold()};
-		int maxMoves = Integer.parseInt(txtfldInputMaxMoves.getText());
+		try{
+			int maxMoves = Integer.parseInt(txtfldInputMaxMoves.getText());
+			//create a puzzle level with the specified threshholds, maximum moves, and level number
+			Puzzle puzzle = new Puzzle(levelNum, threshholds, maxMoves);
+			
+			//assign the given boardShape, set it to unlocked
+			puzzle.setBoardShape(boardShape);
+			puzzle.setUnLocked(true);
+			return puzzle;
+			
+		}  catch(NullPointerException e){
+			JFrame errorFrame = new JFrame();
+			errorFrame.setTitle("Unfilled Level Fields");
+			errorFrame.setLayout(null);
+	        errorFrame.setPreferredSize(new Dimension(400, 100));
+	        errorFrame.setResizable(false);
+	        errorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        errorFrame.show();
+	        return null;	        
+		}
 		
-		//create a puzzle level with the specified threshholds, maximum moves, and level number
-		Puzzle puzzle = new Puzzle(levelNum, threshholds, maxMoves);
 		
-		//assign the given boardShape, set it to unlocked
-		puzzle.setBoardShape(boardShape);
-		puzzle.setUnLocked(true);
-		return puzzle;
 	}
 	
 	@Override

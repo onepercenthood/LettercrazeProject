@@ -49,7 +49,7 @@ public class BoardState{
 			}
 		}
 		basicFiller = new BasicFiller();
-		Square[][] square = basicFiller.initialFill(squares);
+		squares = basicFiller.initialFill(squares);
 		score = 0;
 		stars = 0;
 	}
@@ -57,16 +57,58 @@ public class BoardState{
 	/**
 	 * Construct used to create a new BoardState when a word in played.
 	 * Produces a new BoardState which then becomes the current state the
-	 * Player sees. 
+	 * Player sees. Assumes the given word is already determined to be valid word
 	 * 
 	 * @param oldState is the current state the board is in
 	 * @param playedWord is the word submitted to be played
 	 */
 	public BoardState(BoardState oldState, Word playedWord){
+<<<<<<< HEAD
+=======
+		//first create copy of each square in the old board, with the same letters in it
+		for(int i = 0; i < 6; i ++){
+			for(int j = 0; j < 6; j ++){
+				this.squares[i][j] = oldState.getSquares()[i][j].copySquare();
+			}
+		}
+		//now add the filler objects to this boardState
+		this.basicFiller = oldState.basicFiller;
+		this.themeFiller = oldState.themeFiller;
+		//now use the remove word function to get rid of all the letters from the squares that were selected
+>>>>>>> refs/heads/development
 		
+		//and float all squares below them up...
+
+		//...and fill in any open spaces on the bottom
+		for(int i = 0; i < 6; i ++){
+			for(int j = 0; j < 6; j ++){
+				if(this.squares[i][j].getLetter() == null){
+					this.squares[i][j].newLetter();
+				}
+			}
+		}
 	}
-	
-	
+
+	/**
+	 * deselects all the squares in the board
+	 */
+	public void deselectAllSquares(){
+		for(int i = 0; i < 6; i++){
+			for(int j = 0; j < 6; j ++){
+				this.squares[i][j].setSelected(false);
+			}
+		}
+	}
+
+	public void removeLetterFromSquares(Word word){
+		
+		ArrayList<Square> squareArr = word.getLetters();
+ 
+		for(Square curSquare : squareArr){
+			
+			curSquare.removeLetterFromSquare(null);
+		}
+	}
 	/**
 	 * 
 	 * Return the squares in this board state

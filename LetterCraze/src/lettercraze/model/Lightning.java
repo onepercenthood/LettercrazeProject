@@ -2,6 +2,7 @@
 
 package lettercraze.model;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Lightning specific level class 
@@ -10,10 +11,18 @@ package lettercraze.model;
  * @author Hoodie
  *
  */
+@JsonTypeName("lightning")
 public class Lightning extends Level{
 	
 	/** Timer to keep track of time left (Using Swing Timer) */ 
 	CountdownTimer roundTimer;
+	
+	
+	/*Default constructor necessary for Jackson deserialization*/
+	public Lightning(){};
+	
+	/** seconds at which the timer is initialized **/
+	int seconds;
 	
 	/**
 	 * Constructor for the Lightning Level 
@@ -26,9 +35,11 @@ public class Lightning extends Level{
 		super();
 		this.levelNum = levelNum;
 		this.levelType = "Lightning";
+		this.seconds = seconds;
 		this.starThreshold[0] = starThreshold[0];
 		this.starThreshold[1] = starThreshold[1];
 		this.starThreshold[2] = starThreshold[2];
+		
 		this.roundTimer = new CountdownTimer(seconds);
 				
 	}
@@ -61,6 +72,15 @@ public class Lightning extends Level{
 		}
 		return s;
 	}
+
+	public CountdownTimer getRoundTimer() {
+		return roundTimer;
+	}
+
+	public int getSeconds() {
+		return seconds;
+	}
+	
 //	@Override
 //	public boolean isCompleted(int score) {
 //		// TODO Auto-generated method stub
