@@ -63,7 +63,7 @@ public class Square {
 
 
 
-	/** Removes the current letter from the Square and randomly places a new one */
+	/** Assigns a random letter */
 	public void newLetter(){
 		this.letter = alphInst.getRandomLetter();
 		System.out.println(letter.letter);		

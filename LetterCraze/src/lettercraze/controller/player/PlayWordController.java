@@ -47,7 +47,8 @@ public class PlayWordController extends MouseAdapter{
 				tempBoard.removeLetterFromSquares(word);
 				tempBoard.deselectAllSquares();
 				model.setCurrentWord(null);
-				//tempBoard.floatTilesUp(tempBoard.getSquares());
+				tempBoard.floatTilesUp(tempBoard.getSquares());
+				tempBoard.fillEmptySquares(tempBoard.getSquares());
 				model.setCurrentBoardState(tempBoard);
 				gameView.getBoardView().repaintAllSquares();
 				

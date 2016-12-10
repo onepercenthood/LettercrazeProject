@@ -263,7 +263,11 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 //					currentLetterView.setLetter(nullSquare.getLetter());
 					currentLetterView.setText(" ");
 					currentLetterView.repaint();
-				}
+				} else {
+					currentLetterView = (LetterView) currentSquareView.getComponent(0);
+					currentLetterView.setText(currentSquareView.getSquare().getLetter().getLetter());
+					currentLetterView.repaint();
+				}	
 				
 				currentSquareView.repaintSquare();
 
