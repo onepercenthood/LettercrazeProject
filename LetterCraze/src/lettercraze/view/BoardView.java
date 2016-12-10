@@ -17,6 +17,7 @@ import lettercraze.BuilderApplication;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.controller.player.ToggleSquareController;
+import lettercraze.model.BoardState;
 import lettercraze.model.Letter;
 import lettercraze.model.Model;
 import lettercraze.model.Square;
@@ -90,7 +91,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				Square thisSquare = model.getCurrentBoardState().getSquares()[row][col];
 				
 				//initialize the squareview at row, col
-				squareViews[row][col] = new SquareView(thisSquare, colorPlayer);
+				squareViews[row][col] = new SquareView(thisSquare, colorPlayer, true);
 				squareViews[row][col].setPreferredSize(new Dimension(64,64));
 				squareViews[row][col].setLayout(null);
 				squareViews[row][col].setBorder(BorderFactory.createLineBorder(Color.black));
@@ -98,11 +99,11 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				
 				//check if the square is active for this level
 				if(thisSquare.isActive()){ 
-					LetterView lv = new LetterView(thisSquare.getLetter());
-					int halfWidth = squareViews[row][col].getWidth() / 2;
-					int halfHeight = squareViews[row][col].getHeight() / 2;
-					lv.setBounds(halfWidth, halfHeight,64,64);
-					squareViews[row][col].add(lv);
+//					LetterView lv = new LetterView(thisSquare.getLetter());
+//					int halfWidth = squareViews[row][col].getWidth() / 2;
+//					int halfHeight = squareViews[row][col].getHeight() / 2;
+//					lv.setBounds(halfWidth, halfHeight,64,64);
+//					squareViews[row][col].setLetterView(lv);
 					if(thisSquare.isSelected()){
 						//active, selected squares are colored yellow
 						squareViews[row][col].setBackground(Color.YELLOW);
@@ -132,7 +133,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				Square thisSquare = model.getCurrentBoardState().getSquares()[row][col];
 				
 				//initialize the squareview at row, col
-				squareViews[row][col] = new SquareView(thisSquare, colorPlayer);
+				squareViews[row][col] = new SquareView(thisSquare, colorPlayer, false);
 				squareViews[row][col].setPreferredSize(new Dimension(64,64));
 				squareViews[row][col].setLayout(null);
 				squareViews[row][col].setBorder(BorderFactory.createLineBorder(Color.black));
@@ -140,7 +141,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				
 				//check if the square is active for this level
 				if(thisSquare.isActive()){
-					//color active squares yellow
+					//color active squares to the default color
 					squareViews[row][col].setBackground(colorPlayer);
 				} else {
 					//inactive squares are colored black
@@ -222,6 +223,22 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	public SquareView[][] getSquareViews() {
 		return squareViews;
 	}
+	
+	/**
+	 * updates the square views to show the squares in the given boardState.
+	 * @param newState : the squares in the current state
+	 * @return
+	 */
+	public boolean setSquareViewTargets(BoardState newState){
+		for(int i = 0; i <6; i++){
+			System.out.print("\n Updated Squares: ");
+			for(int j = 0; j < 6; j ++){
+				squareViews[i][j].setSquare(newState.getSquares()[i][j]);
+				System.out.print("( " + i + ", " + j+" )");
+			}
+		}
+		return true;
+	}
 
 
 	public JPanel[][] getSquarePanels() {
@@ -254,16 +271,16 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 			for(int j = 0; j < 6; j ++){
 				currentSquareView = squareViews[i][j];
 				
-				if( currentSquareView.getSquare().getLetter() == null){
-					
-//					Square nullSquare = new Square(i,j);
-//					nullSquare.setLetter(null);
-					currentSquareView.getSquare().setLetter(null);
-					currentLetterView = (LetterView) currentSquareView.getComponent(0);
-//					currentLetterView.setLetter(nullSquare.getLetter());
-					currentLetterView.setText(" ");
-					currentLetterView.repaint();
-				}
+//				if( currentSquareView.getSquare().getLetter() == null){
+//					
+////					Square nullSquare = new Square(i,j);
+////					nullSquare.setLetter(null);
+//					currentSquareView.getSquare().setLetter(null);
+//					currentLetterView = (LetterView) currentSquareView.getComponent(0);
+////					currentLetterView.setLetter(nullSquare.getLetter());
+//					currentLetterView.setText(" ");
+//					currentLetterView.repaint();
+//				}
 				
 				currentSquareView.repaintSquare();
 

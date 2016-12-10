@@ -73,7 +73,8 @@ public class BoardState extends BasicFiller{
 		this.basicFiller = oldState.basicFiller;
 		this.themeFiller = oldState.themeFiller;
 		//now use the remove word function to get rid of all the letters from the squares that were selected
-		
+		this.removeLetterFromSquares(playedWord);
+		this.deselectAllSquares();
 		//and float all squares below them up...
 
 		//...and fill in any open spaces on the bottom
@@ -102,7 +103,9 @@ public void removeLetterFromSquares(Word word){
 		ArrayList<Square> squareArr = word.getLetters();
  
 		for(Square curSquare : squareArr){
-			curSquare.removeLetterFromSquare(null);
+			int row = curSquare.getRow();
+			int col = curSquare.getColumn();
+			this.squares[row][col].removeLetterFromSquare(null);
 		}
 	}
 

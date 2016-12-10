@@ -15,13 +15,23 @@ import java.awt.SystemColor;
 public class SquareView extends DefaultViewPanel{
 
 	private Square square;
+	LetterView letterView;
 	Color defaultColor;
 	
-	public SquareView(Square square, Color defaultColor){
+	public SquareView(Square square, Color defaultColor, boolean showLetter){
 		this.square = square;
 		this.defaultColor = defaultColor;
+		//Set up the letterView to appear in the middle of the sqaure
+		this.letterView = new LetterView(square.getLetter());
+		int halfWidth = this.getWidth() / 2;
+		int halfHeight = this.getHeight() / 2;
+		letterView.setBounds(halfWidth, halfHeight,64,64);
+		
+		//if we're supposed to show the letter, add it to the panel
+		if(showLetter) add(letterView);
 		setLayout(null);
 	}
+	
 
 	public Letter getLetter(){
 		return square.getLetter();
@@ -41,6 +51,22 @@ public class SquareView extends DefaultViewPanel{
 	}
 	
 	
+	public LetterView getLetterView() {
+		return letterView;
+	}
+
+	public void setLetterView(LetterView letterView) {
+		this.letterView = letterView;
+	}
+	
+	public void showLetterView(){
+		add(letterView);
+	}
+	
+	public void hideLetterView(){
+		remove(letterView);
+	}
+
 	public void repaintSquare(){
 		super.repaint();
 		if(square.isActive()){
@@ -52,5 +78,6 @@ public class SquareView extends DefaultViewPanel{
 		} else {
 				this.setBackground(Color.GRAY);
 		}
+		letterView.repaintLetterView();
 	}
 }

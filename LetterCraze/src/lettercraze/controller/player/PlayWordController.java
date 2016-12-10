@@ -39,17 +39,27 @@ public class PlayWordController extends MouseAdapter{
 				System.out.println("Word is valid");
 				System.out.println(word.getWordString());
 				
-//				BoardView n
+				//make a new boardState with this word removed
+				BoardState currentState = model.getCurrentBoardState();
 				Word copyOfWord = word.copyWord();
+				BoardState newState = new BoardState (currentState, copyOfWord);
 				
-				wordsListModel.addElement(copyOfWord);
-				BoardState tempBoard = model.getCurrentBoardState();
-				tempBoard.removeLetterFromSquares(word);
-				tempBoard.deselectAllSquares();
+				//remove the word from current word
 				model.setCurrentWord(null);
-				//tempBoard.floatTilesUp(tempBoard.getSquares());
-				model.setCurrentBoardState(tempBoard);
+				//update the model boardstae
+				model.setCurrentBoardState(newState);
+				gameView.getBoardView().setSquareViewTargets(model.getCurrentBoardState());
 				gameView.getBoardView().repaintAllSquares();
+				
+				
+//				wordsListModel.addElement(copyOfWord);
+//				BoardState tempBoard = model.getCurrentBoardState();
+//				tempBoard.removeLetterFromSquares(word);
+//				tempBoard.deselectAllSquares();
+//				model.setCurrentWord(null);
+//				//tempBoard.floatTilesUp(tempBoard.getSquares());
+//				model.setCurrentBoardState(tempBoard);
+//				gameView.getBoardView().repaintAllSquares();
 				
 			}
 			else{
