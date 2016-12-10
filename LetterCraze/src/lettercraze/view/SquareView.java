@@ -26,9 +26,10 @@ public class SquareView extends DefaultViewPanel{
 		int halfWidth = this.getWidth() / 2;
 		int halfHeight = this.getHeight() / 2;
 		letterView.setBounds(halfWidth, halfHeight,64,64);
-		
+		add(letterView);
 		//if we're supposed to show the letter, add it to the panel
-		if(showLetter) add(letterView);
+		if(!showLetter) 
+			getComponent(0).hide();
 		setLayout(null);
 	}
 	
@@ -43,6 +44,8 @@ public class SquareView extends DefaultViewPanel{
 	
 	public void setSquare(Square square){
 		this.square = square;
+		Letter newLetter = square.getLetter().copyLetter();
+		setLetterView(new LetterView(newLetter));
 	}
 
 	@Override
@@ -60,7 +63,7 @@ public class SquareView extends DefaultViewPanel{
 	}
 	
 	public void showLetterView(){
-		add(letterView);
+		getComponent(0).show();
 	}
 	
 	public void hideLetterView(){
@@ -68,7 +71,6 @@ public class SquareView extends DefaultViewPanel{
 	}
 
 	public void repaintSquare(){
-		super.repaint();
 		if(square.isActive()){
 			if(square.isSelected()){
 				this.setBackground(Color.YELLOW);

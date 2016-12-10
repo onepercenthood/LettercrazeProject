@@ -75,7 +75,6 @@ public class Square {
 	 * 
 	 * */
 	public Letter getLetter(){
-
 		return letter;
 
 	}

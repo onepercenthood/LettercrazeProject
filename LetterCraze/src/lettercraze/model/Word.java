@@ -78,7 +78,7 @@ public class Word {
 				wordString += "_";
 			}
 			else{
-			wordString += s.getLetter().getLetter();
+				wordString += s.getLetter().getLetter();
 			}
 		}
 		return wordString;

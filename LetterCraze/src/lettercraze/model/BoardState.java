@@ -63,6 +63,7 @@ public class BoardState extends BasicFiller{
 	 * @param playedWord is the word submitted to be played
 	 */
 	public BoardState(BoardState oldState, Word playedWord){
+		System.out.println("Loading new BoardState");
 		//first create copy of each square in the old board, with the same letters in it
 		for(int i = 0; i < 6; i ++){
 			for(int j = 0; j < 6; j ++){

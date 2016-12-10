@@ -58,6 +58,10 @@ public class Letter {
 	 public String toString(){
 		 return this.letter + ", " +Integer.toString(value);
 	 }
+	 
+	 public Letter copyLetter(){
+		 return new Letter(letter,value,frequency);
+	 }
 }
 
 
