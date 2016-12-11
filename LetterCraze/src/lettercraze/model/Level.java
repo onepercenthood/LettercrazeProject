@@ -164,6 +164,18 @@ abstract public class Level {
 		return starThreshold;
 	}
 	
+	public int getStarThreshold1(){
+		return starThreshold[1];
+	}
+	
+	public int getStarThreshold2(){
+		return starThreshold[2];
+	}
+	
+	public int getStarThreshold3(){
+		return starThreshold[3];
+	}
+	
 	/**
 	 * 
 	 * @return a string that shows the state of all the variables for use in debugging

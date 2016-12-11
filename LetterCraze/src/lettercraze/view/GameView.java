@@ -88,6 +88,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		this.model = m;
 		this.levelNum = 1;
 		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
+		boardview.setBounds(16, 82, 471, 471);
 		boardview.playerInitialize(app);
 		this.parent = parent;
 		createPanel();
@@ -125,11 +126,11 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		validWordsJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				
 		JScrollPane wordsScrollPane = new JScrollPane(validWordsJList);
-		wordsScrollPane.setBounds(439, 82, 338, 414);
+		wordsScrollPane.setBounds(542, 82, 235, 414);
 		add(wordsScrollPane);
 			
 		JLabel lblWords = new JLabel("Words");
-		lblWords.setBounds(439, 49, 61, 16);
+		lblWords.setBounds(542, 55, 61, 16);
 		add(lblWords);
 		
 		btnExitLevel = new JButton("Exit Level");
@@ -258,6 +259,11 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	public void setScoreView(){
 		int currentScore = model.getCurrentBoardState().getScore();
 		scoreTextField.setText(Integer.toString(currentScore));
+	}
+	
+	public void setStarRater(){
+		int currentStars = model.getCurrentBoardState().getStars();
+		starRater.setRating(currentStars);
 	}
 
 }

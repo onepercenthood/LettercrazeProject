@@ -122,5 +122,11 @@ public void removeLetterFromSquares(Word word){
 	public void setScore(int score){
 		this.score = score;
 	}
+	public int getStars(){
+		return this.stars;
+	}
+	public void setStars(int stars){
+		this.stars = stars;
+	}
 
 }
