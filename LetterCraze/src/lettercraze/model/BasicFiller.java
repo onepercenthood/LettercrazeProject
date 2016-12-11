@@ -18,29 +18,37 @@ public class BasicFiller implements IBoardFiller{
 			
 			for(int row = 0; row < 6; row++){
 				
-				if((squares[row][col].isActive) & (squares[row][col].letter == null)& (squares[row][col].row < 5)){
+				if((squares[row][col].isActive) & (squares[row][col].letter == null) & (squares[row][col].row < 5)){
 					
 					// If it is not the last row and the square below it does not contain a letter
 					if(squares[row+1][col].letter != null){
 						squares[row][col].letter = squares[row+1][col].letter;
 						squares[row+1][col].setLetter(null);
 					// If it is not the last row and the 2nd square below it does not contain a letter
-/*					} else if(squares[row+2][col].letter != null){
-						squares[row][col].letter = squares[row+2][col].letter;
-						squares[row+2][col].setLetter(null);
+					} else if (squares[row][col].row < 4){ 
+						if(squares[row+2][col].letter != null){
+							squares[row][col].letter = squares[row+2][col].letter;
+							squares[row+2][col].setLetter(null);
+						}
 					// If it is not the last row and the 3rd square below it does not contain a letter
-					} else if(squares[row+3][col].letter != null){
-						squares[row][col].letter = squares[row+3][col].letter;
-						squares[row+3][col].setLetter(null); 
+					} else if (squares[row][col].row < 3){ 
+						if(squares[row+3][col].letter != null){
+							squares[row][col].letter = squares[row+3][col].letter;
+							squares[row+3][col].setLetter(null); 
+						}
 					// If it is not the last row and the 4th square below it does not contain a letter
-					} else if(squares[row+4][col].letter != null){
+					} else if (squares[row][col].row < 2){ 
+						if(squares[row+4][col].letter != null){
 						squares[row][col].letter = squares[row+4][col].letter;
 						squares[row+4][col].setLetter(null); 
+						}
 					// If it is not the last row and the 5th square below it does not contain a letter
-					} else if(squares[row+5][col].letter != null){
-						squares[row][col].letter = squares[row+5][col].letter;
-						squares[row+5][col].setLetter(null);
-					} */
+					} else if (squares[row][col].row < 1){ 
+						if(squares[row+5][col].letter != null){
+							squares[row][col].letter = squares[row+5][col].letter;
+							squares[row+5][col].setLetter(null);
+						}
+					
 					}
 				}
 			}		
