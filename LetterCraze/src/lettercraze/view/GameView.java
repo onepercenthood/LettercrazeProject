@@ -120,7 +120,6 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		
 		validWordsJList = new JList<Word>(jListModel);
 		validWordsJList.setCellRenderer(new WordJListRenderer());
-
 		validWordsJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				
 		JScrollPane wordsScrollPane = new JScrollPane(validWordsJList);
