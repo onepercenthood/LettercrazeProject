@@ -44,14 +44,26 @@ public class PlayWordController extends MouseAdapter{
 				
 				wordsListModel.addElement(copyOfWord);
 				BoardState tempBoard = model.getCurrentBoardState();
+				int value = word.calculateValue();
+				int currentScore = tempBoard.getScore();
+				int newScore = value + currentScore;
+				tempBoard.setScore(newScore);
+				int currentStars = model.getLevel(model.getCurrentLevel() + 1).getHighStars(newScore);
+				tempBoard.setStars(currentStars);
 				tempBoard.removeLetterFromSquares(word);
 				tempBoard.deselectAllSquares();
 				model.setCurrentWord(null);
 				tempBoard.floatTilesUp(tempBoard.getSquares());
 				tempBoard.fillEmptySquares(tempBoard.getSquares());
 				model.setCurrentBoardState(tempBoard);
+				gameView.setStarRater();
+				gameView.getStarRater().repaint();
 				gameView.getBoardView().repaintAllSquares();
+				gameView.setScoreView();
+				gameView.getScoreTextField().repaint();
 				
+				System.out.println(newScore);
+				 
 			}
 			else{
 				System.out.println("Word is not valid."); 

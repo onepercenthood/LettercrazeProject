@@ -43,6 +43,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	 * @param model
 	 * @param levelNum
 	 * @param app
+	 * @wbp.parser.constructor
 	 */
 	public BoardView(Color colorPlayer, Model model, int levelNum, BuilderApplication app) {
 		this.colorPlayer = colorPlayer;
@@ -91,7 +92,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				
 				//initialize the squareview at row, col
 				squareViews[row][col] = new SquareView(thisSquare, colorPlayer);
-				squareViews[row][col].setPreferredSize(new Dimension(64,64));
+				squareViews[row][col].setPreferredSize(new Dimension(100,100));
 				squareViews[row][col].setLayout(null);
 				squareViews[row][col].setBorder(BorderFactory.createLineBorder(Color.black));
 				squareViews[row][col].addMouseListener(new ToggleSquareController(playerApp, squareViews[row][col], model));
@@ -101,7 +102,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 					LetterView lv = new LetterView(thisSquare.getLetter());
 					int halfWidth = squareViews[row][col].getWidth() / 2;
 					int halfHeight = squareViews[row][col].getHeight() / 2;
-					lv.setBounds(halfWidth, halfHeight,64,64);
+					lv.setBounds(halfWidth, halfHeight,77,77);
 					squareViews[row][col].add(lv);
 					if(thisSquare.isSelected()){
 						//active, selected squares are colored yellow
