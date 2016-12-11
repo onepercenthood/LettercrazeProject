@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @author Hoodie
  *
  */
-@JsonTypeName("lightning")
+@JsonTypeName("Lightning")
 public class Lightning extends Level{
 	
 	/** Timer to keep track of time left (Using Swing Timer) */ 

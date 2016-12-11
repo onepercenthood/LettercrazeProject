@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  *
  */
 
-@JsonTypeName("puzzle")
+@JsonTypeName("Puzzle")
 public class Puzzle extends Level{
 	
 	/** Holds the maximum number of Words the Player is allowed to play in this level */

@@ -93,6 +93,10 @@ public class Model {
 		this.boardStates.add(board);
 	}
 	
+	public ArrayList<BoardState> getBoardStateArray(){
+		return this.boardStates;
+	}
+	
 	/**
 	 * 
 	 * @param int levelNum
