@@ -2,6 +2,8 @@
 
 package lettercraze.model;
 
+import java.util.ArrayList;
+
 /**
  * 
  * <p>
@@ -67,6 +69,103 @@ public class BoardFiller{
 			}
 		}
 		return squares;
+	}
+	
+	public Square[][] floatTileDown(Square[][] squares, Word word){
+		Square[] tempLetterOrder = new Square[36];
+		tempLetterOrder = null;
+		for (Square s : word.getLetters()){
+			int index = s.column + (s.row * 6);
+			tempLetterOrder[index] = s;
+		}
+		
+		for(int col = 0; col < 6; col++){
+			
+			for(int row = 0; row < 6; row++){
+				
+				int index = col + (row * 6);
+				Letter newTemp ;
+				Letter oldTemp ;
+				
+				if(tempLetterOrder[index] != null){
+					// case for when letter is in the 1st row
+					if((squares[row][col].isActive) & (squares[row][col].row == 0)){
+						newTemp = squares[row][col].letter;
+						squares[row][col].letter = tempLetterOrder[index].letter;
+						
+						
+						for(int z = 1; z < 6; z++){
+							if(squares[row+z][col].isActive){
+								oldTemp= newTemp;
+								newTemp = squares[row+1][col].letter;
+								squares[row+z][col].letter = oldTemp;
+							}
+						}
+					// case for when letter is in the 2nd row	
+					}else if((squares[row][col].isActive) & (squares[row][col].row == 1)){
+						
+						newTemp = squares[row][col].letter;
+						squares[row][col].letter = tempLetterOrder[index].letter;
+						
+						
+						for(int z = 1; z < 5; z++){
+							if(squares[row+z][col].isActive){
+								oldTemp= newTemp;
+								newTemp = squares[row+1][col].letter;
+								squares[row+z][col].letter = oldTemp;
+							}
+						}
+					// case for when letter is in the 3rd row
+					}else if((squares[row][col].isActive) & (squares[row][col].row == 2)){
+					
+						newTemp = squares[row][col].letter;
+						squares[row][col].letter = tempLetterOrder[index].letter;
+						
+						
+						for(int z = 1; z < 4; z++){
+							if(squares[row+z][col].isActive){
+								oldTemp= newTemp;
+								newTemp = squares[row+1][col].letter;
+								squares[row+z][col].letter = oldTemp;
+							}
+						}
+					// case for when letter is in the 4th row	
+					}else if((squares[row][col].isActive) & (squares[row][col].row == 3)){
+						
+						newTemp = squares[row][col].letter;
+						squares[row][col].letter = tempLetterOrder[index].letter;
+						
+						
+						for(int z = 1; z < 3; z++){
+							if(squares[row+z][col].isActive){
+								oldTemp= newTemp;
+								newTemp = squares[row+1][col].letter;
+								squares[row+z][col].letter = oldTemp;
+							}
+						}
+					// case for when letter is in the 5th row
+					}else if((squares[row][col].isActive) & (squares[row][col].row == 4)){
+						newTemp = squares[row][col].letter;
+						squares[row][col].letter = tempLetterOrder[index].letter;
+						
+						
+						for(int z = 1; z < 2; z++){
+							if(squares[row+z][col].isActive){
+								oldTemp= newTemp;
+								newTemp = squares[row+1][col].letter;
+								squares[row+z][col].letter = oldTemp;
+							}
+						}
+					// case for when letter is in the 6th row
+					}else if((squares[row][col].isActive) & (squares[row][col].row == 5)){
+						squares[row][col].letter = tempLetterOrder[index].letter;
+					}
+				
+				}
+			}
+		}
+	
+		return squares;	
 	}
 
 
