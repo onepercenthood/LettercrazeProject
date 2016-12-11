@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import lettercraze.model.Model;
+import lettercraze.view.BuilderLevelSelecterVew;
 import lettercraze.view.BuilderMenuView;
 import lettercraze.view.BuilderView;
 import lettercraze.view.GameView;
@@ -70,6 +71,8 @@ public class BuilderApplication extends JFrame {
 	BuilderMenuView menuView;
 
 	BuilderView builderView;
+	
+	BuilderLevelSelecterVew loadLevelMenuView;
 	
 	public BuilderView getBuilderView() {
 		return builderView;
@@ -136,8 +139,10 @@ public class BuilderApplication extends JFrame {
 	public void initializeViewClasses(){
 		menuView = new BuilderMenuView(panelMain, model, this );
 		builderView = new BuilderView(model, panelMain, this);
+		loadLevelMenuView = new BuilderLevelSelecterVew(panelMain, model);
 		panelMain.add(menuView, menuView.getPanelName());
-		panelMain.add(builderView, builderView.getPanelName()); 	
+		panelMain.add(builderView, builderView.getPanelName()); 
+		panelMain.add(loadLevelMenuView, loadLevelMenuView.getPanelName());
 		
 	}
 	
@@ -160,7 +165,7 @@ public class BuilderApplication extends JFrame {
 
 		JFrame splashFrame = SplashScreen.createAndShowGUI(size, "Builder");
 		try {
-			// here is where it appes
+			// here is where it appears
 			System.out.println("splash screen");
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {

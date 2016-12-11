@@ -1,16 +1,19 @@
 package lettercraze;
- 
+
 import java.awt.Button;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import lettercraze.model.FileIO;
+import lettercraze.model.Level;
 import lettercraze.model.Model;
 import lettercraze.view.GameView;
 import lettercraze.view.LevelPreviewView;
@@ -27,11 +30,11 @@ import lettercraze.view.SplashScreen;
  *
  */
 public class PlayerApplication extends JFrame {
-	
+
 	private static final long serialVersionUID = 3544957666427353398L;
 	private java.awt.Panel ivjContentsPane = null;
 	private java.awt.Panel ivjTopPane = null;
-	
+
 	/** Name of the current user. Needed to include this value within the Container. */
 	protected String currentUser = "test";
 
@@ -46,24 +49,24 @@ public class PlayerApplication extends JFrame {
 
 	/** Last width for the window. Start with initial width. */
 	protected int lastWidth = 769;
-	
+
 	/**
 	 * Application wide model for storing application data
 	 */
 	Model model = new Model();
-	
+
 	/**
 	 * SplashScreen view class 
 	 */
 	SplashScreen splashView;
-	
+
 	/**
 	 * Menu view class
 	 */
 	MenuView menuView;
 
 	GameView gameView;
-	
+
 	/**
 	 * 
 	 * This is the main Panel which will hold all the other views inside of.
@@ -71,7 +74,7 @@ public class PlayerApplication extends JFrame {
 	 * The Cardlayout will be hosted in this panel.
 	 */
 	private JPanel panelMain;
-	
+
 	public JPanel getCardLayoutParent() {
 		return panelMain;
 	}
@@ -87,93 +90,82 @@ public class PlayerApplication extends JFrame {
 	 * 
 	 */
 	private CardLayout cardLayout = new CardLayout();
-	
-	
 
-	
+
+
+
 	/**
 	 * Will call initialize
 	 */
 	public PlayerApplication(){
 		initialize();
 	}
-	
+
 	/**
 	 * Initializes all the components of the ApplicationPlayer
 	 */
 	private void initialize(){
-	
+
 		initializeViewClasses();
-		
-        setTitle("LetterCraze | Team Manganese");
+
+		setTitle("LetterCraze | Team Manganese");
 		setLayout(null);
-        setPreferredSize(new Dimension(initialWidth, initialHeight));
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        panelMain = new JPanel(cardLayout);
-        
-        panelMain.setBackground(Color.GRAY);
-        panelMain.setBounds(0, 0, initialWidth, initialHeight);
-        panelMain.setPreferredSize(new Dimension(initialWidth, initialHeight));
-        setContentPane(panelMain);
-        
-        initializeViewClasses();
-		
-//		panelMain.add(splashView, splashView.getName());
+		setPreferredSize(new Dimension(initialWidth, initialHeight));
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		panelMain = new JPanel(cardLayout);
+
+		panelMain.setBackground(Color.GRAY);
+		panelMain.setBounds(0, 0, initialWidth, initialHeight);
+		panelMain.setPreferredSize(new Dimension(initialWidth, initialHeight));
+		setContentPane(panelMain);
+
+		initializeViewClasses();
+
+		//		panelMain.add(splashView, splashView.getName());
 		gameView = new GameView(model, panelMain, this);
-		//panelMain.add(gameView, gameView.getPanelName());
 		panelMain.add(menuView, menuView.getPanelName());
 		panelMain.add(gameView, gameView.getPanelName());
-		
+
 		loadInLevels();
-        
-        pack();
+
+		pack();
 
 	}
-	
+
 	public void initializeViewClasses(){
-		menuView = new MenuView(panelMain, model, this);
-		
+		menuView = new MenuView(panelMain, model);
+
 	}
-	
+
 	/**
 	 * Load in the levels to the menu object.
 	 */
 	public void loadInLevels(){
-		int col =5;
+		//FileIO fileReader = new FileIO();
+		ArrayList<Level> levels = FileIO.loadDefaultLevelsFromDisk();
+		int col = 5;
 		int row = 4;
 
-		int total_count = 0;
+		int totalCount = 0;
 
-		String[] levelTypes = {"Puzzle", "Lightning", "Theme"};
-		Color[] levelColors = {Color.GREEN, Color.ORANGE, Color.PINK};
-
-		String levelType;
-		int levelI;
-		for( int rowi = 1; rowi < row; rowi++ ){
-
-			for( int coli=0; coli < col; coli++){
-				levelI = total_count % 3;
-				levelType = levelTypes[levelI];
-				total_count += 1;
-				
-				LevelPreviewView level = new LevelPreviewView(levelType, levelColors[levelI], total_count, 0, panelMain, this);
-				
-				if( total_count != 1){
-					level.setEnabled(false);
-
-				}
-				
-				menuView.addMenuItemToDefault(level);
-				
+		LevelPreviewView level;
+		for(Level toLoad: levels){
+			totalCount ++;
+			Color levelColor = Color.GRAY;
+			switch(toLoad.getLevelType()){
+			case "Puzzle": levelColor = Color.GREEN; break;
+			case "Lightning": levelColor = Color.ORANGE; break;
+			case "Theme": levelColor = Color.PINK; break;
+			default : levelColor = Color.WHITE;
 			}
-
+			level = new LevelPreviewView(toLoad.getLevelType(), levelColor, totalCount, 0, panelMain, this);	
+			menuView.addMenuItemToDefault(level);
 		}
-		
 		panelMain.repaint();
 	}
-	
+
 	/**
 	 * Invoked whenever model is changed and the application needs to refresh
 	 * 
@@ -182,13 +174,13 @@ public class PlayerApplication extends JFrame {
 	public Model modelChanged(){
 		return model;
 	}
-	
+
 	/**
 	 * Main method to launch our LetterCraze swing application
 	 * @param args
 	 */
 	public static void main(String[] args){
-        Dimension size = new Dimension(initialWidth, initialHeight);
+		Dimension size = new Dimension(initialWidth, initialHeight);
 
 		JFrame splashFrame = SplashScreen.createAndShowGUI(size, "Player");
 		try {
@@ -201,7 +193,7 @@ public class PlayerApplication extends JFrame {
 		}
 		splashFrame.setVisible(false);
 		PlayerApplication frame = new PlayerApplication();
-        frame.setVisible(true);
-		
+		frame.setVisible(true);
+
 	}
 }

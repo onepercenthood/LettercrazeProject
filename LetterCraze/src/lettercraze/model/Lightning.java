@@ -15,10 +15,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 public class Lightning extends Level{
 	
 	/** Timer to keep track of time left (Using Swing Timer) */ 
-	CountdownTimer roundTimer;
+	//CountdownTimer roundTimer;
 	
 	
-	/*Default constructor necessary for Jackson deserialization*/
+	/**Default constructor necessary for Jackson deserialization*/
 	public Lightning(){};
 	
 	/** seconds at which the timer is initialized **/
@@ -40,7 +40,7 @@ public class Lightning extends Level{
 		this.starThreshold[1] = starThreshold[1];
 		this.starThreshold[2] = starThreshold[2];
 		
-		this.roundTimer = new CountdownTimer(seconds);
+		//this.roundTimer = new CountdownTimer(seconds);
 				
 	}
 
@@ -48,7 +48,7 @@ public class Lightning extends Level{
 	 * Start timer at the beginning of the round
 	 */
 	public void startTime(){
-		this.roundTimer.startTimer();
+		new CountdownTimer(seconds).startTimer();
 	}
 	
 	@Override
@@ -58,7 +58,6 @@ public class Lightning extends Level{
 		s = s + "First Threshold: " + Integer.toString(starThreshold[0]) + ",";
 		s = s + "Second Threshold: " + Integer.toString(starThreshold[1]) + ", ";
 		s = s + "Third Threshold: " + Integer.toString(starThreshold[2]) + ", \n";
-		s = s + "TimerStart: " + Integer.toString(roundTimer.counter) + ", \n";
 		s = s + "Board Shape: \n";
 		for(int row = 0; row < 6; row++){
 			for(int col = 0; col < 6; col ++){
@@ -71,10 +70,6 @@ public class Lightning extends Level{
 			s = s + "\n";
 		}
 		return s;
-	}
-
-	public CountdownTimer getRoundTimer() {
-		return roundTimer;
 	}
 
 	public int getSeconds() {
