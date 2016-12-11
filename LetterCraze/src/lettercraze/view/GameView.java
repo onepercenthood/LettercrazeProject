@@ -111,7 +111,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		scoreLabelTextField.setBounds(6, 30, 94, 26);
 		add(scoreLabelTextField);
 		 
-		scoreTextField = new JLabel("400");
+		int currentScore = model.getCurrentBoardState().getScore();
+		scoreTextField = new JLabel(Integer.toString(currentScore));
 		scoreTextField.setBounds(56, 30, 94, 26);
 		add(scoreTextField);
 		
@@ -248,6 +249,15 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	
 	public BoardView getBoardView(){
 		return boardview;
+	}
+	
+	public JLabel getScoreView(){
+		return scoreTextField;
+	}
+	
+	public void setScoreView(){
+		int currentScore = model.getCurrentBoardState().getScore();
+		scoreTextField.setText(Integer.toString(currentScore));
 	}
 
 }

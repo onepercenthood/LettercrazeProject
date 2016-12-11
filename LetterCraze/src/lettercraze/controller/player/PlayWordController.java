@@ -44,6 +44,10 @@ public class PlayWordController extends MouseAdapter{
 				
 				wordsListModel.addElement(copyOfWord);
 				BoardState tempBoard = model.getCurrentBoardState();
+				int value = word.calculateValue();
+				int currentScore = tempBoard.getScore();
+				int newScore = value + currentScore;
+				tempBoard.setScore(newScore);
 				tempBoard.removeLetterFromSquares(word);
 				tempBoard.deselectAllSquares();
 				model.setCurrentWord(null);
@@ -51,6 +55,10 @@ public class PlayWordController extends MouseAdapter{
 				tempBoard.fillEmptySquares(tempBoard.getSquares());
 				model.setCurrentBoardState(tempBoard);
 				gameView.getBoardView().repaintAllSquares();
+				gameView.setScoreView();
+				gameView.getScoreTextField().repaint();
+				
+				System.out.println(newScore);
 				
 			}
 			else{

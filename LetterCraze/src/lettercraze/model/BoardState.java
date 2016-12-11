@@ -114,5 +114,13 @@ public void removeLetterFromSquares(Word word){
 	public Square[][] getSquares(){
 		return squares;
 	}
+	
+	public int getScore(){
+		return this.score;
+	}
+	
+	public void setScore(int score){
+		this.score = score;
+	}
 
 }
