@@ -25,9 +25,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property="type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = Puzzle.class, name = "puzzle"),
-    @JsonSubTypes.Type(value = Lightning.class, name = "lightning"),
-    @JsonSubTypes.Type(value = Theme.class, name = "theme") 
+    @JsonSubTypes.Type(value = Puzzle.class, name = "Puzzle"),
+    @JsonSubTypes.Type(value = Lightning.class, name = "Lightning"),
+    @JsonSubTypes.Type(value = Theme.class, name = "Theme") 
     }
 )
 abstract public class Level {
@@ -164,17 +164,6 @@ abstract public class Level {
 		return starThreshold;
 	}
 	
-	public int getStarThreshold1(){
-		return starThreshold[1];
-	}
-	
-	public int getStarThreshold2(){
-		return starThreshold[2];
-	}
-	
-	public int getStarThreshold3(){
-		return starThreshold[3];
-	}
 	
 	/**
 	 * 
