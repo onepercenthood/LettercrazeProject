@@ -21,6 +21,7 @@ import javafx.scene.shape.Box;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.player.ClearWordController;
 import lettercraze.controller.player.PlayWordController;
+import lettercraze.controller.player.UndoController;
 import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.model.Model;
 import lettercraze.model.Word;
@@ -32,6 +33,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import java.awt.Font;
 
 public class GameView extends DefaultViewPanel implements IModelChangedView {
 
@@ -65,6 +67,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	private PlayerApplication app;
 
 	private JList<Word> validWordsJList;
+	
+	private JLabel typeSpecificLabel;
 
 
 	/**
@@ -105,6 +109,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		add(boardview);
 		
 		titleTextField = new JLabel("LetterCraze");
+		titleTextField.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		titleTextField.setBounds(6, 6, 94, 26);
 		add(titleTextField);
 		
@@ -163,19 +168,31 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	    panel_stars.add(starRater);
 		add(panel_stars);
 		
-		levelType = new JLabel("N/A");
-		levelType.setBounds(383, 11, 61, 16);
+		String levelString = model.getLevel(levelNum).getLevelType();
+		levelType = new JLabel(levelString);
+		levelType.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		levelType.setBounds(131, 11, 117, 16);
 		add(levelType);
 		
 		btnAddWord = new JButton("Add Word");
-		btnAddWord.setBounds(278, 42, 117, 29);
+		btnAddWord.setBounds(370, 42, 117, 29);
 		add(btnAddWord);		
 		btnAddWord.addMouseListener(new PlayWordController(app, model, this ));
 		
 		JButton btnClearWord = new JButton("Clear Word");
-		btnClearWord.setBounds(131, 43, 117, 29);
+		btnClearWord.setBounds(243, 42, 117, 29);
 		btnClearWord.addMouseListener(new ClearWordController(app, this.boardview, model));
 		add(btnClearWord);
+		
+		JButton btnUndoMove = new JButton("Undo Move");
+		btnUndoMove.setBounds(116, 42, 117, 29);
+		btnUndoMove.addMouseListener(new UndoController(app, model, this));
+		add(btnUndoMove);
+		
+		typeSpecificLabel = new JLabel("___");
+		typeSpecificLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		typeSpecificLabel.setBounds(284, 12, 117, 16);
+		add(typeSpecificLabel);
 		
 	}
 	
@@ -223,6 +240,14 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		return this.validWordsJList;
 	}
 	
+	public JLabel getTypeSpecific(){
+		return typeSpecificLabel;
+	}
+	
+	public void setTypeSpecificLabel(String display){
+		typeSpecificLabel.setText(display);
+	}
+	
 
 	@Override
 	public void modelChanged() {
@@ -265,5 +290,4 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		int currentStars = model.getCurrentBoardState().getStars();
 		starRater.setRating(currentStars);
 	}
-
 }
