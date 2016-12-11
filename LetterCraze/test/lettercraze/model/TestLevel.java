@@ -18,7 +18,10 @@ public class TestLevel extends TestCase {
 			}
 				
 			// test puzzle level 
-			Level testPuzzle = new Puzzle(1, new int[]{10, 20, 30} , 10);
+			Puzzle testPuzzle = new Puzzle(1, new int[]{10, 20, 30} , 10);
+			assertEquals(testPuzzle.getMaxWords(), 10);
+			testPuzzle.setMaxWords(12);
+			assertEquals(testPuzzle.getMaxWords(), 12);
 			
 			assertFalse(testPuzzle.isCompleted(0));
 			assertTrue(testPuzzle.isCompleted(11));
