@@ -9,9 +9,9 @@ package lettercraze.model;
  * @author Hoodie
  *
  */
-public class BasicFiller implements IBoardFiller{
+public class BoardFiller{
 
-	@Override
+
 	public Square[][] floatTilesUp(Square[][] squares) {
 		// TODO Auto-generated method stub
 		for(int col = 0; col < 6; col++){
@@ -56,7 +56,6 @@ public class BasicFiller implements IBoardFiller{
 		return squares;	
 	}
 
-	@Override
 	public Square[][] fillEmptySquares(Square[][] squares) {
 		// TODO Auto-generated method stub
 		
@@ -70,7 +69,7 @@ public class BasicFiller implements IBoardFiller{
 		return squares;
 	}
 
-	@Override
+
 	public Square[][] initialFill(Square[][] squares) {
 		// for each square
 	
@@ -84,4 +83,8 @@ public class BasicFiller implements IBoardFiller{
 		return squares;
 	}
 
+	public Square[][] initialThemeFill(Square[][] squares) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
