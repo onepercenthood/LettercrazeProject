@@ -63,7 +63,7 @@ public class PlayWordController extends MouseAdapter{
 				gameView.getScoreTextField().repaint();
 				
 				System.out.println(newScore);
-				
+				 
 			}
 			else{
 				System.out.println("Word is not valid."); 
