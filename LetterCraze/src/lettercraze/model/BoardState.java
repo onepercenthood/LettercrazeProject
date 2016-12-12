@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author Hoodie
  *
  */
-public class BoardState extends BasicFiller{
+public class BoardState extends BoardFiller{
 	
 	/** Current Score of the day */
 	protected int score;
@@ -30,10 +30,10 @@ public class BoardState extends BasicFiller{
 	protected Square[][] squares = new Square[6][6] ;
 	
 	/** */
-	protected BasicFiller basicFiller;
+	//protected BasicFiller basicFiller;
 	
 	/** */ 
-	protected ThemeFiller themeFiller;
+	//protected ThemeFiller themeFiller;
 	
 	/**
 	 * Construct entity for initial start of playing a level. 
@@ -48,8 +48,8 @@ public class BoardState extends BasicFiller{
 				}				
 			}
 		}
-		basicFiller = new BasicFiller();
-		squares = basicFiller.initialFill(squares);
+		//basicFiller = new BasicFiller();
+		squares = this.initialFill(squares);
 		score = 0;
 		stars = 0;
 	}
@@ -71,8 +71,8 @@ public class BoardState extends BasicFiller{
 			}
 		}
 		//now add the filler objects to this boardState
-		this.basicFiller = oldState.basicFiller;
-		this.themeFiller = oldState.themeFiller;
+		//this.basicFiller = oldState.basicFiller;
+		//this.themeFiller = oldState.themeFiller;
 		//now use the remove word function to get rid of all the letters from the squares that were selected
 		this.removeLetterFromSquares(playedWord);
 		this.deselectAllSquares();
@@ -117,6 +117,20 @@ public void removeLetterFromSquares(Word word){
 	 */
 	public Square[][] getSquares(){
 		return squares;
+	}
+	
+	public int getScore(){
+		return this.score;
+	}
+	
+	public void setScore(int score){
+		this.score = score;
+	}
+	public int getStars(){
+		return this.stars;
+	}
+	public void setStars(int stars){
+		this.stars = stars;
 	}
 
 }

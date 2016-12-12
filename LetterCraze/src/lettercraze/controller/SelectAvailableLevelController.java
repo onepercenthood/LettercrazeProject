@@ -8,8 +8,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
 import lettercraze.PlayerApplication;
+import lettercraze.controller.player.TimeController;
 import lettercraze.model.Level;
+import lettercraze.model.Lightning;
 import lettercraze.model.Model;
+import lettercraze.view.GameView;
 import lettercraze.view.LevelPreviewView;
 
 public class SelectAvailableLevelController implements ActionListener{
@@ -55,6 +58,7 @@ public class SelectAvailableLevelController implements ActionListener{
 		//mod.intiateLevel(levelNum);
 		//switch to GameView
 		cardlayout.show(app.getCardLayoutParent(), "GameView");
+		
 		
 	}
 }

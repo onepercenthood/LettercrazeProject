@@ -11,11 +11,15 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @author Hoodie
  *
  */
-@JsonTypeName("lightning")
+@JsonTypeName("Lightning")
 public class Lightning extends Level{
 	
+<<<<<<< HEAD
 	/** Timer to keep track of time left (Using Swing Timer) */ 
 	//CountdownTimer roundTimer;
+=======
+
+>>>>>>> refs/heads/development
 	
 	
 	/**Default constructor necessary for Jackson deserialization*/
@@ -40,7 +44,11 @@ public class Lightning extends Level{
 		this.starThreshold[1] = starThreshold[1];
 		this.starThreshold[2] = starThreshold[2];
 		
+<<<<<<< HEAD
 		//this.roundTimer = new CountdownTimer(seconds);
+=======
+//		this.roundTimer = new CountdownTimer(seconds);
+>>>>>>> refs/heads/development
 				
 	}
 
@@ -48,7 +56,11 @@ public class Lightning extends Level{
 	 * Start timer at the beginning of the round
 	 */
 	public void startTime(){
+<<<<<<< HEAD
 		new CountdownTimer(seconds).startTimer();
+=======
+//		this.roundTimer.startTimer();
+>>>>>>> refs/heads/development
 	}
 	
 	@Override
@@ -58,6 +70,10 @@ public class Lightning extends Level{
 		s = s + "First Threshold: " + Integer.toString(starThreshold[0]) + ",";
 		s = s + "Second Threshold: " + Integer.toString(starThreshold[1]) + ", ";
 		s = s + "Third Threshold: " + Integer.toString(starThreshold[2]) + ", \n";
+<<<<<<< HEAD
+=======
+//		s = s + "TimerStart: " + Integer.toString(roundTimer.counter) + ", \n";
+>>>>>>> refs/heads/development
 		s = s + "Board Shape: \n";
 		for(int row = 0; row < 6; row++){
 			for(int col = 0; col < 6; col ++){
@@ -71,6 +87,13 @@ public class Lightning extends Level{
 		}
 		return s;
 	}
+<<<<<<< HEAD
+=======
+
+//	public CountdownTimer getRoundTimer() {
+//		return roundTimer;
+//	}
+>>>>>>> refs/heads/development
 
 	public int getSeconds() {
 		return seconds;

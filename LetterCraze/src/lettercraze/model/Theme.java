@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
  * @author Hoodie
  *
  */
-@JsonTypeName("theme")
+@JsonTypeName("Theme")
 public class Theme extends Level{
 
 	/** Holds the Theme Word/Phrase of the level */

@@ -67,6 +67,11 @@ public class TestWord extends TestCase {
 		// Specify a Square in the array of squares that make up a word
 		assertEquals(testWord.getCertainSquare(2), O);
 		
+		Word testCopyWord = testWord.copyWord();
+		String testWordString = testWord.getWordString();
+		String testWordCopyString = testCopyWord.getWordString();
+		assertEquals(testWordString, testWordCopyString);
+		
 		
 	}
 	

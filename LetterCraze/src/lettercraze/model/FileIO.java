@@ -54,15 +54,17 @@ public class FileIO {
 		    	//convert JSON in file into level object and store in levels arraylist
 		    	try {
 		    		String name = levelFiles[i].getName();
-		    		if(name.contains("puzzle") && name.contains("lettercraze")){		    			
-		    			Puzzle currentLevel = mapper.readValue(levelFiles[i], Puzzle.class);
+
+		    		if(name.contains("Puzzle") && name.contains("lettercraze")){
+		    			
+		    			Level currentLevel = mapper.readValue(levelFiles[i], Level.class);
 						levels.add(currentLevel);
 						
-		    		}else if(levelFiles[i].getName().contains("lightning") && levelFiles[i].getName().contains("lettercraze")){
+		    		}else if(name.contains("Lightning") && name.contains("lettercraze")){
 		    			Lightning currentLevel = mapper.readValue(levelFiles[i], Lightning.class);
 		    			levels.add(currentLevel);
 						
-		    		}else if(levelFiles[i].getName().contains("theme") && levelFiles[i].getName().contains("lettercraze")){
+		    		}else if(name.contains("Theme") && name.contains("lettercraze")){
 		    			Theme currentLevel = mapper.readValue(levelFiles[i], Theme.class);
 		    			levels.add(currentLevel);
 		    		}else{
@@ -97,16 +99,16 @@ public class FileIO {
 		    	//convert JSON in file into level object and store in levels arraylist
 		    	try {
 		    		String name = levelFiles[i].getName();
-		    		if(name.contains("puzzle") && name.contains("lettercraze")){
+		    		if(name.contains("Puzzle") && name.contains("lettercraze")){
 		    			
 		    			Puzzle currentLevel = mapper.readValue(levelFiles[i], Puzzle.class);
 						levels.add(currentLevel);
 						
-		    		}else if(levelFiles[i].getName().contains("lightning") && levelFiles[i].getName().contains("lettercraze")){
+		    		}else if(name.contains("Lightning") && name.contains("lettercraze")){
 		    			Lightning currentLevel = mapper.readValue(levelFiles[i], Lightning.class);
 		    			levels.add(currentLevel);
 						
-		    		}else if(levelFiles[i].getName().contains("theme") && levelFiles[i].getName().contains("lettercraze")){
+		    		}else if(name.contains("Theme") && name.contains("lettercraze")){
 		    			Theme currentLevel = mapper.readValue(levelFiles[i], Theme.class);
 		    			levels.add(currentLevel);
 		    		}else{

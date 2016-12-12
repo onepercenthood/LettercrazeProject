@@ -44,6 +44,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	 * @param model
 	 * @param levelNum
 	 * @param app
+	 * @wbp.parser.constructor
 	 */
 	public BoardView(Color colorPlayer, Model model, int levelNum, BuilderApplication app) {
 		this.colorPlayer = colorPlayer;
@@ -90,15 +91,29 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				//save some typing
 				Square thisSquare = model.getCurrentBoardState().getSquares()[row][col];
 				
+<<<<<<< HEAD
 				//initialize the squareview at row, col, and to show the letter
 				squareViews[row][col] = new SquareView(thisSquare, colorPlayer, true);
 				squareViews[row][col].setPreferredSize(new Dimension(64,64));
+=======
+				//initialize the squareview at row, col
+				squareViews[row][col] = new SquareView(thisSquare, colorPlayer);
+				squareViews[row][col].setPreferredSize(new Dimension(100,100));
+>>>>>>> refs/heads/development
 				squareViews[row][col].setLayout(null);
 				squareViews[row][col].setBorder(BorderFactory.createLineBorder(Color.black));
 				squareViews[row][col].addMouseListener(new ToggleSquareController(playerApp, squareViews[row][col], model));
 				
 				//check if the square is active for this level
 				if(thisSquare.isActive()){ 
+<<<<<<< HEAD
+=======
+					LetterView lv = new LetterView(thisSquare.getLetter());
+					int halfWidth = squareViews[row][col].getWidth() / 2;
+					int halfHeight = squareViews[row][col].getHeight() / 2;
+					lv.setBounds(halfWidth, halfHeight,77,77);
+					squareViews[row][col].add(lv);
+>>>>>>> refs/heads/development
 					if(thisSquare.isSelected()){
 						//active, selected squares are colored yellow
 						squareViews[row][col].setBackground(Color.YELLOW);
@@ -242,6 +257,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				currentSquareView = squareViews[i][j];
 //				System.out.print(squareViews[i][j].getLetter().getLetter()+ " ");
 				
+<<<<<<< HEAD
 //				if( currentSquareView.getSquare().getLetter() == null){
 //					
 ////					Square nullSquare = new Square(i,j);
@@ -254,6 +270,29 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 //				}
 				squareViews[i][j].repaintSquare();		
 			} System.out.println();
+=======
+				if( currentSquareView.getSquare().getLetter() == null){
+					
+//					Square nullSquare = new Square(i,j);
+//					nullSquare.setLetter(null);
+					currentSquareView.getSquare().setLetter(null);
+					currentLetterView = (LetterView) currentSquareView.getComponent(0);
+//					currentLetterView.setLetter(nullSquare.getLetter());
+					currentLetterView.setText(" ");
+					currentLetterView.repaint();
+				} else {
+					currentLetterView = (LetterView) currentSquareView.getComponent(0);
+					currentLetterView.setText(currentSquareView.getSquare().getLetter().getLetter());
+					currentLetterView.repaint();
+				}	
+				
+				currentSquareView.repaintSquare();
+
+				
+				squareViews[i][j] = currentSquareView;
+				
+			}
+>>>>>>> refs/heads/development
 		}
 		this.repaint();
 	}

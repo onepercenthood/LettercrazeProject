@@ -36,6 +36,8 @@ public class Model {
 	/** Dictionary that stores all possible words that can be played */
 	protected WordTable possibleWords;
 	
+	protected int currentLevel;
+	
 	/**
 	 * Model Constructor
 	 */
@@ -59,12 +61,20 @@ public class Model {
 			}
 			//active = !active;
 		}
-		Puzzle level1 = new Puzzle(1, new int[]{1, 2, 3} , 10);
+		Puzzle level1 = new Puzzle(1, new int[]{25, 50, 100} , 10);
 		level1.setBoardShape(sampleShape);
 		level1.setUnLocked(true);
 		levels.add(level1);	
-		//loadLevelsFromDisk();
 		initiateLevel(1);
+
+		
+		Lightning level2 = new Lightning(2, new int[]{25, 50, 100} , 30);
+		level2.setBoardShape(sampleShape);
+		level2.setUnLocked(true);
+		levels.add(level2);	
+		initiateLevel(2);
+
+		//loadLevelsFromDisk();
 		//saveLevelsToDisk();
 	}
 	
@@ -80,6 +90,10 @@ public class Model {
 	
 	public void setCurrentBoardState(BoardState board){
 		this.boardStates.add(board);
+	}
+	
+	public ArrayList<BoardState> getBoardStateArray(){
+		return this.boardStates;
 	}
 	
 	/**
@@ -243,6 +257,9 @@ public class Model {
 		return true;
 	}
 	
+	public int getCurrentLevel(){
+		return this.currentLevel;
+	}
 }
 
 

@@ -21,6 +21,7 @@ public class LetterView extends JLabel{
 	private Letter letter;
 
 	public LetterView(Letter letter){
+		setFont(new Font("Tahoma", Font.PLAIN, 16));
 		setHorizontalAlignment(SwingConstants.CENTER);
 		this.letter = letter;
 		initialize();
