@@ -35,7 +35,11 @@ public class UndoController extends MouseAdapter{
 		//Word remove = model.getCurrentBoardState().getFoundWords().get(0);
 		Word remove = model.getCurrentBoardState().getFoundWords().get(0);
 		System.out.println(remove.getLetters());
+		
+		gameView.removeWordFromJList(0);
 		model.getCurrentBoardState().floatTileDown(model.getCurrentBoardState().getSquares(), remove);
+		
+		System.out.println("Floating down word: " + remove.toString());
 		
 		gameView.getStarRater().repaint();
 		gameView.getBoardView().repaintAllSquares();

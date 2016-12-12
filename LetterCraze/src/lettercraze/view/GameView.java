@@ -239,6 +239,31 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		return this.validWordsJList;
 	}
 	
+	/**
+	 * Removes word from JList and the model as well
+	 * @param index index to remove from 
+	 * @return Word
+	 */
+	public Word removeWordFromJList(int index){
+		DefaultListModel model = (DefaultListModel) this.validWordsJList.getModel();
+		
+		this.model.getCurrentBoardState().getFoundWords().remove(index);
+		
+		return (Word) model.remove(index);
+	}
+	
+	/**
+	 * Removes word from JList and the model as well
+	 * @param word Word object
+	 * @return boolean
+	 */
+	public boolean removeWordFromJList(Word word){
+		DefaultListModel model = (DefaultListModel) this.validWordsJList.getModel();
+		this.model.getCurrentBoardState().getFoundWords().remove(word);
+
+		return model.removeElement(word);
+	}
+	
 	public JLabel getTypeSpecific(){
 		return getTypeSpecificLabel();
 	}
