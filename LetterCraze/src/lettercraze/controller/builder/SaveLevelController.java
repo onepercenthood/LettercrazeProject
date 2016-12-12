@@ -65,7 +65,6 @@ public class SaveLevelController extends MouseAdapter{
 		
 		System.out.println(level.debugString());
 		FileIO.saveLevelToDisk(level);
-		
 	}
 	
 	
