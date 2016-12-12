@@ -68,13 +68,13 @@ public class Model {
 		levels.add(level1);	
 		initiateLevel(1);
 
-		
+		/*
 		Lightning level2 = new Lightning(2, new int[]{25, 50, 100} , 30);
 		level2.setBoardShape(sampleShape);
 		level2.setUnLocked(true);
 		levels.add(level2);	
 		initiateLevel(2);
-
+*/
 		//loadLevelsFromDisk();
 		//saveLevelsToDisk();
 		/*
