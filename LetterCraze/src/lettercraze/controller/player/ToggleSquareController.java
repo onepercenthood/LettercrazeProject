@@ -47,7 +47,7 @@ public class ToggleSquareController extends MouseAdapter{
 				//}
 				squareView.repaintSquare();
 			}
-			
+			//check that this square is adjacent to the previous square
 			else if(toEdit.isAdjacent(lastSquare, toEdit) && !(toEdit.isSelected())){
 				word.addSquare(toEdit);
 				model.setCurrentWord(word);

@@ -66,8 +66,16 @@ public class Model {
 		level1.setBoardShape(sampleShape);
 		level1.setUnLocked(true);
 		levels.add(level1);	
-		//loadLevelsFromDisk();
 		initiateLevel(1);
+
+		/*
+		Lightning level2 = new Lightning(2, new int[]{25, 50, 100} , 30);
+		level2.setBoardShape(sampleShape);
+		level2.setUnLocked(true);
+		levels.add(level2);	
+		initiateLevel(2);
+*/
+		//loadLevelsFromDisk();
 		//saveLevelsToDisk();
 		/*
 		Lightning level1 = new Lightning(1, new int[]{25, 50, 100} , 10);

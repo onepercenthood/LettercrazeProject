@@ -63,6 +63,7 @@ public class BoardState extends BoardFiller{
 	 * @param playedWord is the word submitted to be played
 	 */
 	public BoardState(BoardState oldState, Word playedWord){
+		System.out.println("Loading new BoardState");
 		//first create copy of each square in the old board, with the same letters in it
 		for(int i = 0; i < 6; i ++){
 			for(int j = 0; j < 6; j ++){
@@ -73,8 +74,9 @@ public class BoardState extends BoardFiller{
 		//this.basicFiller = oldState.basicFiller;
 		//this.themeFiller = oldState.themeFiller;
 		//now use the remove word function to get rid of all the letters from the squares that were selected
-		
-		//and float all squares below them up...
+		this.removeLetterFromSquares(playedWord);
+		this.deselectAllSquares();
+		//float all squares below them up...
 
 		//...and fill in any open spaces on the bottom
 		for(int i = 0; i < 6; i ++){
@@ -102,7 +104,9 @@ public void removeLetterFromSquares(Word word){
 		ArrayList<Square> squareArr = word.getLetters();
  
 		for(Square curSquare : squareArr){
-			curSquare.removeLetterFromSquare(null);
+			int row = curSquare.getRow();
+			int col = curSquare.getColumn();
+			this.squares[row][col].removeLetterFromSquare(null);
 		}
 	}
 

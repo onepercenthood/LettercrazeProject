@@ -17,6 +17,7 @@ import lettercraze.BuilderApplication;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.controller.player.ToggleSquareController;
+import lettercraze.model.BoardState;
 import lettercraze.model.Letter;
 import lettercraze.model.Model;
 import lettercraze.model.Square;
@@ -43,7 +44,6 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	 * @param model
 	 * @param levelNum
 	 * @param app
-	 * @wbp.parser.constructor
 	 */
 	public BoardView(Color colorPlayer, Model model, int levelNum, BuilderApplication app) {
 		this.colorPlayer = colorPlayer;
@@ -91,7 +91,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				Square thisSquare = model.getCurrentBoardState().getSquares()[row][col];
 				
 				//initialize the squareview at row, col
-				squareViews[row][col] = new SquareView(thisSquare, colorPlayer);
+				squareViews[row][col] = new SquareView(thisSquare, colorPlayer, true);
 				squareViews[row][col].setPreferredSize(new Dimension(100,100));
 				squareViews[row][col].setLayout(null);
 				squareViews[row][col].setBorder(BorderFactory.createLineBorder(Color.black));
@@ -99,11 +99,6 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				
 				//check if the square is active for this level
 				if(thisSquare.isActive()){ 
-					LetterView lv = new LetterView(thisSquare.getLetter());
-					int halfWidth = squareViews[row][col].getWidth() / 2;
-					int halfHeight = squareViews[row][col].getHeight() / 2;
-					lv.setBounds(halfWidth, halfHeight,77,77);
-					squareViews[row][col].add(lv);
 					if(thisSquare.isSelected()){
 						//active, selected squares are colored yellow
 						squareViews[row][col].setBackground(Color.YELLOW);
@@ -132,8 +127,8 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				//save some typing
 				Square thisSquare = model.getCurrentBoardState().getSquares()[row][col];
 				
-				//initialize the squareview at row, col
-				squareViews[row][col] = new SquareView(thisSquare, colorPlayer);
+				//initialize the squareview at row, col, and to hide the letter
+				squareViews[row][col] = new SquareView(thisSquare, colorPlayer, false);
 				squareViews[row][col].setPreferredSize(new Dimension(64,64));
 				squareViews[row][col].setLayout(null);
 				squareViews[row][col].setBorder(BorderFactory.createLineBorder(Color.black));
@@ -141,7 +136,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				
 				//check if the square is active for this level
 				if(thisSquare.isActive()){
-					//color active squares yellow
+					//color active squares to the default color
 					squareViews[row][col].setBackground(colorPlayer);
 				} else {
 					//inactive squares are colored black
@@ -164,33 +159,6 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 		}
 	}
 	
-	
-	/**
-	 * loads the board view with square views that each contain a JButton
-	 * the text on the JButton representing the letter stored in that square.
-	 */
-	public void loadInPlayerGrid(){
-		for(int row = 0; row < 6; row++){
-			for(int col = 0; col < 6; col++){
-				//save some typing
-				Square thisSquare = model.getCurrentBoardState().getSquares()[row][col];				
-				//check if the square is active for this level
-				if(thisSquare.isActive()){					
-					//((LetterView)squareViews[row][col].getComponent(0)).setLetter(thisSquare.getLetter());
-					if(thisSquare.isSelected()){
-						squareViews[row][col].setBackground(Color.YELLOW);
-					}else {
-						squareViews[row][col].setBackground(colorPlayer);
-					}
-				} else {
-					//inactive squares are colored black
-					squareViews[row][col].setBackground(Color.BLACK);
-				}
-				add(squareViews[row][col]);
-			}
-		}	
-	}
-	
 	/**
 	 * @return the desired boardShape from the squares pointed to by the gui
 	 */
@@ -203,6 +171,18 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 			}
 		}
 		return shape;
+	}
+	
+	/**
+	 * sets the squares in the board to the given shape
+	 * @param shape : the shape that holds which squares will be active
+	 */
+	public void setBoardShape(boolean[][] shape){
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col++){
+				squareViews[row][col].getSquare().setActive(shape[row][col]);
+			}
+		}
 	}
 	
 	public Color getColorPlayer() {
@@ -254,6 +234,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 		for(int i = 0; i < 6; i++){
 			for(int j = 0; j < 6; j ++){
 				currentSquareView = squareViews[i][j];
+//				System.out.print(squareViews[i][j].getLetter().getLetter()+ " ");
 				
 				if( currentSquareView.getSquare().getLetter() == null){
 					
@@ -277,7 +258,6 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				
 			}
 		}
-		
 		this.repaint();
 	}
 	

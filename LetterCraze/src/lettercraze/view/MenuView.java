@@ -7,6 +7,7 @@ import java.awt.Container;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
+import lettercraze.BuilderApplication;
 import lettercraze.PlayerApplication;
 import lettercraze.model.Model;
 
@@ -60,18 +61,20 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	private GridBagConstraints gbc_lblCustomLevels;
 
 	private JPanel cardLayoutPanel;
-
-	private PlayerApplication app;
 	
-	public MenuView(JPanel cardLayoutPanel, Model m, PlayerApplication app){
+	public MenuView(JPanel cardLayoutPanel, Model m, PlayerApplication playerApplication){
 		model = m;
 		
 		this.cardLayoutPanel = cardLayoutPanel;
 		
-		this.app = app;
 		
 		createPanel();
 
+	}
+
+	public MenuView(JPanel panelMain, Model model2, BuilderApplication builderApplication) {
+		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
@@ -84,7 +87,6 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		add(panel, BorderLayout.CENTER);
 
 		JLabel lblLettercrazeMainMenu = new JLabel("LetterCraze Main Menu");
-
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 

@@ -44,6 +44,25 @@ public class LetterView extends JLabel{
 		return subscript;
 	}
 	
+	/**
+	 * repaints the letterView, updating the text to match the letter it references
+	 */
+	public void repaintLetterView(){
+		//update the text to display
+		if(letter != null){
+			System.out.println("updating LetterView text to: " + letter.getLetter());
+			this.setText(letter.getLetter());
+			this.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 30));
+		} 
+		else{
+			this.setText("");
+			System.out.println("updating LetterView to empty string");
+		}
+		
+		//repaint the label
+		//this.repaint();
+	}
+	
 	public Letter getLetter(){
 		return letter;
 	}

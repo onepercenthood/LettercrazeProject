@@ -127,7 +127,6 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		
 		validWordsJList = new JList<Word>(jListModel);
 		validWordsJList.setCellRenderer(new WordJListRenderer());
-
 		validWordsJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				
 		JScrollPane wordsScrollPane = new JScrollPane(validWordsJList);
@@ -189,10 +188,10 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		btnUndoMove.addMouseListener(new UndoController(app, model, this));
 		add(btnUndoMove);
 		
-		typeSpecificLabel = new JLabel("___");
-		typeSpecificLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		typeSpecificLabel.setBounds(284, 12, 117, 16);
-		add(typeSpecificLabel);
+		setTypeSpecificLabel(new JLabel("___"));
+		getTypeSpecificLabel().setFont(new Font("Tahoma", Font.PLAIN, 16));
+		getTypeSpecificLabel().setBounds(284, 12, 117, 16);
+		add(getTypeSpecificLabel());
 		
 	}
 	
@@ -241,7 +240,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	}
 	
 	public JLabel getTypeSpecific(){
-		return typeSpecificLabel;
+		return getTypeSpecificLabel();
 	}
 	
 	public void setTypeSpecificLabel(String display){
@@ -289,5 +288,19 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	public void setStarRater(){
 		int currentStars = model.getCurrentBoardState().getStars();
 		starRater.setRating(currentStars);
+	}
+
+	/**
+	 * @return the typeSpecificLabel
+	 */
+	public JLabel getTypeSpecificLabel() {
+		return typeSpecificLabel;
+	}
+
+	/**
+	 * @param typeSpecificLabel the typeSpecificLabel to set
+	 */
+	public void setTypeSpecificLabel(JLabel typeSpecificLabel) {
+		this.typeSpecificLabel = typeSpecificLabel;
 	}
 }

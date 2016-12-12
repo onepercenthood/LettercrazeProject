@@ -1,3 +1,4 @@
+
 package lettercraze;
  
 import java.awt.Button;
@@ -160,7 +161,7 @@ public class PlayerApplication extends JFrame {
 				
 				LevelPreviewView level = new LevelPreviewView(levelType, levelColors[levelI], total_count, 0, panelMain, this);
 				
-				if( total_count != 1){
+				if( total_count != 1 && total_count != 2){
 					level.setEnabled(false);
 
 				}
@@ -204,4 +205,14 @@ public class PlayerApplication extends JFrame {
         frame.setVisible(true);
 		
 	}
+
+	public GameView getGameView() {
+		// TODO Auto-generated method stub
+		return this.gameView;
+	}
+	
+	public Model getModel() {
+		return model;
+	}
+
 }

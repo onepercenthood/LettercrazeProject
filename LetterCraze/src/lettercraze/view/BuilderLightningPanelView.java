@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 
-public class BuilderLightningPanelView extends DefaultViewPanel implements IBuilderLevelPanel{
+public class BuilderLightningPanelView extends AbsBuilderLevelPanel{
 
 	/**
 	 * Serial ID
@@ -159,7 +159,7 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 		lightning.setUnLocked(true);
 		return lightning;
 	}
-	
+
 	@Override
 	public void resetFields(){
 		this.txtfldmaxTimer.setText("");
@@ -169,9 +169,19 @@ public class BuilderLightningPanelView extends DefaultViewPanel implements IBuil
 	}
 
 	@Override
-	public void fillAllFields(Level level) {
-		// TODO Auto-generated method stub
-		
+	public boolean fillAllFields(Level level) {
+		if(level.getLevelType().equals("Lightning")){
+			Lightning lit = (Lightning) level;
+			this.txtfldmaxTimer.setText(Integer.toString(lit.getSeconds()));
+			this.txtfldOneStarPoints.setText(Integer.toString(lit.getStarThreshold()[0]));
+			this.txtfldTwoStarPoints.setText(Integer.toString(lit.getStarThreshold()[1]));
+			this.txtfldThreeStarPoints.setText(Integer.toString(lit.getStarThreshold()[2]));
+			this.setLevelLoaded(lit);
+			return true;
+		} else{
+			return false;
+		}
+
 	}
 
 }

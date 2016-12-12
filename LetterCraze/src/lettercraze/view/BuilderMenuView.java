@@ -22,6 +22,7 @@ import javax.swing.border.LineBorder;
 
 import lettercraze.BuilderApplication;
 import lettercraze.controller.builder.CreateNewLevelController;
+import lettercraze.controller.builder.OpenLevelSelecterController;
 import lettercraze.model.Model;
 
 import java.awt.Font;
@@ -61,6 +62,7 @@ public class BuilderMenuView extends DefaultViewPanel{
 		
 		JButton btnEditExistingLevel = new JButton("Edit Existing Level");
 		btnEditExistingLevel.setBounds(450, 319, 180, 53);
+		btnEditExistingLevel.addMouseListener(new OpenLevelSelecterController(cardLayoutPanel));
 		panel.add(btnEditExistingLevel);
 		
 	}
