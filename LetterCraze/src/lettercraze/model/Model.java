@@ -55,13 +55,13 @@ public class Model {
 		boolean[][] sampleShape = new boolean[6][6];
 		boolean active = true;
 		for(int row = 0; row < 6; row++){
-			for(int col = 0; col < 6; col++){
+			for(int col = 0; col < 4; col++){
 				sampleShape[row][col] = active;
 				//active = !active;
 			}
 			//active = !active;
 		}
-		/*
+/*		
 		Puzzle level1 = new Puzzle(1, new int[]{25, 50, 100} , 10);
 		level1.setBoardShape(sampleShape);
 		level1.setUnLocked(true);
@@ -77,11 +77,12 @@ public class Model {
 */		
 		levels = FileIO.loadDefaultLevelsFromDisk();
 		System.out.println(levels);
+		//initiateLevel(1);
+		ArrayList<Level> custom = new ArrayList<Level>();
+		custom = FileIO.loadCustomLevelsFromDisk();
+		levels.addAll(custom);
+		System.out.println(levels);
 		initiateLevel(1);
-		//ArrayList<Level> custom = new ArrayList<Level>();
-		//custom = FileIO.loadCustomLevelsFromDisk();
-		//levels.addAll(custom);
-
 		//loadLevelsFromDisk();
 		//saveLevelsToDisk();
 		/*
