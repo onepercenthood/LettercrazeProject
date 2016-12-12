@@ -59,7 +59,12 @@ public class SaveLevelController extends MouseAdapter{
 
 		} //otherwise, give it a new level number at the end of the list
 		else {
+			//find how many levels are in the folder
 			int numLevels = levels.size();
+			//if there were none, this will be the first
+			if(numLevels == 0){
+				numLevels = 1;
+			}
 			level = panel.compileLevelInfo(shape, 15 + numLevels);
 		} 
 		

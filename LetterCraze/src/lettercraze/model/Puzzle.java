@@ -33,7 +33,7 @@ public class Puzzle extends Level{
 	public Puzzle (int levelNum, int[] starThreshold, int maxWords){
 		super();
 		this.levelNum = levelNum;
-		this.levelType = "puzzle";
+		this.levelType = "Puzzle";
 		this.starThreshold[0] = starThreshold[0];
 		this.starThreshold[1] = starThreshold[1];
 		this.starThreshold[2] = starThreshold[2];
