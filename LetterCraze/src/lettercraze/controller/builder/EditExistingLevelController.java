@@ -31,7 +31,8 @@ public class EditExistingLevelController extends java.awt.event.MouseAdapter{
 	 * on mousePress: load the level-specific panel with all text fields filled out with the data from the level 
 	 */
 	public void mousePressed(MouseEvent me){
-		//cardLayout.show(parent, "BuilderView");
+		cardLayout.show(parent, "BuilderView");
+		//remove the builderselector view from the container, to be re-loaded later
 		parent.remove(2);
 		BuilderView bView = null;
 		for(Component comp: parent.getComponents()){
