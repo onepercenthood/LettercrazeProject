@@ -20,6 +20,7 @@ import javax.swing.border.LineBorder;
 import javafx.scene.shape.Box;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.player.ClearWordController;
+import lettercraze.controller.player.LeaveLevelEarlyController;
 import lettercraze.controller.player.PlayWordController;
 import lettercraze.controller.player.UndoController;
 import lettercraze.controller.builder.SelectBoardSquareController;
@@ -139,14 +140,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		
 		btnExitLevel = new JButton("Exit Level");
 
-		btnExitLevel.addMouseListener(new MouseAdapter() {
-			@Override
-			//TODO change to exit controller that resets the level as you exit, recording if you won or not
-			public void mousePressed(MouseEvent me){
-				CardLayout clay = (CardLayout) parent.getLayout();
-				clay.first(parent); //revert to the menu screen
-			}
-		});
+		btnExitLevel.addMouseListener(new LeaveLevelEarlyController(parent, model, this));
 		btnExitLevel.setBounds(660, 6, 117, 29);
 		add(btnExitLevel);
 		

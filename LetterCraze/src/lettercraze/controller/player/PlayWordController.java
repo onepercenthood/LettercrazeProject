@@ -72,8 +72,7 @@ public class PlayWordController extends MouseAdapter{
 				gameView.getBoardView().repaintAllSquares();
 				gameView.setScoreView();
 				gameView.getScoreTextField().repaint();
-				 
-				System.out.println(model.getBoardStateArray().size());
+				
 				 
 			}
 			else{
