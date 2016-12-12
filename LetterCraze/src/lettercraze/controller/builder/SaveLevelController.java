@@ -60,7 +60,7 @@ public class SaveLevelController extends MouseAdapter{
 		} //otherwise, give it a new level number at the end of the list
 		else {
 			int numLevels = levels.size();
-			level = panel.compileLevelInfo(shape, 15 + numLevels);
+			level = panel.compileLevelInfo(shape, 16 + numLevels);
 		} 
 		
 		System.out.println(level.debugString());
