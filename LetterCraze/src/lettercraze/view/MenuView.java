@@ -62,7 +62,7 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 
 	private JPanel cardLayoutPanel;
 	
-	public MenuView(JPanel cardLayoutPanel, Model m){
+	public MenuView(JPanel cardLayoutPanel, Model m, PlayerApplication playerApplication){
 		model = m;
 		
 		this.cardLayoutPanel = cardLayoutPanel;

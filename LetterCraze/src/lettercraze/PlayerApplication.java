@@ -215,5 +215,4 @@ public class PlayerApplication extends JFrame {
 		return model;
 	}
 
->>>>>>> refs/heads/development
 }

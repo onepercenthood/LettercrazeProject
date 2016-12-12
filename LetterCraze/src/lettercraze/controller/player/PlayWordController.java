@@ -42,7 +42,7 @@ public class PlayWordController extends MouseAdapter{
 				//make a new boardState with this word removed
 				BoardState currentState = model.getCurrentBoardState();
 				Word copyOfWord = word.copyWord();
-				BoardState newState = new BoardState (currentState, copyOfWord);
+				//BoardState newState = new BoardState (currentState, copyOfWord);
 				
 				
 				wordsListModel.addElement(copyOfWord);
@@ -60,9 +60,9 @@ public class PlayWordController extends MouseAdapter{
 				tempBoard.floatTilesUp(tempBoard.getSquares());
 				tempBoard.fillEmptySquares(tempBoard.getSquares());
 				model.setCurrentBoardState(tempBoard);
-				if(model.getLevel(model.getCurrentLevel()).getLevelType() == "puzzle"){
+				//if(model.getLevel(model.getCurrentLevel()).getLevelType() == "puzzle"){
 					
-				}
+				//}
 				gameView.setStarRater();
 				gameView.getStarRater().repaint();
 				gameView.getBoardView().repaintAllSquares();
