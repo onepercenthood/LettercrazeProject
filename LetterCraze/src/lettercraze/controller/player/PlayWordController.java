@@ -44,26 +44,8 @@ public class PlayWordController extends MouseAdapter{
 				Word copyOfWord = word.copyWord();
 				BoardState newState = new BoardState (currentState, copyOfWord);
 				
-				//remove the word from current word
-				model.setCurrentWord(null);
-				//update the model boardstate
-				model.setCurrentBoardState(newState);
-				gameView.getBoardView().setSquareViewTargets(newState);
-				gameView.getBoardView().repaintAllSquares();
-				//gameView.repaint();
-				
 				
 				wordsListModel.addElement(copyOfWord);
-<<<<<<< HEAD
-//				BoardState tempBoard = model.getCurrentBoardState();
-//				tempBoard.removeLetterFromSquares(word);
-//				tempBoard.deselectAllSquares();
-//				model.setCurrentWord(null);
-//				//tempBoard.floatTilesUp(tempBoard.getSquares());
-//				model.setCurrentBoardState(tempBoard);
-//				gameView.getBoardView().repaintAllSquares();
-				
-=======
 				BoardState tempBoard = model.getCurrentBoardState();
 				int value = word.calculateValue();
 				int currentScore = tempBoard.getScore();
@@ -74,6 +56,7 @@ public class PlayWordController extends MouseAdapter{
 				tempBoard.removeLetterFromSquares(word);
 				tempBoard.deselectAllSquares();
 				model.setCurrentWord(null);
+			
 				tempBoard.floatTilesUp(tempBoard.getSquares());
 				tempBoard.fillEmptySquares(tempBoard.getSquares());
 				model.setCurrentBoardState(tempBoard);
@@ -88,7 +71,6 @@ public class PlayWordController extends MouseAdapter{
 				 
 				System.out.println(model.getBoardStateArray().size());
 				 
->>>>>>> refs/heads/development
 			}
 			else{
 				System.out.println("Word is not valid."); 
