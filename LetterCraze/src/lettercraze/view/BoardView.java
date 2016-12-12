@@ -44,7 +44,6 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	 * @param model
 	 * @param levelNum
 	 * @param app
-	 * @wbp.parser.constructor
 	 */
 	public BoardView(Color colorPlayer, Model model, int levelNum, BuilderApplication app) {
 		this.colorPlayer = colorPlayer;
@@ -91,29 +90,15 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				//save some typing
 				Square thisSquare = model.getCurrentBoardState().getSquares()[row][col];
 				
-<<<<<<< HEAD
-				//initialize the squareview at row, col, and to show the letter
-				squareViews[row][col] = new SquareView(thisSquare, colorPlayer, true);
-				squareViews[row][col].setPreferredSize(new Dimension(64,64));
-=======
 				//initialize the squareview at row, col
-				squareViews[row][col] = new SquareView(thisSquare, colorPlayer);
+				squareViews[row][col] = new SquareView(thisSquare, colorPlayer, true);
 				squareViews[row][col].setPreferredSize(new Dimension(100,100));
->>>>>>> refs/heads/development
 				squareViews[row][col].setLayout(null);
 				squareViews[row][col].setBorder(BorderFactory.createLineBorder(Color.black));
 				squareViews[row][col].addMouseListener(new ToggleSquareController(playerApp, squareViews[row][col], model));
 				
 				//check if the square is active for this level
 				if(thisSquare.isActive()){ 
-<<<<<<< HEAD
-=======
-					LetterView lv = new LetterView(thisSquare.getLetter());
-					int halfWidth = squareViews[row][col].getWidth() / 2;
-					int halfHeight = squareViews[row][col].getHeight() / 2;
-					lv.setBounds(halfWidth, halfHeight,77,77);
-					squareViews[row][col].add(lv);
->>>>>>> refs/heads/development
 					if(thisSquare.isSelected()){
 						//active, selected squares are colored yellow
 						squareViews[row][col].setBackground(Color.YELLOW);
@@ -188,6 +173,18 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 		return shape;
 	}
 	
+	/**
+	 * sets the squares in the board to the given shape
+	 * @param shape : the shape that holds which squares will be active
+	 */
+	public void setBoardShape(boolean[][] shape){
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col++){
+				squareViews[row][col].getSquare().setActive(shape[row][col]);
+			}
+		}
+	}
+	
 	public Color getColorPlayer() {
 		return colorPlayer;
 	}
@@ -205,25 +202,6 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 
 	public SquareView[][] getSquareViews() {
 		return squareViews;
-	}
-	
-	/**
-	 * updates the square views to show the squares in the given boardState.
-	 * @param newState : the squares in the current state
-	 * @return
-	 */
-	public boolean setSquareViewTargets(BoardState newState){
-		System.out.println("\nUpdated Square Targets to: ");
-		for(int i = 0; i <6; i++){
-			for(int j = 0; j < 6; j ++){
-				Square thisSquare = squareViews[i][j].getSquare();
-				Square newTarget = newState.getSquares()[i][j];
-				squareViews[i][j].setSquare(newTarget);
-				System.out.print(squareViews[i][j].getLetterView().getLetter() + " ");
-			}
-			System.out.println();
-		}
-		return true;
 	}
 
 
@@ -250,6 +228,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	}
 	
 	public void repaintAllSquares(){
+		//super.repaint();
 		SquareView currentSquareView ;
 		LetterView currentLetterView;
 		for(int i = 0; i < 6; i++){
@@ -257,20 +236,6 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				currentSquareView = squareViews[i][j];
 //				System.out.print(squareViews[i][j].getLetter().getLetter()+ " ");
 				
-<<<<<<< HEAD
-//				if( currentSquareView.getSquare().getLetter() == null){
-//					
-////					Square nullSquare = new Square(i,j);
-////					nullSquare.setLetter(null);
-//					currentSquareView.getSquare().setLetter(null);
-//					currentLetterView = (LetterView) currentSquareView.getComponent(0);
-////					currentLetterView.setLetter(nullSquare.getLetter());
-//					currentLetterView.setText(" ");
-//					currentLetterView.repaint();
-//				}
-				squareViews[i][j].repaintSquare();		
-			} System.out.println();
-=======
 				if( currentSquareView.getSquare().getLetter() == null){
 					
 //					Square nullSquare = new Square(i,j);
@@ -292,7 +257,6 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 				squareViews[i][j] = currentSquareView;
 				
 			}
->>>>>>> refs/heads/development
 		}
 		this.repaint();
 	}

@@ -1,5 +1,7 @@
 package lettercraze.view;
 
+import javax.swing.JPanel;
+
 import lettercraze.model.Level;
 /**
  * ILevelPanel is used to provide a consistent interface for retrieving 
@@ -7,38 +9,52 @@ import lettercraze.model.Level;
  * @author Rett
  * 
  */
-public interface IBuilderLevelPanel {
+public abstract class AbsBuilderLevelPanel extends DefaultViewPanel {
+	
+	private Level levelLoaded;
 
 	/**
 	 * returns the integer value of the required achievement to reach one star.
 	 */
-	public int getOneStarThreshhold();
+	abstract public int getOneStarThreshhold();
 	
 	/**
 	 * returns the integer value of the required achievement to reach two stars.
 	 */
-	public int getTwoStarThreshhold();
+	abstract public int getTwoStarThreshhold();
 	
 	/**
 	 * returns the integer value of the required achievement to reach three stars.
 	 */
-	public int getThreeStarThreshhold();
+	abstract public int getThreeStarThreshhold();
 	
 	/**
 	 * returns a level with the given boardShape and the user-specified parameters.
 	 */
-	public Level compileLevelInfo(boolean[][] boardShape, int levelNum);
+	abstract public Level compileLevelInfo(boolean[][] boardShape, int levelNum);
 	
 	/**
 	 * resets all the text fields in the level builder panel.
 	 */
-	public void resetFields();
+	abstract public void resetFields();
 	
 	/**
 	 * fill all text fields with the data prescribed in the given level.
 	 * @param level : the level information from which to fill the textfields
 	 * @throws Exception throws exception when the wrong level type is passed in
 	 */
-	public void fillAllFields(Level level) throws Exception;
+	abstract public boolean fillAllFields(Level level);
+	
+	/**
+	 * determine if this level was loaded in or is new
+	 * @return true if the level was loaded in, false otherwise
+	 */
+	public Level getLevelLoaded(){
+		return levelLoaded;
+	}
+	
+	protected void setLevelLoaded(Level loaded){
+		this.levelLoaded = loaded;
+	}
 	
 }

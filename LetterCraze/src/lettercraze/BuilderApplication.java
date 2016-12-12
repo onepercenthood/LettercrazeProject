@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import lettercraze.model.Model;
-import lettercraze.view.BuilderLevelSelecterVew;
+import lettercraze.view.BuilderLevelSelecterView;
 import lettercraze.view.BuilderMenuView;
 import lettercraze.view.BuilderView;
 import lettercraze.view.GameView;
@@ -72,7 +72,7 @@ public class BuilderApplication extends JFrame {
 
 	BuilderView builderView;
 	
-	BuilderLevelSelecterVew loadLevelMenuView;
+	BuilderLevelSelecterView loadLevelMenuView;
 	
 	public BuilderView getBuilderView() {
 		return builderView;
@@ -139,10 +139,10 @@ public class BuilderApplication extends JFrame {
 	public void initializeViewClasses(){
 		menuView = new BuilderMenuView(panelMain, model, this );
 		builderView = new BuilderView(model, panelMain, this);
-		loadLevelMenuView = new BuilderLevelSelecterVew(panelMain, model);
+		//loadLevelMenuView = new BuilderLevelSelecterView(panelMain);
 		panelMain.add(menuView, menuView.getPanelName());
 		panelMain.add(builderView, builderView.getPanelName()); 
-		panelMain.add(loadLevelMenuView, loadLevelMenuView.getPanelName());
+		//panelMain.add(loadLevelMenuView, loadLevelMenuView.getPanelName());
 		
 	}
 	

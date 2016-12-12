@@ -99,8 +99,7 @@ public class FileIO {
 		    	//convert JSON in file into level object and store in levels arraylist
 		    	try {
 		    		String name = levelFiles[i].getName();
-		    		if(name.contains("Puzzle") && name.contains("lettercraze")){
-		    			
+		    		if(name.contains("Puzzle") && name.contains("lettercraze")){		    			
 		    			Puzzle currentLevel = mapper.readValue(levelFiles[i], Puzzle.class);
 						levels.add(currentLevel);
 						

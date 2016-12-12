@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import lettercraze.model.Level;
 import lettercraze.model.Theme;
 
-public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderLevelPanel{
+public class BuilderThemePanelView extends AbsBuilderLevelPanel{
 
 	/**
 	 * Serial ID
@@ -101,8 +101,20 @@ public class BuilderThemePanelView extends DefaultViewPanel implements IBuilderL
 		this.txtfldThemeTitle.setText("");
 	}
 	@Override
-	public void fillAllFields(Level level) {
-		// TODO Auto-generated method stub
-		
+	public boolean fillAllFields(Level level) {
+		if(level.getLevelType().equals("Theme")){
+			Theme theme = (Theme) level;
+			
+			this.txtfldThemeTitle.setText(theme.getThemeCategory());
+			String s = "";
+			for(String t: theme.getTargetWords()){
+				s += t + "\n";
+			}
+			this.txtAreaWordList.setText(s);			
+			this.setLevelLoaded(theme);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

@@ -168,14 +168,14 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 	 * returns the active level panel for inputting level-specific information
 	 * @return
 	 */
-	public IBuilderLevelPanel getCurrentLevelPanel()
+	public AbsBuilderLevelPanel getCurrentLevelPanel()
 	{
-		IBuilderLevelPanel card = null;
+		AbsBuilderLevelPanel card = null;
 
 		//find the component that is set to visible (will be a JPanel
 		for (Component comp : pnlLevelSwitch.getComponents() ) {
 			if (comp.isVisible() == true) {
-				card = (IBuilderLevelPanel)comp;
+				card = (AbsBuilderLevelPanel)comp;
 			}
 		}
 
@@ -271,7 +271,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		
 		//next make sure all the textFields in every panel are set to empty
 		for(Component comp: pnlLevelSwitch.getComponents()){
-			IBuilderLevelPanel panel = (IBuilderLevelPanel) comp;
+			AbsBuilderLevelPanel panel = (AbsBuilderLevelPanel) comp;
 			panel.resetFields();
 		}
 		return true;

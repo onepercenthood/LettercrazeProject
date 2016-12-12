@@ -3,6 +3,7 @@ package lettercraze.controller.builder;
 import java.awt.CardLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -12,7 +13,7 @@ import lettercraze.model.Level;
 import lettercraze.model.Model;
 import lettercraze.view.BuilderPuzzlePanelView;
 import lettercraze.view.BuilderView;
-import lettercraze.view.IBuilderLevelPanel;
+import lettercraze.view.AbsBuilderLevelPanel;
 import lettercraze.view.SquareView;
 
 public class SaveLevelController extends MouseAdapter{
@@ -29,9 +30,6 @@ public class SaveLevelController extends MouseAdapter{
 	/** the mode associated with this builder session. */
 	Model model;
 	
-	/** the object to handle writing the file to disk */
-	FileIO fileWriter;
-
 	/**
 	 * Constructor for the SaveLevelControllerObject
 	 * @param view: the builderView that contains the level-specific panel to pull information from.
@@ -43,7 +41,6 @@ public class SaveLevelController extends MouseAdapter{
 		this.cardLayoutPanel = view.getPnlLevelSwitch();
 		this.cardLayout = (CardLayout) cardLayoutPanel.getLayout();
 		this.model = model;
-		this.fileWriter = new FileIO();
 	}
 	
 	/**
@@ -52,10 +49,23 @@ public class SaveLevelController extends MouseAdapter{
 	 */
 	public void mousePressed(MouseEvent me){
 		boolean shape[][] = builderView.getBoardView().getBoardShape();
-		IBuilderLevelPanel panel = builderView.getCurrentLevelPanel();
-		Level level = panel.compileLevelInfo(shape, 2);
-		System.out.println(panel.compileLevelInfo(shape, 3).debugString());
-		fileWriter.saveLevelToDisk(level);
+		ArrayList<Level> levels = FileIO.loadCustomLevelsFromDisk();
+		AbsBuilderLevelPanel panel = builderView.getCurrentLevelPanel();
+		Level level;
+		
+		//if the level was already saved, use the saved level number & overwrite
+		if(panel.getLevelLoaded() != null){
+			level = panel.compileLevelInfo(shape, panel.getLevelLoaded().getLevelNum());
+
+		} //otherwise, give it a new level number at the end of the list
+		else {
+			int numLevels = levels.size();
+			level = panel.compileLevelInfo(shape, 15 + numLevels);
+		} 
+		
+		System.out.println(level.debugString());
+		FileIO.saveLevelToDisk(level);
+		
 	}
 	
 	

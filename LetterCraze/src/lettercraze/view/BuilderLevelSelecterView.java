@@ -15,27 +15,24 @@ import lettercraze.model.FileIO;
 import lettercraze.model.Level;
 import lettercraze.model.Model;
 
-public class BuilderLevelSelecterVew extends JPanel{
+public class BuilderLevelSelecterView extends JPanel{
 
-	/** model to be edited **/
-	Model model;
-	
 	/** parent container **/
 	JPanel parent;
 	
 	/** list of levels to select from **/
 	ArrayList<Level> levels;
 	
-	public BuilderLevelSelecterVew(JPanel parent, Model model) {
+	public BuilderLevelSelecterView(JPanel parent) {
 		this.parent = parent;
-		this.model = model;
 		this.levels = FileIO.loadCustomLevelsFromDisk();
 		initialize();
 	}
 
 	public void initialize() {
 		int numLevels = levels.size();
-		setLayout(new GridLayout(5, 10, 1, 10));
+		System.out.println("Number of Levels Found: "+ numLevels);
+		setLayout(new GridLayout((int) Math.sqrt(numLevels), (int) Math.sqrt(numLevels), 10, 10));
 				
 		for(Level toLoad: levels){
 			BuilderLevelThumbnail levelThumbnail = new BuilderLevelThumbnail(toLoad, parent);	
