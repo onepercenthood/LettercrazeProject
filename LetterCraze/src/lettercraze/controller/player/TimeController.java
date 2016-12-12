@@ -3,6 +3,7 @@ package lettercraze.controller.player;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import lettercraze.PlayerApplication;
@@ -22,7 +23,7 @@ public class TimeController implements ActionListener {
 	private int counter;
 	
 	/** Create Timer Instance */
-    private Timer timer;
+    private static Timer timer;
    	
 	/** Delay for the time between each tick, default to 1000 mS to represent a second tick period */
     protected int delay = 1000; 	
@@ -42,32 +43,52 @@ public class TimeController implements ActionListener {
 		this.gameView = gameView;
 		this.seconds = seconds;
 		
+		this.delay = seconds * 1000;
+		this.counter = seconds;
+		
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent event)
     {
-        if(counter == 0)
-        {
-            timer.stop();
+		
+		System.out.println("counter" + counter);
+		counter -= 1;
+
+		
+        if(counter == 0){
+        	
+        	System.out.println("Time is up");
             gameView.getTypeSpecificLabel().setText("The time is up!");
             
+            JOptionPane.showMessageDialog(null, "Time is up!");
+
+
+            
+            timer.stop();
+
             // save the data
-        }
-        else
-        {
+        	
+        }else{
         	gameView.getTypeSpecificLabel().setText("TimeLeft " + counter);
-            counter--;
         }
+        
+        gameView.getTypeSpecific().repaint();
+
+        gameView.repaint();
+        
     }
 	
 	/**
      * Starts the Timer 
      */
-    public void startTimer(){
+    public static void startTimer(int delay1, ActionListener action ){
     	
-    	timer = new Timer(delay, this);
-        timer.setInitialDelay(0);
+    	System.out.println("Timeer initilalized");
+    	System.out.println("Timer delay:" + delay1);
+
+    	
+    	timer = new Timer(1000, action);
+//        timer.setInitialDelay(0);
         timer.start();
     }
 	
