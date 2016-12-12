@@ -21,7 +21,7 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 	private JTextField txtfldOneStar;
 	private JTextField txtfldTwoStar;
 	private JTextField txtfldThreeStar;
-	private JTextField txtfldInputMaxMoves;
+	private JTextField txtfldmaxWords;
 	private Font labelFont;
 
 	public BuilderPuzzlePanelView(Font labelFont){
@@ -114,10 +114,10 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 		add(txtfldThreeStar);
 		txtfldThreeStar.setColumns(10);
 		
-		txtfldInputMaxMoves = new JTextField();
-		txtfldInputMaxMoves.setBounds(78, 133, 86, 20);
-		add(txtfldInputMaxMoves);
-		txtfldInputMaxMoves.setColumns(10);
+		txtfldmaxWords = new JTextField();
+		txtfldmaxWords.setBounds(78, 133, 86, 20);
+		add(txtfldmaxWords);
+		txtfldmaxWords.setColumns(10);
 	}
 
 	@Override
@@ -152,7 +152,7 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 		//gather score threshholds 
 		int threshholds[] = {getOneStarThreshhold(), getTwoStarThreshhold(), getThreeStarThreshhold()};
 		try{
-			int maxMoves = Integer.parseInt(txtfldInputMaxMoves.getText());
+			int maxMoves = Integer.parseInt(txtfldmaxWords.getText());
 			//create a puzzle level with the specified threshholds, maximum moves, and level number
 			Puzzle puzzle = new Puzzle(levelNum, threshholds, maxMoves);
 			
@@ -177,7 +177,7 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 	
 	@Override
 	public void resetFields(){
-		this.txtfldInputMaxMoves.setText("");
+		this.txtfldmaxWords.setText("");
 		this.txtfldOneStar.setText("");
 		this.txtfldTwoStar.setText("");
 		this.txtfldThreeStar.setText("");
@@ -185,6 +185,7 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 
 	@Override
 	public boolean fillAllFields(Level level){
+		//check that the given level matches this panel
 		if(level.getLevelType().equals("Puzzle")){
 			Puzzle pzl = (Puzzle) level;
 			String maxMoves = Integer.toString(pzl.getMaxWords());
@@ -192,7 +193,7 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 			String oneStar = Integer.toString(thresholds[0]);
 			String twoStar = Integer.toString(thresholds[1]);
 			String threeStar = Integer.toString(thresholds[2]);
-			this.txtfldInputMaxMoves.setText(maxMoves);
+			this.txtfldmaxWords.setText(maxMoves);
 			this.txtfldOneStar.setText(oneStar);
 			this.txtfldTwoStar.setText(twoStar);
 			this.txtfldThreeStar.setText(threeStar);
@@ -202,6 +203,45 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 			return false;
 		}
 		
+	}
+	
+	@Override 
+	public boolean isFilledOut(){
+		boolean allDone = true;
+		//check that the text fields are populated
+		if(txtfldmaxWords.getText().equals("") ||
+				txtfldOneStar.getText().equals("") ||
+				txtfldTwoStar.getText().equals("") ||
+				txtfldThreeStar.getText().equals("")){
+			allDone = false;
+		} else { //now we know they're all populated, now make sure they're populated with numbers
+			//check if there are any non-number characters in the maxWords field
+			for(char c: txtfldmaxWords.getText().toCharArray()){
+				if(!Character.isDigit(c)){
+					allDone = false;
+				}
+			}
+			//check if there are any non-number characters in the one star points field
+			for(char c: txtfldOneStar.getText().toCharArray()){
+				if(!Character.isDigit(c)){
+					allDone = false;
+				}
+			}
+			//check if there are any non-number characters in the two star points field
+			for(char c: txtfldTwoStar.getText().toCharArray()){
+				if(!Character.isDigit(c)){
+					allDone = false;
+				}
+			}
+			//check if there are any non-number points in the three star points field
+			for(char c: txtfldThreeStar.getText().toCharArray()){
+				if(!Character.isDigit(c)){
+					allDone = false;
+				}
+			}
+		}
+		
+		return allDone;
 	}
 	
 

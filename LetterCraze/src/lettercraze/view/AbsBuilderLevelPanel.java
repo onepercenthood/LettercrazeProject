@@ -46,6 +46,12 @@ public abstract class AbsBuilderLevelPanel extends DefaultViewPanel {
 	abstract public boolean fillAllFields(Level level);
 	
 	/**
+	 * checks if all the panels textfields are filled out
+	 * @return true if all the text fields are filled out correctly, false otherwise
+	 */
+	abstract public boolean isFilledOut();
+	
+	/**
 	 * determine if this level was loaded in or is new
 	 * @return true if the level was loaded in, false otherwise
 	 */

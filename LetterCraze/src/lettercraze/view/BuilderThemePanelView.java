@@ -117,4 +117,23 @@ public class BuilderThemePanelView extends AbsBuilderLevelPanel{
 			return false;
 		}
 	}
+	
+	@Override 
+	public boolean isFilledOut(){
+		boolean allDone = true;
+		//check that the text fields are populated
+		if(txtfldThemeTitle.getText().equals("") ||
+				txtAreaWordList.getText().equals("")){
+			allDone = false;
+		} else { //now we know they're all populated, now make sure they're populated with numbers
+			//check if there are any non-number characters in the timer field
+			for(char c: txtAreaWordList.getText().toCharArray()){
+				if(Character.isDigit(c)){
+					allDone = false;
+				}
+			}
+		}
+		
+		return allDone;
+	}
 }

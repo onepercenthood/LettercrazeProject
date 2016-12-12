@@ -11,6 +11,13 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 
+/**
+ * Extends the AbsBuilderLevelPanel to build lightning levels
+ * contains text fields for user determined star thresholds and timer start value
+ * @author Everett
+ *
+ */
+
 public class BuilderLightningPanelView extends AbsBuilderLevelPanel{
 
 	/**
@@ -28,6 +35,9 @@ public class BuilderLightningPanelView extends AbsBuilderLevelPanel{
 		initialize();				
 	}
 
+	/**
+	 * intializes the panel. Sets up all four text fields with appropriate labes next to them
+	 */
 	void initialize(){
 		txtfldOneStarPoints = new JTextField();
 		txtfldOneStarPoints.setBounds(78, 14, 86, 20);
@@ -182,6 +192,45 @@ public class BuilderLightningPanelView extends AbsBuilderLevelPanel{
 			return false;
 		}
 
+	}
+	
+	@Override 
+	public boolean isFilledOut(){
+		boolean allDone = true;
+		//check that the text fields are populated
+		if(txtfldmaxTimer.getText().equals("") ||
+				txtfldOneStarPoints.getText().equals("") ||
+				txtfldTwoStarPoints.getText().equals("") ||
+				txtfldThreeStarPoints.getText().equals("")){
+			allDone = false;
+		} else { //now we know they're all populated, now make sure they're populated with numbers
+			//check if there are any non-number characters in the timer field
+			for(char c: txtfldmaxTimer.getText().toCharArray()){
+				if(!Character.isDigit(c)){
+					allDone = false;
+				}
+			}
+			//check if there are any non-number characters in the one star points field
+			for(char c: txtfldOneStarPoints.getText().toCharArray()){
+				if(!Character.isDigit(c)){
+					allDone = false;
+				}
+			}
+			//check if there are any non-number characters in the two star points field
+			for(char c: txtfldTwoStarPoints.getText().toCharArray()){
+				if(!Character.isDigit(c)){
+					allDone = false;
+				}
+			}
+			//check if there are any non-number points in the three star points field
+			for(char c: txtfldThreeStarPoints.getText().toCharArray()){
+				if(!Character.isDigit(c)){
+					allDone = false;
+				}
+			}
+		}
+		
+		return allDone;
 	}
 
 }

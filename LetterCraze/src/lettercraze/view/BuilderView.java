@@ -148,8 +148,8 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 
 		JButton btnSaveLevel = new JButton("Save And Exit");
 		btnSaveLevel.setBounds(156, 118, 111, 29);
-		btnSaveLevel.addMouseListener(new SaveLevelController(this, model));
-		btnSaveLevel.addMouseListener(new ExitWithoutSavingController(this, cardLayoutPanel, model));
+		btnSaveLevel.addMouseListener(new SaveLevelController(this, cardLayoutPanel, model));
+		//btnSaveLevel.addMouseListener(new ExitWithoutSavingController(this, cardLayoutPanel, model));
 		add(btnSaveLevel);
 
 		JLabel lblLevelType = new JLabel("Level Type");

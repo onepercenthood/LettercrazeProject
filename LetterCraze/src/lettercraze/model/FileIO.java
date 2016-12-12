@@ -15,7 +15,7 @@ public class FileIO {
 	 * Convert given level file to JSON file, stored in default_levels if levelNum <= 15, otherwise in custom_levels.
 	 * Relies on Jackson annotations in Level and all 3 subclasses
 	 */
-	public static void saveLevelToDisk(Level level){
+	public static boolean saveLevelToDisk(Level level){
 		ObjectMapper mapper = new ObjectMapper();
 		//for (Iterator<Level> i = levels.iterator(); i.hasNext(); ) {
 			try {
@@ -27,15 +27,19 @@ public class FileIO {
 				}
 				
 				System.out.println("Wrote file to disk");
+				return true;
 			} catch (JsonGenerationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			} catch (JsonMappingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
 		//}
 	}
