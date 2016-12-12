@@ -1,3 +1,4 @@
+
 package lettercraze.controller.player;
 
 import java.awt.event.MouseAdapter;
@@ -9,7 +10,7 @@ import lettercraze.model.BoardState;
 import lettercraze.model.Model;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
- 
+
 public class UndoController extends MouseAdapter{
 
 	/** The game to be manipulated **/
@@ -31,11 +32,15 @@ public class UndoController extends MouseAdapter{
 	public void mousePressed(MouseEvent me){
 		//model.getBoardStateArray().remove(model.getBoardStateArray().size()-1);
 		//int index = model.getCurrentBoardState().getFoundWords().size();
-		int index = gameView.getWordsJList().getModel().getSize() - 1;
+		int index = model.getCurrentBoardState().getFoundWords().size() - 1;
 		//Word remove = model.getCurrentBoardState().getFoundWords().get(0);
-		Word remove = gameView.getWordsJList().getModel().getElementAt(0);
+		Word remove = model.getCurrentBoardState().getFoundWords().get(0);
 		System.out.println(remove.getLetters());
+		
+		gameView.removeWordFromJList(0);
 		model.getCurrentBoardState().floatTileDown(model.getCurrentBoardState().getSquares(), remove);
+		
+		System.out.println("Floating down word: " + remove.toString());
 		
 		gameView.getStarRater().repaint();
 		gameView.getBoardView().repaintAllSquares();

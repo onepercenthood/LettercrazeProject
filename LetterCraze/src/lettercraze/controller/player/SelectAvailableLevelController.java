@@ -62,33 +62,20 @@ public class SelectAvailableLevelController implements ActionListener{
 		GameView curGameVeiw = app.getGameView();
 		Level curLevel = app.getModel().getLevel(levelNum);
 		
+		curGameVeiw.updateLevelTypeLabel(curLevel.getLevelType());
+
 		if( curLevel.getLevelType() == "Lightning" ){
 			
 			System.out.println("Timer initialized");
 			System.out.print("Time till exp: " + ((Lightning) curLevel).getSeconds());
 			
+			
 			TimeController timeCont = new TimeController(app, app.getModel(), curGameVeiw, ((Lightning) curLevel).getSeconds());
 			
-//			final Timer t = new Timer(1000, new ActionListener() {
-//			    private long time = 10 * 1000; //10 seconds, for example
-//
-//			    public void actionPerformed(ActionEvent e) {
-//			        if (time >= 0) {
-//			            long s = ((time / 1000) % 60);
-//			            long m = (((time / 1000) / 60) % 60);
-//			            long h = ((((time / 1000) / 60) / 60) % 60);
-//			            curGameVeiw.getTypeSpecificLabel().setText("Time" + time);
-//			            curGameVeiw.getTypeSpecific().repaint();
-//
-//			            curGameVeiw.repaint();
-//			            time -= 1000;
-//			        }
-//			    }
-//			});
-//			t.start();
-			
-			
 			TimeController.startTimer(((Lightning) curLevel).getSeconds() * 1000, timeCont);
+			
+		}
+		else if(curLevel.getLevelType() == "Theme"){
 			
 		}
 		
