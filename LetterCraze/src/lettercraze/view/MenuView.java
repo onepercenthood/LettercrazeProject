@@ -87,7 +87,6 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		add(panel, BorderLayout.CENTER);
 
 		JLabel lblLettercrazeMainMenu = new JLabel("LetterCraze Main Menu");
-
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
