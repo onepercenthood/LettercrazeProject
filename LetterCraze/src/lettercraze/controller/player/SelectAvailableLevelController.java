@@ -59,10 +59,10 @@ public class SelectAvailableLevelController implements ActionListener{
 		//switch to GameView
 		cardlayout.show(app.getCardLayoutParent(), "GameView");
 		
-		GameView curGameVeiw = app.getGameView();
+		GameView curGameView = app.getGameView();
 		Level curLevel = app.getModel().getLevel(levelNum);
 		
-		curGameVeiw.updateLevelTypeLabel(curLevel.getLevelType());
+		//curGameView.updateLevelTypeLabel(curLevel.getLevelType());
 
 		if( curLevel.getLevelType() == "Lightning" ){
 			
@@ -70,7 +70,7 @@ public class SelectAvailableLevelController implements ActionListener{
 			System.out.print("Time till exp: " + ((Lightning) curLevel).getSeconds());
 			
 			
-			TimeController timeCont = new TimeController(app, app.getModel(), curGameVeiw, ((Lightning) curLevel).getSeconds());
+			TimeController timeCont = new TimeController(app, app.getModel(), curGameView, ((Lightning) curLevel).getSeconds());
 			
 			TimeController.startTimer(((Lightning) curLevel).getSeconds() * 1000, timeCont);
 			

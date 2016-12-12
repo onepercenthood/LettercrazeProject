@@ -2,6 +2,7 @@ package lettercraze.controller.player;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 
@@ -32,7 +33,8 @@ public class PlayWordController extends MouseAdapter{
 	
 	public void mousePressed(MouseEvent me){
 		Word word = model.getCurrentWord();
-		DefaultListModel wordsListModel = (DefaultListModel) gameView.getWordsJList().getModel();
+		ArrayList<Word> wordsListModel = model.getCurrentBoardState().getFoundWords();
+		//DefaultListModel wordsListModel = (DefaultListModel) gameView.getWordsJList().getModel();
 
 		if( word != null){
 			if(word.isValid() && !wordsListModel.contains(word)){
@@ -45,28 +47,38 @@ public class PlayWordController extends MouseAdapter{
 				//BoardState newState = new BoardState (currentState, copyOfWord);
 				
 				 
-				wordsListModel.addElement(copyOfWord);
+				wordsListModel.add(copyOfWord);
 				
 				BoardState tempBoard = model.getCurrentBoardState();
 				
 				tempBoard.addWordToFoundWords(copyOfWord);
 				
+				//takes the calculated score of the played word
+				//adds it to the current score and displays it
 				int value = word.calculateValue();
 				int currentScore = tempBoard.getScore();
 				int newScore = value + currentScore;
 				tempBoard.setScore(newScore);
+				
+				//checks new score against star threshold and displays update accordingly
 				int currentStars = model.getLevel(model.getCurrentLevel() + 1).getHighStars(newScore);
 				tempBoard.setStars(currentStars);
+				
+				//removes the letter from the played squares to be floated into
 				tempBoard.removeLetterFromSquares(word);
+				
+				//deselects the played squares
 				tempBoard.deselectAllSquares();
+				
+				//sets current word to nothing so a new one can be played
 				model.setCurrentWord(null);
 			 
+				//floats tiles up into empty squares, fills the new empty squares and sets boardstate
 				tempBoard.floatTilesUp(tempBoard.getSquares());
 				tempBoard.fillEmptySquares(tempBoard.getSquares());
 				model.setCurrentBoardState(tempBoard);
-				//if(model.getLevel(model.getCurrentLevel()).getLevelType() == "puzzle"){
-					
-				//}
+				
+				//repaints all changed attributes
 				gameView.setStarRater();
 				gameView.getStarRater().repaint();
 				gameView.getBoardView().repaintAllSquares();
