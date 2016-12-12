@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
-import lettercraze.PlayerApplication;
+import lettercraze.PlayerApplication; 
 import lettercraze.model.FileIO;
 import lettercraze.model.Model;
 import lettercraze.view.GameView;
