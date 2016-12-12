@@ -128,5 +128,9 @@ public void removeLetterFromSquares(Word word){
 	public void setStars(int stars){
 		this.stars = stars;
 	}
+	
+	public ArrayList<Word> getFoundWords() {
+		return foundWords;
+	}
 
 }

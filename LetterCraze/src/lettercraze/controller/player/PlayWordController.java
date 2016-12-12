@@ -56,9 +56,9 @@ public class PlayWordController extends MouseAdapter{
 				tempBoard.floatTilesUp(tempBoard.getSquares());
 				tempBoard.fillEmptySquares(tempBoard.getSquares());
 				model.setCurrentBoardState(tempBoard);
-				if(model.getLevel(model.getCurrentLevel()).getLevelType() == "puzzle"){
+				//if(model.getLevel(model.getCurrentLevel()).getLevelType() == "puzzle"){
 					
-				}
+				//}
 				gameView.setStarRater();
 				gameView.getStarRater().repaint();
 				gameView.getBoardView().repaintAllSquares();

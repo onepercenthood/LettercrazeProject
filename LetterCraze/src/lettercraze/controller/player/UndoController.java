@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import lettercraze.PlayerApplication;
 import lettercraze.model.BoardState;
 import lettercraze.model.Model;
+import lettercraze.model.Word;
 import lettercraze.view.GameView;
 
 public class UndoController extends MouseAdapter{
@@ -28,7 +29,14 @@ public class UndoController extends MouseAdapter{
 	}
 	
 	public void mousePressed(MouseEvent me){
-		model.getBoardStateArray().remove(model.getBoardStateArray().size()-1);
+		//model.getBoardStateArray().remove(model.getBoardStateArray().size()-1);
+		//int index = model.getCurrentBoardState().getFoundWords().size();
+		int index = gameView.getWordsJList().getModel().getSize() - 1;
+		//Word remove = model.getCurrentBoardState().getFoundWords().get(0);
+		Word remove = gameView.getWordsJList().getModel().getElementAt(0);
+		System.out.println(remove.getLetters());
+		model.getCurrentBoardState().floatTileDown(model.getCurrentBoardState().getSquares(), remove);
+		
 		gameView.getStarRater().repaint();
 		gameView.getBoardView().repaintAllSquares();
 		gameView.getScoreTextField().repaint();

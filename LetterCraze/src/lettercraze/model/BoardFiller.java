@@ -72,27 +72,30 @@ public class BoardFiller{
 	}
 	
 	public Square[][] floatTileDown(Square[][] squares, Word word){
-		Square[] tempLetterOrder = new Square[36];
-		tempLetterOrder = null;
-		for (Square s : word.getLetters()){
-			int index = s.column + (s.row * 6);
-			tempLetterOrder[index] = s;
-		}
+		Letter temp = null;
+		Letter newTemp ;
+		Letter oldTemp ;
+		boolean found = false ;
 		
 		for(int col = 0; col < 6; col++){
-			
 			for(int row = 0; row < 6; row++){
+				//System.out.println(word.getWordString());
 				
-				int index = col + (row * 6);
-				Letter newTemp ;
-				Letter oldTemp ;
 				
-				if(tempLetterOrder[index] != null){
+				for (Square s : word.getLetters()){
+					if((s.row == row) & (s.column == col)){
+						temp = s.letter;
+						System.out.println(temp.getLetter());
+						found = true;
+						break;
+					} else found = false ;
+				}
+				
+				if(found){
 					// case for when letter is in the 1st row
 					if((squares[row][col].isActive) & (squares[row][col].row == 0)){
 						newTemp = squares[row][col].letter;
-						squares[row][col].letter = tempLetterOrder[index].letter;
-						
+						squares[row][col].letter = temp;
 						
 						for(int z = 1; z < 6; z++){
 							if(squares[row+z][col].isActive){
@@ -105,7 +108,7 @@ public class BoardFiller{
 					}else if((squares[row][col].isActive) & (squares[row][col].row == 1)){
 						
 						newTemp = squares[row][col].letter;
-						squares[row][col].letter = tempLetterOrder[index].letter;
+						squares[row][col].letter = temp;
 						
 						
 						for(int z = 1; z < 5; z++){
@@ -119,8 +122,7 @@ public class BoardFiller{
 					}else if((squares[row][col].isActive) & (squares[row][col].row == 2)){
 					
 						newTemp = squares[row][col].letter;
-						squares[row][col].letter = tempLetterOrder[index].letter;
-						
+						squares[row][col].letter = temp;
 						
 						for(int z = 1; z < 4; z++){
 							if(squares[row+z][col].isActive){
@@ -133,8 +135,7 @@ public class BoardFiller{
 					}else if((squares[row][col].isActive) & (squares[row][col].row == 3)){
 						
 						newTemp = squares[row][col].letter;
-						squares[row][col].letter = tempLetterOrder[index].letter;
-						
+						squares[row][col].letter = temp;
 						
 						for(int z = 1; z < 3; z++){
 							if(squares[row+z][col].isActive){
@@ -146,8 +147,7 @@ public class BoardFiller{
 					// case for when letter is in the 5th row
 					}else if((squares[row][col].isActive) & (squares[row][col].row == 4)){
 						newTemp = squares[row][col].letter;
-						squares[row][col].letter = tempLetterOrder[index].letter;
-						
+						squares[row][col].letter = temp;
 						
 						for(int z = 1; z < 2; z++){
 							if(squares[row+z][col].isActive){
@@ -158,7 +158,7 @@ public class BoardFiller{
 						}
 					// case for when letter is in the 6th row
 					}else if((squares[row][col].isActive) & (squares[row][col].row == 5)){
-						squares[row][col].letter = tempLetterOrder[index].letter;
+						squares[row][col].letter = temp;
 					}
 				
 				}
