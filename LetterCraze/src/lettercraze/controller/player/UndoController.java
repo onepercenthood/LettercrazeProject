@@ -9,7 +9,7 @@ import lettercraze.model.BoardState;
 import lettercraze.model.Model;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
-
+ 
 public class UndoController extends MouseAdapter{
 
 	/** The game to be manipulated **/
