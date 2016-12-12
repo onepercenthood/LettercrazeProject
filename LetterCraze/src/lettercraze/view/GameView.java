@@ -321,6 +321,12 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	public JLabel getTypeSpecificLabel() {
 		return typeSpecificLabel;
 	}
+	
+	public void updateLevelTypeLabel(String text){
+		this.levelType.setText(text);
+		this.levelType.repaint();
+		this.repaint();
+	}
 
 	/**
 	 * @param typeSpecificLabel the typeSpecificLabel to set
