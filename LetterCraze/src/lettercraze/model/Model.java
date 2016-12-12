@@ -61,20 +61,27 @@ public class Model {
 			}
 			//active = !active;
 		}
-		
+		/*
 		Puzzle level1 = new Puzzle(1, new int[]{25, 50, 100} , 10);
 		level1.setBoardShape(sampleShape);
 		level1.setUnLocked(true);
 		levels.add(level1);	
 		initiateLevel(1);
 
-		/*
+		
 		Lightning level2 = new Lightning(2, new int[]{25, 50, 100} , 30);
 		level2.setBoardShape(sampleShape);
 		level2.setUnLocked(true);
 		levels.add(level2);	
 		initiateLevel(2);
-*/
+*/		
+		levels = FileIO.loadDefaultLevelsFromDisk();
+		System.out.println(levels);
+		initiateLevel(1);
+		//ArrayList<Level> custom = new ArrayList<Level>();
+		//custom = FileIO.loadCustomLevelsFromDisk();
+		//levels.addAll(custom);
+
 		//loadLevelsFromDisk();
 		//saveLevelsToDisk();
 		/*

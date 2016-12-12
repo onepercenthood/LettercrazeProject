@@ -70,7 +70,7 @@ public class BoardFiller{
 		}
 		return squares;
 	}
-	
+
 	public Square[][] floatTileDown(Square[][] squares, Word word){
 		Letter temp = null;
 		Letter newTemp ;
