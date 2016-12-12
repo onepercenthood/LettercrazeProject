@@ -31,9 +31,9 @@ public class UndoController extends MouseAdapter{
 	public void mousePressed(MouseEvent me){
 		//model.getBoardStateArray().remove(model.getBoardStateArray().size()-1);
 		//int index = model.getCurrentBoardState().getFoundWords().size();
-		int index = gameView.getWordsJList().getModel().getSize() - 1;
+		int index = model.getCurrentBoardState().getFoundWords().size() - 1;
 		//Word remove = model.getCurrentBoardState().getFoundWords().get(0);
-		Word remove = gameView.getWordsJList().getModel().getElementAt(0);
+		Word remove = model.getCurrentBoardState().getFoundWords().get(0);
 		System.out.println(remove.getLetters());
 		model.getCurrentBoardState().floatTileDown(model.getCurrentBoardState().getSquares(), remove);
 		
