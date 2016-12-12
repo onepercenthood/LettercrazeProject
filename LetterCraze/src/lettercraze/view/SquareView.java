@@ -80,6 +80,6 @@ public class SquareView extends DefaultViewPanel{
 		} else {
 				this.setBackground(Color.GRAY);
 		}
-		letterView.repaintLetterView();
+		//letterView.repaintLetterView();
 	}
 }
