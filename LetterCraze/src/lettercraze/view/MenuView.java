@@ -62,6 +62,9 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 
 	private JPanel cardLayoutPanel;
 	
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public MenuView(JPanel cardLayoutPanel, Model m, PlayerApplication playerApplication){
 		model = m;
 		
@@ -108,8 +111,8 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 					.addContainerGap()
 					.addComponent(lblLettercrazeMainMenu)
 					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 446, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(104, Short.MAX_VALUE))
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 509, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(41, Short.MAX_VALUE))
 		);
 		
 		
@@ -195,13 +198,13 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	 * @return
 	 */
 	public boolean addMenuItemToCustom(LevelPreviewView level){
-		if(rowCountCus == 5-1){
+		if(rowCountCus == 3){
 			rowCountCus = 0;
 			colCountCus++;
 		}
 		
 		rowCountCus++;
-		return addMenuItem(level, false, customLevelsPanel,rowCountCus, colCountCus);
+		return addMenuItem(level, false, customLevelsPanel,rowCountCus-1, colCountCus);
 		
 	}
 	/**
@@ -210,13 +213,13 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	 * @return
 	 */
 	public boolean addMenuItemToDefault(LevelPreviewView level){
-		if(rowCountDef == 5-1){
+		if(rowCountDef == 3){
 			rowCountDef = 0;
 			colCountDef++;
 		}
 		
 		rowCountDef++;
-		return addMenuItem(level, true, regularLevelsPanel, rowCountDef, colCountDef);
+		return addMenuItem(level, true, regularLevelsPanel, rowCountDef-1, colCountDef);
 	}
 
 	@Override

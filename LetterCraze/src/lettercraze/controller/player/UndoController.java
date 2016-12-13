@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import lettercraze.PlayerApplication;
 import lettercraze.model.BoardState;
 import lettercraze.model.Model;
+import lettercraze.model.Puzzle;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
 
@@ -44,6 +45,7 @@ public class UndoController extends MouseAdapter{
 		int newScore = currentScore - value;
 		model.getCurrentBoardState().setScore(newScore);
 		
+		
 		//checks new score against star threshold and displays update accordingly
 		int currentStars = model.getLevel(model.getCurrentLevel() + 1).getHighStars(newScore);
 		model.getCurrentBoardState().setStars(currentStars);
@@ -53,6 +55,12 @@ public class UndoController extends MouseAdapter{
 		
 		gameView.removeWordModel();
 		
+		if(gameView.getLevelType().getText().equals("Puzzle")){
+			Puzzle puzzle = (Puzzle) model.getLevel(model.getCurrentLevel() + 1);
+			int wordsLeft = puzzle.getMaxWords() - model.getCurrentBoardState().getFoundWords().size();
+			gameView.setTypeSpecificLabel("Moves Left: " + wordsLeft);
+		}
+		
 		System.out.println("Floating down word: " + remove.toString());
 		
 		gameView.setStarRater();
@@ -60,6 +68,7 @@ public class UndoController extends MouseAdapter{
 		gameView.getBoardView().repaintAllSquares();
 		gameView.setScoreView();
 		gameView.getScoreTextField().repaint();
+		gameView.getTypeSpecific().repaint();
 		System.out.println(model.getCurrentBoardState().getSquares());
 	}
 }

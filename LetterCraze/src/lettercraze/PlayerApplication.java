@@ -142,7 +142,7 @@ public class PlayerApplication extends JFrame {
 	 * Load in the levels to the menu object.
 	 */
 	public void loadInLevels(){
-		int col =5;
+		int col = 5;
 		int row = 4;
 
 		int total_count = 0;
