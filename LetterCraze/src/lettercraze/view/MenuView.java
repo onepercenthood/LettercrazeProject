@@ -75,11 +75,6 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 
 	}
 
-	public MenuView(JPanel panelMain, Model model2, BuilderApplication builderApplication) {
-		// TODO Auto-generated constructor stub
-		
-	}
-
 	/**
 	 * Create the Panel.
 	 * @param row 
@@ -145,7 +140,6 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		regularLevelsPanel.add(lblDefaultLevels, gbc_lblDefaultLevels);
 		
 		cont.add(regularLevelsPanel);
-		cont.add(customLevelsPanel);
 		
 		cont.setLayout(new GridLayout());
 		
@@ -159,7 +153,8 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		gbc_lblCustomLevels.gridy = 0;
 		customLevelsPanel.add(lblCustomLevels, gbc_lblCustomLevels);
 
-
+		cont.add(customLevelsPanel);
+		
 		panel.setLayout(gl_panel);
 	}
 	
