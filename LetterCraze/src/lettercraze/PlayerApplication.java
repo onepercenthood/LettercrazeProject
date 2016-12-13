@@ -145,7 +145,7 @@ public class PlayerApplication extends JFrame {
 	 */
 	public void loadInLevels(){
 		int col =5;
-		int row = 3;
+		int row = 3; 
 
 		int totalCount = 1;
 		Iterator<Level> levelIterator = model.getAllLevels().iterator();
