@@ -45,7 +45,7 @@ public class SplashScreen extends DefaultViewPanel{
 		lblDavidDeisadze.setBounds(357, 307, 250, 16);
 		add(lblDavidDeisadze);
 		
-		JLabel lblDerekFeehrer = new JLabel("Derek \"Golden\" Feehrer");
+		JLabel lblDerekFeehrer = new JLabel("Derek \"Golden Hair\" Feehrer");
 		lblDerekFeehrer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDerekFeehrer.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDerekFeehrer.setBounds(357, 330, 200, 16);

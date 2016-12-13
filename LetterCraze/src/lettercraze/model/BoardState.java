@@ -16,25 +16,25 @@ import java.util.ArrayList;
  *
  */
 public class BoardState extends BoardFiller{
-	
+
 	/** Current Score of the day */
 	protected int score;
-	
+
 	/** Current number of stars earned */
 	protected int stars;
-	
+
 	/** Array List of the words that have been played so far */ 
 	protected ArrayList<Word> foundWords = new ArrayList<Word>();
-	
+
 	/** Two dimensional representations of the squares on the board */
 	protected Square[][] squares = new Square[6][6] ;
-	
+
 	/** */
 	//protected BasicFiller basicFiller;
-	
+
 	/** */ 
 	//protected ThemeFiller themeFiller;
-	
+
 	/**
 	 * Construct entity for initial start of playing a level. 
 	 * @param shape is the initial shape of the board taken from the Level
@@ -55,6 +55,29 @@ public class BoardState extends BoardFiller{
 		stars = 0;
 	}
 	
+	public BoardState(Level level){
+		boolean[][] shape = level.getBoardShape();
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col++){
+				squares[row][col]= new Square(row, col);
+				if(shape[row][col]){
+					squares[row][col].toggleActive();
+				}				
+			}
+		}
+		
+		switch(level.getLevelType()){
+		case "Puzzle": initialFill(squares); break;
+		case "Lightning" : initialFill(squares); break;
+		case "Theme": Theme theme = (Theme) level; 
+						initialFill(this, theme.getTargetWords());
+						break;
+		default: initialFill(squares);
+		}
+		score = 0;
+		stars = 0;
+	}
+
 	/**
 	 * Construct used to create a new BoardState when a word in played.
 	 * Produces a new BoardState which then becomes the current state the
@@ -100,10 +123,10 @@ public class BoardState extends BoardFiller{
 		}
 	}
 
-public void removeLetterFromSquares(Word word){
-		
+	public void removeLetterFromSquares(Word word){
+
 		ArrayList<Square> squareArr = word.getLetters();
- 
+
 		for(Square curSquare : squareArr){
 			int row = curSquare.getRow();
 			int col = curSquare.getColumn();
@@ -119,11 +142,11 @@ public void removeLetterFromSquares(Word word){
 	public Square[][] getSquares(){
 		return squares;
 	}
-	
+
 	public int getScore(){
 		return this.score;
 	}
-	
+
 	public void setScore(int score){
 		this.score = score;
 	}
@@ -133,7 +156,7 @@ public void removeLetterFromSquares(Word word){
 	public void setStars(int stars){
 		this.stars = stars;
 	}
-	
+
 	public ArrayList<Word> getFoundWords() {
 		return foundWords;
 	}
@@ -144,7 +167,7 @@ public void removeLetterFromSquares(Word word){
 		}
 		return stringList;
 	}
-	
+
 	public boolean addWordToFoundWords(Word word){
 		return this.foundWords.add(word);
 	}

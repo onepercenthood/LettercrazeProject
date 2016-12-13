@@ -60,7 +60,7 @@ public class ThemeBuilder {
 	 * fill the squares with selection of the words in the wordlist
 	 * @return true if successful, false otherwise
 	 */
-	public void populateSquares(){
+	public Square[][] populateSquares(){
 		//useWords -> pick from targetWords: words that have <36 characters total
 		ArrayList<Word> useWords = pickFromList(targetWords);
 		ArrayList<Word> placedWords = new ArrayList<Word>();
@@ -97,6 +97,7 @@ public class ThemeBuilder {
 		for(Word usedWord: placedWords)
 			System.out.print(usedWord.getWordString()+ " ");
 		System.out.println();
+		return squares;		
 	}
 	
 	/**

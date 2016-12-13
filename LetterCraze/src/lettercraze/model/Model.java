@@ -52,16 +52,7 @@ public class Model {
 			e.printStackTrace();
 		}
 		
-		boolean[][] sampleShape = new boolean[6][6];
-		boolean active = true;
-		for(int row = 0; row < 6; row++){
-			for(int col = 0; col < 4; col++){
-				sampleShape[row][col] = active;
-				//active = !active;
-			}
-			//active = !active;
-		}
-		
+				
 		levels = FileIO.loadDefaultLevelsFromDisk();
 		System.out.println(levels);
 		//initiateLevel(1);

@@ -4,6 +4,8 @@ package lettercraze.model;
 
 import java.util.ArrayList;
 
+import lettercraze.controller.player.ThemeBuilder;
+
 /**
  * 
  * <p>
@@ -182,12 +184,9 @@ public class BoardFiller{
 		return squares;
 	}
 
-	public Square[][] initialThemeFill(Square[][] squares, ArrayList<String> targetWords) {
+	public Square[][] initialFill(BoardState bState, ArrayList<String> targetWords) {
 		// TODO Auto-generated method stub
-		//Convert Strings -> Words
-			//Convert Strings -> Chars -> Letters -> Squares
-			//Determine relative locations for squares
-			//
-		return null;
+		ThemeBuilder tBuild = new ThemeBuilder(bState, targetWords);		
+		return tBuild.populateSquares();
 	}
 }
