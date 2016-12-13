@@ -48,6 +48,7 @@ public class BoardState extends BoardFiller{
 				}				
 			}
 		}
+		//this.foundWords = null;
 		//basicFiller = new BasicFiller();
 		squares = this.initialFill(squares);
 		score = 0;

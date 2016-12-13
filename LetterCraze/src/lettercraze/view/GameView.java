@@ -1,6 +1,7 @@
 package lettercraze.view;
 
 import java.awt.BorderLayout;
+
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -22,6 +23,7 @@ import lettercraze.PlayerApplication;
 import lettercraze.controller.player.ClearWordController;
 import lettercraze.controller.player.PlayWordController;
 import lettercraze.controller.player.UndoController;
+import lettercraze.controller.player.LeaveLevelEarlyController;
 import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.model.Model;
 import lettercraze.model.Puzzle;
@@ -85,28 +87,14 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	/**
 	 * Create the frame.
 	 */
-	public GameView(Model m, int levelNum, PlayerApplication app) {
+	public GameView(Model m, int levelNum, JPanel parent, PlayerApplication app) {
 		super();
 		this.app = app;
 		this.model = m;
 		this.levelNum = levelNum;
-		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
-		boardview.playerInitialize(app);
-		createPanel();
-	}
-	
-	/**
-	 * Create the frame.
-	 * @wbp.parser.constructor
-	 */
-	public GameView(Model m, JPanel parent, PlayerApplication app) {
-		setBackground(SystemColor.menu);
-		this.model = m;
-		this.levelNum = 1;
-		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
-		boardview.setBounds(16, 82, 471, 471);
-		boardview.playerInitialize(app);
 		this.parent = parent;
+		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
+		boardview.playerInitialize(app);
 		createPanel();
 	}
 	
@@ -157,16 +145,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		add(lblWords);
 		
 		btnExitLevel = new JButton("Exit Level");
- 
-		btnExitLevel.addMouseListener(new MouseAdapter() {
-			@Override
-			//TODO change to exit controller that resets the level as you exit, recording if you won or not
-			public void mousePressed(MouseEvent me){
-				CardLayout clay = (CardLayout) parent.getLayout();
-				clay.first(parent); //revert to the menu screen
-			}
-		});
 		btnExitLevel.setBounds(660, 6, 117, 29);
+		btnExitLevel.addMouseListener(new LeaveLevelEarlyController(parent, model, this)) ;
 		add(btnExitLevel);
 		
 		JPanel panel_stars = new JPanel();

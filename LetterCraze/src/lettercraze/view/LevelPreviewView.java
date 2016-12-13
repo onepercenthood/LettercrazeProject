@@ -79,7 +79,7 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		add(levelTypeLabel, "cell 0 0");
 		
 		levelButton = new JButton("Level " + this.levelNumber);
-		levelButton.addActionListener(new SelectAvailableLevelController(levelNumber, this.cardlayout, app));
+		levelButton.addActionListener(new SelectAvailableLevelController(levelNumber, this.cardlayout, app)); 
 		add(levelButton, "cell 0 1");
 		
 		// setup star view here

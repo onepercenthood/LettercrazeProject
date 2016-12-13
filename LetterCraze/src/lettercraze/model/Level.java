@@ -142,7 +142,9 @@ abstract public class Level {
 	 * the Player 
 	 */
 	public void updateHighScore(int score){
-		if(score > this.highScore){ this.highScore = score;}
+		if(score > this.highScore){ 
+			this.highScore = score;
+		}
 	}
 	
 	/**
