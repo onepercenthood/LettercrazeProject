@@ -136,5 +136,9 @@ public void removeLetterFromSquares(Word word){
 	public ArrayList<Word> getFoundWords() {
 		return foundWords;
 	}
+	
+	public boolean addWordToFoundWords(Word word){
+		return this.foundWords.add(word);
+	}
 
 }

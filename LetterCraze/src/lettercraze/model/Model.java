@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Model {
 	
 	/** List of the BoardStates */
-	protected ArrayList<BoardState> boardStates = new ArrayList<BoardState>();;
+	protected BoardState boardState;
 	
 	/** List of all the levels stored in the Game */
 	protected ArrayList<Level> levels = new ArrayList<Level>(); 
@@ -55,26 +55,34 @@ public class Model {
 		boolean[][] sampleShape = new boolean[6][6];
 		boolean active = true;
 		for(int row = 0; row < 6; row++){
-			for(int col = 0; col < 6; col++){
+			for(int col = 0; col < 4; col++){
 				sampleShape[row][col] = active;
 				//active = !active;
 			}
 			//active = !active;
 		}
-		
+/*		
 		Puzzle level1 = new Puzzle(1, new int[]{25, 50, 100} , 10);
 		level1.setBoardShape(sampleShape);
 		level1.setUnLocked(true);
 		levels.add(level1);	
 		initiateLevel(1);
 
-		/*
+		
 		Lightning level2 = new Lightning(2, new int[]{25, 50, 100} , 30);
 		level2.setBoardShape(sampleShape);
 		level2.setUnLocked(true);
 		levels.add(level2);	
 		initiateLevel(2);
-*/
+*/		
+		levels = FileIO.loadDefaultLevelsFromDisk();
+		System.out.println(levels);
+		//initiateLevel(1);
+		ArrayList<Level> custom = new ArrayList<Level>();
+		custom = FileIO.loadCustomLevelsFromDisk();
+		levels.addAll(custom);
+		System.out.println(levels);
+		initiateLevel(1);
 		//loadLevelsFromDisk();
 		//saveLevelsToDisk();
 		/*
@@ -94,16 +102,14 @@ public class Model {
 	 * @return level corresponding to the given level number
 	 */
 	public BoardState getCurrentBoardState(){
-		return boardStates.get(boardStates.size() - 1);
+		return boardState;
 	}
 	
 	public void setCurrentBoardState(BoardState board){
-		this.boardStates.add(board);
+		this.boardState = board;
+		
 	}
-	
-	public ArrayList<BoardState> getBoardStateArray(){
-		return this.boardStates;
-	}
+
 	
 	/**
 	 * 
@@ -147,73 +153,9 @@ public class Model {
 		//simple sample shape with a 6x6 grid
 		System.out.println("value of level 0: "  + levels.get(0));
 		BoardState newState = new BoardState(levels.get(levelNum - 1).getBoardShape());
-		boardStates.add(newState);
+		boardState = newState;
 	}
 	
-	/**
-	 * Write all the levels to disk in JSON format
-	 */
-	/*public void saveLevelsToDisk(){
-		ObjectMapper mapper = new ObjectMapper(); 
-		Level currentLevel;
-		for (Iterator<Level> i = levels.iterator(); i.hasNext(); ) {
-			try {
-				currentLevel = i.next();
-				mapper.writeValue(new File("levels/level" + currentLevel.getLevelNum() + "_" + currentLevel.getLevelType() + ".json"), currentLevel);
-				System.out.println("Wrote file to disk");
-			} catch (JsonGenerationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JsonMappingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	
-	/**
-	 * Convert all levels from persistent JSON files to java objects stored in levels ArrayList
-	 */
-	/*public void loadLevelsFromDisk(){
-		File levelFolder = new File("levels");
-		File[] levelFiles = levelFolder.listFiles();
-		ObjectMapper mapper = new ObjectMapper();
-		Level currentLevel;
-		    for (int i = 0; i < levelFiles.length; i++) {
-
-		    	//convert JSON in file into level object and store in levels arraylist
-		    	try {
-		    		if(levelFiles[i].getName().contains("puzzle")){
-		    			currentLevel = mapper.readValue(levelFiles[i], Puzzle.class);
-						levels.set(currentLevel.getLevelNum() - 1, currentLevel);
-						
-		    		}else if(levelFiles[i].getName().contains("lightning")){
-		    			currentLevel = mapper.readValue(levelFiles[i], Lightning.class);
-						levels.set(currentLevel.getLevelNum() - 1, currentLevel);
-						
-		    		}else if(levelFiles[i].getName().contains("theme")){
-		    			currentLevel = mapper.readValue(levelFiles[i], Theme.class);
-						levels.set(currentLevel.getLevelNum() - 1, currentLevel);
-		    		}else{
-		    			//throw exception?
-		    		}
-					
-				} catch (JsonParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (JsonMappingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		    }
-	}*/
 
 	/**
 	 * 
@@ -268,6 +210,10 @@ public class Model {
 	
 	public int getCurrentLevel(){
 		return this.currentLevel;
+	}
+	
+	public Level getCurrentLevelObject(){
+		return levels.get(currentLevel);
 	}
 }
 

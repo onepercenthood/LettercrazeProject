@@ -64,11 +64,11 @@ public class FileIO {
 		    			Level currentLevel = mapper.readValue(levelFiles[i], Level.class);
 						levels.add(currentLevel);
 						
-		    		}else if(name.contains("Lightning") && name.contains("lettercraze")){
+		    		}else if((name.contains("Lightning") || name.contains("lightning")) && name.contains("lettercraze")){
 		    			Lightning currentLevel = mapper.readValue(levelFiles[i], Lightning.class);
 		    			levels.add(currentLevel);
 						
-		    		}else if(name.contains("Theme") && name.contains("lettercraze")){
+		    		}else if((name.contains("Theme") || name.contains("theme")) && name.contains("lettercraze")){
 		    			Theme currentLevel = mapper.readValue(levelFiles[i], Theme.class);
 		    			levels.add(currentLevel);
 		    		}else{
