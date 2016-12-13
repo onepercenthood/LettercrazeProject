@@ -39,34 +39,34 @@ public class SplashScreen extends DefaultViewPanel{
 		lblGroupManganese.setBounds(357, 280, 144, 16);
 		add(lblGroupManganese);
 		
-		JLabel lblDavidDeisadze = new JLabel("David Deisadze");
+		JLabel lblDavidDeisadze = new JLabel("David \"Where's David\" Deisadze");
 		lblDavidDeisadze.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDavidDeisadze.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDavidDeisadze.setBounds(357, 307, 144, 16);
+		lblDavidDeisadze.setHorizontalAlignment(SwingConstants.LEFT);
+		lblDavidDeisadze.setBounds(357, 307, 250, 16);
 		add(lblDavidDeisadze);
 		
-		JLabel lblDerekFeehrer = new JLabel("Derek Feehrer");
+		JLabel lblDerekFeehrer = new JLabel("Derek \"Golden\" Feehrer");
 		lblDerekFeehrer.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDerekFeehrer.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDerekFeehrer.setBounds(357, 330, 144, 16);
+		lblDerekFeehrer.setHorizontalAlignment(SwingConstants.LEFT);
+		lblDerekFeehrer.setBounds(357, 330, 200, 16);
 		add(lblDerekFeehrer);
 		
-		JLabel lblJackHarding = new JLabel("Jack Harding");
+		JLabel lblJackHarding = new JLabel("Jack \"What's Git?\" Harding");
 		lblJackHarding.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblJackHarding.setHorizontalAlignment(SwingConstants.CENTER);
-		lblJackHarding.setBounds(357, 349, 144, 16);
+		lblJackHarding.setHorizontalAlignment(SwingConstants.LEFT);
+		lblJackHarding.setBounds(357, 349, 200, 16);
 		add(lblJackHarding);
 		
-		JLabel lblZackHood = new JLabel("Zack Hood");
+		JLabel lblZackHood = new JLabel("Zack \"Lit\" Hood");
 		lblZackHood.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblZackHood.setHorizontalAlignment(SwingConstants.CENTER);
-		lblZackHood.setBounds(357, 370, 144, 16);
+		lblZackHood.setHorizontalAlignment(SwingConstants.LEFT);
+		lblZackHood.setBounds(357, 370, 200, 16);
 		add(lblZackHood);
 		
-		JLabel lblDeanSchifilliti = new JLabel("Dean Schifilliti");
+		JLabel lblDeanSchifilliti = new JLabel("Dean \"Dammit Dean\" Schifilliti");
 		lblDeanSchifilliti.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDeanSchifilliti.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDeanSchifilliti.setBounds(357, 391, 144, 16);
+		lblDeanSchifilliti.setHorizontalAlignment(SwingConstants.LEFT);
+		lblDeanSchifilliti.setBounds(357, 391, 200, 16);
 		add(lblDeanSchifilliti);
 		
 		
