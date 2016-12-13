@@ -145,7 +145,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		add(lblWords);
 		
 		btnExitLevel = new JButton("Exit Level");
-
+ 
 		btnExitLevel.addMouseListener(new MouseAdapter() {
 			@Override
 			//TODO change to exit controller that resets the level as you exit, recording if you won or not
