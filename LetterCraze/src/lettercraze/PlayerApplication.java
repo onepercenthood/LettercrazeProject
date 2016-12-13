@@ -120,9 +120,9 @@ public class PlayerApplication extends JFrame {
         panelMain.setPreferredSize(new Dimension(initialWidth, initialHeight));
         setContentPane(panelMain);
         
-        initializeViewClasses();
+        //initializeViewClasses();
 		
-//		panelMain.add(splashView, splashView.getName());
+		//panelMain.add(splashView, splashView.getName());
 		//gameView = new GameView(model, panelMain, this);
 		//panelMain.add(gameView, gameView.getPanelName());
 		panelMain.add(menuView, menuView.getPanelName());

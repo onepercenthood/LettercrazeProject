@@ -20,9 +20,12 @@ public class FileIO {
 		//for (Iterator<Level> i = levels.iterator(); i.hasNext(); ) {
 			try {
 				//currentLevel = i.next();
-				if(level.getLevelNum() <= 15){
+				if(level.getLevelNum() <= 9){
+					mapper.writeValue(new File("default_levels/lettercraze_level0" + level.getLevelNum() + "_" + level.getLevelType() + ".json"), level);
+				} else if(level.getLevelNum() <= 15){
 					mapper.writeValue(new File("default_levels/lettercraze_level" + level.getLevelNum() + "_" + level.getLevelType() + ".json"), level);
-				}else{
+				}
+				else{
 					mapper.writeValue(new File("custom_levels/lettercraze_level" + level.getLevelNum() + "_" + level.getLevelType() + ".json"), level);
 				}
 				
