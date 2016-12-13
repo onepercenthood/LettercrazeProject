@@ -24,6 +24,8 @@ import lettercraze.controller.player.PlayWordController;
 import lettercraze.controller.player.UndoController;
 import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.model.Model;
+import lettercraze.model.Puzzle;
+import lettercraze.model.Theme;
 import lettercraze.model.Word;
 import lettercraze.view.BoardView;
 
@@ -205,7 +207,17 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		btnUndoMove.addMouseListener(new UndoController(app, model, this));
 		add(btnUndoMove);
 		
-		typeSpecificLabel = new JLabel("___");
+		if(model.getLevel(levelNum).getLevelType().equals("Theme")){
+			Theme theme = (Theme) model.getLevel(levelNum);
+			typeSpecificLabel = new JLabel(theme.getThemeCategory());
+		}
+		else if(model.getLevel(levelNum).getLevelType().equals("Puzzle")){
+			Puzzle puzzle = (Puzzle) model.getLevel(levelNum);
+			typeSpecificLabel = new JLabel("Moves Left: " + puzzle.getMaxWords());
+		}
+		else{
+			typeSpecificLabel = new JLabel("___");
+		}
 		typeSpecificLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		typeSpecificLabel.setBounds(284, 12, 117, 16);
 		add(typeSpecificLabel);
