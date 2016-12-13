@@ -47,7 +47,7 @@ public class PlayWordController extends MouseAdapter{
 				//BoardState newState = new BoardState (currentState, copyOfWord);
 				
 				 
-				wordsListModel.add(copyOfWord);
+				//wordsListModel.add(copyOfWord);
 				
 				BoardState tempBoard = model.getCurrentBoardState();
 				
@@ -84,6 +84,9 @@ public class PlayWordController extends MouseAdapter{
 				gameView.getBoardView().repaintAllSquares();
 				gameView.setScoreView();
 				gameView.getScoreTextField().repaint();
+				gameView.getWordBox().repaint();
+				
+				System.out.println(model.getCurrentBoardState().getFoundWordsStrings());
 				
 				 
 			}

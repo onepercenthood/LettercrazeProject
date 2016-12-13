@@ -40,7 +40,7 @@ public class BuilderLevelSelecterView extends JPanel{
 		setLayout(new GridLayout((int) Math.sqrt(numLevels)+1, (int) Math.sqrt(numLevels)+1, 10, 10));
 		
 		JButton Menubutton = new JButton("Back To Menu");
-	    Menubutton.addMouseListener(new BackToMenuController(parent.getParent(), parent));
+	    Menubutton.addMouseListener(new BackToMenuController(parent, this));
 		add(Menubutton);
 				
 		for(Level toLoad: levels){

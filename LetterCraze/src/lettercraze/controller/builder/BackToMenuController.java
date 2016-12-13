@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import lettercraze.model.Model;
+import lettercraze.view.BuilderLevelSelecterView;
 import lettercraze.view.BuilderView;
 
 public class BackToMenuController extends MouseAdapter {
@@ -24,20 +25,20 @@ public class BackToMenuController extends MouseAdapter {
 	/** the builderView, to be wiped **/
 	BuilderView builderView;
 	
-	public BackToMenuController(BuilderView builderView, JPanel parentPanel){
-		this.builderView = builderView;
+	BuilderLevelSelecterView mainPanel;
+	
+	public BackToMenuController(JPanel parentPanel, BuilderLevelSelecterView mainPanel){
 		this.parentPanel = parentPanel;
+		this.mainPanel = mainPanel;
 		this.cardLayout = (CardLayout) parentPanel.getLayout();
 	}
 	
 	public void mousePressed(MouseEvent me){
 		
 		//gets the cardLayout manager of the level-specific panels and sets it to show the puzzle panel
-		((CardLayout) builderView.getPnlLevelSwitch().getLayout()).first(builderView.getPnlLevelSwitch());
+		//((CardLayout) builderView.getPnlLevelSwitch().getLayout()).first(builderView.getPnlLevelSwitch());
 		cardLayout.show(parentPanel, "Builder Menu View");
 		
-		//sets the combo box to puzzle
-		JComboBox<String> box = builderView.getComboBox();
-		box.setSelectedIndex(0);
+		parentPanel.remove(mainPanel);
 	}
 }

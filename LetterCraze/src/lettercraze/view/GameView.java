@@ -74,6 +74,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	private JScrollPane wordsScrollPane;
 	
 	private JList<Object> listToDisplay;
+	
+	private JScrollPane wordScrollPane;
 
 
 	/**
@@ -129,9 +131,10 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		add(scoreTextField);
 
 	
-		ArrayList<Word> foundWords = model.getCurrentBoardState().getFoundWords();
+		ArrayList<Word> foundWords = model.getCurrentBoardState().getFoundWords(); 
 		JList<Object> listToDisplay = new JList<>(foundWords.toArray());
-        wordsScrollPane = new JScrollPane(listToDisplay);
+        JScrollPane wordsScrollPane = new JScrollPane(model.getCurrentBoardState().getFoundWordsStrings());
+        wordScrollPane = wordsScrollPane;
 
 		wordsScrollPane.setBounds(542, 82, 235, 414);
 		add(wordsScrollPane);
@@ -295,6 +298,9 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	
 	public JList<Word> getWordList(){
 		return validWordsJList;
+	}
+	public JScrollPane getWordBox(){
+		return wordScrollPane;
 	}
 
 	public void updateLevelTypeLabel(String levelType2) {
