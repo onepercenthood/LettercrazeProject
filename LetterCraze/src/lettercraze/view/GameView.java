@@ -76,6 +76,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	private JList<Object> listToDisplay;
 	
 	private JScrollPane wordScrollPane;
+	
+	private DefaultListModel<String> wordList;
 
 
 	/**
@@ -131,12 +133,20 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		add(scoreTextField);
 
 	
-		ArrayList<Word> foundWords = model.getCurrentBoardState().getFoundWords(); 
-		JList<Object> listToDisplay = new JList<>(foundWords.toArray());
+		wordList = new DefaultListModel<>();
+        JList<String> list = new JList<>( wordList );
+        
+		ArrayList<String> foundWords = model.getCurrentBoardState().getFoundWordsStrings(); 
+		
+		for ( int i = 0; i < foundWords.size(); i++ ){
+            wordList.addElement( foundWords.get(i));
+          }
+		
         //JScrollPane wordsScrollPane = new JScrollPane(model.getCurrentBoardState().getFoundWordsStrings());
-        JScrollPane wordsScrollPane = new JScrollPane(listToDisplay);
+        JScrollPane wordsScrollPane = new JScrollPane(list);
         wordScrollPane = wordsScrollPane;
-
+        
+		
 		wordsScrollPane.setBounds(542, 82, 235, 414);
 		add(wordsScrollPane);
 			
@@ -303,9 +313,23 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	public JScrollPane getWordBox(){
 		return wordScrollPane;
 	}
+	public void addWordModel(){
+		ArrayList<String> foundWords = model.getCurrentBoardState().getFoundWordsStrings(); 
+        wordList.addElement( foundWords.get(foundWords.size()-1));
+		System.out.println("WORDS");
+		System.out.println(wordList.getSize());
+	}
+	public void removeWordModel(){
+		wordList.remove(wordList.size()-1);
+		System.out.println("WORDS");
+		System.out.println(wordList.getSize());
+	}
 
 	public void updateLevelTypeLabel(String levelType2) {
 		// TODO Auto-generated method stub
 		
+	}
+	public void setBackgroundRed(){
+		this.setBackground(Color.RED);
 	}
 }

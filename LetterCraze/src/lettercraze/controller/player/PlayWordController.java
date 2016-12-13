@@ -1,5 +1,6 @@
 package lettercraze.controller.player;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -64,6 +65,14 @@ public class PlayWordController extends MouseAdapter{
 				int currentStars = model.getLevel(model.getCurrentLevel() + 1).getHighStars(newScore);
 				tempBoard.setStars(currentStars);
 				
+				//if lit is played the background turns red
+				System.out.println("TEXT");
+				System.out.println(word.getWordString());
+				if(word.getWordString().equals("LIT")){
+					gameView.setBackgroundRed();
+					System.out.println("LLLLLLLLIIIIIIIIIIITTTTTTTT");
+				}
+				
 				//removes the letter from the played squares to be floated into
 				tempBoard.removeLetterFromSquares(word);
 				
@@ -77,8 +86,10 @@ public class PlayWordController extends MouseAdapter{
 				tempBoard.floatTilesUp(tempBoard.getSquares());
 				tempBoard.fillEmptySquares(tempBoard.getSquares());
 				model.setCurrentBoardState(tempBoard);
-				
+				 
 				//repaints all changed attributes
+				gameView.repaint();
+				gameView.addWordModel();
 				gameView.setStarRater();
 				gameView.getStarRater().repaint();
 				gameView.getBoardView().repaintAllSquares();
