@@ -10,6 +10,7 @@ import javax.swing.DefaultListModel;
 import lettercraze.PlayerApplication;
 import lettercraze.model.BoardState;
 import lettercraze.model.Model;
+import lettercraze.model.Puzzle;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
 import lettercraze.view.SquareView;
@@ -66,11 +67,15 @@ public class PlayWordController extends MouseAdapter{
 				tempBoard.setStars(currentStars);
 				
 				//if lit is played the background turns red
-				System.out.println("TEXT");
-				System.out.println(word.getWordString());
 				if(word.getWordString().equals("LIT")){
 					gameView.setBackgroundRed();
-					System.out.println("LLLLLLLLIIIIIIIIIIITTTTTTTT");
+				}
+				
+				//if its a puzzle level it keeps track of the moves left
+				if(gameView.getLevelType().getText().equals("Puzzle")){
+					Puzzle puzzle = (Puzzle) model.getLevel(model.getCurrentLevel() + 1);
+					int wordsLeft = puzzle.getMaxWords() - model.getCurrentBoardState().getFoundWords().size();
+					gameView.setTypeSpecificLabel("Moves Left: " + wordsLeft);
 				}
 				
 				System.out.println("Before remove letter From Square");
