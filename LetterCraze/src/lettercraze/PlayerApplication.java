@@ -171,7 +171,7 @@ public class PlayerApplication extends JFrame {
 			}
 
 		}
-		
+		 
 		panelMain.repaint();
 	}
 	
