@@ -45,17 +45,36 @@ public class EditExistingLevelController extends java.awt.event.MouseAdapter{
 			return;
 		}
 		
+		//set up the parent panel/layout manager for switching the level-specific info panels
 		JPanel levelSwitch = bView.getPnlLevelSwitch();
 		CardLayout levelCards = (CardLayout) levelSwitch.getLayout();
+		
+		//add some flags for indicating when we're done
 		boolean foundCard = false;
 		int i = 0;
 		while(!foundCard && i < 3){ 
+			
+			//try to fill the current pane. If it is the right pane, this will return true
 			if(bView.getCurrentLevelPanel().fillAllFields(level)){
+				
+				//switch the panels to match the level type
 				levelCards.show(levelSwitch, level.getLevelType());
 				bView.getBoardView().setBoardShape(level.getBoardShape());
+				
+				//set the level selector box to the correct header
+				switch(level.getLevelType()){
+				case "Puzzle": bView.getComboBox().setSelectedIndex(0); break; //sets combo box to Puzzle
+				case "Lightning": bView.getComboBox().setSelectedIndex(1); break; //sets combo box to Lightning
+				case "Theme": bView.getComboBox().setSelectedIndex(2); break; //sets combo box to Theme
+				default: bView.getComboBox().setSelectedIndex(0); // the default is to set it to Puzzle
+				} 
+				
+				//repaint the boardView
 				bView.getBoardView().repaintAllSquares();
+				
+				//return true, because it all worked
 				foundCard = true;
-			} else {
+			} else {//the card was incorrect, so try the next card and count that we tried that one
 				levelCards.next(levelSwitch);
 				i ++;
 			}

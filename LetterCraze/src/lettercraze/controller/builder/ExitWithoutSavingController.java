@@ -37,7 +37,7 @@ public class ExitWithoutSavingController extends MouseAdapter {
 		
 		//gets the cardLayout manager of the level-specific panels and sets it to show the puzzle panel
 		((CardLayout) builderView.getPnlLevelSwitch().getLayout()).first(builderView.getPnlLevelSwitch());
-		cardLayout.show(parentPanel, "Builder Menu View");
+		cardLayout.show(parentPanel, "BuilderMenuView");
 		
 		//sets the combo box to puzzle
 		JComboBox<String> box = builderView.getComboBox();

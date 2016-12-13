@@ -126,13 +126,13 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 			for(int col = 0; col < 6; col++){
 				//save some typing
 				Square thisSquare = model.getCurrentBoardState().getSquares()[row][col];
-				
 				//initialize the squareview at row, col, and to hide the letter
 				squareViews[row][col] = new SquareView(thisSquare, colorPlayer, false);
 				squareViews[row][col].setPreferredSize(new Dimension(64,64));
 				squareViews[row][col].setLayout(null);
 				squareViews[row][col].setBorder(BorderFactory.createLineBorder(Color.black));
 				squareViews[row][col].addMouseListener(new SelectBoardSquareController(builderApp, squareViews[row][col], model));
+				add(squareViews[row][col]);
 				
 				//check if the square is active for this level
 				if(thisSquare.isActive()){
@@ -142,9 +142,10 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 					//inactive squares are colored black
 					squareViews[row][col].setBackground(Color.BLACK);
 				}
-				add(squareViews[row][col]);
 			}
-		}	
+		}
+		setAllSquaresActive(builderApp.getBuilderView());
+		repaint();
 	}
 	
 	/**

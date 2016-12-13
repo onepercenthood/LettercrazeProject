@@ -15,6 +15,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import lettercraze.controller.builder.BackToMenuController;
 import lettercraze.model.FileIO;
 import lettercraze.model.Level;
 import lettercraze.model.Model;
