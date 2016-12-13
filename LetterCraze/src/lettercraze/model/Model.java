@@ -82,6 +82,15 @@ public class Model {
 	
 	/**
 	 * 
+	 * @return the entire levels arraylist
+	 */
+	public ArrayList<Level> getAllLevels(){
+		return levels;
+	}
+	
+	
+	/**
+	 * 
 	 * @param int levelNum
 	 * @return level corresponding to the given level number
 	 */
