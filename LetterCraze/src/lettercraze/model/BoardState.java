@@ -136,6 +136,13 @@ public void removeLetterFromSquares(Word word){
 	public ArrayList<Word> getFoundWords() {
 		return foundWords;
 	}
+	public ArrayList<String> getFoundWordsStrings(){
+		ArrayList<String> stringList = new ArrayList<String>();
+		for(int i = 0; i < foundWords.size(); i++){
+			stringList.add(foundWords.get(i).getWordString());
+		}
+		return stringList;
+	}
 	
 	public boolean addWordToFoundWords(Word word){
 		return this.foundWords.add(word);

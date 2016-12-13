@@ -20,7 +20,6 @@ import javax.swing.border.LineBorder;
 import javafx.scene.shape.Box;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.player.ClearWordController;
-import lettercraze.controller.player.LeaveLevelEarlyController;
 import lettercraze.controller.player.PlayWordController;
 import lettercraze.controller.player.UndoController;
 import lettercraze.controller.builder.SelectBoardSquareController;
@@ -30,6 +29,7 @@ import lettercraze.view.BoardView;
 
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -70,6 +70,12 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	private JList<Word> validWordsJList;
 	
 	private JLabel typeSpecificLabel;
+	
+	private JScrollPane wordsScrollPane;
+	
+	private JList<Object> listToDisplay;
+	
+	private JScrollPane wordScrollPane;
 
 
 	/**
@@ -90,6 +96,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	 * @wbp.parser.constructor
 	 */
 	public GameView(Model m, JPanel parent, PlayerApplication app) {
+		setBackground(SystemColor.menu);
 		this.model = m;
 		this.levelNum = 1;
 		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
@@ -122,15 +129,13 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		scoreTextField = new JLabel(Integer.toString(currentScore));
 		scoreTextField.setBounds(56, 30, 94, 26);
 		add(scoreTextField);
-		
-		DefaultListModel<Word> jListModel = new DefaultListModel<Word>();
 
-		
-		validWordsJList = new JList<Word>(jListModel);
-		validWordsJList.setCellRenderer(new WordJListRenderer());
-		validWordsJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-				
-		JScrollPane wordsScrollPane = new JScrollPane(validWordsJList);
+	
+		ArrayList<Word> foundWords = model.getCurrentBoardState().getFoundWords(); 
+		JList<Object> listToDisplay = new JList<>(foundWords.toArray());
+        JScrollPane wordsScrollPane = new JScrollPane(model.getCurrentBoardState().getFoundWordsStrings());
+        wordScrollPane = wordsScrollPane;
+
 		wordsScrollPane.setBounds(542, 82, 235, 414);
 		add(wordsScrollPane);
 			
@@ -140,7 +145,14 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		
 		btnExitLevel = new JButton("Exit Level");
 
-		btnExitLevel.addMouseListener(new LeaveLevelEarlyController(parent, model, this));
+		btnExitLevel.addMouseListener(new MouseAdapter() {
+			@Override
+			//TODO change to exit controller that resets the level as you exit, recording if you won or not
+			public void mousePressed(MouseEvent me){
+				CardLayout clay = (CardLayout) parent.getLayout();
+				clay.first(parent); //revert to the menu screen
+			}
+		});
 		btnExitLevel.setBounds(660, 6, 117, 29);
 		add(btnExitLevel);
 		
@@ -182,10 +194,10 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		btnUndoMove.addMouseListener(new UndoController(app, model, this));
 		add(btnUndoMove);
 		
-		setTypeSpecificLabel(new JLabel("___"));
-		getTypeSpecificLabel().setFont(new Font("Tahoma", Font.PLAIN, 16));
-		getTypeSpecificLabel().setBounds(284, 12, 117, 16);
-		add(getTypeSpecificLabel());
+		typeSpecificLabel = new JLabel("___");
+		typeSpecificLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		typeSpecificLabel.setBounds(284, 12, 117, 16);
+		add(typeSpecificLabel);
 		
 	}
 	
@@ -233,33 +245,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		return this.validWordsJList;
 	}
 	
-	/**
-	 * Removes word from JList and the model as well
-	 * @param index index to remove from 
-	 * @return Word
-	 */
-	public Word removeWordFromJList(int index){
-		DefaultListModel model = (DefaultListModel) this.validWordsJList.getModel();
-		
-		this.model.getCurrentBoardState().getFoundWords().remove(index);
-		
-		return (Word) model.remove(index);
-	}
-	
-	/**
-	 * Removes word from JList and the model as well
-	 * @param word Word object
-	 * @return boolean
-	 */
-	public boolean removeWordFromJList(Word word){
-		DefaultListModel model = (DefaultListModel) this.validWordsJList.getModel();
-		this.model.getCurrentBoardState().getFoundWords().remove(word);
-
-		return model.removeElement(word);
-	}
-	
 	public JLabel getTypeSpecific(){
-		return getTypeSpecificLabel();
+		return typeSpecificLabel;
 	}
 	
 	public void setTypeSpecificLabel(String display){
@@ -308,24 +295,16 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		int currentStars = model.getCurrentBoardState().getStars();
 		starRater.setRating(currentStars);
 	}
-
-	/**
-	 * @return the typeSpecificLabel
-	 */
-	public JLabel getTypeSpecificLabel() {
-		return typeSpecificLabel;
-	}
 	
-	public void updateLevelTypeLabel(String text){
-		this.levelType.setText(text);
-		this.levelType.repaint();
-		this.repaint();
+	public JList<Word> getWordList(){
+		return validWordsJList;
+	}
+	public JScrollPane getWordBox(){
+		return wordScrollPane;
 	}
 
-	/**
-	 * @param typeSpecificLabel the typeSpecificLabel to set
-	 */
-	public void setTypeSpecificLabel(JLabel typeSpecificLabel) {
-		this.typeSpecificLabel = typeSpecificLabel;
+	public void updateLevelTypeLabel(String levelType2) {
+		// TODO Auto-generated method stub
+		
 	}
 }

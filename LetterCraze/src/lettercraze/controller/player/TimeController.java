@@ -58,7 +58,7 @@ public class TimeController implements ActionListener {
         if(counter == 0){
         	
         	System.out.println("Time is up");
-            gameView.getTypeSpecificLabel().setText("The time is up!");
+            gameView.getTypeSpecific().setText("The time is up!");
             
             JOptionPane.showMessageDialog(null, "Time is up!");
 
@@ -69,7 +69,7 @@ public class TimeController implements ActionListener {
             // save the data
         	
         }else{
-        	gameView.getTypeSpecificLabel().setText("TimeLeft " + counter);
+        	gameView.getTypeSpecific().setText("TimeLeft " + counter);
         }
         
         gameView.getTypeSpecific().repaint();
