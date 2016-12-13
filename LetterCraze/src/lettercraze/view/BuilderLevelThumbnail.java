@@ -41,15 +41,15 @@ public class BuilderLevelThumbnail extends JPanel {
 		}
 		
 		JLabel lblLevelType = new JLabel("Level Type: " + level.getLevelType());
-		lblLevelType.setBounds(15, 0, 270, 58);
+		lblLevelType.setBounds(15, 0, 122, 37);
 		add(lblLevelType);
 		
 		JLabel lblLevelNumber = new JLabel("Level Number: " + level.getLevelNum());
-		lblLevelNumber.setBounds(15, 49, 122, 37);
+		lblLevelNumber.setBounds(15, 47, 122, 37);
 		add(lblLevelNumber);
 		
 		JButton btnEdit = new JButton("Edit");
-		btnEdit.setBounds(90, 102, 120, 29);
+		btnEdit.setBounds(15, 100, 120, 29);
 		btnEdit.addMouseListener(new EditExistingLevelController(grandParentPanel, level));
 		add(btnEdit);
 		

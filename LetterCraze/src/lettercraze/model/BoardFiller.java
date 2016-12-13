@@ -182,8 +182,12 @@ public class BoardFiller{
 		return squares;
 	}
 
-	public Square[][] initialThemeFill(Square[][] squares) {
+	public Square[][] initialThemeFill(Square[][] squares, ArrayList<String> targetWords) {
 		// TODO Auto-generated method stub
+		//Convert Strings -> Words
+			//Convert Strings -> Chars -> Letters -> Squares
+			//Determine relative locations for squares
+			//
 		return null;
 	}
 }

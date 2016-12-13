@@ -108,7 +108,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 					}
 				} else {
 					//inactive squares are colored black
-					squareViews[row][col].setBackground(Color.BLACK);
+					squareViews[row][col].setBackground(Color.GRAY);
 				}
 				add(squareViews[row][col]);
 			}
@@ -140,7 +140,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 					squareViews[row][col].setBackground(colorPlayer);
 				} else {
 					//inactive squares are colored black
-					squareViews[row][col].setBackground(Color.BLACK);
+					squareViews[row][col].setBackground(Color.GRAY);
 				}
 			}
 		}

@@ -28,17 +28,30 @@ public class Word {
 	public Word(Square s){
 		letters.add(s);
 	}
-	
+
+	/**
+	 * adds the givens square to the word
+	 * @param s : the square to be added
+	 * @return true if the square was added successfully, false otherwise
+	 */
 	public boolean addSquare(Square s){
 		letters.add(s);
 		return true;
 	}
-	
+
+	/**
+	 * remove the most recent square from the word
+	 * @return true if the square was removed successfully, false otherwise
+	 */
 	public boolean removeSquare(){
-		letters.remove(getWordLength()-1);
+		if(letters.isEmpty()){
+			return false;
+		}else {
+			letters.remove(getWordLength()-1);
+		}
 		return true;
 	}
-	
+
 	/**
 	 * A word is only valid if it is at least 3 letters long and 
 	 * 
@@ -63,7 +76,7 @@ public class Word {
 		}
 		return wordScore * (wordLength-2);
 	}
-	
+
 	/**
 	 * Changes the ArrayList of Letters into a String 
 	 * <p>
@@ -72,9 +85,9 @@ public class Word {
 	public String getWordString(){
 		String wordString = "";
 
-			for(Square s : letters){
-				if(null == s.getLetter()){
-//					return wordString += "_";
+		for(Square s : letters){
+			if(null == s.getLetter()){
+				//					return wordString += "_";
 				wordString += "_";
 			}
 			else{
@@ -83,26 +96,30 @@ public class Word {
 		}
 		return wordString;
 	}
-	
+
+	/**
+	 * returns the square at the end of the word
+	 * @return the square at the end of the word
+	 */
 	public Square getLastSquare(){
 		Square lastSquare = this.letters.get(letters.size() - 1);
 		return lastSquare;
 	}
-	
+
 	public ArrayList<Square> getLetters(){
 		return this.letters;
 	}
-	
+
 	public int getWordLength(){
 		int length = this.letters.size();
 		return length;
 	}
-	
+
 	public Square getCertainSquare(int num){
 		Square retSquare = this.letters.get(num - 1);
 		return retSquare;
 	}
-	
+
 	/**
 	 * returns a deep copy of this word, with no common objects in the copy
 	 * @return
