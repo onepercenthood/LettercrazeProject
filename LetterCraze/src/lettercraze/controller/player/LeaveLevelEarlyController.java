@@ -26,7 +26,7 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 		this.parent = parent;
 		this.model = model;
 		this.gameView = gameView;
-	}
+	} 
 	
 	@Override
 	public void mousePressed(MouseEvent me){
