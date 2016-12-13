@@ -37,7 +37,7 @@ public class Model {
 	protected WordTable possibleWords;
 	
 	protected int currentLevel;
-	
+
 	/**
 	 * Model Constructor
 	 */
@@ -61,20 +61,7 @@ public class Model {
 			}
 			//active = !active;
 		}
-/*		
-		Puzzle level1 = new Puzzle(1, new int[]{25, 50, 100} , 10);
-		level1.setBoardShape(sampleShape);
-		level1.setUnLocked(true);
-		levels.add(level1);	
-		initiateLevel(1);
-
 		
-		Lightning level2 = new Lightning(2, new int[]{25, 50, 100} , 30);
-		level2.setBoardShape(sampleShape);
-		level2.setUnLocked(true);
-		levels.add(level2);	
-		initiateLevel(2);
-*/		
 		levels = FileIO.loadDefaultLevelsFromDisk();
 		System.out.println(levels);
 		//initiateLevel(1);
@@ -83,16 +70,7 @@ public class Model {
 		levels.addAll(custom);
 		System.out.println(levels);
 		initiateLevel(1);
-		//loadLevelsFromDisk();
-		//saveLevelsToDisk();
-		/*
-		Lightning level1 = new Lightning(1, new int[]{25, 50, 100} , 10);
-		level1.setBoardShape(sampleShape);
-		level1.setUnLocked(true);
-		levels.add(level1);	
-		initiateLevel(1);
-		level1.startTime();
-		*/
+		
 	}
 	
 	// Get Functions 
@@ -214,6 +192,10 @@ public class Model {
 	
 	public Level getCurrentLevelObject(){
 		return levels.get(currentLevel);
+	}
+	
+	public void setCurrentLevel(int currentLevel) {
+		this.currentLevel = currentLevel;
 	}
 }
 

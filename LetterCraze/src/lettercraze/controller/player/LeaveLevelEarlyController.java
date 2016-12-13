@@ -31,18 +31,36 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 	@Override
 	public void mousePressed(MouseEvent me){
 		
+		int nextLevel = model.getCurrentLevelObject().getLevelNum();
+		int highScore = model.getCurrentLevelObject().getHighScore();
+		int currentPlayedScore = model.getCurrentBoardState().getScore();
+		boolean isNextLevelUnlocked = model.getLevel(nextLevel).getIsUnlocked();
+		//int firstStarThreshold[] = model.getCurrentLevelObject().getStarThreshold();
+		
+		int highStarsScored = model.getCurrentLevelObject().getHighStars(currentPlayedScore);
+		
 		//***stub for later***
-		if(model.getCurrentBoardState().getScore() > model.getCurrentLevelObject().getHighScore()){
+		if(currentPlayedScore > highScore){
+			model.getCurrentLevelObject().updateHighScore(currentPlayedScore);
+			if((highStarsScored >= 1) & (isNextLevelUnlocked == false)){
+				model.getLevel(nextLevel).setUnLocked(true);
+			}
 			//need a get level obj method in 
 			//model.getCurrentLevelObject().setHighScore(model.getCurrentLevelObject().getHighScore());
 			
 		}
 		
 		FileIO.saveLevelToDisk(model.getCurrentLevelObject());
+		FileIO.saveLevelToDisk(model.getLevel(nextLevel));
 		//save high score if needed
 		//save level to disk
 		//check if first star was reached, if next level not unlocked
 		//set boardstate to null in model
+		
+		// clear current model objects
+		model.getCurrentBoardState().setScore(0);
+		model.getCurrentBoardState().getFoundWords().clear();
+		model.setCurrentWord(null);
 
 		CardLayout clay = (CardLayout) parent.getLayout();
 		clay.first(parent); //revert to the menu screen

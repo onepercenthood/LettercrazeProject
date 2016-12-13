@@ -28,11 +28,12 @@ public class SelectAvailableLevelController implements ActionListener{
 	
 	CardLayout cardlayout;
 	
-	public SelectAvailableLevelController(int lvl, CardLayout cl, PlayerApplication app){
+	public SelectAvailableLevelController(int lvl, Model model, CardLayout cl, PlayerApplication app){
 		super();
-		levelNum = lvl;
-		cardlayout = cl;
+		this.levelNum = lvl;
+		this.cardlayout = cl;
 		this.app = app;
+		this.mod = app.getModel();
 	}
 	
 	public SelectAvailableLevelController(Integer levelNumber, CardLayout cardLayout, PlayerApplication app2) {
@@ -41,6 +42,8 @@ public class SelectAvailableLevelController implements ActionListener{
 		this.levelNum = levelNumber;
 		this.cardlayout = cardLayout;
 		this.app = app2;
+		this.mod = app.getModel();
+		//app.getModel().initiateLevel(levelNum);
 	}
 
 	/**
@@ -57,8 +60,8 @@ public class SelectAvailableLevelController implements ActionListener{
 		 */
 		//mod.initiateLevel(levelNum);
 		//switch to GameView
+		app.getModel().setCurrentBoardState(null);
 		cardlayout.show(app.getCardLayoutParent(), "GameView");
-		
 		GameView curGameView = app.getGameView();
 		Level curLevel = app.getModel().getLevel(levelNum);
 		
