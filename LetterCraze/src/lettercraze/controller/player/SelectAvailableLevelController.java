@@ -89,6 +89,6 @@ public class SelectAvailableLevelController implements ActionListener{
 		else if(curLevel.getLevelType() == "Theme"){
 			
 		}
-		
+		 
 	}
 }
