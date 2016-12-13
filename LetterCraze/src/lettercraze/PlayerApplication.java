@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import lettercraze.model.Level;
 import lettercraze.model.Model;
 import lettercraze.view.GameView;
 import lettercraze.view.LevelPreviewView;
@@ -142,8 +143,8 @@ public class PlayerApplication extends JFrame {
 	 * Load in the levels to the menu object.
 	 */
 	public void loadInLevels(){
-		int col = 5;
-		int row = 4;
+		int col =5;
+		int row = 3;
 
 		int total_count = 0;
 
@@ -152,18 +153,21 @@ public class PlayerApplication extends JFrame {
 
 		String levelType;
 		int levelI;
-		for( int rowi = 1; rowi < row; rowi++ ){
+		Level currentLevel;
+		for( int rowi = 0; rowi < row; rowi++ ){
 
 			for( int coli=0; coli < col; coli++){
+				System.out.println(total_count);
+				total_count += 1;
+				currentLevel = model.getLevel(total_count);
 				levelI = total_count % 3;
 				levelType = levelTypes[levelI];
-				total_count += 1;
-				
-				LevelPreviewView level = new LevelPreviewView(levelType, levelColors[levelI], total_count, 0, panelMain, this);
-				
-				if( total_count != 1 && total_count != 2){
-					level.setEnabled(false);
 
+				
+				LevelPreviewView level = new LevelPreviewView(currentLevel.getLevelType(), levelColors[levelI], currentLevel.getLevelNum(), 0, panelMain, this);
+				
+				if(!currentLevel.getIsUnlocked()){
+					level.setEnabled(false);
 				}
 				
 				menuView.addMenuItemToDefault(level);
@@ -171,7 +175,7 @@ public class PlayerApplication extends JFrame {
 			}
 
 		}
-		 
+		
 		panelMain.repaint();
 	}
 	
