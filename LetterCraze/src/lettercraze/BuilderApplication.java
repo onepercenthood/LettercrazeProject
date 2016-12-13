@@ -44,10 +44,10 @@ public class BuilderApplication extends JFrame {
 	protected String currentUser = "test";
 
 	/** Initial width for the window. Must never shrink less than this. */
-	protected static int initialWidth = 1088;
+	protected static int initialWidth = 988;
 
 	/** Initial height for the window. Must never shrink less than this. */
-	protected static int initialHeight = 635;
+	protected static int initialHeight = 700;
 
 	/** Last height for the window. Start with initial height. */
 	protected int lastHeight = 635;

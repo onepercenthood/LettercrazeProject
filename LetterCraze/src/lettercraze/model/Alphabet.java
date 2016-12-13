@@ -16,7 +16,7 @@ import java.util.Random;
 public class Alphabet {
 	/** LinkedHasMap of the frequency for each letter to appear [key = letter, object = frequency (Double)] 
 	 * Allows for iteration in order of entry. */
-	protected static LinkedHashMap<String,Letter> letters = new LinkedHashMap<String,Letter>();
+	public static final LinkedHashMap<String,Letter> letters = new LinkedHashMap<String,Letter>();
 	private static Alphabet instance;
 	
 	public Alphabet(){
