@@ -178,7 +178,7 @@ public class PlayerApplication extends JFrame {
 		
 		panelMain.repaint();
 	}
-	
+	 
 	/**
 	 * Invoked whenever model is changed and the application needs to refresh
 	 * 
