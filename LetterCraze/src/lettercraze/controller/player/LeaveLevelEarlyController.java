@@ -58,8 +58,9 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 		//set boardstate to null in model
 		
 		// clear current model objects
-		model.getCurrentBoardState().setScore(0);
-		model.getCurrentBoardState().getFoundWords().clear();
+		model.setCurrentBoardState(null);
+		//model.getCurrentBoardState().setScore(0);
+		//model.getCurrentBoardState().getFoundWords().clear();
 		model.setCurrentWord(null);
 
 		CardLayout clay = (CardLayout) parent.getLayout();

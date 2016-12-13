@@ -85,28 +85,14 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	/**
 	 * Create the frame.
 	 */
-	public GameView(Model m, int levelNum, PlayerApplication app) {
+	public GameView(Model m, int levelNum, JPanel parent, PlayerApplication app) {
 		super();
 		this.app = app;
 		this.model = m;
 		this.levelNum = levelNum;
-		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
-		boardview.playerInitialize(app);
-		createPanel();
-	}
-	
-	/**
-	 * Create the frame.
-	 * @wbp.parser.constructor
-	 */
-	public GameView(Model m, JPanel parent, PlayerApplication app) {
-		setBackground(SystemColor.menu);
-		this.model = m;
-		this.levelNum = 1;
-		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
-		boardview.setBounds(16, 82, 471, 471);
-		boardview.playerInitialize(app);
 		this.parent = parent;
+		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
+		boardview.playerInitialize(app);
 		createPanel();
 	}
 	

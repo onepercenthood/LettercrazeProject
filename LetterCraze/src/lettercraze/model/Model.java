@@ -69,7 +69,7 @@ public class Model {
 		custom = FileIO.loadCustomLevelsFromDisk();
 		levels.addAll(custom);
 		System.out.println(levels);
-		initiateLevel(1);
+		//initiateLevel(1);
 		
 	}
 	

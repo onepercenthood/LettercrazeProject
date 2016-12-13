@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.Timer;
 
 import lettercraze.PlayerApplication;
+import lettercraze.model.BoardState;
 import lettercraze.model.Level;
 import lettercraze.model.Lightning;
 import lettercraze.model.Model;
@@ -28,6 +29,8 @@ public class SelectAvailableLevelController implements ActionListener{
 	
 	CardLayout cardlayout;
 	
+	GameView gameView;
+	
 	public SelectAvailableLevelController(int lvl, Model model, CardLayout cl, PlayerApplication app){
 		super();
 		this.levelNum = lvl;
@@ -43,6 +46,7 @@ public class SelectAvailableLevelController implements ActionListener{
 		this.cardlayout = cardLayout;
 		this.app = app2;
 		this.mod = app.getModel();
+		//mod.initiateLevel(levelNum);
 		//app.getModel().initiateLevel(levelNum);
 	}
 
@@ -60,11 +64,15 @@ public class SelectAvailableLevelController implements ActionListener{
 		 */
 		//mod.initiateLevel(levelNum);
 		//switch to GameView
-		app.getModel().setCurrentBoardState(null);
-		cardlayout.show(app.getCardLayoutParent(), "GameView");
-		GameView curGameView = app.getGameView();
 		Level curLevel = app.getModel().getLevel(levelNum);
+		app.getModel().setCurrentBoardState(new BoardState(curLevel.getBoardShape()));
 		
+		//GameView curGameView = app.getGameView();
+		gameView = new GameView(mod, levelNum, app.getCardLayoutParent(), app);
+		app.getCardLayoutParent().add(gameView, gameView.getPanelName());
+		gameView.getBoardView().repaintAllSquares();
+		//Level curLevel = app.getModel().getLevel(levelNum);
+		cardlayout.show(app.getCardLayoutParent(), "GameView");
 		//curGameView.updateLevelTypeLabel(curLevel.getLevelType());
 
 		if( curLevel.getLevelType() == "Lightning" ){
@@ -73,9 +81,9 @@ public class SelectAvailableLevelController implements ActionListener{
 			System.out.print("Time till exp: " + ((Lightning) curLevel).getSeconds());
 			
 			
-			TimeController timeCont = new TimeController(app, app.getModel(), curGameView, ((Lightning) curLevel).getSeconds());
+			//TimeController timeCont = new TimeController(app, app.getModel(), curGameView, ((Lightning) curLevel).getSeconds());
 			
-			TimeController.startTimer(((Lightning) curLevel).getSeconds() * 1000, timeCont);
+			//TimeController.startTimer(((Lightning) curLevel).getSeconds() * 1000, timeCont);
 			
 		}
 		else if(curLevel.getLevelType() == "Theme"){

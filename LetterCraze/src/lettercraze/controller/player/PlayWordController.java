@@ -46,7 +46,7 @@ public class PlayWordController extends MouseAdapter{
 				//BoardState currentState = model.getCurrentBoardState();
 				Word copyOfWord = word.copyWord();
 				//BoardState newState = new BoardState (currentState, copyOfWord);
-				
+				  
 				 
 				//wordsListModel.add(copyOfWord);
 				
@@ -73,11 +73,16 @@ public class PlayWordController extends MouseAdapter{
 					System.out.println("LLLLLLLLIIIIIIIIIIITTTTTTTT");
 				}
 				
+				System.out.println("Before remove letter From Square");
 				//removes the letter from the played squares to be floated into
 				tempBoard.removeLetterFromSquares(word);
 				
+				System.out.println("Before deselect all");
+				
 				//deselects the played squares
 				tempBoard.deselectAllSquares();
+				
+				System.out.println("Before set current word null");
 				
 				//sets current word to nothing so a new one can be played
 				model.setCurrentWord(null);
