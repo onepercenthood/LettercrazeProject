@@ -133,7 +133,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	
 		ArrayList<Word> foundWords = model.getCurrentBoardState().getFoundWords(); 
 		JList<Object> listToDisplay = new JList<>(foundWords.toArray());
-        JScrollPane wordsScrollPane = new JScrollPane(model.getCurrentBoardState().getFoundWordsStrings());
+        //JScrollPane wordsScrollPane = new JScrollPane(model.getCurrentBoardState().getFoundWordsStrings());
+        JScrollPane wordsScrollPane = new JScrollPane(listToDisplay);
         wordScrollPane = wordsScrollPane;
 
 		wordsScrollPane.setBounds(542, 82, 235, 414);
