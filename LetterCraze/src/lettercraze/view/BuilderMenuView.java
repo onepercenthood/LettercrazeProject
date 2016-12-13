@@ -70,6 +70,6 @@ public class BuilderMenuView extends DefaultViewPanel{
 	@Override
 	public String getPanelName() {
 		// TODO Auto-generated method stub
-		return "Builder Menu View";
+		return "BuilderMenuView";
 	}
 }

@@ -1,5 +1,6 @@
 package lettercraze.view;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -43,16 +44,6 @@ public class BuilderLevelSelecterView extends JPanel{
 				add(levelThumbnail);
 			}
 		} else {
-			this.setLayout(null);
-			JButton btnReturn = new JButton("Return to Main Screen");
-			btnReturn.setBounds(100,20,getWidth()/2,getHeight()/2);
-			btnReturn.addMouseListener(new MouseAdapter(){
-				@Override
-				public void mousePressed(MouseEvent me){
-					
-				}
-			});
-			add(btnReturn);
 			System.err.println("There were no levels on the disk!");
 		}
 		
