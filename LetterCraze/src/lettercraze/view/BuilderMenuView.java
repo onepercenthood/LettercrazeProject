@@ -12,6 +12,11 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
+/**
+ * Allows the option of either loading a level or creating a new one. First Screen of builder
+ * @author Everett
+ *
+ */
 public class BuilderMenuView extends DefaultViewPanel{
 
 	/**

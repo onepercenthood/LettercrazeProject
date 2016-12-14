@@ -149,7 +149,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 
 	/**
 	 * returns the active level panel for inputting level-specific information
-	 * @return
+	 * @return the currently active level pane
 	 */
 	public AbsBuilderLevelPanel getCurrentLevelPanel()
 	{
