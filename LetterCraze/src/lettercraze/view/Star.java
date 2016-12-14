@@ -10,6 +10,14 @@ import java.awt.geom.Path2D;
 
 import javax.swing.JPanel;
 
+/**
+ * Main Panel to create the starView for our stars.
+ * 
+ * Taken from a thirdParty library
+ * 
+ * @author ddeisadze
+ *
+ */
 class DrawStarShapePanel extends JPanel
 {
     @Override
@@ -40,6 +48,14 @@ class DrawStarShapePanel extends JPanel
 
     }
 
+    /**
+     * Shape class to create a default star
+     * 
+     * @param radius as the radius of the star
+     * @param centerX as the center x-coordinate of the star
+     * @param centerY as the center y-coordinate of the star
+     * @return the Shape created of the star
+     */
     private static Shape createDefaultStar(double radius, double centerX,
         double centerY)
     {
@@ -47,6 +63,17 @@ class DrawStarShapePanel extends JPanel
             Math.toRadians(-18));
     }
 
+    /**
+     * Create a custom star
+     * 
+     * @param centerX as the center x-coordinate of the star
+     * @param centerY as the center y-coordinate of the star
+     * @param innerRadius as the inner radius of the star
+     * @param outerRadius as the outer-radius of the star rays
+     * @param numRays number of rays for the star
+     * @param startAngleRad and the angle between the rays of the star
+     * @return
+     */
     private static Shape createStar(double centerX, double centerY,
         double innerRadius, double outerRadius, int numRays,
         double startAngleRad)

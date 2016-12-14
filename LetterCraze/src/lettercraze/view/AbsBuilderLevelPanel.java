@@ -5,11 +5,14 @@ import lettercraze.model.Level;
 /**
  * ILevelPanel is used to provide a consistent interface for retrieving 
  * information about the desired level specifications from the GUI
- * @author Rett
+ * @author Everett
  * 
  */
 public abstract class AbsBuilderLevelPanel extends DefaultViewPanel {
 	
+	/**
+	 * level loaded to the builder. if no level was loaded: levelLoaded = null.
+	 */
 	private Level levelLoaded;
 
 	/**
@@ -39,25 +42,28 @@ public abstract class AbsBuilderLevelPanel extends DefaultViewPanel {
 	
 	/**
 	 * fill all text fields with the data prescribed in the given level.
-	 * @param level : the level information from which to fill the textfields
-	 * @throws Exception throws exception when the wrong level type is passed in
+	 * @param level : the level information from which to fill the textfields.
 	 */
 	abstract public boolean fillAllFields(Level level);
 	
 	/**
-	 * checks if all the panels textfields are filled out
-	 * @return true if all the text fields are filled out correctly, false otherwise
+	 * checks if all the panels textfields are filled out.
+	 * @return true if all the text fields are filled out correctly, false otherwise.
 	 */
 	abstract public boolean isFilledOut();
 	
 	/**
-	 * determine if this level was loaded in or is new
-	 * @return true if the level was loaded in, false otherwise
+	 * determine if this level was loaded in or is new.
+	 * @return true if the level was loaded in, false otherwise.
 	 */
 	public Level getLevelLoaded(){
 		return levelLoaded;
 	}
 	
+	/**
+	 * sets levelLoaded to the given level.
+	 * @param loaded : the level loaded into the builder for editing.
+	 */
 	protected void setLevelLoaded(Level loaded){
 		this.levelLoaded = loaded;
 	}

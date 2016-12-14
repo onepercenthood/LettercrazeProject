@@ -8,21 +8,35 @@ import lettercraze.PlayerApplication;
 import lettercraze.model.BoardState;
 import lettercraze.model.Model;
 import lettercraze.model.Puzzle;
+import lettercraze.model.Theme;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
 
-
+/**
+ * PlayWordController handles the adding and verifying of words that the user has selected
+ * on the boardView.
+ * 
+ * @author ddeisadze
+ *
+ */
 public class PlayWordController extends MouseAdapter{
 	
-	/** The game to be manipulated **/
+	/** The game to be manipulated. **/
 	Model model;
 	
-	/** the top level application for navigation purposes **/
+	/** the top level application for navigation purposes. **/
 	PlayerApplication application;
 	
 	/** the squareview that was clicked **/
 	GameView gameView;
 	
+	/**
+	 * This constructor is the main constructor for this controller.
+	 * 
+	 * @param application as the main application layer instance
+	 * @param model as the main model instance from the application
+	 * @param gameView as the gameview from the main application
+	 */
 	public PlayWordController(PlayerApplication application, Model model, GameView gameView) {
 		// TODO Auto-generated constructor stub
 		this.application = application;
@@ -30,13 +44,32 @@ public class PlayWordController extends MouseAdapter{
 		this.gameView = gameView;
 	}
 	
+	/**
+	 * MousePressed event to simulate the user clicking on the view button.
+	 */
 	public void mousePressed(MouseEvent me){
 		Word word = model.getCurrentWord();
 		ArrayList<Word> wordsListModel = model.getCurrentBoardState().getFoundWords();
 		//DefaultListModel wordsListModel = (DefaultListModel) gameView.getWordsJList().getModel();
 
 		if( word != null){
-			if(word.isValid() && !wordsListModel.contains(word)){
+			boolean validWord = false;
+			
+			//theme handles valid words differently, so check that first
+			if(model.getCurrentLevelObject().getLevelType().equals("Theme")){
+				
+				//in a theme level, check if the word is valid by comparing it to a list of target words contained in the theme object
+				Theme t = (Theme) model.getCurrentLevelObject();
+				validWord = word.isValid(t.getTargetWords());
+				
+			} else {
+				
+				//if its not a theme level, use the regular check against the provided dictionary
+				validWord = word.isValid();
+			}
+			
+			//now, if the word is valid in its context, and this other thing is true, go ahead and play it
+			if(validWord && !wordsListModel.contains(word)){
 				System.out.println("Word is valid");
 				System.out.println(word.getWordString());
 				
@@ -128,16 +161,9 @@ public class PlayWordController extends MouseAdapter{
 				System.out.println("Word is not valid."); 
 			}
 		}
-			
-
-		
 
 		
 	}
-	
-	
-	
-	
 	
 
 }

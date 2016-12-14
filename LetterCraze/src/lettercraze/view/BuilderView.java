@@ -24,38 +24,41 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.Font;
 
-
+/**
+ * BuilderView is the main screen for building levels.
+ * It contains the boardView for selecting.
+ * @author Everett
+ *
+ */
 public class BuilderView extends DefaultViewPanel implements ItemListener{
 
 
+	/**
+	 * returns the parent panel for the level specific views
+	 * @return JPanel
+	 */
 	public JPanel getPnlLevelSwitch() {
 		return pnlLevelSwitch;
 	}
 
 	private JPanel contentPane;
 	private JPanel cardLayoutPanel;
-	private JTextField txtfldTwoStar;
-	private JTextField txtfldOneStar;
-	private JTextField txtfldThreeStar;
-	private JTextField txtFldInputMaxMoves;
 	private Model model;
 	private Font labelFont;
 	private Font titleFont;
 	private Color bgColor;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
 	private JPanel pnlLevelSwitch;
-	private JTextField txtfldThemeTitle;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
 	private BuilderApplication app;
 	private BoardView boardView;
 	private JComboBox<String> comboBox;
 
-
+	/**
+	 * Constructor for the BuilderView object. Takes in the model 
+	 * for editing, the parent panel and the parent BuilderApplicaiton.
+	 * @param model as Model
+	 * @param parent as JPanel
+	 * @param app as BuilderApplication
+	 */
 	public BuilderView(Model model, JPanel parent, BuilderApplication app) {
 		super();
 		this.model = model;
@@ -63,7 +66,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		this.bgColor = new Color(178, 34, 34);
 		this.app = app;
 		this.labelFont = new Font("Times New Roman", Font.BOLD, 18);
-		setBackground(bgColor);
+		setBackground(new Color(102,255,102));
 		initialize();
 	}
 
@@ -107,17 +110,17 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 
 		JPanel pnlPuzzle = new BuilderPuzzlePanelView(labelFont);
 		pnlLevelSwitch.add(pnlPuzzle, "Puzzle");
-		pnlPuzzle.setBackground(new Color(0, 128, 0));
+		pnlPuzzle.setBackground(new Color(102,255,102));
 		pnlPuzzle.setLayout(null);
 
 		JPanel pnlLightning = new BuilderLightningPanelView();
-		pnlLightning.setBackground(new Color(255, 140, 0));
+		pnlLightning.setBackground(Color.ORANGE);
 		pnlLevelSwitch.add(pnlLightning, "Lightning");
 		pnlLightning.setLayout(null);
 
 
 		JPanel pnlTheme = new BuilderThemePanelView(labelFont);
-		pnlTheme.setBackground(new Color(255, 0, 255));
+		pnlTheme.setBackground(Color.PINK);
 		pnlLevelSwitch.add(pnlTheme, "Theme");
 		pnlTheme.setLayout(null);
 
@@ -149,7 +152,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 
 	/**
 	 * returns the active level panel for inputting level-specific information
-	 * @return
+	 * @return the currently active level pane
 	 */
 	public AbsBuilderLevelPanel getCurrentLevelPanel()
 	{
@@ -166,66 +169,43 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 	}
 
 	//Getter Methods
+	/**
+	 * @deprecated no longer uses contentPane
+	 * gets the content pane from the builderView, content pane does nothing.
+	 * @return JPanel
+	 */
 	public JPanel getContentPane() {
 		return contentPane;
 	}
 
+	/**
+	 * returns the BuilderView's parent container as a JPanel.
+	 * @return JPanel
+	 */
 	public JPanel getParent() {
 		return cardLayoutPanel;
 	}
 
-	public JTextField getTxtfldTwoStar() {
-		return txtfldTwoStar;
-	}
-
-	public JTextField getTxtfldOneStar() {
-		return txtfldOneStar;
-	}
-
-	public JTextField getTxtfldThreeStar() {
-		return txtfldThreeStar;
-	}
-
-	public JTextField getTxtFldInputMaxMoves() {
-		return txtFldInputMaxMoves;
-	}
-
+	/**
+	 * returns the model stored here.
+	 * @return Model
+	 */
 	public Model getModel() {
 		return model;
 	}
 
-	public JTextField getTextField() {
-		return textField;
-	}
-
-	public JTextField getTextField_1() {
-		return textField_1;
-	}
-
-	public JTextField getTextField_2() {
-		return textField_2;
-	}
-
-	public JTextField getTextField_3() {
-		return textField_3;
-	}
-
-	public JTextField getTxtfldThemeTitle() {
-		return txtfldThemeTitle;
-	}
-
-	public JTextField getTextField_4() {
-		return textField_4;
-	}
-
-	public JTextField getTextField_6() {
-		return textField_6;
-	}
-
+	/**
+	 * returns the parent application.
+	 * @return BuilderApplication
+	 */
 	public BuilderApplication getApp() {
 		return app;
 	}
 
+	/**
+	 * returns the boardView.
+	 * @return BoardView
+	 */
 	public BoardView getBoardView() {
 		return boardView;
 	}
@@ -236,6 +216,10 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		return "BuilderView";
 	}
 
+	/**
+	 * returns the box for switching between the levels.
+	 * @return JComboBox<String> with fields: 0 = "Puzzle"; 1 = "Lightning"; 2 = "Theme"
+	 */
 	public JComboBox<String> getComboBox() {
 		return comboBox;
 	}
@@ -243,11 +227,29 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 	//when the combo box triggers an item state change, switch the input panels
 	@Override
 	public void itemStateChanged(ItemEvent evt) {
+		Color levelColor = null;
 		CardLayout cl = (CardLayout) pnlLevelSwitch.getLayout();
 		cl.show(pnlLevelSwitch, (String) evt.getItem());
+		
+		String string = (String) evt.getItem();
+		
+		if(string.equals("Puzzle")){
+			levelColor = new Color(102,255,102);
+		}
+		else if(string.equals("Lightning")){
+			levelColor = Color.ORANGE;
+		}
+		else if(string.equals("Theme")){
+			levelColor = Color.PINK;
+		}
+		this.setBackground(levelColor);
 
 	}
 
+	/**
+	 * resets all the fields in the builder screen
+	 * @return true
+	 */
 	public boolean resetAllFields(){
 		//first reset all the squares in the board to true
 		boardView.setAllSquaresActive(this);

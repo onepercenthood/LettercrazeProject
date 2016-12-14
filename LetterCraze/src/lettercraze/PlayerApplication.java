@@ -90,8 +90,6 @@ public class PlayerApplication extends JFrame {
 	 * 
 	 */
 	private CardLayout cardLayout = new CardLayout();
-	
-	
 
 	
 	/**
@@ -153,7 +151,7 @@ public class PlayerApplication extends JFrame {
 
 				Color levelColor = Color.RED;
 				if(currentLevel.getLevelType().equals("Puzzle")){
-					levelColor = Color.GREEN;
+					levelColor = new Color(102,255,102);
 				}
 				else if(currentLevel.getLevelType().equals("Lightning")){
 					levelColor = Color.ORANGE;

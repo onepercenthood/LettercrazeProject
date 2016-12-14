@@ -10,6 +10,11 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+/**
+ * the thumbnail representation of the level with a button to select it
+ * @author Everett
+ *
+ */
 public class BuilderLevelThumbnail extends JPanel {
 
 	/** the level to be represented **/
@@ -27,11 +32,14 @@ public class BuilderLevelThumbnail extends JPanel {
 		initialize();
 	}
 	
+	/**
+	 * sets up the color, text labels, and JButton of the thumbnail
+	 */
 	public void initialize(){
 		setLayout(null);
 		switch(level.getLevelType()){
 		case "Puzzle": 
-		case "puzzle": this.setBackground(Color.GREEN); break;
+		case "puzzle": this.setBackground(new Color(102,255,102)); break;
 		case "lightning":
 		case "Lightning": this.setBackground(Color.ORANGE); break;
 		case "theme":

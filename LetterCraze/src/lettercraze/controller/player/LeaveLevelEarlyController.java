@@ -12,16 +12,35 @@ import lettercraze.view.GameView;
 import lettercraze.view.LevelPreviewView;
 import lettercraze.view.MenuView;
 
+/**
+ * This controller handles leaving the level you are in early in order to 
+ * go back to the menu.
+ * 
+ * It reacts to a MousePress event.
+ * 
+ * @author ddeisadze
+ *
+ */
 public class LeaveLevelEarlyController extends MouseAdapter{
 
-	/** The game to be manipulated **/
+	/** The game to be manipulated. **/
 	Model model;
 
+	/** 
+	 * Main Parent panel which holds the cardlayout.
+	 */
 	JPanel parent;
 
-	/** the squareview that was clicked **/
+	/** the squareview that was clicked. **/
 	GameView gameView;
 
+	/**
+	 * LeaveLevelEarlyController handles leaving the level early to go back to menu.
+	 * 
+	 * @param parent as the main JPanel from the application which holds the cardLayouts
+	 * @param model as the model of the main application
+	 * @param gameView as the gameView from the main Application
+	 */
 	public LeaveLevelEarlyController(JPanel parent, Model model, GameView gameView){
 		// TODO Auto-generated constructor stub
 		this.parent = parent;

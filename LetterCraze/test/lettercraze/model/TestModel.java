@@ -7,7 +7,8 @@ public class TestModel extends TestCase {
 		public void testModel(){
 			Model m = new Model();
 			
-			assertEquals(m.levels.size(), 1);
+			assertTrue(m.getAllLevels().size() > 1);
+			
 			
 		}
 }

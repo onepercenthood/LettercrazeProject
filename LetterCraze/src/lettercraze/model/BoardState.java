@@ -180,4 +180,11 @@ public class BoardState extends BoardFiller{
 		return this.foundWords.add(word);
 	}
 
+	public void setSquares(Square[][] squares) {
+		// TODO Auto-generated method stub
+		
+		this.squares = squares;
+		
+	}
+
 }

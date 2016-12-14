@@ -11,21 +11,42 @@ import lettercraze.model.Lightning;
 import lettercraze.model.Model;
 import lettercraze.view.GameView;
 
+/**
+ * SelectAvailableLevelController handles the selection of the level from the main-menu.
+ * 
+ * This controller is responsible for the loading of the BoardView and initialization of the BoardState for the
+ * gameview component in our application.
+ * 
+ * @author ddeisadze
+ *
+ */
 public class SelectAvailableLevelController implements ActionListener{
 
-	/**the model object to be manipulated **/
+	/**the model object to be manipulated. **/
 	Model model;
 	
-	/** the top level application **/
+	/** the top level application. **/
 	PlayerApplication app;
 	
-	/** number of the level to be called when this button is pressed **/
+	/** number of the level to be called when this button is pressed. **/
 	int levelNum;
 	
+	/**
+	 * CardLayout which holds the sequentila panels from our main application.
+	 */
 	CardLayout cardlayout;
 	
 	GameView gameView;
-	
+
+	private boolean isOverWrite = false;
+	/**
+	 * Constructor for the SelectAvailableLevelController, takes in the number of the level to be played, the model to edit,
+	 * the cardLayout for switching views and the parent application.
+	 * @param lvl as in
+	 * @param model as Model
+	 * @param cl as CardLayout
+	 * @param app PlayerApplication
+	 */
 	public SelectAvailableLevelController(int lvl, Model model, CardLayout cl, PlayerApplication app){
 		super();
 		this.levelNum = lvl;
@@ -34,6 +55,12 @@ public class SelectAvailableLevelController implements ActionListener{
 		this.model = app.getModel();
 	}
 	
+	/**
+	 * 
+	 * @param levelNumber
+	 * @param cardLayout
+	 * @param app2
+	 */
 	public SelectAvailableLevelController(Integer levelNumber, CardLayout cardLayout, PlayerApplication app2) {
 		// TODO Auto-generated constructor stub
 		
@@ -43,6 +70,23 @@ public class SelectAvailableLevelController implements ActionListener{
 		this.model = app.getModel();
 		//mod.initiateLevel(levelNum);
 		//app.getModel().initiateLevel(levelNum);
+	}
+	
+	/**
+	 * Constructor for the SelectAvailableLevelController
+	 * @param lvl as int
+	 * @param model as Model
+	 * @param cl as CardLayout
+	 * @param app as PlayerApplication
+	 * @param isOverwrite as boolean
+	 */
+	public SelectAvailableLevelController(int lvl, Model model, CardLayout cl, PlayerApplication app, boolean isOverwrite){
+		super();
+		this.levelNum = lvl;
+		this.cardlayout = cl;
+		this.app = app;
+		this.model = app.getModel();
+		this.isOverWrite  = isOverwrite;
 	}
 
 	/**
@@ -63,7 +107,9 @@ public class SelectAvailableLevelController implements ActionListener{
 		// Get the Current Level and create a new BoardState with that Level's Board Shape 
 		Level curLevel = model.getLevel(levelNum);
 		model.setCurrentLevel(levelNum);
-		model.setCurrentBoardState(new BoardState(curLevel));
+		if( !isOverWrite){
+			model.setCurrentBoardState(new BoardState(curLevel));
+		}		
 		
 		// Create a new GameView with the model
 		gameView = new GameView(model, levelNum, app.getCardLayoutParent(), app);

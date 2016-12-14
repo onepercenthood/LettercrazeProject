@@ -10,16 +10,26 @@ import lettercraze.model.Model;
 
 import java.awt.Font;
 
+/**
+ * Allows the option of either loading a level or creating a new one. First Screen of builder
+ * @author Everett
+ *
+ */
 public class BuilderMenuView extends DefaultViewPanel{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 4467150633130963753L;
 	private JPanel cardLayoutPanel;
 	private Model model;
 	private BuilderApplication app;
 
+	/**
+	 * Constructor for the BuilderMenuView. Takes in the parent panel,
+	 *  the model to be edited, and the parent builderApplication
+	 * @param cardLayoutPanel as JPanel
+	 * @param m as Model
+	 * @param app as BuilderApplication
+	 */
 	public BuilderMenuView(JPanel cardLayoutPanel, Model m, BuilderApplication app) {
 		setLayout(null);
 		

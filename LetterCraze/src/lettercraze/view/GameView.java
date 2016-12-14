@@ -39,6 +39,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.imageio.ImageIO;
+import javax.swing.AbstractButton;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -47,6 +48,11 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 
+/**
+ * GameView provides the interface for playing each level. Instances are created upon selecting a level to play.
+ * @author All
+ *
+ */
 public class GameView extends DefaultViewPanel implements IModelChangedView {
 
 
@@ -98,7 +104,12 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 
 
 	/**
-	 * Create the frame.
+	 * Constructor for the gameView objects. Takes in the model to update, the number of the level to load, the parent container
+	 * and the parent appliaction.
+	 * @param m as Model: the model to be played
+	 * @param levelNum as in : the number of the level to load
+	 * @param parent as JPanel: the container of this GameView
+	 * @param app as PlayerApplication: the parent applicaiton
 	 */
 	public GameView(Model m, int levelNum, JPanel parent, PlayerApplication app) {
 		super();
@@ -172,7 +183,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 
 		Color levelColor = Color.RED;
 		if(model.getLevel(model.getCurrentLevel()).getLevelType().equals("Puzzle")){
-			levelColor = Color.GREEN;
+			levelColor = new Color(102,255,102);
 		}
 		else if(model.getLevel(model.getCurrentLevel()).getLevelType().equals("Lightning")){
 			levelColor = Color.ORANGE;
@@ -233,54 +244,66 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 
 	}
 
-	public JPanel getPlayerPanel() {
-		return playerPanel;
-	}
-
-	public ArrayList<JPanel> getGridPanels() {
-		return gridPanels;
-	}
-
-	public JLabel getLevelType() {
-		return levelType;
-	}
-
+	/**
+	 * Gets the textfield for displaying the current score.
+	 * @return JLabel
+	 */
 	public JLabel getScoreTextField() {
 		return scoreTextField;
 	}
 
-	public Model getModel() {
-		return model;
-	}
-
+	/**
+	 * returns the number of the current level.
+	 * @return int
+	 */
 	public int getLevelNum() {
 		return levelNum;
 	}
 
+	/**
+	 * gets the button for exiting the level.
+	 * @return JButton
+	 */
 	public JButton getBtnExitLevel() {
 		return btnExitLevel;
 	}
 
+	/**
+	 * returns the parent Container for the GameView.
+	 * @return JPanel
+	 */
 	public JPanel getParent() {
 		return parent;
 	}
 
-	public JButton getExitButton(){
-		return this.btnExitLevel;
-	}
-
+	/**
+	 * gets the button that triggers adding words.
+	 * @return JButton
+	 */
 	public JButton getAddWordBtn(){
 		return this.btnAddWord;
 	}
 
+	/**
+	 * gets the JList of all the found words.
+	 * @return JList<Word>
+	 */
 	public JList<Word> getWordsJList(){
 		return this.validWordsJList;
 	}
 
+	/**
+	 * gets the label that displays the type-specific data.
+	 * @return JLabel
+	 */
 	public JLabel getTypeSpecific(){
 		return typeSpecificLabel;
 	}
 
+	/**
+	 * sets the type-specific data display to the given string.
+	 * @param display as String
+	 */
 	public void setTypeSpecificLabel(String display){
 		typeSpecificLabel.setText(display);
 	}
@@ -298,82 +321,100 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		return "GameView";
 	}
 
-	public JLabel getTitleTextField() {
-		return titleTextField;
-	}
-
-	public void setTitleTextField(JLabel titleTextField) {
-		this.titleTextField = titleTextField;
-	}
-
+	/**
+	 * gets the Star Rater object for displaying earned stars.
+	 * @return StarRater
+	 */
 	public StarRater getStarRater() {
 		return starRater;
 	}
 
+	/**
+	 * returns the boardView for displaying the current state of each square.
+	 * @return BoardView
+	 */
 	public BoardView getBoardView(){
 		return boardview;
 	}
 
+	/**
+	 * returns the scoreVeiw for displaying the current score.
+	 * @return JLabel
+	 */
 	public JLabel getScoreView(){
 		return scoreTextField;
 	}
 
+	/**
+	 * sets the score view to the current score.
+	 */
 	public void setScoreView(){
 		int currentScore = model.getCurrentBoardState().getScore();
 		scoreTextField.setText(Integer.toString(currentScore));
 	}
 
+	/**
+	 * sets the starRater display to the current number of earned stars.
+	 */
 	public void setStarRater(){
 		int currentStars = model.getCurrentBoardState().getStars();
 		starRater.setRating(currentStars);
 	}
 
+	/**
+	 * returns the list of valid Words to be used
+	 * @return JList<Word>
+	 */
 	public JList<Word> getWordList(){
 		return validWordsJList;
 	}
+	
+	/**
+	 * returns the box where the found words are displayed
+	 * @return JScrollPane
+	 */
 	public JScrollPane getWordBox(){
 		return wordScrollPane;
 	}
+	
+	/**
+	 * adds the most recently found word to the list of words shown in the wordScrollPane
+	 */
 	public void addWordModel(){
 		ArrayList<String> foundWords = model.getCurrentBoardState().getFoundWordsStrings(); 
 		wordList.addElement( foundWords.get(foundWords.size()-1));
 		System.out.println("WORDS");
 		System.out.println(wordList.getSize());
 	}
+	
+	/**
+	 * pops the word from the top of the wordList
+	 */
 	public void removeWordModel(){
 		wordList.remove(wordList.size()-1);
 		System.out.println("WORDS");
 		System.out.println(wordList.getSize());
 	}
 
-	public void updateLevelTypeLabel(String levelType2) {
-		// TODO Auto-generated method stub
-
-	}
+	/**
+	 * sets the backgroundColor to red
+	 */
 	public void setBackgroundRed(){
 		this.setBackground(Color.RED);
 		panel_stars.setBackground(Color.RED);
 	}
 
-	public JButton getBtnAddWord() {
-		return btnAddWord;
-	}
-
-
-	public void setBtnAddWord(JButton btnAddWord) {
-		this.btnAddWord = btnAddWord;
-	}
-
-
+	/**
+	 * gets the button that triggers undo actions
+	 * @return JButton
+	 */
 	public JButton getBtnUndoMove() {
 		return btnUndoMove;
 	}
 
-
-	public void setBtnUndoMove(JButton btnUndoMove) {
-		this.btnUndoMove = btnUndoMove;
-	}
-
+	/**
+	 * makes the game lit AF
+	 */
 	public void makeItLit(){
 		try {
 			BufferedImage img = ImageIO.read(new File("lit.jpg"));
@@ -383,5 +424,11 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+
+	public JLabel getLevelType() {
+		// TODO Auto-generated method stub
+		return this.levelType;
 	}
 }

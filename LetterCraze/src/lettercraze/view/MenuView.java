@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
+import java.awt.Color;
 
 public class MenuView extends DefaultViewPanel implements IModelChangedView {
 
@@ -65,6 +66,7 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	 * @wbp.parser.constructor
 	 */
 	public MenuView(JPanel cardLayoutPanel, Model m, PlayerApplication playerApplication){
+		setBackground(new Color(153, 204, 255));
 		model = m;
 		
 		this.cardLayoutPanel = cardLayoutPanel;
@@ -81,6 +83,7 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	public void createPanel() {
 
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(153, 204, 255));
 		add(panel, BorderLayout.CENTER);
 
 		JLabel lblLettercrazeMainMenu = new JLabel("LetterCraze Main Menu");
@@ -121,7 +124,9 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		Container cont = new Container();
 
 		regularLevelsPanel = new JPanel();
+		regularLevelsPanel.setBackground(new Color(204, 255, 255));
 		customLevelsPanel = new JPanel();
+		customLevelsPanel.setBackground(new Color(204, 255, 255));
 		
 		
 		gbl_panel_defaultLevels = new GridBagLayout();
@@ -192,12 +197,9 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	}
 	
 	/**
-	 * Adds level to custom menu.
-	 * 
-	 * This is public.
-	 * 
-	 * @param level
-	 * @return
+	 * Adds LevelPreviewView to custom menu.
+	 * @param level as LevelPreviewView
+	 * @return true if added successfully, false otherwise
 	 */
 	public boolean addMenuItemToCustom(LevelPreviewView level){
 		if(rowCountCus == 3){
@@ -211,8 +213,8 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	}
 	/**
 	 * Adds menu item to default menu, this is private because we do not want to change the default levels.
-	 * @param level
-	 * @return
+	 * @param level as LevelPreviewView
+	 * @return true if added successfully, false otherwise
 	 */
 	public boolean addMenuItemToDefault(LevelPreviewView level){
 		if(rowCountDef == 3){

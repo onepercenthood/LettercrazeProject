@@ -28,6 +28,9 @@ public class BuilderLightningPanelView extends AbsBuilderLevelPanel{
 	private JTextField txtfldThreeStarPoints;
 	private JTextField txtfldmaxTimer;
 
+	/**
+	 * Constructor for the BuidlerLightningPanelView
+	 */
 	public BuilderLightningPanelView(){
 		setBackground(new Color(255, 140, 0));
 		setLayout(null);
@@ -79,6 +82,7 @@ public class BuilderLightningPanelView extends AbsBuilderLevelPanel{
 		add(lblTimerseconds);
 
 		JPanel pnlLightning_star_1 = new JPanel();
+		pnlLightning_star_1.setBackground(Color.ORANGE);
 		pnlLightning_star_1.setBounds(44, 11, 26, 26);
 		add(pnlLightning_star_1);
 		StarRater ltngStarRater1 = new StarRater(1, 1 );
@@ -95,6 +99,7 @@ public class BuilderLightningPanelView extends AbsBuilderLevelPanel{
 		pnlLightning_star_1.add(ltngStarRater1);
 
 		JPanel pnlLightning_star_2 = new JPanel();
+		pnlLightning_star_2.setBackground(Color.ORANGE);
 		pnlLightning_star_2.setBounds(26, 48, 42, 26);
 		add(pnlLightning_star_2);
 		StarRater ltngStarRater2 = new StarRater(2, 2 );
@@ -111,6 +116,7 @@ public class BuilderLightningPanelView extends AbsBuilderLevelPanel{
 		pnlLightning_star_2.add(ltngStarRater2);
 
 		JPanel pnlLightning_star_3 = new JPanel();
+		pnlLightning_star_3.setBackground(Color.ORANGE);
 		pnlLightning_star_3.setBounds(10, 88, 58, 26);
 		add(pnlLightning_star_3);
 		StarRater ltngStarRater3 = new StarRater(3, 3 );
