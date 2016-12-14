@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import junit.framework.TestCase;
-import lettercraze.controller.builder.AssignLevelTypeController;
 import lettercraze.controller.builder.BackToMenuController;
 import lettercraze.controller.builder.CreateNewLevelController;
 import lettercraze.controller.builder.ResetBoardSquaresController;

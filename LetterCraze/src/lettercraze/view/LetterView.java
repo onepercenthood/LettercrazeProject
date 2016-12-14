@@ -6,6 +6,12 @@ import lettercraze.model.Letter;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+/**
+ * Main letterView class which holds the letter as a JLabel
+ * 
+ * @author ddeisadze
+ *
+ */
 public class LetterView extends JLabel{
 
 	/**
@@ -13,8 +19,16 @@ public class LetterView extends JLabel{
 	 */
 	private static final long serialVersionUID = -4249162213703886638L;
 
+	/**
+	 * The encapsulated letter data structure
+	 */
 	private Letter letter;
 
+	/**
+	 * Main constructor for this class.
+	 * 
+	 * @param letter as the letter class which to hold
+	 */
 	public LetterView(Letter letter){
 		setFont(new Font("Tahoma", Font.PLAIN, 16));
 		setHorizontalAlignment(SwingConstants.CENTER);
@@ -22,6 +36,9 @@ public class LetterView extends JLabel{
 		initialize();
 	}
 
+	/**
+	 * Initialize the letterView with the data structure. Basically displays the data.
+	 */
 	private void initialize(){
 		if(letter != null){
 			this.setText(letter.getLetter());
@@ -32,6 +49,8 @@ public class LetterView extends JLabel{
 		}
 	}
 	
+
+	@Deprecated
 	public String numToSubscript(){
 		int value = letter.getValue();
 		//String subscript = "\u2082" + Integer.toString(value);
@@ -58,11 +77,19 @@ public class LetterView extends JLabel{
 		//this.repaint();
 	}
 	
+	/**
+	 * Getter for the letter.
+	 * @return the Letter data structure
+	 */
 	public Letter getLetter(){
 		return letter;
 	}
 
 
+	/**
+	 * Setter for the letter.
+	 * @param letter Letter class to set
+	 */
 	public void setLetter(Letter letter){
 		this.letter = letter;
 	}
