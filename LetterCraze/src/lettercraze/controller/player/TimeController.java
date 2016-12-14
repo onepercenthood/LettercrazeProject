@@ -64,6 +64,7 @@ public class TimeController implements ActionListener {
             
             gameView.remove(gameView.getAddWordBtn());
             gameView.remove(gameView.getBtnUndoMove());
+            gameView.remove(gameView.getResetLevelBtn());
 
 
             

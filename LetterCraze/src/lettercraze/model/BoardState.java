@@ -54,7 +54,7 @@ public class BoardState extends BoardFiller{
 		score = 0;
 		stars = 0;
 	}
-	
+
 	public BoardState(Level level){
 		boolean[][] shape = level.getBoardShape();
 		for(int row = 0; row < 6; row++){
@@ -65,13 +65,13 @@ public class BoardState extends BoardFiller{
 				}				
 			}
 		}
-		
+
 		switch(level.getLevelType()){
 		case "Puzzle": initialFill(squares); break;
 		case "Lightning" : initialFill(squares); break;
 		case "Theme": Theme theme = (Theme) level; 
-						initialFill(this, theme.getTargetWords());
-						break;
+		initialFill(this, theme.getTargetWords());
+		break;
 		default: initialFill(squares);
 		}
 		score = 0;
@@ -170,6 +170,13 @@ public class BoardState extends BoardFiller{
 
 	public boolean addWordToFoundWords(Word word){
 		return this.foundWords.add(word);
+	}
+	public void setClearFoundWords(){
+		int i = this.foundWords.size();
+		while(0 < i){
+			this.foundWords.remove(i-1);
+			i--;
+		}	
 	}
 
 }

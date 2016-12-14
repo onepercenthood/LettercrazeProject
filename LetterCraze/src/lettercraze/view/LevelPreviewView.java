@@ -7,6 +7,7 @@ import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import lettercraze.PlayerApplication;
 import lettercraze.controller.player.SelectAvailableLevelController;
@@ -49,7 +50,9 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 
 	private Level level;
 	
-		
+	private JLabel lblHighscore;
+	
+	/*	
 	public LevelPreviewView(String levelType, Color color, Integer levelNumber, Integer numStars, JPanel cl, PlayerApplication app){
 		this.levelType = levelType;
 		this.levelNumber = levelNumber;
@@ -60,6 +63,7 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		this.cardlayout = (CardLayout) cl.getLayout();
 		initialize();
 	}
+	*/
 	
 	public LevelPreviewView(Level level, Color color, JPanel parent, PlayerApplication app){
 		this.level = level;
@@ -75,6 +79,7 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		initialize();
 	}
 	
+	
 	private void initialize(){
 		
 		setBackground(this.color);
@@ -87,7 +92,11 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		
 		levelButton = new JButton("Level " + this.levelNumber);
 		levelButton.addActionListener(new SelectAvailableLevelController(levelNumber, this.cardlayout, app)); 
-		add(levelButton, "cell 0 1");
+		add(levelButton, "cell 0 1,grow");
+		
+		lblHighscore = new JLabel("HighScore");
+		lblHighscore.setHorizontalAlignment(SwingConstants.TRAILING);
+		add(lblHighscore, "cell 0 0");
 		
 		// setup star view here
 		JPanel starView = new JPanel();
@@ -171,7 +180,9 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 			} 
 		}
 		starRater.setRating((float) numStars);
+		lblHighscore.setText("HS:" + Integer.toString(highScore));
 		starRater.repaint();
+		lblHighscore.repaint();
 	}
 
 	@Override

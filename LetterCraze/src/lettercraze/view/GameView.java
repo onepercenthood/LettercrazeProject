@@ -25,6 +25,7 @@ import javafx.scene.shape.Box;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.player.ClearWordController;
 import lettercraze.controller.player.PlayWordController;
+import lettercraze.controller.player.ResetLevelController;
 import lettercraze.controller.player.UndoController;
 import lettercraze.controller.player.LeaveLevelEarlyController;
 import lettercraze.controller.builder.SelectBoardSquareController;
@@ -95,6 +96,8 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	private DefaultListModel<String> wordList;
 	
 	private JPanel panel_stars;
+	
+	private JButton btnResetLevel;
 
 
 	/**
@@ -161,7 +164,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		add(lblWords);
 
 		btnExitLevel = new JButton("Exit Level");
-		btnExitLevel.setBounds(660, 6, 117, 29);
+		btnExitLevel.setBounds(670, 6, 107, 29);
 		btnExitLevel.addMouseListener(new LeaveLevelEarlyController(parent, model, this)) ;
 		add(btnExitLevel);
 
@@ -230,6 +233,11 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		typeSpecificLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		typeSpecificLabel.setBounds(284, 12, 117, 16);
 		add(typeSpecificLabel);
+		
+		btnResetLevel = new JButton("Reset Level");
+		btnResetLevel.setBounds(542, 7, 107, 29);
+		btnResetLevel.addMouseListener(new ResetLevelController(app, model, this));
+		add(btnResetLevel);
 
 	}
 
@@ -372,6 +380,10 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 
 	public void setBtnUndoMove(JButton btnUndoMove) {
 		this.btnUndoMove = btnUndoMove;
+	}
+	
+	public JButton getResetLevelBtn(){
+		return btnResetLevel;
 	}
 
 	public void makeItLit(){
