@@ -1,6 +1,5 @@
 package lettercraze.view;
 
-import javax.swing.JPanel;
 
 import lettercraze.model.Level;
 /**

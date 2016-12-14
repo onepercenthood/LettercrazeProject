@@ -1,16 +1,13 @@
 package lettercraze.view;
 import java.awt.BorderLayout;
 
-import java.awt.Color;
 import java.awt.Container;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
-import lettercraze.BuilderApplication;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.player.ResetDataController;
-import lettercraze.controller.player.SelectAvailableLevelController;
 import lettercraze.model.Model;
 
 import javax.swing.GroupLayout;
@@ -23,8 +20,6 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.util.ArrayList;
 
-import net.miginfocom.swing.MigLayout;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
 

@@ -3,8 +3,6 @@ package lettercraze.view;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

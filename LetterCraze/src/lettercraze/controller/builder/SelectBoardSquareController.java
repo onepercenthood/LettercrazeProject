@@ -3,8 +3,6 @@ package lettercraze.controller.builder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JPanel;
-
 import lettercraze.BuilderApplication;
 import lettercraze.view.SquareView;
 import lettercraze.model.Model;

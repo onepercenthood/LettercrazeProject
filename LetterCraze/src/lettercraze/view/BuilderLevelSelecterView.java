@@ -1,24 +1,14 @@
 package lettercraze.view;
 
-import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.GroupLayout;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 import lettercraze.controller.builder.BackToMenuController;
 import lettercraze.model.FileIO;
 import lettercraze.model.Level;
-import lettercraze.model.Model;
 
 public class BuilderLevelSelecterView extends JPanel{
 

@@ -4,7 +4,6 @@ import java.awt.CardLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import lettercraze.model.Model;

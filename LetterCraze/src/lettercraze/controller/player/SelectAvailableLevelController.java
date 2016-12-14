@@ -3,10 +3,6 @@ package lettercraze.controller.player;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JButton;
-import javax.swing.Timer;
 
 import lettercraze.PlayerApplication;
 import lettercraze.model.BoardState;
@@ -14,7 +10,6 @@ import lettercraze.model.Level;
 import lettercraze.model.Lightning;
 import lettercraze.model.Model;
 import lettercraze.view.GameView;
-import lettercraze.view.LevelPreviewView;
 
 public class SelectAvailableLevelController implements ActionListener{
 

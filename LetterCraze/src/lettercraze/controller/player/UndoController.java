@@ -3,15 +3,12 @@ package lettercraze.controller.player;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 import lettercraze.PlayerApplication;
-import lettercraze.model.BoardState;
 import lettercraze.model.Model;
 import lettercraze.model.Puzzle;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
-import lettercraze.view.SquareView;
 
 public class UndoController extends MouseAdapter{
 
@@ -51,7 +48,13 @@ public class UndoController extends MouseAdapter{
 			//adds it to the current score and displays it
 			int value = remove.calculateValue();
 			int currentScore = model.getCurrentBoardState().getScore();
-			int newScore = currentScore - value;
+			int newScore = 0;
+			//increment score by the value of the word if puzzle
+			if(model.getCurrentLevelObject().getLevelType().equals("Puzzle"))
+				newScore = currentScore - value;
+			else //if lightning or theme, increment by one
+				newScore = currentScore - 1;
+			//set the newly incremented score
 			model.getCurrentBoardState().setScore(newScore);
 
 

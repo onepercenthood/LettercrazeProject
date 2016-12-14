@@ -1,11 +1,8 @@
 package lettercraze.controller.player;
 
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
-import javax.swing.DefaultListModel;
 
 import lettercraze.PlayerApplication;
 import lettercraze.model.BoardState;
@@ -13,7 +10,7 @@ import lettercraze.model.Model;
 import lettercraze.model.Puzzle;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
-import lettercraze.view.SquareView;
+
 
 public class PlayWordController extends MouseAdapter{
 	
@@ -84,6 +81,11 @@ public class PlayWordController extends MouseAdapter{
 					Puzzle puzzle = (Puzzle) model.getLevel(model.getCurrentLevel());
 					int wordsLeft = puzzle.getMaxWords() - model.getCurrentBoardState().getFoundWords().size();
 					gameView.setTypeSpecificLabel("Moves Left: " + wordsLeft);
+					
+					if(wordsLeft <= 0){
+						gameView.getAddWordBtn().setEnabled(false);
+						gameView.getAddWordBtn().repaint();
+					}
 				}
 				
 				System.out.println("Before remove letter From Square");

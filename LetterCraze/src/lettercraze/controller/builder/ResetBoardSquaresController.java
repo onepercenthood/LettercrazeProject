@@ -5,7 +5,6 @@ import java.awt.event.MouseEvent;
 
 import lettercraze.model.Model;
 import lettercraze.view.BuilderView;
-import lettercraze.view.SquareView;
 
 /**
  * 

@@ -7,14 +7,11 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import lettercraze.BuilderApplication;
 import lettercraze.model.FileIO;
 import lettercraze.model.Level;
 import lettercraze.model.Model;
-import lettercraze.view.BuilderPuzzlePanelView;
 import lettercraze.view.BuilderView;
 import lettercraze.view.AbsBuilderLevelPanel;
-import lettercraze.view.SquareView;
 
 /**
  * This controller handles saving the level designed in the builder class
@@ -85,7 +82,7 @@ public class SaveLevelController extends MouseAdapter{
 				if(numLevels == 0){
 					numLevels = 1;
 				}
-				level = panel.compileLevelInfo(shape, 15 + numLevels);
+				level = panel.compileLevelInfo(shape, 16 + numLevels);
 
 			} 
 
