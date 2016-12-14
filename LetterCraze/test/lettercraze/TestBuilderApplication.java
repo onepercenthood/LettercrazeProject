@@ -15,10 +15,15 @@ import lettercraze.view.BuilderPuzzlePanelView;
 import lettercraze.view.DefaultJFrame;
 import lettercraze.view.DefaultViewPanel;
 
+/**
+ * Test cases for the buidler application. The tests covered are:
+ * 
+ *
+ */
 public class TestBuilderApplication extends TestCase {
 	
 	private BuilderApplication ba;
-
+	
 	public TestBuilderApplication(){
 		ba = new BuilderApplication();
 	}

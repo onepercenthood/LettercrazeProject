@@ -17,7 +17,8 @@ import javax.swing.SwingConstants;
 public class SplashScreen extends DefaultViewPanel{
 	
 	/**
-	 * Create the frame.
+	 * Constructor for the splashScreen
+	 * @param builderOrPlayer
 	 */
 	public SplashScreen(String builderOrPlayer) {
 		super();
