@@ -95,7 +95,7 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		JButton btnResetAllProgress = new JButton("Reset All Progress");
 		btnResetAllProgress.addActionListener(new ResetDataController()); 
 		add(btnResetAllProgress, "Reset Data Button");
-
+ 
 		gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
