@@ -69,9 +69,9 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 		clay.first(parent); //revert to the menu screen
 		MenuView mv = (MenuView) parent.getComponent(0);
 		for(LevelPreviewView lpv: mv.getLevels()){
-			if(lpv.getLevelNum() == model.getCurrentLevel() - 1){
-				lpv.setHighScore(highScore);
-				lpv.repaint();
+			if(lpv.getLevelNum() == model.getCurrentLevel()){
+				lpv.setHighScore(model.getCurrentLevelObject().getHighScore());
+				lpv.getStarField().repaint();						
 			}
 		}
 		parent.repaint();

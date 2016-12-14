@@ -67,6 +67,7 @@ public class SelectAvailableLevelController implements ActionListener{
 		
 		// Get the Current Level and create a new BoardState with that Level's Board Shape 
 		Level curLevel = model.getLevel(levelNum);
+		model.setCurrentLevel(levelNum);
 		model.setCurrentBoardState(new BoardState(curLevel.getBoardShape()));
 		
 		// Create a new GameView with the model
