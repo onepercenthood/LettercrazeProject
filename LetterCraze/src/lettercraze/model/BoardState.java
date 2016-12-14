@@ -5,7 +5,7 @@ package lettercraze.model;
 import java.util.ArrayList;
 
 /**
- * Models a BoardState that contains a instance of a Board 
+ * Models a BoardState that contains a instance of a Board currently being played. 
  * <p>
  * Upon a start of a new level, a BoardState is made using a board shape. A new 
  * BoardState is created upon each Word made in the game. A BoardState holds the current
@@ -37,7 +37,7 @@ public class BoardState extends BoardFiller{
 
 	/**
 	 * Construct entity for initial start of playing a level. 
-	 * @param shape is the initial shape of the board taken from the Level
+	 * @param shape as a boolean[][]
 	 */
 	public BoardState(boolean[][] shape){
 		for(int row = 0; row < 6; row++){
@@ -55,6 +55,10 @@ public class BoardState extends BoardFiller{
 		stars = 0;
 	}
 	
+	/**
+	 * 
+	 * @param level
+	 */
 	public BoardState(Level level){
 		boolean[][] shape = level.getBoardShape();
 		for(int row = 0; row < 6; row++){

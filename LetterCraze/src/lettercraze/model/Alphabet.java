@@ -19,6 +19,9 @@ public class Alphabet {
 	public static final LinkedHashMap<String,Letter> letters = new LinkedHashMap<String,Letter>();
 	private static Alphabet instance;
 	
+	/**
+	 * Create Alphabet Instance 
+	 */
 	public Alphabet(){
 		letters.put("A", new Letter("A", 2, 8.17)); 
 		letters.put("B", new Letter("B", 4, 1.49)); 
@@ -53,6 +56,7 @@ public class Alphabet {
 	 * @return new random Letter
 	 * */
 	public Letter getRandomLetter(){
+		// Random Instance
 		Random r = new Random();
 		double randCumulativeFreq = r.nextDouble();
 		double freqSum = 0.0;
@@ -61,16 +65,20 @@ public class Alphabet {
 		
 		Letter l = letters.get("A");
 		
+		// Cycle through the list of letters until the frequency range in found 
 		while((freqSum < randCumulativeFreq) && vals.hasNext()){
 			l = vals.next();
 			freqSum += l.getFrequency() / 100;
 	
 		}
-		
 		return l;
 		
 	}
 	
+	/**
+	 * Gets the instance of the alphabet object. Used to call from other classes.
+	 * @return Instance of Alphabet Object 
+	 */
 	public static Alphabet getInstance(){
 		if( instance == null){
 			instance = new Alphabet();
