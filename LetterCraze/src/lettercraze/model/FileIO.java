@@ -9,7 +9,13 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+/**
+ * FileIO handles all reading and writing the levels to disk functionality in order to save states of
+ * Level progress and load game progress when launched. FileIO interacts with both the Builder and Player 
+ * Application 
+ * 
+ * @author Hoodie
+ */
 public class FileIO {
 	/**
 	 * Convert given level file to JSON file, stored in default_levels if levelNum <= 15, otherwise in custom_levels.
