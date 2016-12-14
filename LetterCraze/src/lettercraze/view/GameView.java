@@ -420,8 +420,6 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		return btnUndoMove;
 	}
 
-<<<<<<< HEAD
-
 	public void setBtnUndoMove(JButton btnUndoMove) {
 		this.btnUndoMove = btnUndoMove;
 	}
@@ -430,11 +428,10 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		return btnResetLevel;
 	}
 
-=======
 	/**
 	 * makes the game lit AF
 	 */
->>>>>>> branch 'development' of https://github.com/ddeisadz/WPI-softeng-b-term.git
+
 	public void makeItLit(){
 		try {
 			BufferedImage img = ImageIO.read(new File("lit.jpg"));

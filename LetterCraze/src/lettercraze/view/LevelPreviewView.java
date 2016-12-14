@@ -28,8 +28,6 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 
 	private Color color;
 	
-	private JPanel parent;
-
 	private Integer levelNumber;
 
 	private JLabel levelLabel;
