@@ -8,6 +8,7 @@ import lettercraze.PlayerApplication;
 import lettercraze.model.BoardState;
 import lettercraze.model.Model;
 import lettercraze.model.Puzzle;
+import lettercraze.model.Theme;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
 
@@ -36,7 +37,23 @@ public class PlayWordController extends MouseAdapter{
 		//DefaultListModel wordsListModel = (DefaultListModel) gameView.getWordsJList().getModel();
 
 		if( word != null){
-			if(word.isValid() && !wordsListModel.contains(word)){
+			boolean validWord = false;
+			
+			//theme handles valid words differently, so check that first
+			if(model.getCurrentLevelObject().getLevelType().equals("Theme")){
+				
+				//in a theme level, check if the word is valid by comparing it to a list of target words contained in the theme object
+				Theme t = (Theme) model.getCurrentLevelObject();
+				validWord = word.isValid(t.getTargetWords());
+				
+			} else {
+				
+				//if its not a theme level, use the regular check against the provided dictionary
+				validWord = word.isValid();
+			}
+			
+			//now, if the word is valid in its context, and this other thing is true, go ahead and play it
+			if(validWord && !wordsListModel.contains(word)){
 				System.out.println("Word is valid");
 				System.out.println(word.getWordString());
 				
