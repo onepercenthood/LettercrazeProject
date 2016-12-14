@@ -36,7 +36,7 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 		if(thislevel.getLevelType().equals("Lightning")){
 			TimeController.stopTimer();
 		}
-
+ 
 		int nextLevel = model.getCurrentLevelObject().getLevelNum() + 1;
 
 		int highScore = model.getCurrentLevelObject().getHighScore();
