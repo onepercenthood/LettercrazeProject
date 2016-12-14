@@ -39,7 +39,14 @@ public class SelectAvailableLevelController implements ActionListener{
 	GameView gameView;
 
 	private boolean isOverWrite = false;
-	
+	/**
+	 * Constructor for the SelectAvailableLevelController, takes in the number of the level to be played, the model to edit,
+	 * the cardLayout for switching views and the parent application.
+	 * @param lvl as in
+	 * @param model as Model
+	 * @param cl as CardLayout
+	 * @param app PlayerApplication
+	 */
 	public SelectAvailableLevelController(int lvl, Model model, CardLayout cl, PlayerApplication app){
 		super();
 		this.levelNum = lvl;
@@ -48,6 +55,12 @@ public class SelectAvailableLevelController implements ActionListener{
 		this.model = app.getModel();
 	}
 	
+	/**
+	 * 
+	 * @param levelNumber
+	 * @param cardLayout
+	 * @param app2
+	 */
 	public SelectAvailableLevelController(Integer levelNumber, CardLayout cardLayout, PlayerApplication app2) {
 		// TODO Auto-generated constructor stub
 		
@@ -59,6 +72,14 @@ public class SelectAvailableLevelController implements ActionListener{
 		//app.getModel().initiateLevel(levelNum);
 	}
 	
+	/**
+	 * Constructor for the SelectAvailableLevelController
+	 * @param lvl as int
+	 * @param model as Model
+	 * @param cl as CardLayout
+	 * @param app as PlayerApplication
+	 * @param isOverwrite as boolean
+	 */
 	public SelectAvailableLevelController(int lvl, Model model, CardLayout cl, PlayerApplication app, boolean isOverwrite){
 		super();
 		this.levelNum = lvl;

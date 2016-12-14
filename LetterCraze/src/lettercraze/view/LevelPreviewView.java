@@ -202,26 +202,24 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	}
 	
 	/**
-	 * Gets the levelType textField
-	 * 
-	 * @return
+	 *  gets the levelType textField.
+	 * @return JLabel
 	 */
 	public JLabel getLevelTypeLabel(){
 		return levelTypeLabel;
 	}
 	
 	/**
-	 * Returns the button for the level.
-	 * 
-	 * @return
+	 * get the button for selecting the level.
+	 * @return JButton
 	 */
 	public JButton getLevelButton(){
 		return  this.levelButton;
 	}
 	
 	/**
-	 * set the highScore to the given value
-	 * @param highScore : integer value representing the new high score for the level
+	 * set the highScore to the given value.
+	 * @param highScore as int
 	 */
 	public void setHighScore(int highScore){
 		this.highScore = highScore;

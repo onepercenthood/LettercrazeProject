@@ -10,6 +10,11 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+/**
+ * the thumbnail representation of the level with a button to select it
+ * @author Everett
+ *
+ */
 public class BuilderLevelThumbnail extends JPanel {
 
 	/** the level to be represented **/
@@ -27,6 +32,9 @@ public class BuilderLevelThumbnail extends JPanel {
 		initialize();
 	}
 	
+	/**
+	 * sets up the color, text labels, and JButton of the thumbnail
+	 */
 	public void initialize(){
 		setLayout(null);
 		switch(level.getLevelType()){

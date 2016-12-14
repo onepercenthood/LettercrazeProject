@@ -63,10 +63,27 @@ public class Word {
 		if(letters.size() >= 3 && WordTable.isWord(word)){ return true; }
 		return false; 
 	}
+
 	/**
-	 * A word has a value based on the letters it consist of
+	 * returns true if this word is in the given list of target words.
+	 * @param targetWords : the list of allowed words in a theme level.
+	 * @return true if the word is in the list, false otherwise.
+	 */
+	public boolean isValid (ArrayList<String> targetWords){
+		String word = this.getWordString();
+		for(String s: targetWords){
+			String use = s.toUpperCase();
+			System.out.println("Comparing " + word + " to target: " + use); 
+			if(use.equals(word)){
+				return true;
+			}
+		}
+		return false;
+	}
+	/**
+	 * A word has a value based on the letters it consist of.
 	 * <p> 
-	 * @return the total calculated value of the word 
+	 * @return the total calculated value of the word .
 	 */
 	public int calculateValue(){
 		int wordScore = 0 ;
@@ -78,7 +95,7 @@ public class Word {
 	}
 
 	/**
-	 * Changes the ArrayList of Letters into a String 
+	 * Changes the ArrayList of Letters into a String.
 	 * <p>
 	 * @return a String object of the word 
 	 */
@@ -98,8 +115,8 @@ public class Word {
 	}
 
 	/**
-	 * returns the square at the end of the word
-	 * @return the square at the end of the word
+	 * returns the square at the end of the word.
+	 * @return the square at the end of the word.
 	 */
 	public Square getLastSquare(){
 		Square lastSquare = this.letters.get(letters.size() - 1);
@@ -121,7 +138,7 @@ public class Word {
 	}
 
 	/**
-	 * returns a deep copy of this word, with no common objects in the copy
+	 * returns a deep copy of this word, with no common objects in the copy.
 	 * @return
 	 */
 	public Word copyWord(){
