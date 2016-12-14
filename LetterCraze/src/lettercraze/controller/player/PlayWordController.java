@@ -116,8 +116,12 @@ public class PlayWordController extends MouseAdapter{
 					gameView.setTypeSpecificLabel("Moves Left: " + wordsLeft);
 					
 					if(wordsLeft <= 0){
-						gameView.getAddWordBtn().setEnabled(false);
+						gameView.remove(gameView.getAddWordBtn());
+			            gameView.remove(gameView.getBtnUndoMove());
+			            gameView.remove(gameView.getResetLevelBtn());
 						gameView.getAddWordBtn().repaint();
+						gameView.getBtnUndoMove().repaint();
+						gameView.getResetLevelBtn().repaint();
 					}
 				}
 				

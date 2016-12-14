@@ -7,18 +7,13 @@ import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import lettercraze.PlayerApplication;
 import lettercraze.controller.player.SelectAvailableLevelController;
 import lettercraze.model.Level;
 import net.miginfocom.swing.MigLayout;
 
-/**
- * LevelPreviewView which acts as the main container for the level widget objects on the main-menu.
- * 
- * @author ddeisadze
- *
- */
 public class LevelPreviewView extends DefaultViewPanel implements IModelChangedView {
 	
 	/**
@@ -31,60 +26,29 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	 */
 	private Integer numStars = 0;
 
-	/**
-	 * The color of the panel.
-	 */
 	private Color color;
 	
-	/**
-	 * The level number of the encapsulated level
-	 */
 	private Integer levelNumber;
 
-	/**
-	 * The label for the level number
-	 */
 	private JLabel levelLabel;
 
-	/**
-	 * The level type lable
-	 */
 	private JLabel levelTypeLabel;
 
-	/**
-	 * The main level actionable button
-	 */
 	private JButton levelButton;
 	
-	/**
-	 * StarRater class to hold our star view
-	 */
 	private StarRater starRater;
 	
-	/**
-	 * Main card layout 
-	 */
 	private CardLayout cardlayout;
 
-	/**
-	 * High score of the level
-	 */
 	private int highScore;
 
-	/**
-	 * The main player-application
-	 */
 	private PlayerApplication app;
 
-	/**
-	 * The threshold of the star which acts as the number of earned stars
-	 */
 	private int[] starThreshold;
 
-	/**
-	 * The encapsulated level object
-	 */
 	private Level level;
+	
+	private JLabel lblHighscore;
 	
 	/**
 	 * The main application JPanel
@@ -101,6 +65,8 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	 * @param cl as the main cardLayout
 	 * @param app as the main application 
 	 */
+	
+	/*	
 	public LevelPreviewView(String levelType, Color color, Integer levelNumber, Integer numStars, JPanel cl, PlayerApplication app){
 		this.levelType = levelType;
 		this.levelNumber = levelNumber;
@@ -111,15 +77,8 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		this.cardlayout = (CardLayout) cl.getLayout();
 		initialize();
 	}
+	*/
 	
-	/**
-	 * Simpler constructor for this class.
-	 * 
-	 * @param level as the Level object which is held by this view
-	 * @param color as the color of the widget
-	 * @param parent as the main parent JPanel
-	 * @param app as the main application
-	 */
 	public LevelPreviewView(Level level, Color color, JPanel parent, PlayerApplication app){
 		this.level = level;
 		this.levelType = level.getLevelType();
@@ -133,6 +92,7 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		this.app = app;
 		initialize();
 	}
+	
 	
 	/**
 	 * Initializes the view with data provided.
@@ -150,7 +110,11 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		
 		levelButton = new JButton("Level " + this.levelNumber);
 		levelButton.addActionListener(new SelectAvailableLevelController(levelNumber, this.cardlayout, app)); 
-		add(levelButton, "cell 0 1");
+		add(levelButton, "cell 0 1,grow");
+		
+		lblHighscore = new JLabel("HighScore");
+		lblHighscore.setHorizontalAlignment(SwingConstants.TRAILING);
+		add(lblHighscore, "cell 0 0");
 		
 		// setup star view here
 		JPanel starView = new JPanel();
@@ -202,24 +166,26 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	}
 	
 	/**
-	 *  gets the levelType textField.
-	 * @return JLabel
+	 * Gets the levelType textField
+	 * 
+	 * @return
 	 */
 	public JLabel getLevelTypeLabel(){
 		return levelTypeLabel;
 	}
 	
 	/**
-	 * get the button for selecting the level.
-	 * @return JButton
+	 * Returns the button for the level.
+	 * 
+	 * @return
 	 */
 	public JButton getLevelButton(){
 		return  this.levelButton;
 	}
 	
 	/**
-	 * set the highScore to the given value.
-	 * @param highScore as int
+	 * set the highScore to the given value
+	 * @param highScore : integer value representing the new high score for the level
 	 */
 	public void setHighScore(int highScore){
 		this.highScore = highScore;
@@ -232,7 +198,9 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 			} 
 		}
 		starRater.setRating((float) numStars);
+		lblHighscore.setText("HS:" + Integer.toString(highScore));
 		starRater.repaint();
+		lblHighscore.repaint();
 	}
 
 	@Override
@@ -241,19 +209,11 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		
 	}
 
-	/**
-	 * Get level number of the current level object
-	 * @return integer level number
-	 */
 	public int getLevelNum() {
 		
 		return levelNumber.intValue();
 	}
 
-	/**
-	 * Update information for the current level object
-	 * @param level as the the new Level object data
-	 */
 	public void updateInfo(Level level) {
 		this.level = level;
 		this.level = level;

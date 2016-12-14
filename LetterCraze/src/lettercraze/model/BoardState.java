@@ -5,7 +5,7 @@ package lettercraze.model;
 import java.util.ArrayList;
 
 /**
- * Models a BoardState that contains a instance of a Board currently being played. 
+ * Models a BoardState that contains a instance of a Board 
  * <p>
  * Upon a start of a new level, a BoardState is made using a board shape. A new 
  * BoardState is created upon each Word made in the game. A BoardState holds the current
@@ -28,11 +28,33 @@ public class BoardState extends BoardFiller{
 
 	/** Two dimensional representations of the squares on the board */
 	protected Square[][] squares = new Square[6][6] ;
-	
+
+	/** */
+	//protected BasicFiller basicFiller;
+
+	/** */ 
+	//protected ThemeFiller themeFiller;
+
 	/**
-	 * Construct for initial BoardState when a Level is selected 
-	 * @param level as a Level 
+	 * Construct entity for initial start of playing a level. 
+	 * @param shape is the initial shape of the board taken from the Level
 	 */
+	public BoardState(boolean[][] shape){
+		for(int row = 0; row < 6; row++){
+			for(int col = 0; col < 6; col++){
+				squares[row][col]= new Square(row, col);
+				if(shape[row][col]){
+					squares[row][col].toggleActive();
+				}				
+			}
+		}
+		//this.foundWords = null;
+		//basicFiller = new BasicFiller();
+		squares = this.initialFill(squares);
+		score = 0;
+		stars = 0;
+	}
+
 	public BoardState(Level level){
 		boolean[][] shape = level.getBoardShape();
 		for(int row = 0; row < 6; row++){
@@ -43,18 +65,15 @@ public class BoardState extends BoardFiller{
 				}				
 			}
 		}
-		
-		// Check to see what type of level
-		// If Theme, specific theme initial fill fucntion must be called 
+
 		switch(level.getLevelType()){
 		case "Puzzle": initialFill(squares); break;
 		case "Lightning" : initialFill(squares); break;
 		case "Theme": Theme theme = (Theme) level; 
-						initialFill(this, theme.getTargetWords());
-						break;
+		initialFill(this, theme.getTargetWords());
+		break;
 		default: initialFill(squares);
 		}
-		// initialize stars and score to zero 
 		score = 0;
 		stars = 0;
 	}
@@ -94,7 +113,7 @@ public class BoardState extends BoardFiller{
 	}
 
 	/**
-	 * De-selects all the squares in the board
+	 * deselects all the squares in the board
 	 */
 	public void deselectAllSquares(){
 		for(int i = 0; i < 6; i++){
@@ -104,10 +123,6 @@ public class BoardState extends BoardFiller{
 		}
 	}
 
-	/**
-	 * Removes the Letter from each square in a word. 
-	 * @param word as a Word 
-	 */
 	public void removeLetterFromSquares(Word word){
 
 		ArrayList<Square> squareArr = word.getLetters();
@@ -120,6 +135,7 @@ public class BoardState extends BoardFiller{
 	}
 
 	/**
+	 * 
 	 * Return the squares in this board state
 	 * @return squares[][]
 	 */
@@ -127,50 +143,23 @@ public class BoardState extends BoardFiller{
 		return squares;
 	}
 
-	/**
-	 * Get Score of BoardState
-	 * @return Integer 
-	 */
 	public int getScore(){
 		return this.score;
 	}
 
-	/**
-	 * Sets the current Score of the BoardState 
-	 * @param score as an Integer 
-	 */
 	public void setScore(int score){
 		this.score = score;
 	}
-	
-	/** 
-	 * Get Stars of the BoardState
-	 * @return Integer 
-	 */
 	public int getStars(){
 		return this.stars;
 	}
-	
-	/**
-	 * Set the current Stars in the BoardState 
-	 * @param stars as an Integer 
-	 */
 	public void setStars(int stars){
 		this.stars = stars;
 	}
 
-	/**
-	 * Get the Found Words Array List as Word type
-	 * @return AraryList<Word>
-	 */
 	public ArrayList<Word> getFoundWords() {
 		return foundWords;
 	}
-	
-	/**
-	 * Get the Found Words Array List as String type 
-	 * @return ArrayList<String> 
-	 */
 	public ArrayList<String> getFoundWordsStrings(){
 		ArrayList<String> stringList = new ArrayList<String>();
 		for(int i = 0; i < foundWords.size(); i++){
@@ -179,24 +168,15 @@ public class BoardState extends BoardFiller{
 		return stringList;
 	}
 
-	/**
-	 * Adds a word to the foundWords ArrayList
-	 * @param word as a Word 
-	 * @return True if word was added to foundWord Array List, false if it was not added
-	 */
 	public boolean addWordToFoundWords(Word word){
 		return this.foundWords.add(word);
 	}
-
-	/**
-	 * Set the Squares of the BoardState to the input parameter
-	 * @param squares as a Square[][]
-	 */
-	public void setSquares(Square[][] squares) {
-		// TODO Auto-generated method stub
-		
-		this.squares = squares;
-		
+	public void setClearFoundWords(){
+		int i = this.foundWords.size();
+		while(0 < i){
+			this.foundWords.remove(i-1);
+			i--;
+		}	
 	}
 
 }
