@@ -11,6 +11,9 @@ import java.awt.SystemColor;
 import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -35,9 +38,13 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 
 public class GameView extends DefaultViewPanel implements IModelChangedView {
@@ -349,5 +356,16 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 
 	public void setBtnUndoMove(JButton btnUndoMove) {
 		this.btnUndoMove = btnUndoMove;
+	}
+	
+	public void makeItLit(){
+	      try {
+	          BufferedImage img = ImageIO.read(new File("lit.jpg"));
+	          ImageIcon icon = new ImageIcon(img);
+	          JLabel label = new JLabel(icon);
+	          JOptionPane.showMessageDialog(null, label);
+	       } catch (IOException e) {
+	          e.printStackTrace();
+	       }
 	}
 }
