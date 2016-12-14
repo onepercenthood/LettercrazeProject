@@ -82,7 +82,7 @@ public class SaveLevelController extends MouseAdapter{
 				if(numLevels == 0){
 					numLevels = 1;
 				}
-				level = panel.compileLevelInfo(shape, 15 + numLevels);
+				level = panel.compileLevelInfo(shape, 16 + numLevels);
 
 			} 
 
