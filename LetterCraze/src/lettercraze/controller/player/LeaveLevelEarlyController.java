@@ -45,10 +45,11 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 
 		int highStarsScored = model.getCurrentLevelObject().getHighStars(currentPlayedScore);
 
-		//***stub for later***
+		//unlocks the next default level, unless this was the last level
 		if(thislevel.getLevelNum() < 16){
 			model.getCurrentLevelObject().updateHighScore(currentPlayedScore);
 			boolean isNextLevelUnlocked = model.getLevel(nextLevel).getIsUnlocked();
+			//check if first star was reached, if next level not unlocked
 			if((highStarsScored >= 1) && (isNextLevelUnlocked == false)){
 				model.getLevel(nextLevel).setUnLocked(true);
 				System.out.println("Setting level " + nextLevel + " unlocked to true");
@@ -57,26 +58,17 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 			}
 			FileIO.saveLevelToDisk(model.getLevel(nextLevel));
 		}
-		//need a get level obj method in 
-		//model.getCurrentLevelObject().setHighScore(model.getCurrentLevelObject().getHighScore());
-
-
-
 		FileIO.saveLevelToDisk(model.getCurrentLevelObject());
 		//save high score if needed
-		//save level to disk
-		//check if first star was reached, if next level not unlocked
-		//set boardstate to null in model
-
+		
 		// clear current model objects
 		model.setCurrentBoardState(null);
-		//model.getCurrentBoardState().setScore(0);
-		//model.getCurrentBoardState().getFoundWords().clear();
 		model.setCurrentWord(null);
 
 		CardLayout clay = (CardLayout) parent.getLayout();
 		clay.first(parent); //revert to the menu screen
 		MenuView mv = (MenuView) parent.getComponent(0);
+		//update the levelPreviewView if there's a new highscore
 		for(LevelPreviewView lpv: mv.getLevels()){
 			if(lpv.getLevelNum() == model.getCurrentLevel()){
 				lpv.setHighScore(model.getCurrentLevelObject().getHighScore());
