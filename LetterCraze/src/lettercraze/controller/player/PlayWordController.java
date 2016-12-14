@@ -73,7 +73,7 @@ public class PlayWordController extends MouseAdapter{
 				
 				//if its a puzzle level it keeps track of the moves left
 				if(gameView.getLevelType().getText().equals("Puzzle")){
-					Puzzle puzzle = (Puzzle) model.getLevel(model.getCurrentLevel() + 1);
+					Puzzle puzzle = (Puzzle) model.getLevel(model.getCurrentLevel());
 					int wordsLeft = puzzle.getMaxWords() - model.getCurrentBoardState().getFoundWords().size();
 					gameView.setTypeSpecificLabel("Moves Left: " + wordsLeft);
 				}
