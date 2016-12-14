@@ -2,15 +2,10 @@
 
 package lettercraze.model;
 
-import java.io.File;
+
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 /**
@@ -36,10 +31,13 @@ public class Model {
 	/** Dictionary that stores all possible words that can be played */
 	protected WordTable possibleWords;
 	
+	/** Number of the current level the model is using */ 
 	protected int currentLevel;
 
+
 	/**
-	 * Model Constructor
+	 * Model Constructor that holds all the entity objects. It creates the dictionary when the model \
+	 * instance is made by the player application then loads in all the levels. 
 	 */
 	public Model() {
 		super();
@@ -66,23 +64,25 @@ public class Model {
 	
 	// Get Functions 
 	/**
-	 * 
 	 * Return last board state in array list
-	 * @return level corresponding to the given level number
+	 * @return BoardState 
 	 */
 	public BoardState getCurrentBoardState(){
 		return boardState;
 	}
 	
+	/**
+	 * Sets the model's current BoardState to the input BoardState
+	 * @param board as a BoardState
+	 */
 	public void setCurrentBoardState(BoardState board){
-		this.boardState = board;
-		
+		this.boardState = board;	
 	}
 
 	
 	/**
-	 * 
-	 * @return the entire levels arraylist
+	 * Get an ArrayList of all the levels 
+	 * @return ArrayList<Level>
 	 */
 	public ArrayList<Level> getAllLevels(){
 		return levels;
@@ -90,36 +90,15 @@ public class Model {
 	
 	
 	/**
-	 * 
-	 * @param int levelNum
-	 * @return level corresponding to the given level number
+	 * Get the Level Object corresponding to the input level number 
+	 * @param levelNum as a Integer
+	 * @return Level
 	 */
 	public Level getLevel(int levelNum){
 		return levels.get(levelNum - 1);
 	}
 	
 	// Set Functions 
-	
-	
-	
-	/**
-	 * 
-	 * @param bs
-	 * @param played
-	 * @return boolean true if the Move has been successfully played
-	 * 	and a new BoardState 
-	 */
-	public boolean addMove(BoardState bs, Word played){
-		return true ;
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public boolean undoMove(){
-		return false;
-	}
 	
 	/**
 	 * Set up a new initial boardstate from a given level.
@@ -135,66 +114,43 @@ public class Model {
 		boardState = newState;
 	}
 	
-
-	/**
-	 * 
-	 * @param s
-	 * @return
-	 */
-	public boolean addSelectedSquare(Square s){
-		return true;
-	}
 	
 	/**
-	 * 
-	 * @param s
-	 * @return
-	 */
-	public boolean removeSelectedSquare(Square s){
-		return false;
-	}
-	
-	/**
-	 * 
-	 * @return
+	 * Get the Current Word 
+	 * @return Word 
 	 */
 	public Word getCurrentWord(){
 		return this.currentWord;
 	}
 	
+	/**
+	 * Set the Current Word
+	 * @param wordIn as a Word 
+	 */
 	public void setCurrentWord(Word wordIn){
 		this.currentWord = wordIn;
 	}
 	
-	public boolean clearCurrentWord(){
-		return true;
-	}
-	
 	/**
-	 * 
-	 * @param w
-	 * @return
+	 * Get the Current Level 
+	 * @return Integer
 	 */
-	public boolean checkPlayedWord(Word w){
-		return true;
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public boolean isBeaten(){
-		return true;
-	}
-	
 	public int getCurrentLevel(){
 		return this.currentLevel + 1;
 	}
 	
+	/**
+	 * Get Current Level Object
+	 * @return Level 
+	 */
 	public Level getCurrentLevelObject(){
 		return levels.get(currentLevel);
 	}
 	
+	/**
+	 * Set Current Level
+	 * @param currentLevel as an Integer 
+	 */
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel - 1;
 	}
