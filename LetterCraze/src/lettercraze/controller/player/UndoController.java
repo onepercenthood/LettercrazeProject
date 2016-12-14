@@ -48,7 +48,13 @@ public class UndoController extends MouseAdapter{
 			//adds it to the current score and displays it
 			int value = remove.calculateValue();
 			int currentScore = model.getCurrentBoardState().getScore();
-			int newScore = currentScore - value;
+			int newScore = 0;
+			//increment score by the value of the word if puzzle
+			if(model.getCurrentLevelObject().getLevelType().equals("Puzzle"))
+				newScore = currentScore - value;
+			else //if lightning or theme, increment by one
+				newScore = currentScore - 1;
+			//set the newly incremented score
 			model.getCurrentBoardState().setScore(newScore);
 
 
