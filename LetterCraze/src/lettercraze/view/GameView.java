@@ -39,6 +39,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.imageio.ImageIO;
+import javax.swing.AbstractButton;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -423,5 +424,11 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+
+	public JLabel getLevelType() {
+		// TODO Auto-generated method stub
+		return this.levelType;
 	}
 }
