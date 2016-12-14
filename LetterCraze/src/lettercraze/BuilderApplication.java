@@ -119,14 +119,14 @@ public class BuilderApplication extends JFrame {
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        panelMain = new JPanel(cardLayout);
+        setPanelMain(new JPanel(cardLayout));
         
-        panelMain.setBackground(Color.GRAY);
-        panelMain.setBounds(0, 0, initialWidth, initialHeight);
-        panelMain.setPreferredSize(new Dimension(initialWidth, initialHeight));
+        getPanelMain().setBackground(Color.GRAY);
+        getPanelMain().setBounds(0, 0, initialWidth, initialHeight);
+        getPanelMain().setPreferredSize(new Dimension(initialWidth, initialHeight));
         
         
-        add(panelMain);
+        add(getPanelMain());
                 
 		
 //		panelMain.add(splashView, splashView.getName());
@@ -137,11 +137,11 @@ public class BuilderApplication extends JFrame {
 	}
 	
 	public void initializeViewClasses(){
-		menuView = new BuilderMenuView(panelMain, model, this );
-		builderView = new BuilderView(model, panelMain, this);
+		menuView = new BuilderMenuView(getPanelMain(), model, this );
+		builderView = new BuilderView(model, getPanelMain(), this);
 		//loadLevelMenuView = new BuilderLevelSelecterView(panelMain);
-		panelMain.add(menuView, menuView.getPanelName());
-		panelMain.add(builderView, builderView.getPanelName()); 
+		getPanelMain().add(menuView, menuView.getPanelName());
+		getPanelMain().add(builderView, builderView.getPanelName()); 
 		//panelMain.add(loadLevelMenuView, loadLevelMenuView.getPanelName());
 		
 	}
@@ -176,6 +176,20 @@ public class BuilderApplication extends JFrame {
 		BuilderApplication frame = new BuilderApplication();
         frame.setVisible(true);
 		
+	}
+
+	/**
+	 * @return the panelMain
+	 */
+	public JPanel getPanelMain() {
+		return panelMain;
+	}
+
+	/**
+	 * @param panelMain the panelMain to set
+	 */
+	public void setPanelMain(JPanel panelMain) {
+		this.panelMain = panelMain;
 	}
 
 }

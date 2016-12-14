@@ -25,6 +25,8 @@ public class SelectAvailableLevelController implements ActionListener{
 	CardLayout cardlayout;
 	
 	GameView gameView;
+
+	private boolean isOverWrite = false;
 	
 	public SelectAvailableLevelController(int lvl, Model model, CardLayout cl, PlayerApplication app){
 		super();
@@ -43,6 +45,15 @@ public class SelectAvailableLevelController implements ActionListener{
 		this.model = app.getModel();
 		//mod.initiateLevel(levelNum);
 		//app.getModel().initiateLevel(levelNum);
+	}
+	
+	public SelectAvailableLevelController(int lvl, Model model, CardLayout cl, PlayerApplication app, boolean isOverwrite){
+		super();
+		this.levelNum = lvl;
+		this.cardlayout = cl;
+		this.app = app;
+		this.model = app.getModel();
+		this.isOverWrite  = isOverwrite;
 	}
 
 	/**
@@ -63,7 +74,9 @@ public class SelectAvailableLevelController implements ActionListener{
 		// Get the Current Level and create a new BoardState with that Level's Board Shape 
 		Level curLevel = model.getLevel(levelNum);
 		model.setCurrentLevel(levelNum);
-		model.setCurrentBoardState(new BoardState(curLevel));
+		if( !isOverWrite){
+			model.setCurrentBoardState(new BoardState(curLevel));
+		}		
 		
 		// Create a new GameView with the model
 		gameView = new GameView(model, levelNum, app.getCardLayoutParent(), app);

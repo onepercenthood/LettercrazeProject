@@ -20,6 +20,7 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 	private static final long serialVersionUID = 1L;
 	private JTextField txtfldOneStar;
 	private JTextField txtfldTwoStar;
+
 	private JTextField txtfldThreeStar;
 	private JTextField txtfldmaxWords;
 	private Font labelFont;
@@ -246,6 +247,23 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 		
 		return allDone;
 	}
+
+	public JTextField getTxtfldOneStar() {
+		return txtfldOneStar;
+	}
+	
+	public JTextField getTxtfldTwoStar() {
+		return txtfldTwoStar;
+	}
+
+	public JTextField getTxtfldThreeStar() {
+		return txtfldThreeStar;
+	}
+
+	public JTextField getTxtfldmaxWords() {
+		return txtfldmaxWords;
+	}
+
 	
 
 }
