@@ -99,6 +99,8 @@ public class TimeController implements ActionListener {
 	
 	/**
      * Starts the Timer thread
+     * @param delay1 as an Integer
+     * @param action as an ActionListener 
      */
     public static void startTimer(int delay1, ActionListener action ){
     	

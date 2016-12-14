@@ -41,8 +41,9 @@ public class SaveLevelController extends MouseAdapter{
 
 	/**
 	 * Constructor for the SaveLevelControllerObject
-	 * @param view: the builderView that contains the level-specific panel to pull information from.
-	 * @param model: the model associated with this Builder Application
+	 * @param view as a BuilderView 
+	 * @param parentPanel as a JPanel
+	 * @param model as a Model 
 	 */
 	public SaveLevelController(BuilderView view, JPanel parentPanel, Model model) {
 		super();
