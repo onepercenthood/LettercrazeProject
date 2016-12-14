@@ -94,6 +94,7 @@ public class ThemeBuilder {
 			}
 		}
 		boardState.fillEmptySquares(squares);
+		System.out.println("Words Placed in Board: ");
 		for(Word usedWord: placedWords)
 			System.out.print(usedWord.getWordString()+ " ");
 		System.out.println();

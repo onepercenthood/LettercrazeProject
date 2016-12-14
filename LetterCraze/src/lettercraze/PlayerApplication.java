@@ -161,15 +161,20 @@ public class PlayerApplication extends JFrame {
 				else if(currentLevel.getLevelType().equals("Theme")){
 					levelColor = Color.PINK;
 				}
+				//LevelPreviewView level = new LevelPreviewView(currentLevel.getLevelType(), levelColor, currentLevel.getLevelNum(), 0, panelMain, this);
+				LevelPreviewView level = new LevelPreviewView(currentLevel, levelColor, panelMain, this);
 				LevelPreviewView levelPreviewView = new LevelPreviewView(currentLevel.getLevelType(), levelColor, currentLevel.getLevelNum(), 0, panelMain, this);
 				
 				if(totalCount <= 15){
 					if(!currentLevel.getIsUnlocked()){
-						levelPreviewView.setEnabled(false);
+						//levelPreviewView.setEnabled(false);
+						level.setEnabled(false);
 					}
-					menuView.addMenuItemToDefault(levelPreviewView);
+					//menuView.addMenuItemToDefault(levelPreviewView);
+					menuView.addMenuItemToDefault(level);
 				}else{
-					menuView.addMenuItemToCustom(levelPreviewView);
+					//menuView.addMenuItemToCustom(levelPreviewView);
+					menuView.addMenuItemToCustom(level);
 				}
 				
 			totalCount += 1;

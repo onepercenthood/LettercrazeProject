@@ -130,7 +130,8 @@ public class Model {
 		
 		//simple sample shape with a 6x6 grid
 		System.out.println("value of level 0: "  + levels.get(0));
-		BoardState newState = new BoardState(levels.get(levelNum - 1).getBoardShape());
+		//BoardState newState = new BoardState(levels.get(levelNum - 1).getBoardShape());
+		BoardState newState = new BoardState(levels.get(levelNum - 1));
 		boardState = newState;
 	}
 	
