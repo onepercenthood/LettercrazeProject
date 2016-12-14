@@ -52,8 +52,10 @@ public class BuilderLevelSelecterView extends JPanel{
 				BuilderLevelThumbnail levelThumbnail = new BuilderLevelThumbnail(toLoad, parent, this);	
 				add(levelThumbnail);
 				
-				parent.repaint();
 			}
+			
+			parent.repaint();
+
 		} else {
 			System.err.println("There were no levels on the disk!");
 		}
