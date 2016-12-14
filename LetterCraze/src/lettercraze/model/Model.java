@@ -55,12 +55,10 @@ public class Model {
 				
 		levels = FileIO.loadDefaultLevelsFromDisk();
 		System.out.println(levels);
-		//initiateLevel(1);
 		ArrayList<Level> custom = new ArrayList<Level>();
 		custom = FileIO.loadCustomLevelsFromDisk();
 		levels.addAll(custom);
 		System.out.println(levels);
-		//initiateLevel(1);
 		
 	}
 	

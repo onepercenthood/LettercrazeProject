@@ -64,9 +64,9 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 
 		int highStarsScored = model.getCurrentLevelObject().getHighStars(currentPlayedScore);
 
+		model.getCurrentLevelObject().updateHighScore(currentPlayedScore);
 		//unlocks the next default level, unless this was the last level
 		if(thislevel.getLevelNum() < 16){
-			model.getCurrentLevelObject().updateHighScore(currentPlayedScore);
 			boolean isNextLevelUnlocked = model.getLevel(nextLevel).getIsUnlocked();
 			//check if first star was reached, if next level not unlocked
 			if((highStarsScored >= 1) && (isNextLevelUnlocked == false)){
