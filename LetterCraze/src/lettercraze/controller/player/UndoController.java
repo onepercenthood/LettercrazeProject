@@ -75,10 +75,35 @@ public class UndoController extends MouseAdapter{
 			gameView.setStarRater();
 			gameView.getStarRater().repaint();
 			gameView.getBoardView().repaintAllSquares();
+<<<<<<< HEAD
 			gameView.setScoreView();
 			gameView.getScoreTextField().repaint();
 			gameView.getTypeSpecific().repaint();
 			System.out.println(model.getCurrentBoardState().getSquares());
+=======
+		}
+		//takes the calculated score of the played word
+		//adds it to the current score and displays it
+		int value = remove.calculateValue();
+		int currentScore = model.getCurrentBoardState().getScore();
+		int newScore = currentScore - value;
+		model.getCurrentBoardState().setScore(newScore);
+
+
+		//checks new score against star threshold and displays update accordingly
+		int currentStars = model.getLevel(model.getCurrentLevel() + 1).getHighStars(newScore);
+		model.getCurrentBoardState().setStars(currentStars);
+
+		model.getCurrentBoardState().getFoundWords().remove(model.getCurrentBoardState().getFoundWords().size()-1);
+		model.getCurrentBoardState().floatTileDown(model.getCurrentBoardState().getSquares(), remove);
+
+		gameView.removeWordModel();
+
+		if(gameView.getLevelType().getText().equals("Puzzle")){
+			Puzzle puzzle = (Puzzle) model.getLevel(model.getCurrentLevel());
+			int wordsLeft = puzzle.getMaxWords() - model.getCurrentBoardState().getFoundWords().size();
+			gameView.setTypeSpecificLabel("Moves Left: " + wordsLeft);
+>>>>>>> refs/heads/J
 		}
 		
 	}

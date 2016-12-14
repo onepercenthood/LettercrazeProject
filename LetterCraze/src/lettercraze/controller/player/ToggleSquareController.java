@@ -37,7 +37,7 @@ public class ToggleSquareController extends MouseAdapter{
 		Word word = model.getCurrentWord();
 
 		//TODO check that letter is only added when toggled false -> true
-		if(toEdit.isActive() == true){
+		if(toEdit.isActive() == true && toEdit.getLetter() != null){
 			if(word != null && word.getWordLength()>0){
 				Square lastSquare = word.getLastSquare();
 				if(toEdit.getRow() == word.getLastSquare().getRow() && toEdit.getColumn() == word.getLastSquare().getColumn()){
