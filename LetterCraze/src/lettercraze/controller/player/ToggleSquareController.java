@@ -16,13 +16,13 @@ public class ToggleSquareController extends MouseAdapter{
 
 	/** The game to be manipulated **/
 	Model model;
-	
+
 	/** the top level application for navigation purposes **/
 	PlayerApplication application;
-	
+
 	/** the squareview that was clicked **/
 	SquareView squareView;
-	
+
 	public ToggleSquareController(PlayerApplication playerApp, SquareView squareView, Model model) {
 		super();
 		this.model = model;
@@ -35,45 +35,47 @@ public class ToggleSquareController extends MouseAdapter{
 		Square[][] boardSquares = model.getCurrentBoardState().getSquares();
 		Square checkSquare = boardSquares[toEdit.getRow()][toEdit.getColumn()];
 		Word word = model.getCurrentWord();
-		
+
 		//TODO check that letter is only added when toggled false -> true
-		if(word != null && word.getWordLength()>0){
-			Square lastSquare = word.getLastSquare();
-			if(toEdit.getRow() == word.getLastSquare().getRow() && toEdit.getColumn() == word.getLastSquare().getColumn()){
-				toEdit.toggleSelected();
-				//if(toEdit.isSelected()){
+		if(toEdit.isActive() == true){
+			if(word != null && word.getWordLength()>0){
+				Square lastSquare = word.getLastSquare();
+				if(toEdit.getRow() == word.getLastSquare().getRow() && toEdit.getColumn() == word.getLastSquare().getColumn()){
+					toEdit.toggleSelected();
+					//if(toEdit.isSelected()){
 					word.removeSquare();
 					model.setCurrentWord(word);
-				//}
+					//}
+					squareView.repaintSquare();
+				}
+				//check that this square is adjacent to the previous square
+				else if(toEdit.isAdjacent(lastSquare, toEdit) && !(toEdit.isSelected())){
+					word.addSquare(toEdit);
+					model.setCurrentWord(word);
+					toEdit.toggleSelected();
+					squareView.repaintSquare();
+				}
+				else{}
+			}
+			else if(word != null && word.getWordLength()==0){
+				word.addSquare(toEdit);
+				model.setCurrentWord(word);
+				toEdit.toggleSelected(); 
 				squareView.repaintSquare();
 			}
-			//check that this square is adjacent to the previous square
-			else if(toEdit.isAdjacent(lastSquare, toEdit) && !(toEdit.isSelected())){
-				word.addSquare(toEdit);
+			else{
+				word = new Word(toEdit);
 				model.setCurrentWord(word);
 				toEdit.toggleSelected();
 				squareView.repaintSquare();
 			}
-			else{}
+
+			//toggle whether the square is active
+			System.out.println(word.getWordString()); 
+			System.out.println("Selected: " + toEdit.isSelected() + " Active: " + toEdit.isActive());
 		}
-		else if(word != null && word.getWordLength()==0){
-			word.addSquare(toEdit);
-			model.setCurrentWord(word);
-			toEdit.toggleSelected(); 
-			squareView.repaintSquare();
-		}
-		else{
-			word = new Word(toEdit);
-			model.setCurrentWord(word);
-			toEdit.toggleSelected();
-			squareView.repaintSquare();
-		}
-		
-		//toggle whether the square is active
-		System.out.println(word.getWordString()); 
-		System.out.println("Selected: " + toEdit.isSelected() + " Active: " + toEdit.isActive());
 	}
-	
-	
+
+
 
 }

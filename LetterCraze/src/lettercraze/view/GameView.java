@@ -94,6 +94,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		this.levelNum = levelNum;
 		this.parent = parent;
 		this.boardview = new BoardView(colorPlayer, this.model, levelNum, app);
+		boardview.setBackground(Color.BLACK);
 		boardview.setBounds(16, 82, 471, 471);
 		boardview.playerInitialize(app);
 		createPanel();
