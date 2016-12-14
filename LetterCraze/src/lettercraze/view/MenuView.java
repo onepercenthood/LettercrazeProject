@@ -223,6 +223,10 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		return "MainMenu";
 	}
 
+	public ArrayList<LevelPreviewView> getLevels() {
+		return levels;
+	}
+
 	@Override
 	public void modelChanged() {
 		// TODO Auto-generated method stub

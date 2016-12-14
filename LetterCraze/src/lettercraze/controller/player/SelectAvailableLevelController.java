@@ -65,7 +65,8 @@ public class SelectAvailableLevelController implements ActionListener{
 		//mod.initiateLevel(levelNum);
 		//switch to GameView
 		Level curLevel = app.getModel().getLevel(levelNum);
-		app.getModel().setCurrentBoardState(new BoardState(curLevel.getBoardShape()));
+		//app.getModel().setCurrentBoardState(new BoardState(curLevel.getBoardShape()));
+		app.getModel().setCurrentBoardState(new BoardState(curLevel));
 		
 		//GameView curGameView = app.getGameView();
 		gameView = new GameView(mod, levelNum, app.getCardLayoutParent(), app);

@@ -46,6 +46,8 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	private int highScore;
 
 	private PlayerApplication app;
+
+	private int[] starThreshold;
 		
 	public LevelPreviewView(String levelType, Color color, Integer levelNumber, Integer numStars, JPanel cl, PlayerApplication app){
 		this.levelType = levelType;
@@ -58,14 +60,17 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		initialize();
 	}
 	
-	public LevelPreviewView(Level level, JPanel parent, PlayerApplication app){
+	public LevelPreviewView(Level level, Color color, JPanel parent, PlayerApplication app){
 		this.levelType = level.getLevelType();
 		this.levelNumber = level.getLevelNum();
 		this.highScore = level.getHighScore();
+		this.starThreshold = level.getStarThreshold();
 		this.numStars = level.getHighStars(level.getHighScore());
+		this.color = color;
 		this.cardlayout = (CardLayout) parent.getLayout();
 		this.parent = parent;
 		this.app = app;
+		initialize();
 	}
 	
 	private void initialize(){
@@ -146,6 +151,20 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	 */
 	public JButton getLevelButton(){
 		return  this.levelButton;
+	}
+	
+	/**
+	 * set the highScore to the given value
+	 * @param highScore : integer value representing the new high score for the level
+	 */
+	public void setHighScore(int highScore){
+		this.highScore = highScore;
+		int i = 0;
+		for(i = 0; i < 3; i ++){
+			if(highScore > starThreshold[i]){
+				numStars = i +1;
+			}
+		}
 	}
 
 	@Override

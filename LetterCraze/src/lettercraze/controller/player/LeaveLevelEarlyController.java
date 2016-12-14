@@ -10,6 +10,8 @@ import lettercraze.PlayerApplication;
 import lettercraze.model.FileIO;
 import lettercraze.model.Model;
 import lettercraze.view.GameView;
+import lettercraze.view.LevelPreviewView;
+import lettercraze.view.MenuView;
 
 public class LeaveLevelEarlyController extends MouseAdapter{
 	
@@ -65,6 +67,12 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 
 		CardLayout clay = (CardLayout) parent.getLayout();
 		clay.first(parent); //revert to the menu screen
+		MenuView mv = (MenuView) parent.getComponent(0);
+		for(LevelPreviewView lpv: mv.getLevels()){
+			lpv.setHighScore(highScore);
+			lpv.repaint();
+		}
+		parent.repaint();
 	}
 	
 }

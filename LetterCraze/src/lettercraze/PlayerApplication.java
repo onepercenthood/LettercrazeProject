@@ -173,8 +173,8 @@ public class PlayerApplication extends JFrame {
 				else if(currentLevel.getLevelType().equals("Theme")){
 					levelColor = Color.PINK;
 				}
-				LevelPreviewView level = new LevelPreviewView(currentLevel.getLevelType(), levelColor, currentLevel.getLevelNum(), 0, panelMain, this);
-				
+				//LevelPreviewView level = new LevelPreviewView(currentLevel.getLevelType(), levelColor, currentLevel.getLevelNum(), 0, panelMain, this);
+				LevelPreviewView level = new LevelPreviewView(currentLevel, levelColor, panelMain, this);
 				if(!currentLevel.getIsUnlocked()){
 					level.setEnabled(false);
 				}
