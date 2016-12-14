@@ -11,17 +11,29 @@ import lettercraze.model.Lightning;
 import lettercraze.model.Model;
 import lettercraze.view.GameView;
 
+/**
+ * SelectAvailableLevelController handles the selection of the level from the main-menu.
+ * 
+ * This controller is responsible for the loading of the BoardView and initialization of the BoardState for the
+ * gameview component in our application.
+ * 
+ * @author ddeisadze
+ *
+ */
 public class SelectAvailableLevelController implements ActionListener{
 
-	/**the model object to be manipulated **/
+	/**the model object to be manipulated. **/
 	Model model;
 	
-	/** the top level application **/
+	/** the top level application. **/
 	PlayerApplication app;
 	
-	/** number of the level to be called when this button is pressed **/
+	/** number of the level to be called when this button is pressed. **/
 	int levelNum;
 	
+	/**
+	 * CardLayout which holds the sequentila panels from our main application.
+	 */
 	CardLayout cardlayout;
 	
 	GameView gameView;

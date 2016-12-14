@@ -10,13 +10,25 @@ import lettercraze.PlayerApplication;
 import lettercraze.model.Model;
 import lettercraze.view.GameView;
 
-
+/**
+ * TimeController to handle the lightning type level in our player application.
+ * 
+ * @author ddeisadze
+ *
+ */
 public class TimeController implements ActionListener {
 	
 
+	/** the main player application **/
 	private PlayerApplication application;
+	
+	/** the main model from the application **/
 	private Model model;
+	
+	/** the main gameView panel**/
 	private GameView gameView;
+	
+	/** the number of seconds to countdown **/
 	private int seconds;
 	
 	/** Counter to set the number of seconds for the Timer */
@@ -27,9 +39,10 @@ public class TimeController implements ActionListener {
    	
 	/** Delay for the time between each tick, default to 1000 mS to represent a second tick period */
     protected int delay = 1000; 	
+    
 	/**
 	 * 
-	 * Controls the timer functionality in the lighting type level 
+	 * Controls the timer functionality in the lighting type level.
 	 * 
 	 * @param application Main application level
 	 * @param model Model that stores application wide data
@@ -48,6 +61,9 @@ public class TimeController implements ActionListener {
 		
 	}
 
+	/**
+	 * ActionPerformed as the main actionable method.
+	 */
 	public void actionPerformed(ActionEvent event)
     {
 		
@@ -82,7 +98,7 @@ public class TimeController implements ActionListener {
     }
 	
 	/**
-     * Starts the Timer 
+     * Starts the Timer thread
      */
     public static void startTimer(int delay1, ActionListener action ){
     	
@@ -91,10 +107,12 @@ public class TimeController implements ActionListener {
 
     	
     	timer = new Timer(1000, action);
-//        timer.setInitialDelay(0);
         timer.start();
     }
 	
+    /**
+     * Stops the timer thread.
+     */
     public static void stopTimer(){
     	timer.stop();
     }
