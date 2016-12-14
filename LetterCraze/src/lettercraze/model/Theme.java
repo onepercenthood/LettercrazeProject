@@ -22,7 +22,7 @@ public class Theme extends Level{
 	/** Holds the targetWords needed to be found to complete the Level */
 	protected ArrayList<String> targetWords = new ArrayList<String>();
 
-	/*Default constructor necessary for Jackson deserialization*/
+	/** Default constructor necessary for Jackson deserialization.*/
 	public Theme(){};
 	
 	/**
@@ -73,10 +73,18 @@ public class Theme extends Level{
 		return s;
 	}
 
+	/**
+	 * gets the theme category title
+	 * @return String
+	 */
 	public String getThemeCategory() {
 		return themeCategory;
 	}
 
+	/**
+	 * gets the words playable in the theme level
+	 * @return String
+	 */
 	public ArrayList<String> getTargetWords() {
 		return targetWords;
 	}

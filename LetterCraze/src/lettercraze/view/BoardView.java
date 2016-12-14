@@ -151,6 +151,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	
 	/**
 	 * sets all the squares associated with the squareViews in this boardView to active = true.
+	 * @param bv as BoardView
 	 */
 	public void setAllSquaresActive(BuilderView bv){
 		for(int i = 0; i < 6; i++){

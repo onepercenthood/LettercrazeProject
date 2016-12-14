@@ -5,12 +5,23 @@ import java.awt.Color;
 import lettercraze.model.Letter;
 import lettercraze.model.Square;
 
+/**
+ * SquareVeiw shows the state of the square its linked to
+ * @author Everett
+ *
+ */
 public class SquareView extends DefaultViewPanel{
 
 	private Square square;
 	LetterView letterView;
 	Color defaultColor;
 	
+	/**
+	 * Constructor for the squareView 
+	 * @param square as Square
+	 * @param defaultColor as Color
+	 * @param showLetter as showLetter
+	 */
 	public SquareView(Square square, Color defaultColor, boolean showLetter){
 		this.square = square;
 		this.defaultColor = defaultColor;
@@ -27,14 +38,26 @@ public class SquareView extends DefaultViewPanel{
 	}
 	
 
+	/**
+	 * returns the letter contained in the square
+	 * @return Letter
+	 */
 	public Letter getLetter(){
 		return square.getLetter();
 	}
 	
+	/**
+	 * returns the Square associated with this SquareView
+	 * @return Square
+	 */
 	public Square getSquare(){
 		return square;
 	}
 	
+	/**
+	 * sets this square to contain the same letter as the given square
+	 * @param square
+	 */
 	public void setSquare(Square square){
 		this.square = square;
 		Letter newLetter = square.getLetter().copyLetter();
@@ -46,23 +69,25 @@ public class SquareView extends DefaultViewPanel{
 		return "SquareView";
 	}
 	
-	
+	/**
+	 * returns the letterView associated with this squareView
+	 * @return LetterView
+	 */
 	public LetterView getLetterView() {
 		return letterView;
 	}
 
+	/**
+	 * sets the letterVeiw object to the given letterView
+	 * @param letterView
+	 */
 	public void setLetterView(LetterView letterView) {
 		this.letterView = letterView;
 	}
 	
-	public void showLetterView(){
-		getComponent(0).show();
-	}
-	
-	public void hideLetterView(){
-		remove(letterView);
-	}
-
+	/**
+	 * repaints this squareView
+	 */
 	public void repaintSquare(){
 		if(square.isActive()){
 			if(square.isSelected()){

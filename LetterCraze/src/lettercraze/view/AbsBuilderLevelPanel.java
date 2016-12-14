@@ -12,26 +12,32 @@ public abstract class AbsBuilderLevelPanel extends DefaultViewPanel {
 	
 	/**
 	 * level loaded to the builder. if no level was loaded: levelLoaded = null.
-	 */
+	 * */
 	private Level levelLoaded;
 
 	/**
 	 * returns the integer value of the required achievement to reach one star.
+	 * @return int
 	 */
 	abstract public int getOneStarThreshhold();
 	
 	/**
-	 * returns the integer value of the required achievement to reach two stars.
+	 * returns the integer value of the required achievement to reach two stars.]
+	 * @return int
 	 */
 	abstract public int getTwoStarThreshhold();
 	
 	/**
 	 * returns the integer value of the required achievement to reach three stars.
+	 * @return int
 	 */
 	abstract public int getThreeStarThreshhold();
 	
 	/**
 	 * returns a level with the given boardShape and the user-specified parameters.
+	 * @param boardShape as boolean[][]
+	 * @param levelNum as int
+	 * @return Level
 	 */
 	abstract public Level compileLevelInfo(boolean[][] boardShape, int levelNum);
 	
@@ -43,6 +49,7 @@ public abstract class AbsBuilderLevelPanel extends DefaultViewPanel {
 	/**
 	 * fill all text fields with the data prescribed in the given level.
 	 * @param level : the level information from which to fill the textfields.
+	 * @return true if filled successfully, false otherwise
 	 */
 	abstract public boolean fillAllFields(Level level);
 	

@@ -427,6 +427,10 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	}
 
 
+	/**
+	 * returns the JLabel describing the type of the level
+	 * @return JLabel
+	 */
 	public JLabel getLevelType() {
 		// TODO Auto-generated method stub
 		return this.levelType;

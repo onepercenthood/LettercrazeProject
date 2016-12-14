@@ -24,7 +24,9 @@ public class BuilderLevelThumbnail extends JPanel {
 	JPanel grandParentPanel;
 		
 	/**
-	 * Create the panel.
+	 * Construct the panel
+	 * @param level as Level
+	 * @param grandParent as JPanel
 	 */
 	public BuilderLevelThumbnail(Level level, JPanel grandParent) {
 		this.grandParentPanel = grandParent;

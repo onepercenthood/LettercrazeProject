@@ -50,7 +50,10 @@ public class LetterView extends JLabel{
 	}
 	
 
-	@Deprecated
+	/**
+	 * @Deprecated
+	 * @return String
+	 */
 	public String numToSubscript(){
 		int value = letter.getValue();
 		//String subscript = "\u2082" + Integer.toString(value);

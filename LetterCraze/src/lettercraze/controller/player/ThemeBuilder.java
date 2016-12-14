@@ -32,8 +32,8 @@ public class ThemeBuilder {
 	/**
 	 * Constructor for the theme-builder.
 	 * 
-	 * @param squares : the squares which are to be filled with the letters from targetWords
-	 * @param targetWords : the words to be found in the level
+	 * @param bState as BoardState : the boardState which is to be filled with the letters from targetWords
+	 * @param targetStrings as Strings : the words to be found in the level
 	 */
 	public ThemeBuilder(BoardState bState, ArrayList<String> targetStrings) {
 		this.boardState = bState;
@@ -48,7 +48,7 @@ public class ThemeBuilder {
 
 	/**
 	 * gets the total characters in all the target words.
-	 * 
+	 * @param words as ArrayList<Word>
 	 * @return an integer value, representing the total characters in the target words
 	 */
 	public int getTotalCharacters(ArrayList<Word> words){
