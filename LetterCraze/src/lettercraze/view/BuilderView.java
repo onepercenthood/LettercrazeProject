@@ -107,17 +107,17 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 
 		JPanel pnlPuzzle = new BuilderPuzzlePanelView(labelFont);
 		pnlLevelSwitch.add(pnlPuzzle, "Puzzle");
-		pnlPuzzle.setBackground(new Color(0, 128, 0));
+		pnlPuzzle.setBackground(Color.GREEN);
 		pnlPuzzle.setLayout(null);
 
 		JPanel pnlLightning = new BuilderLightningPanelView();
-		pnlLightning.setBackground(new Color(255, 140, 0));
+		pnlLightning.setBackground(Color.ORANGE);
 		pnlLevelSwitch.add(pnlLightning, "Lightning");
 		pnlLightning.setLayout(null);
 
 
 		JPanel pnlTheme = new BuilderThemePanelView(labelFont);
-		pnlTheme.setBackground(new Color(255, 0, 255));
+		pnlTheme.setBackground(Color.PINK);
 		pnlLevelSwitch.add(pnlTheme, "Theme");
 		pnlTheme.setLayout(null);
 
@@ -243,8 +243,22 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 	//when the combo box triggers an item state change, switch the input panels
 	@Override
 	public void itemStateChanged(ItemEvent evt) {
+		Color levelColor = null;
 		CardLayout cl = (CardLayout) pnlLevelSwitch.getLayout();
 		cl.show(pnlLevelSwitch, (String) evt.getItem());
+		
+		String string = (String) evt.getItem();
+		
+		if(string.equals("Puzzle")){
+			levelColor = Color.GREEN;
+		}
+		else if(string.equals("Lightning")){
+			levelColor = Color.ORANGE;
+		}
+		else if(string.equals("Theme")){
+			levelColor = Color.PINK;
+		}
+		this.setBackground(levelColor);
 
 	}
 

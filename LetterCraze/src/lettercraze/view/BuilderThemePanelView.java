@@ -35,12 +35,12 @@ public class BuilderThemePanelView extends AbsBuilderLevelPanel{
 		
 		JLabel lblThemeTitle = new JLabel("Theme Title");
 		lblThemeTitle.setFont(labelFont);
-		lblThemeTitle.setBounds(49, 26, 85, 20);
+		lblThemeTitle.setBounds(49, 26, 146, 20);
 		add(lblThemeTitle);
 		
 		JLabel lblThemeWordList = new JLabel("Theme Word List (one word per line)");
 		lblThemeWordList.setFont(labelFont);
-		lblThemeWordList.setBounds(49, 90, 263, 20);
+		lblThemeWordList.setBounds(49, 90, 340, 20);
 		add(lblThemeWordList);
 		
 		txtAreaWordList = new JTextArea();
