@@ -63,7 +63,7 @@ public class PlayWordController extends MouseAdapter{
 				tempBoard.setScore(newScore);
 				
 				//checks new score against star threshold and displays update accordingly
-				int currentStars = model.getLevel(model.getCurrentLevel()+1).getHighStars(newScore);
+				int currentStars = model.getLevel(model.getCurrentLevel()).getHighStars(newScore);
 				tempBoard.setStars(currentStars);
 				
 				//if lit is played the background turns red
