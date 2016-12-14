@@ -2,6 +2,7 @@ package lettercraze.model;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -170,5 +171,19 @@ public class FileIO {
 		System.out.println("level 1: " + l.getLevelType());
 		
 		
+	}
+	
+	/**
+	 * 
+	 * Deletes an existing custom level
+	 * @param oldLevel the level to delete
+	 * @return boolean depending on if it was deleted
+	 */
+	public static boolean deleteExistingCustomLevel(Level oldLevel){
+		File existingFile = new File("custom_levels/lettercraze_level" + oldLevel.getLevelNum() + "_" + oldLevel.getLevelType() + ".json");
+		boolean result;
+		result = existingFile.delete(); 
+		
+		return result;
 	}
 }

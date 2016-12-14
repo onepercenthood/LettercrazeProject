@@ -179,6 +179,51 @@ abstract public class Level {
 	 * @return a string that shows the state of all the variables for use in debugging
 	 */
 	abstract public String debugString();
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + highScore;
+		result = prime * result + levelNum;
+		result = prime * result + ((levelType == null) ? 0 : levelType.hashCode());
+		return result;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Level other = (Level) obj;
+		if (highScore != other.highScore)
+			return false;
+		if (levelNum != other.levelNum)
+			return false;
+		if (levelType == null) {
+			if (other.levelType != null)
+				return false;
+		} else if (!levelType.equals(other.levelType))
+			return false;
+		return true;
+	}
+	
+	public int decrementLevelNumber(){
+		this.levelNum--;
+		
+		return this.levelNum;
+	}
 	
 	
 //	/**TODO
