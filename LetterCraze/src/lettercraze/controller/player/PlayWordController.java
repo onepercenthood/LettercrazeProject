@@ -83,6 +83,11 @@ public class PlayWordController extends MouseAdapter{
 					Puzzle puzzle = (Puzzle) model.getLevel(model.getCurrentLevel());
 					int wordsLeft = puzzle.getMaxWords() - model.getCurrentBoardState().getFoundWords().size();
 					gameView.setTypeSpecificLabel("Moves Left: " + wordsLeft);
+					
+					if(wordsLeft <= 0){
+						gameView.getAddWordBtn().setEnabled(false);
+						gameView.getAddWordBtn().repaint();
+					}
 				}
 				
 				System.out.println("Before remove letter From Square");

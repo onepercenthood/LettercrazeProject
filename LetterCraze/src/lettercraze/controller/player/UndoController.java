@@ -68,6 +68,11 @@ public class UndoController extends MouseAdapter{
 				Puzzle puzzle = (Puzzle) model.getLevel(model.getCurrentLevel());
 				int wordsLeft = puzzle.getMaxWords() - model.getCurrentBoardState().getFoundWords().size();
 				gameView.setTypeSpecificLabel("Moves Left: " + wordsLeft);
+				
+				if(wordsLeft >= 0){
+					gameView.getAddWordBtn().setEnabled(true);
+					gameView.getAddWordBtn().repaint();
+				}
 			}
 
 			System.out.println("Floating down word: " + remove.toString());
