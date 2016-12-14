@@ -9,6 +9,12 @@ import javax.swing.JPanel;
 import lettercraze.model.Level;
 import lettercraze.view.BuilderView;
 
+/**
+ * This controller is responsible for allowing the user to edit an existing level.
+ * 
+ * @author ddeisadze
+ *
+ */
 public class EditExistingLevelController extends java.awt.event.MouseAdapter{
 
 	/** the container for the builderViews **/
@@ -21,6 +27,12 @@ public class EditExistingLevelController extends java.awt.event.MouseAdapter{
 	CardLayout cardLayout;
 	
 
+	/**
+	 * Main constructor for this controller.
+	 * 
+	 * @param parent the main JPanel which holds the cardLayouts
+	 * @param level The level to edit
+	 */
 	public EditExistingLevelController(JPanel parent, Level level) {
 		this.parent = parent;
 		this.cardLayout = (CardLayout) parent.getLayout();

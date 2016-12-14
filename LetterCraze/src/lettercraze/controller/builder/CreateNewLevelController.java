@@ -11,6 +11,9 @@ import lettercraze.BuilderApplication;
 import lettercraze.model.Model;
 
 /**
+ * This controller handles the creating of new level button in the main builder view.
+ * 
+ * This will allow the user to build custom levels.
  * 
  * @author Everett Harding
  * 
@@ -29,6 +32,13 @@ public class CreateNewLevelController extends MouseAdapter{
 	/** the parent container for the cardLayout **/
 	Container cardLayoutPanel;	
 	
+	/**
+	 * The main constructor for this controller. 
+	 * 
+	 * @param app as the main BuilderApplication
+	 * @param cardLayoutPanel as the main panel which holds the card layout structure
+	 * @param model as the model from the main BuilderApplication
+	 */
 	public CreateNewLevelController(BuilderApplication app, JPanel cardLayoutPanel, Model model) {
 		super();
 		this.app = app;
