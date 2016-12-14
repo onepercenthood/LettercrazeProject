@@ -165,12 +165,18 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 				numStars = i +1;
 			}
 		}
+		starRater.setRating((float) numStars);
 	}
 
 	@Override
 	public void modelChanged() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public int getLevelNum() {
+		
+		return levelNumber.intValue();
 	}
 	
 }

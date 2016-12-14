@@ -172,11 +172,14 @@ public class PlayerApplication extends JFrame {
 				
 				if(totalCount <= 15){
 					if(!currentLevel.getIsUnlocked()){
-						levelPreviewView.setEnabled(false);
+						//levelPreviewView.setEnabled(false);
+						level.setEnabled(false);
 					}
-					menuView.addMenuItemToDefault(levelPreviewView);
+					//menuView.addMenuItemToDefault(levelPreviewView);
+					menuView.addMenuItemToDefault(level);
 				}else{
-					menuView.addMenuItemToCustom(levelPreviewView);
+					//menuView.addMenuItemToCustom(levelPreviewView);
+					menuView.addMenuItemToCustom(level);
 				}
 				
 			totalCount += 1;
