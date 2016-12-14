@@ -61,6 +61,9 @@ public class TimeController implements ActionListener {
             gameView.getTypeSpecific().setText("The time is up!");
             
             JOptionPane.showMessageDialog(null, "Time is up!");
+            
+            gameView.remove(gameView.getAddWordBtn());
+            gameView.remove(gameView.getBtnUndoMove());
 
 
             
