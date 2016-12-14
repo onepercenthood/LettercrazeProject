@@ -14,6 +14,11 @@ import lettercraze.controller.player.ToggleSquareController;
 import lettercraze.model.Model;
 import lettercraze.model.Square;
  
+/**
+ * BoardView shows the status of squares[][] in the boardState
+ * @author Everett
+ *
+ */
 public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	/**
 	 * 
@@ -62,6 +67,9 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 		//playerInitialize(app);
 	}
 
+	/**
+	 * sets up the BoardView Panel, gets it ready to contain squares
+	 */
 	public void createPanel(){
 		setLayout(null);
 		setBounds(6, 6, 383, 414);
@@ -143,6 +151,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	
 	/**
 	 * sets all the squares associated with the squareViews in this boardView to active = true.
+	 * @param bv as BoardView
 	 */
 	public void setAllSquaresActive(BuilderView bv){
 		for(int i = 0; i < 6; i++){
@@ -154,7 +163,8 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	}
 	
 	/**
-	 * @return the desired boardShape from the squares pointed to by the gui
+	 * the desired boardShape from the squares pointed to by the gui.
+	 * @return boolean[][]
 	 */
 	public boolean[][] getBoardShape(){
 		boolean shape[][] = new boolean[6][6];
@@ -168,7 +178,7 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	}
 	
 	/**
-	 * sets the squares in the board to the given shape
+	 * sets the squares in the board to the given shape.
 	 * @param shape : the shape that holds which squares will be active
 	 */
 	public void setBoardShape(boolean[][] shape){
@@ -179,26 +189,45 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 		}
 	}
 	
+	/**
+	 * return the default color of the boardState.
+	 * @return Color 
+	 */
 	public Color getColorPlayer() {
 		return colorPlayer;
 	}
 
 
+	/**
+	 * gets the current model.
+	 * @return Model
+	 */
 	public Model getModel() {
 		return model;
 	}
 
 
+	/**
+	 * get the number of the current level.
+	 * @return int
+	 */
 	public int getLevelNum() {
 		return levelNum;
 	}
 
-
+	/**
+	 * get all the squareViews from the boardState
+	 * @return SquareView[][]
+	 */
 	public SquareView[][] getSquareViews() {
 		return squareViews;
 	}
 
-
+	/**
+	 * @deprecated
+	 * returns the SquarePanels object
+	 * @return JPanel[][]
+	 */
 	public JPanel[][] getSquarePanels() {
 		return squarePanels;
 	}
@@ -217,10 +246,18 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	}
 	
 
+	/**
+	 * @deprecated
+	 * returns boardPanel object
+	 * @return JPanel
+	 */
 	public JPanel getBoardPanel() {
 		return boardPanel;
 	}
 	
+	/**
+	 * repaints all the squareViews in the BoardView
+	 */
 	public void repaintAllSquares(){
 		//super.repaint();
 		SquareView currentSquareView ;

@@ -12,6 +12,11 @@ import lettercraze.model.Level;
 import lettercraze.model.Puzzle;
 import java.awt.Color;
 
+/**
+ * Contains the textFields for providing information specific to the Puzzle levels
+ * @author Everett
+ *
+ */
 public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 
 	/**
@@ -20,10 +25,15 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 	private static final long serialVersionUID = 1L;
 	private JTextField txtfldOneStar;
 	private JTextField txtfldTwoStar;
+
 	private JTextField txtfldThreeStar;
 	private JTextField txtfldmaxWords;
 	private Font labelFont;
 
+	/**
+	 * Constructor for the puzzle-specific panel. takes in the font for the labels
+	 * @param labelFont as Font
+	 */
 	public BuilderPuzzlePanelView(Font labelFont){
 		this.labelFont = labelFont;
 		initialize();
@@ -246,6 +256,39 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 		
 		return allDone;
 	}
+
+	/**
+	 * returns the textField for first star threshold
+	 * @return JTextField
+	 */
+	public JTextField getTxtfldOneStar() {
+		return txtfldOneStar;
+	}
+	
+	/**
+	 * returns the textField for two star threshold
+	 * @return JTextField
+	 */
+	public JTextField getTxtfldTwoStar() {
+		return txtfldTwoStar;
+	}
+
+	/**
+	 * returns the textField for three star threshold
+	 * @return JTextField
+	 */
+	public JTextField getTxtfldThreeStar() {
+		return txtfldThreeStar;
+	}
+
+	/**
+	 * returns the textField for maxWords value
+	 * @return JTextField
+	 */
+	public JTextField getTxtfldmaxWords() {
+		return txtfldmaxWords;
+	}
+
 	
 
 }

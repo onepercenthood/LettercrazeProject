@@ -13,25 +13,27 @@ import lettercraze.model.Word;
 /**
  * the Theme builder generates an initial boardState using words from the
  * targetWords list, up to 36 characters total. If there are more than 36 characters
- * words are selected at random to get as close to 36 as possible
+ * words are selected at random to get as close to 36 as possible.
+ * 
  * @author Everett
  *
  */
 public class ThemeBuilder {
 
-	/** the squares to be filled with letters **/
+	/** the squares to be filled with letters. **/
 	Square[][] squares;
 
-	/** the words with which to fill the squares **/
+	/** the words with which to fill the squares. **/
 	ArrayList<Word> targetWords;
 	
-	/** the boardState that holds the squares **/
+	/** the boardState that holds the squares. **/
 	BoardState boardState;
 
 	/**
-	 * Constructor for the themebuilder
-	 * @param squares : the squares which are to be filled with the letters from targetWords
-	 * @param targetWords : the words to be found in the level
+	 * Constructor for the theme-builder.
+	 * 
+	 * @param bState as BoardState : the boardState which is to be filled with the letters from targetWords
+	 * @param targetStrings as Strings : the words to be found in the level
 	 */
 	public ThemeBuilder(BoardState bState, ArrayList<String> targetStrings) {
 		this.boardState = bState;
@@ -45,7 +47,8 @@ public class ThemeBuilder {
 	}
 
 	/**
-	 * gets the total characters in all the target words
+	 * gets the total characters in all the target words.
+	 * @param words as ArrayList<Word>
 	 * @return an integer value, representing the total characters in the target words
 	 */
 	public int getTotalCharacters(ArrayList<Word> words){
@@ -57,7 +60,8 @@ public class ThemeBuilder {
 	}
 
 	/**
-	 * fill the squares with selection of the words in the wordlist
+	 * fill the squares with selection of the words in the word-list.
+	 * 
 	 * @return true if successful, false otherwise
 	 */
 	public Square[][] populateSquares(){
@@ -102,7 +106,7 @@ public class ThemeBuilder {
 	}
 	
 	/**
-	 * print the letter (or lack thereof) in each square
+	 * print the letter (or lack thereof) in each square.
 	 */
 	private void printAllSquares(){
 		for(int i = 0; i < 6; i ++){
@@ -118,9 +122,9 @@ public class ThemeBuilder {
 	}
 
 	/**
-	 * recursively places the squares in the word on the board
-	 * @param w
-	 * @param square
+	 * recursively places the squares in the word on the board.
+	 * @param w the word to place
+	 * @param square the square class which will be placed
 	 * @return true if the word was placed successfully, false otherwise
 	 */
 	private boolean placeWord(Word w, Square square, Word toPlace) {
@@ -163,7 +167,7 @@ public class ThemeBuilder {
 	}
 
 	/**
-	 * sets all the squares in toPlace to false
+	 * sets all the squares in toPlace to false.
 	 * @param toPlace
 	 */
 	private void revertSquares(Word toPlace) {
@@ -177,9 +181,9 @@ public class ThemeBuilder {
 	}
 
 	/**
-	 * returns a list of square objects from global squares that are adjacent to the given square
-	 * @param square
-	 * @return
+	 * returns a list of square objects from global squares that are adjacent to the given square.
+	 * @param square as the square that the method will find adjacents to
+	 * @return ArrayList of adjacent squares
 	 */
 	private ArrayList<Square> findAdjacents(Square square) {
 		int prevRow = square.getRow()-1;
@@ -211,7 +215,7 @@ public class ThemeBuilder {
 
 
 	/**
-	 * given a list of words, produces a list of words whose total length is less than 36
+	 * given a list of words, produces a list of words whose total length is less than 36.
 	 * @param targetWords2
 	 * @return the list of words to use
 	 */
@@ -235,7 +239,7 @@ public class ThemeBuilder {
 	}
 
 	/**
-	 * converts the arrayList of strings to an arrayList of words
+	 * converts the arrayList of strings to an arrayList of words.
 	 * @return an arraylist of all the words to be added to the board
 	 */
 	private ArrayList<Word> convertTargets(ArrayList<String> targetStrings){
@@ -268,6 +272,10 @@ public class ThemeBuilder {
 	}
 
 
+	/**
+	 * Main static method to run the JFrame.
+	 * @param args System arguments
+	 */
 	public static void main(String args[]){
 		Model model = new Model();
 		BoardState b = model.getCurrentBoardState();

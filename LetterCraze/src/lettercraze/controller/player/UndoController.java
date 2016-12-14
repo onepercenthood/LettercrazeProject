@@ -10,6 +10,12 @@ import lettercraze.model.Puzzle;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
 
+/**
+ * UndoController which handles all undo actions on our player board.
+ * 
+ * @author ddeisadze
+ *
+ */
 public class UndoController extends MouseAdapter{
 
 	/** The game to be manipulated **/
@@ -21,6 +27,13 @@ public class UndoController extends MouseAdapter{
 	/** the squareview that was clicked **/
 	GameView gameView;
 
+	/**
+	 * The main constructor for this class.
+	 * 
+	 * @param application as the main application instance in player
+	 * @param model as the main model instance from applciation
+	 * @param gameView as the main gameView panel which holds the game structure
+	 */
 	public UndoController(PlayerApplication application, Model model, GameView gameView) {
 		// TODO Auto-generated constructor stub
 		this.application = application;
@@ -28,6 +41,9 @@ public class UndoController extends MouseAdapter{
 		this.gameView = gameView;
 	}
 
+	/**
+	 * MousePressed method as the main actionable method in this class.
+	 */
 	public void mousePressed(MouseEvent me){
 		if(model.getCurrentBoardState().getFoundWords().size() >= 1){
 			//model.getBoardStateArray().remove(model.getBoardStateArray().size()-1);

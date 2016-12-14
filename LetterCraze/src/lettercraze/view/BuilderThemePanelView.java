@@ -11,6 +11,12 @@ import javax.swing.JTextField;
 import lettercraze.model.Level;
 import lettercraze.model.Theme;
 
+/**
+ * BuilderThemePanel contains the input fields for getting the theme's title and 
+ * list of target words
+ * @author Everett
+ *
+ */
 public class BuilderThemePanelView extends AbsBuilderLevelPanel{
 
 	/**
@@ -21,10 +27,15 @@ public class BuilderThemePanelView extends AbsBuilderLevelPanel{
 	private JTextArea txtAreaWordList;
 	private Font labelFont;
 
+	/**
+	 * Constructor for the BuidlerThemePanelView. Takes in font for the labels
+	 * @param labelFont as Font
+	 */
 	public BuilderThemePanelView(Font labelFont){
 		this.labelFont = labelFont;
 		initialize();
 	}
+	
 	void initialize(){
 		setLayout(null);
 		
@@ -63,6 +74,10 @@ public class BuilderThemePanelView extends AbsBuilderLevelPanel{
 		return getWordList().size();
 	}
 	
+	/**
+	 * returns the list of targetWords from the txtAreaWordlist
+	 * @return ArrayList<String> 
+	 */
 	public ArrayList<String> getWordList(){
 		String s[] = txtAreaWordList.getText().split("\\r?\\n");
 	    ArrayList<String>targetWords = new ArrayList<>(Arrays.asList(s)) ;

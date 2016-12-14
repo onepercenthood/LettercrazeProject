@@ -23,7 +23,11 @@ import java.util.ArrayList;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
 import java.awt.Color;
-
+/**
+ * MenuView for selecting levels to play
+ * @author Everett
+ *
+ */
 public class MenuView extends DefaultViewPanel implements IModelChangedView {
 
 
@@ -63,7 +67,10 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	private JPanel cardLayoutPanel;
 	
 	/**
-	 * @wbp.parser.constructor
+	 * Constructor for the MenuView.
+	 * @param cardLayoutPanel as JPanel
+	 * @param m as Model
+	 * @param playerApplication as PlayerApplication
 	 */
 	public MenuView(JPanel cardLayoutPanel, Model m, PlayerApplication playerApplication){
 		setBackground(new Color(153, 204, 255));
@@ -78,7 +85,6 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 
 	/**
 	 * Create the Panel.
-	 * @param row 
 	 */
 	public void createPanel() {
 
@@ -197,12 +203,9 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	}
 	
 	/**
-	 * Adds level to custom menu.
-	 * 
-	 * This is public.
-	 * 
-	 * @param level
-	 * @return
+	 * Adds LevelPreviewView to custom menu.
+	 * @param level as LevelPreviewView
+	 * @return true if added successfully, false otherwise
 	 */
 	public boolean addMenuItemToCustom(LevelPreviewView level){
 		if(rowCountCus == 3){
@@ -216,8 +219,8 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	}
 	/**
 	 * Adds menu item to default menu, this is private because we do not want to change the default levels.
-	 * @param level
-	 * @return
+	 * @param level as LevelPreviewView
+	 * @return true if added successfully, false otherwise
 	 */
 	public boolean addMenuItemToDefault(LevelPreviewView level){
 		if(rowCountDef == 3){
@@ -235,6 +238,10 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		return "MainMenu";
 	}
 
+	/**
+	 * returns the list of all LevelPreviewViews
+	 * @return ArrayList<LevelPreviewView>
+	 */
 	public ArrayList<LevelPreviewView> getLevels() {
 		return levels;
 	}

@@ -11,6 +11,11 @@ import lettercraze.model.FileIO;
 import lettercraze.model.Level;
 import java.awt.Color;
 
+/**
+ * Provides the menu for selecting levels to load into the builder
+ * @author Everett
+ *
+ */
 public class BuilderLevelSelecterView extends JPanel{
 
 	/** parent container **/
@@ -18,7 +23,10 @@ public class BuilderLevelSelecterView extends JPanel{
 	
 	/** list of levels to select from **/
 	ArrayList<Level> levels;
-	
+	/**
+	 * Constructor for the BuilderLevelSelecterView, takes in the parent container
+	 * @param parent as JPanel
+	 */
 	public BuilderLevelSelecterView(JPanel parent) {
 		setBackground(new Color(204, 255, 255));
 		this.parent = parent;
@@ -26,6 +34,9 @@ public class BuilderLevelSelecterView extends JPanel{
 		initialize();
 	}
 
+	/**
+	 * sets up the builderLevelSelecterView panel for use
+	 */
 	public void initialize(){
 		int numLevels = levels.size();
 		
@@ -38,17 +49,55 @@ public class BuilderLevelSelecterView extends JPanel{
 			add(Menubutton); 
 			
 			for(Level toLoad: levels){
-				BuilderLevelThumbnail levelThumbnail = new BuilderLevelThumbnail(toLoad, parent);	
+				BuilderLevelThumbnail levelThumbnail = new BuilderLevelThumbnail(toLoad, parent, this);	
 				add(levelThumbnail);
+				
 			}
+			
+			parent.repaint();
+
 		} else {
 			System.err.println("There were no levels on the disk!");
 		}
 		
 	}
 	
+	/**
+	 * gets the name of the panel ("BuilderLevelSelecter")
+	 * @return String
+	 */
 	public String getPanelName(){
 		return "BuilderLevelSelecter";
+	}
+	
+	/**
+	 * Removes all panels
+	 */
+	public void removeAllPanels(){
+		this.removeAll();
+	}
+	
+	/**
+	 * Get all levels
+	 * @return as the ArrayList of levels
+	 */
+	public ArrayList<Level> getAllLevels(){
+		return this.levels;
+	}
+	
+	/**
+	 * Set levels
+	 * @param levels as the levels to set
+	 */
+	public void setAllLevels(ArrayList<Level> levels){
+		this.levels = levels;
+	}
+
+	/**
+	 * @return the parent
+	 */
+	public JPanel getParent() {
+		return parent;
 	}
 	
 	

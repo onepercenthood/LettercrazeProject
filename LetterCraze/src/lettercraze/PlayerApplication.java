@@ -90,8 +90,6 @@ public class PlayerApplication extends JFrame {
 	 * 
 	 */
 	private CardLayout cardLayout = new CardLayout();
-	
-	
 
 	
 	/**

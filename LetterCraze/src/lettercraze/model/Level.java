@@ -65,7 +65,7 @@ abstract public class Level {
 	/**
 	 * Set the board shape to the 2D boolean array passed in.
 	 * 
-	 * @param boolean[6][6]
+	 * @param boardShape as boolean[][]
 	 */
 	public void setBoardShape(boolean[][] boardShape){
 		this.boardShape = boardShape;
@@ -111,7 +111,7 @@ abstract public class Level {
 	/**
 	 * Return the level number of this level
 	 * 
-	 * @return int levelNum
+	 * @return int
 	 */
 	public int getLevelNum(){
 		return this.levelNum;
@@ -121,14 +121,17 @@ abstract public class Level {
 	/**
 	 * Set the unlocked state of the level. True for unlocked, false for locked.
 	 * 
-	 * @param boolean
+	 * @param unlocked as boolean
 	 */
 	public void setUnLocked(boolean unlocked){
 		isUnlocked = unlocked;
 	}
 	
 	
-	/** Method to determine how a Player beats each level, varies per type of level */
+	/** Method to determine how a Player beats each level, varies per type of level 
+	 * @param score as int
+	 * @return true if complete, false otherwise
+	 */
 	public boolean isCompleted(int score){
 		if(score > this.starThreshold[0]){return true;}
 		return false ;
@@ -162,6 +165,10 @@ abstract public class Level {
 		return stars;
 	}
 	
+	/**
+	 * returns an array of the thresholds for achieving one two or three stars
+	 * @return int[3] 
+	 */
 	public int[] getStarThreshold() {
 		return starThreshold;
 	}
@@ -172,6 +179,51 @@ abstract public class Level {
 	 * @return a string that shows the state of all the variables for use in debugging
 	 */
 	abstract public String debugString();
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + highScore;
+		result = prime * result + levelNum;
+		result = prime * result + ((levelType == null) ? 0 : levelType.hashCode());
+		return result;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Level other = (Level) obj;
+		if (highScore != other.highScore)
+			return false;
+		if (levelNum != other.levelNum)
+			return false;
+		if (levelType == null) {
+			if (other.levelType != null)
+				return false;
+		} else if (!levelType.equals(other.levelType))
+			return false;
+		return true;
+	}
+	
+	public int decrementLevelNumber(){
+		this.levelNum--;
+		
+		return this.levelNum;
+	}
 	
 	
 //	/**TODO

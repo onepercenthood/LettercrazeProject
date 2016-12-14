@@ -7,7 +7,13 @@ import java.util.ArrayList;
 import lettercraze.controller.player.ThemeBuilder;
 
 /**
- * 
+ * The BoardFiller class provides all the functionality to fill the board with letters, float tiles up,
+ * and push tiles down. This class is extended by Board State to provide these methods on the current BoardState 
+ * of the game. 
+ * <p>
+ * This class has the functionality to fill the board with letters for the three different types of levels,
+ * float letters up after a word has been played, fill empty tiles after the letters have been floated up, and 
+ * push the letters down on the event of an Undo.
  * <p>
  * Creation Date: (11/24/16 11:08 AM)
  * @author Hoodie
@@ -61,6 +67,11 @@ public class BoardFiller{
 		return squares;	
 	}*/
 
+	/**
+	 * FloatTilesUp takes in a square array and floats up letters in any columns that have empty tiles 
+	 * @param squares as a Square[][]
+	 * @return Square[][] 
+	 */
 	public Square[][] floatTilesUp(Square[][] squares){
 		for(int row = 0; row < 6; row++){
 			for(int col = 0; col < 6; col ++){
@@ -78,6 +89,14 @@ public class BoardFiller{
 		return squares;
 	}
 
+	/**
+	 * FloatTilesDown is used primarily for Undo controller. It takes the last submitted Word from 
+	 * the found words array and places them back into their sqaures while pushing the other letters in the column
+	 * down. Utilizes pushColumnDown and sortWord methods.
+	 * @param squares as a Square[][]
+	 * @param word as a Word 
+	 * @return Square[][]
+	 */
 	public Square[][] floatTileDown(Square[][] squares, Word word){
 //		for(int i = word.getLetters().size()- 1; i >=0; i--){
 //			Square s = word.getLetters().get(i);
@@ -91,6 +110,12 @@ public class BoardFiller{
 		return squares;
 	}
 
+	/**
+	 * sortWord takes in a word and places them in an ArrayList<String> in order of when they appear 
+	 * on the board starting with the top left corner as being square 1, increasing horizontally then vertically.
+	 * @param word as a Word
+	 * @return ArrayList<Square>
+	 */
 	private ArrayList<Square> sortWord(Word word) {
 		ArrayList<Square> sortedSquares = new ArrayList<Square>();
 		//loop through the columns first
@@ -108,10 +133,10 @@ public class BoardFiller{
 	}
 
 	/**
-	 * for a given location (currentSquare) in squares, pushes all the letters in that column down one square
+	 * For a given location (currentSquare) in squares, pushes all the letters in that column down one square
 	 * and sets the letter at currentSquare to null
-	 * @param squares
-	 * @param currentSquare
+	 * @param squares as a Square[][]
+	 * @param currentSquare as a Square
 	 */
 	private void pushColumnDown(Square[][] squares, Square topSquare){
 		int row = topSquare.getRow();
@@ -136,9 +161,9 @@ public class BoardFiller{
 
 	
 	/**
-	 * fills all the empty cells in the given squares[][] board with random letters
-	 * @param squares
-	 * @return
+	 * Fills all the empty cells in the given Squares[][] board with random letters
+	 * @param squares as a Square[][]
+	 * @return Square[][] 
 	 */
 	public Square[][] fillEmptySquares(Square[][] squares) {
 		// TODO Auto-generated method stub
@@ -252,6 +277,12 @@ public class BoardFiller{
 	}
 	 */
 
+	/**
+	 * InitialFill is called at the beginning of of a Level being played. It will populate the
+	 * board with random letters utilizing the Square.newLetter() methods
+	 * @param squares as Square[][]
+	 * @return Square[][]
+	 */
 	public Square[][] initialFill(Square[][] squares) {
 		// for each square
 
@@ -265,6 +296,13 @@ public class BoardFiller{
 		return squares;
 	}
 
+	/**
+	 * InitialFill (Theme Level Version) is called at the beginning of a Theme Level being played. It will
+	 * populate the board with the words from the target words list. 
+	 * @param bState as a Square[][]
+	 * @param targetWords as a ArrayList<String>
+	 * @return Square[][]
+	 */
 	public Square[][] initialFill(BoardState bState, ArrayList<String> targetWords) {
 		// TODO Auto-generated method stub
 		ThemeBuilder tBuild = new ThemeBuilder(bState, targetWords);		

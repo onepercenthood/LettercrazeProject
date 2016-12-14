@@ -14,20 +14,33 @@ import lettercraze.model.Model;
 import lettercraze.model.Square;
 import lettercraze.model.Word;
 
+/**
+ * ClearWordController clears the currently toggled squares that the user has selected. It clears
+ * the current word on the view as well as clearing in the model.
+ * @author ddeisadze
+ *
+ */
 public class ClearWordController extends MouseAdapter{
 
-	/** The game to be manipulated **/
+	/** The game to be manipulated. **/
 	Model model;
 
-	/** the top level application for navigation purposes **/
+	/** the top level application for navigation purposes. **/
 	PlayerApplication application;
 
-	/** the squarViews of the active boardState **/
+	/** the squarViews of the active boardState. **/
 	SquareView[][] squareViews;
 	
-	/** the boardView where the word is selected **/
+	/** the boardView where the word is selected. **/
 	BoardView boardView;
 
+	/**
+	 * ClearWordController constructor.
+	 * 
+	 * @param playerApp as the main PlayerApplication
+	 * @param boardView the boardView from the gameView or from model, by calling model
+	 * @param model as the model singleton of the entire application
+	 */
 	public ClearWordController(PlayerApplication playerApp, BoardView boardView, Model model) {
 		super();
 		this.model = model;
@@ -36,6 +49,9 @@ public class ClearWordController extends MouseAdapter{
 		this.squareViews = boardView.getSquareViews();
 	}
 
+	/**
+	 * Mouse pressed event simulator.
+	 */
 	public void mousePressed(MouseEvent me){
 		Word word = model.getCurrentWord();
 		BoardState tempBoard = model.getCurrentBoardState();
@@ -49,14 +65,5 @@ public class ClearWordController extends MouseAdapter{
 			}
 			System.out.println();
 		}
-//		Square toEdit = squareView.getSquare();
-//		while(word.getWordLength() > 0){
-//			word = model.getCurrentWord();
-//			word.removeSquare();
-//			model.setCurrentWord(word);
-//			toEdit.toggleSelected();
-//			squareView.repaintSquare();
-//		}
-
 	}
 }

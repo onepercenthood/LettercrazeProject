@@ -9,9 +9,13 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
+/**
+ * Panel to hold the splashScreen
+ * @author ddeisadze
+ *
+ */
 public class SplashScreen extends DefaultViewPanel{
-
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -156,7 +160,13 @@ public class SplashScreen extends DefaultViewPanel{
 		add(label_4);
 	}
 	
-	
+	/**
+	 * Sets up the JFrame based on the size and string and displays the splash-screen.
+	 * 
+	 * @param size Size of the JFrame window
+	 * @param builderOrPlayer Text to differentiate the title of the splash-screen
+	 * @return JFrame instance
+	 */
 	public static JFrame createAndShowGUI(Dimension size, String builderOrPlayer) {
         //Create and set up the window.
         JFrame frame = new JFrame("SplashScreen");

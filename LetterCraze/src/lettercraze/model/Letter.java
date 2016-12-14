@@ -23,6 +23,12 @@ public class Letter {
 	/** Double to store the frequency of the letter appearing */
 	protected double frequency;
 	
+	/**
+	 * Constructor for the letter object.
+	 * @param letter
+	 * @param value
+	 * @param frequency
+	 */
 	public Letter(String letter, Integer value, Double frequency){
 		super();
 		this.letter = letter;
@@ -59,6 +65,10 @@ public class Letter {
 		 return this.letter + ", " +Integer.toString(value);
 	 }
 	 
+	 /**
+	  * make a new Letter object with the same fields as this letter
+	  * @return Letter
+	  */
 	 public Letter copyLetter(){
 		 return new Letter(letter,value,frequency);
 	 }

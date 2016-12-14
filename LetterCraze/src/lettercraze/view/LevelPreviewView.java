@@ -52,6 +52,22 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	
 	private JLabel lblHighscore;
 	
+	/**
+	 * The main application JPanel
+	 */
+	private JPanel parent;
+	
+	/**
+	 * Advanced constructor for this class.
+	 * 
+	 * @param levelType as the levelType, either Puzzle, Lightning, or theme
+	 * @param color as the color to set the widget as
+	 * @param levelNumber as the levelNumber for the level
+	 * @param numStars as the number of stars earned for this elvel
+	 * @param cl as the main cardLayout
+	 * @param app as the main application 
+	 */
+	
 	/*	
 	public LevelPreviewView(String levelType, Color color, Integer levelNumber, Integer numStars, JPanel cl, PlayerApplication app){
 		this.levelType = levelType;
@@ -80,6 +96,10 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	}
 	
 	
+	/**
+	 * Initializes the view with data provided.
+	 * 
+	 */
 	private void initialize(){
 		
 		setBackground(this.color);

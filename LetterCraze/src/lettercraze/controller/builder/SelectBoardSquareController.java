@@ -8,6 +8,13 @@ import lettercraze.view.SquareView;
 import lettercraze.model.Model;
 import lettercraze.model.Square;
 
+/**
+ * This controller is responsible for selecting the board in order to design the level in our
+ * builder application.
+ * 
+ * @author ddeisadze
+ *
+ */
 public class SelectBoardSquareController extends MouseAdapter{
 
 	/** The game to be manipulated **/
@@ -19,6 +26,13 @@ public class SelectBoardSquareController extends MouseAdapter{
 	/** the squareview that was clicked **/
 	SquareView squareView;
 	
+	/**
+	 * The main constructor for this class.
+	 * 
+	 * @param app as the main BuilderApplication
+	 * @param squareView as the SquareView which was clicked by the user
+	 * @param model as the global application model
+	 */
 	public SelectBoardSquareController(BuilderApplication app, SquareView squareView, Model model) {
 		super();
 		this.model = model;
@@ -26,6 +40,9 @@ public class SelectBoardSquareController extends MouseAdapter{
 		this.squareView = squareView;
 	}
 	
+	/**
+	 * The main MousePressed event which is the main actionable method.
+	 */
 	public void mousePressed(MouseEvent me){
 		Square toEdit = squareView.getSquare();
 		//toggle whether the square is active
