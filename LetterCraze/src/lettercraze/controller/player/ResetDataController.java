@@ -13,14 +13,29 @@ import lettercraze.model.Level;
 import lettercraze.view.LevelPreviewView;
 import lettercraze.view.MenuView;
 
+/**
+ * This controller resets all data including highscores, stars, etc. in the levels from 
+ * the mainmenu view.
+ * 
+ * @author ddeisadze
+ *
+ */
 public class ResetDataController implements ActionListener{
 
 	/** MenuView to be repainted */
 	MenuView mv;
+	
+	/**
+	 * The main constructor for this controller
+	 * @param mv menuView as initialized in the main appplication level.
+	 */
 	public ResetDataController (MenuView mv){
 		this.mv = mv;
 	}
 	
+	/**
+	 * ActionPerformed method which wraps this controller in an actionable method.
+	 */
 	public void actionPerformed(ActionEvent act) {
 		File source = new File("default_levels_original");
 		File destination = new File("default_levels");
