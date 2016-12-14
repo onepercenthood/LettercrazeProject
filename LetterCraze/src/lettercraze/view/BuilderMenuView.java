@@ -1,25 +1,8 @@
 package lettercraze.view;
 
-import java.awt.CardLayout;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.GridLayout;
-import java.awt.SystemColor;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-
 import lettercraze.BuilderApplication;
 import lettercraze.controller.builder.CreateNewLevelController;
 import lettercraze.controller.builder.OpenLevelSelecterController;

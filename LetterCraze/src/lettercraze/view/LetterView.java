@@ -1,13 +1,8 @@
 package lettercraze.view;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import lettercraze.model.Letter;
-import net.miginfocom.swing.MigLayout;
-
-import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 

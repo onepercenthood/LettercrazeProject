@@ -1,33 +1,19 @@
 package lettercraze.view;
-
-import java.awt.BorderLayout;
  
-import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.GridLayout;
-import java.awt.SystemColor;
-import java.awt.Window;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
-import javafx.scene.shape.Box;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.player.ClearWordController;
 import lettercraze.controller.player.PlayWordController;
 import lettercraze.controller.player.UndoController;
 import lettercraze.controller.player.LeaveLevelEarlyController;
-import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.model.Model;
 import lettercraze.model.Puzzle;
 import lettercraze.model.Theme;
@@ -36,8 +22,6 @@ import lettercraze.view.BoardView;
 
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-import javax.swing.ListModel;
-import javax.swing.ListSelectionModel;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -364,6 +348,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	          ImageIcon icon = new ImageIcon(img);
 	          JLabel label = new JLabel(icon);
 	          JOptionPane.showMessageDialog(null, label);
+
 	       } catch (IOException e) {
 	          e.printStackTrace();
 	       }

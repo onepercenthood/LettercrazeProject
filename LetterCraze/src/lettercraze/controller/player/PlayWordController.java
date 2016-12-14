@@ -1,11 +1,8 @@
 package lettercraze.controller.player;
 
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
-import javax.swing.DefaultListModel;
 
 import lettercraze.PlayerApplication;
 import lettercraze.model.BoardState;
@@ -13,7 +10,7 @@ import lettercraze.model.Model;
 import lettercraze.model.Puzzle;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
-import lettercraze.view.SquareView;
+
 
 public class PlayWordController extends MouseAdapter{
 	
