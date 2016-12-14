@@ -99,10 +99,17 @@ public class TimeController implements ActionListener {
     }
 	
 	/**
+<<<<<<< HEAD
      * Starts the Timer thread
      * @param delay1 as an Integer
      * @param action as an ActionListener 
      */
+=======
+	 * Starts the timer with the given delay between ticks
+	 * @param delay1 as int
+	 * @param action as ActionListener
+	 */
+>>>>>>> refs/heads/J
     public static void startTimer(int delay1, ActionListener action ){
     	
     	System.out.println("Timeer initilalized");

@@ -130,7 +130,7 @@ public class BoardState extends BoardFiller{
 		for(Square curSquare : squareArr){
 			int row = curSquare.getRow();
 			int col = curSquare.getColumn();
-			this.squares[row][col].removeLetterFromSquare(null);
+			this.squares[row][col].removeLetterFromSquare(false);
 		}
 	}
 

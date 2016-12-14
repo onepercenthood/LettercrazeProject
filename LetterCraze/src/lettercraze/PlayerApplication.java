@@ -75,6 +75,10 @@ public class PlayerApplication extends JFrame {
 	 */
 	private JPanel panelMain;
 	
+	/**
+	 * returns the parent container of the menu and game views.
+	 * @return JPanel
+	 */
 	public JPanel getCardLayoutParent() {
 		return panelMain;
 	}
@@ -133,6 +137,9 @@ public class PlayerApplication extends JFrame {
 
 	}
 	
+	/**
+	 * Initializes the view classes
+	 */
 	public void initializeViewClasses(){
 		menuView = new MenuView(panelMain, model, this);
 		
@@ -214,11 +221,19 @@ public class PlayerApplication extends JFrame {
 		
 	}
 
+	/**
+	 * returns the gameView of this object
+	 * @return GameView
+	 */
 	public GameView getGameView() {
 		// TODO Auto-generated method stub
 		return this.gameView;
 	}
 	
+	/**
+	 * returns the model associate with this applicaiton object
+	 * @return Model
+	 */
 	public Model getModel() {
 		return model;
 	}

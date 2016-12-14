@@ -75,6 +75,10 @@ public class BuilderApplication extends JFrame {
 	
 	BuilderLevelSelecterView loadLevelMenuView;
 	
+	/**
+	 * returns the buidlerView
+	 * @return BuilderView
+	 */
 	public BuilderView getBuilderView() {
 		return builderView;
 	}
@@ -137,6 +141,9 @@ public class BuilderApplication extends JFrame {
 
 	}
 	
+	/**
+	 * well, you see, it initializes the Builder-specific views (just not the levelSelector view)
+	 */
 	public void initializeViewClasses(){
 		menuView = new BuilderMenuView(getPanelMain(), model, this );
 		builderView = new BuilderView(model, getPanelMain(), this);

@@ -35,8 +35,6 @@ public class DeleteExistingLevelController extends java.awt.event.MouseAdapter{
 	 * Main constructor for this controller.
 	 * @param selectorView as the selector parent view
 	 * @param thumbnailView as the thumbnail view
-	 * 
-	 * @param parent the main JPanel which holds the cardLayouts
 	 * @param level The level to delete
 	 */
 	public DeleteExistingLevelController(BuilderLevelSelecterView selectorView, BuilderLevelThumbnail thumbnailView, Level level) {

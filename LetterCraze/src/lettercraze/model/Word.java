@@ -123,15 +123,28 @@ public class Word {
 		return lastSquare;
 	}
 
+	/**
+	 * returns all the squares in the word (they contain the letters)
+	 * @return ArrayList<Square>
+	 */
 	public ArrayList<Square> getLetters(){
 		return this.letters;
 	}
 
+	/**
+	 * returns the number of characters in the word
+	 * @return int
+	 */
 	public int getWordLength(){
 		int length = this.letters.size();
 		return length;
 	}
 
+	/**
+	 * gets the specified square in the word
+	 * @param num as int
+	 * @return Square
+	 */
 	public Square getCertainSquare(int num){
 		Square retSquare = this.letters.get(num - 1);
 		return retSquare;
@@ -139,7 +152,7 @@ public class Word {
 
 	/**
 	 * returns a deep copy of this word, with no common objects in the copy.
-	 * @return
+	 * @return Word
 	 */
 	public Word copyWord(){
 		Word copy = new Word(new Square(0, 0));

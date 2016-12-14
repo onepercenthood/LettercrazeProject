@@ -125,6 +125,9 @@ public class FileIO {
 		File[] levelFiles = levelFolder.listFiles();
 		ObjectMapper mapper = new ObjectMapper();
 		ArrayList<Level> levels = new ArrayList<Level>();
+		if(levelFiles.length ==0){
+			return levels;
+		}
 		    for (int i = 0; i < levelFiles.length; i++) {
 
 		    	//convert JSON in file into level object and store in levels arraylist

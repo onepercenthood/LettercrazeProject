@@ -30,7 +30,10 @@ public class BuilderLevelThumbnail extends JPanel {
 	BuilderLevelSelecterView parent;
 		
 	/**
-	 * Create the panel.
+	 * Constructor for the builderlevel thumbnail
+	 * @param level as Level		
+	 * @param grandParent as JPanel
+	 * @param parent as JPanel
 	 */
 	public BuilderLevelThumbnail(Level level, JPanel grandParent, BuilderLevelSelecterView parent) {
 		this.grandParentPanel = grandParent;
