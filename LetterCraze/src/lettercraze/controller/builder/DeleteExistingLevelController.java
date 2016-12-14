@@ -82,15 +82,13 @@ public class DeleteExistingLevelController extends java.awt.event.MouseAdapter{
 			newLevels.add(li, levels.get(li));
 		}		
 		
-		selectorView.removeAll();
-
-		this.selectorView.setAllLevels(newLevels);
+		JPanel curParent = selectorView.getParent();
+		curParent.remove(selectorView);
 		
-		this.selectorView.initialize();
+		CardLayout cdl = (CardLayout) curParent.getLayout();
 		
-		this.selectorView.repaint();
-		
-		this.selectorView.getParent().repaint();
+		// HACK BITCHES
+		new OpenLevelSelecterController(curParent).mousePressed(me);
 		
 		
 	}

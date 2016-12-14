@@ -92,6 +92,13 @@ public class BuilderLevelSelecterView extends JPanel{
 	public void setAllLevels(ArrayList<Level> levels){
 		this.levels = levels;
 	}
+
+	/**
+	 * @return the parent
+	 */
+	public JPanel getParent() {
+		return parent;
+	}
 	
 	
 
