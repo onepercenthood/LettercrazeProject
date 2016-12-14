@@ -168,7 +168,7 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 			if(highScore >= starThreshold[i]){
 				numStars = i +1;
 				System.out.println("Set starRater to: " + numStars);
-			}
+			} 
 		}
 		starRater.setRating((float) numStars);
 		starRater.repaint();
@@ -185,10 +185,17 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		return levelNumber.intValue();
 	}
 
-	public void updateInfo() {
+	public void updateInfo(Level level) {
+		this.level = level;
+		this.level = level;
+		this.levelType = level.getLevelType();
+		this.levelNumber = level.getLevelNum();
+		this.highScore = level.getHighScore();
+		this.starThreshold = level.getStarThreshold();
+		this.numStars = level.getHighStars(level.getHighScore());
 		setHighScore(level.getHighScore());
 		setEnabled(level.getIsUnlocked());
-		this.repaint();
+		//this.repaint();
 	}
 	
 }
