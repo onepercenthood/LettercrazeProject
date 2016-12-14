@@ -2,6 +2,7 @@ package lettercraze.view;
 
 import javax.swing.JPanel;
 
+import lettercraze.controller.builder.DeleteExistingLevelController;
 import lettercraze.controller.builder.EditExistingLevelController;
 import lettercraze.model.Level;
 
@@ -22,13 +23,19 @@ public class BuilderLevelThumbnail extends JPanel {
 	
 	/** the top level parent to switch to editor **/
 	JPanel grandParentPanel;
+	
+	/**
+	 * The bulderLevelSelector view which is the parent of this view
+	 */
+	BuilderLevelSelecterView parent;
 		
 	/**
 	 * Create the panel.
 	 */
-	public BuilderLevelThumbnail(Level level, JPanel grandParent) {
+	public BuilderLevelThumbnail(Level level, JPanel grandParent, BuilderLevelSelecterView parent) {
 		this.grandParentPanel = grandParent;
 		this.level = level;
+		this.parent = parent;
 		initialize();
 	}
 	
@@ -52,18 +59,23 @@ public class BuilderLevelThumbnail extends JPanel {
 		add(lblLevelType);
 		
 		JLabel lblLevelNumber = new JLabel("Level Number: " + level.getLevelNum());
-		lblLevelNumber.setBounds(15, 47, 122, 37);
+		lblLevelNumber.setBounds(15, 33, 122, 37);
 		add(lblLevelNumber);
 		
 		JButton btnEdit = new JButton("Edit");
-		btnEdit.setBounds(15, 100, 120, 29);
+		btnEdit.setBounds(17, 70, 120, 29);
 		btnEdit.addMouseListener(new EditExistingLevelController(grandParentPanel, level));
 		add(btnEdit);
+		
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBounds(15, 97, 122, 29);
+		btnDelete.addMouseListener(new DeleteExistingLevelController( this.parent, this, level));
+		add(btnDelete);
 		
 	}
 	
 	@Override
     public Dimension getPreferredSize() {
         return new Dimension(300, 300);
-    };
+    }
 }

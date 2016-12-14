@@ -49,8 +49,10 @@ public class BuilderLevelSelecterView extends JPanel{
 			add(Menubutton); 
 			
 			for(Level toLoad: levels){
-				BuilderLevelThumbnail levelThumbnail = new BuilderLevelThumbnail(toLoad, parent);	
+				BuilderLevelThumbnail levelThumbnail = new BuilderLevelThumbnail(toLoad, parent, this);	
 				add(levelThumbnail);
+				
+				parent.repaint();
 			}
 		} else {
 			System.err.println("There were no levels on the disk!");
@@ -64,6 +66,29 @@ public class BuilderLevelSelecterView extends JPanel{
 	 */
 	public String getPanelName(){
 		return "BuilderLevelSelecter";
+	}
+	
+	/**
+	 * Removes all panels
+	 */
+	public void removeAllPanels(){
+		this.removeAll();
+	}
+	
+	/**
+	 * Get all levels
+	 * @return as the ArrayList of levels
+	 */
+	public ArrayList<Level> getAllLevels(){
+		return this.levels;
+	}
+	
+	/**
+	 * Set levels
+	 * @param levels as the levels to set
+	 */
+	public void setAllLevels(ArrayList<Level> levels){
+		this.levels = levels;
 	}
 	
 	
