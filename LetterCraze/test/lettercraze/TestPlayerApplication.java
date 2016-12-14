@@ -8,7 +8,9 @@ import javax.swing.JPanel;
 
 import junit.framework.TestCase;
 import lettercraze.controller.player.ClearWordController;
+import lettercraze.controller.player.LeaveLevelEarlyController;
 import lettercraze.controller.player.PlayWordController;
+import lettercraze.controller.player.ResetDataController;
 import lettercraze.controller.player.SelectAvailableLevelController;
 import lettercraze.controller.player.ToggleSquareController;
 import lettercraze.controller.player.UndoController;
@@ -175,6 +177,12 @@ public class TestPlayerApplication extends TestCase {
 		new SelectAvailableLevelController(2, cdl, pa).actionPerformed(null);
 		
 		assertEquals(pa.model.getCurrentLevel(), 2);
+
+		
+		new LeaveLevelEarlyController(pa.getCardLayoutParent(), pa.model, pa.gameView).mousePressed(null);
+		
+		new ResetDataController(pa.menuView).actionPerformed(null);
+				
 
 	}
 	

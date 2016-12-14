@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import junit.framework.TestCase;
 import lettercraze.controller.builder.AssignLevelTypeController;
+import lettercraze.controller.builder.BackToMenuController;
 import lettercraze.controller.builder.CreateNewLevelController;
 import lettercraze.controller.builder.ResetBoardSquaresController;
 import lettercraze.controller.builder.SaveLevelController;
@@ -29,7 +30,7 @@ public class TestBuilderApplication extends TestCase {
 	
 	public void testCreateNewLevel(){
 		CreateNewLevelController create = new CreateNewLevelController(ba, ba.getPanelMain(), ba.model);
-		
+				
 		create.mousePressed(null);
 		
 		CardLayout cdL = (CardLayout) ba.getPanelMain().getLayout();
@@ -60,9 +61,17 @@ public class TestBuilderApplication extends TestCase {
 		bPV.getTxtfldThreeStar().setText("30");
 		bPV.getTxtfldmaxWords().setText("10");
 		
+		assertEquals(bPV.getTxtfldOneStar().getText(), "10");
+		assertEquals(bPV.getTxtfldTwoStar().getText(), "20");
+		assertEquals(bPV.getTxtfldThreeStar().getText(), "30");
+		assertEquals(bPV.getTxtfldmaxWords().getText(), "10");
+
+		
 		new SaveLevelController(ba.builderView, ba.getPanelMain(), ba.model).mousePressed(me);;
 
 		
 	}
+	
+
 
 }
