@@ -28,6 +28,9 @@ public class BuilderLightningPanelView extends AbsBuilderLevelPanel{
 	private JTextField txtfldThreeStarPoints;
 	private JTextField txtfldmaxTimer;
 
+	/**
+	 * Constructor for the BuidlerLightningPanelView
+	 */
 	public BuilderLightningPanelView(){
 		setBackground(new Color(255, 140, 0));
 		setLayout(null);

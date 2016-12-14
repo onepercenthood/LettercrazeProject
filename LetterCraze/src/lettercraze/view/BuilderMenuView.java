@@ -10,6 +10,11 @@ import lettercraze.model.Model;
 
 import java.awt.Font;
 
+/**
+ * Allows the option of either loading a level or creating a new one. First Screen of builder
+ * @author Everett
+ *
+ */
 public class BuilderMenuView extends DefaultViewPanel{
 
 	/**

@@ -192,12 +192,9 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	}
 	
 	/**
-	 * Adds level to custom menu.
-	 * 
-	 * This is public.
-	 * 
-	 * @param level
-	 * @return
+	 * Adds LevelPreviewView to custom menu.
+	 * @param level as LevelPreviewView
+	 * @return true if added successfully, false otherwise
 	 */
 	public boolean addMenuItemToCustom(LevelPreviewView level){
 		if(rowCountCus == 3){
@@ -211,8 +208,8 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 	}
 	/**
 	 * Adds menu item to default menu, this is private because we do not want to change the default levels.
-	 * @param level
-	 * @return
+	 * @param level as LevelPreviewView
+	 * @return true if added successfully, false otherwise
 	 */
 	public boolean addMenuItemToDefault(LevelPreviewView level){
 		if(rowCountDef == 3){

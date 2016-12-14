@@ -10,6 +10,11 @@ import lettercraze.controller.builder.BackToMenuController;
 import lettercraze.model.FileIO;
 import lettercraze.model.Level;
 
+/**
+ * Provides the menu for selecting levels to load into the builder
+ * @author Everett
+ *
+ */
 public class BuilderLevelSelecterView extends JPanel{
 
 	/** parent container **/
@@ -17,13 +22,19 @@ public class BuilderLevelSelecterView extends JPanel{
 	
 	/** list of levels to select from **/
 	ArrayList<Level> levels;
-	
+	/**
+	 * Constructor for the BuilderLevelSelecterView, takes in the parent container
+	 * @param parent as JPanel
+	 */
 	public BuilderLevelSelecterView(JPanel parent) {
 		this.parent = parent;
 		this.levels = FileIO.loadCustomLevelsFromDisk();
 		initialize();
 	}
 
+	/**
+	 * sets up the builderLevelSelecterView panel for use
+	 */
 	public void initialize(){
 		int numLevels = levels.size();
 		
@@ -45,6 +56,10 @@ public class BuilderLevelSelecterView extends JPanel{
 		
 	}
 	
+	/**
+	 * gets the name of the panel ("BuilderLevelSelecter")
+	 * @return String
+	 */
 	public String getPanelName(){
 		return "BuilderLevelSelecter";
 	}
