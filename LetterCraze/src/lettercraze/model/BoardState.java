@@ -57,7 +57,7 @@ public class BoardState extends BoardFiller{
 	
 	/**
 	 * 
-	 * @param level
+	 * @param level as a Level 
 	 */
 	public BoardState(Level level){
 		boolean[][] shape = level.getBoardShape();
@@ -117,7 +117,7 @@ public class BoardState extends BoardFiller{
 	}
 
 	/**
-	 * deselects all the squares in the board
+	 * De-selects all the squares in the board
 	 */
 	public void deselectAllSquares(){
 		for(int i = 0; i < 6; i++){
@@ -127,6 +127,10 @@ public class BoardState extends BoardFiller{
 		}
 	}
 
+	/**
+	 * Removes the Letter from each square in a word. 
+	 * @param word as a Word 
+	 */
 	public void removeLetterFromSquares(Word word){
 
 		ArrayList<Square> squareArr = word.getLetters();
