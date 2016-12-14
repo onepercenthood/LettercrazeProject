@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import lettercraze.controller.builder.BackToMenuController;
 import lettercraze.model.FileIO;
 import lettercraze.model.Level;
+import java.awt.Color;
 
 public class BuilderLevelSelecterView extends JPanel{
 
@@ -19,6 +20,7 @@ public class BuilderLevelSelecterView extends JPanel{
 	ArrayList<Level> levels;
 	
 	public BuilderLevelSelecterView(JPanel parent) {
+		setBackground(new Color(204, 255, 255));
 		this.parent = parent;
 		this.levels = FileIO.loadCustomLevelsFromDisk();
 		initialize();

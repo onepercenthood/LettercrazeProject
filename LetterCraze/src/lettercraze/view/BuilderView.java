@@ -63,7 +63,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		this.bgColor = new Color(178, 34, 34);
 		this.app = app;
 		this.labelFont = new Font("Times New Roman", Font.BOLD, 18);
-		setBackground(bgColor);
+		setBackground(new Color(102,255,102));
 		initialize();
 	}
 
@@ -107,7 +107,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 
 		JPanel pnlPuzzle = new BuilderPuzzlePanelView(labelFont);
 		pnlLevelSwitch.add(pnlPuzzle, "Puzzle");
-		pnlPuzzle.setBackground(Color.GREEN);
+		pnlPuzzle.setBackground(new Color(102,255,102));
 		pnlPuzzle.setLayout(null);
 
 		JPanel pnlLightning = new BuilderLightningPanelView();
@@ -250,7 +250,7 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		String string = (String) evt.getItem();
 		
 		if(string.equals("Puzzle")){
-			levelColor = Color.GREEN;
+			levelColor = new Color(102,255,102);
 		}
 		else if(string.equals("Lightning")){
 			levelColor = Color.ORANGE;

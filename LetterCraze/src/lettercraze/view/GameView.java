@@ -172,7 +172,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 
 		Color levelColor = Color.RED;
 		if(model.getLevel(model.getCurrentLevel()).getLevelType().equals("Puzzle")){
-			levelColor = Color.GREEN;
+			levelColor = new Color(102,255,102);
 		}
 		else if(model.getLevel(model.getCurrentLevel()).getLevelType().equals("Lightning")){
 			levelColor = Color.ORANGE;

@@ -68,7 +68,7 @@ public class SquareView extends DefaultViewPanel{
 			if(square.isSelected()){
 				this.setBackground(Color.YELLOW);
 			} else {
-				this.setBackground(defaultColor);
+				this.setBackground(new Color(204,255,255));
 			}
 		} else {
 				this.setBackground(Color.GRAY);

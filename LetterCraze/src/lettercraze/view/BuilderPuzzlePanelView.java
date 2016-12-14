@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 
 import lettercraze.model.Level;
 import lettercraze.model.Puzzle;
+import java.awt.Color;
 
 public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 
@@ -50,6 +51,7 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 		lblMaxMoves.setFont(labelFont);
 		
 		JPanel pnlPuzzle_star_1 = new JPanel();
+		pnlPuzzle_star_1.setBackground(new Color(102,255,102));
 		pnlPuzzle_star_1.setBounds(44, 11, 26, 26);
 		add(pnlPuzzle_star_1);
 		StarRater pzzlStarRater1 = new StarRater(1, 1 );
@@ -66,6 +68,7 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 		pnlPuzzle_star_1.add(pzzlStarRater1);
 		
 		JPanel pnlPuzzle_star_2 = new JPanel();
+		pnlPuzzle_star_2.setBackground(new Color(102,255,102));
 		pnlPuzzle_star_2.setBounds(26, 48, 42, 26);
 		add(pnlPuzzle_star_2);
 		StarRater pzzlStarRater2 = new StarRater(2, 2 );
@@ -82,6 +85,7 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 		pnlPuzzle_star_2.add(pzzlStarRater2);
 		
 		JPanel pnlPuzzle_star_3 = new JPanel();
+		pnlPuzzle_star_3.setBackground(new Color(102,255,102));
 		pnlPuzzle_star_3.setBounds(10, 88, 58, 26);
 		add(pnlPuzzle_star_3);
 		StarRater pzzlStarRater3 = new StarRater(3, 3 );
@@ -163,7 +167,7 @@ public class BuilderPuzzlePanelView extends AbsBuilderLevelPanel{
 		}  catch(NullPointerException e){
 			JFrame errorFrame = new JFrame();
 			errorFrame.setTitle("Unfilled Level Fields");
-			errorFrame.setLayout(null);
+			errorFrame.getContentPane().setLayout(null);
 	        errorFrame.setPreferredSize(new Dimension(400, 100));
 	        errorFrame.setResizable(false);
 	        errorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

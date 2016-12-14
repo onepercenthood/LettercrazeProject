@@ -31,7 +31,7 @@ public class BuilderLevelThumbnail extends JPanel {
 		setLayout(null);
 		switch(level.getLevelType()){
 		case "Puzzle": 
-		case "puzzle": this.setBackground(Color.GREEN); break;
+		case "puzzle": this.setBackground(new Color(102,255,102)); break;
 		case "lightning":
 		case "Lightning": this.setBackground(Color.ORANGE); break;
 		case "theme":
