@@ -5,7 +5,6 @@ import javax.swing.JTextField;
 
 import lettercraze.model.Level;
 import lettercraze.model.Lightning;
-import lettercraze.model.Puzzle;
 
 import javax.swing.JLabel;
 import java.awt.Font;

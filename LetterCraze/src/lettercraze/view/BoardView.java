@@ -1,24 +1,16 @@
 package lettercraze.view;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.SystemColor;
 
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import lettercraze.BuilderApplication;
 import lettercraze.PlayerApplication;
 import lettercraze.controller.builder.SelectBoardSquareController;
 import lettercraze.controller.player.ToggleSquareController;
-import lettercraze.model.BoardState;
-import lettercraze.model.Letter;
 import lettercraze.model.Model;
 import lettercraze.model.Square;
  

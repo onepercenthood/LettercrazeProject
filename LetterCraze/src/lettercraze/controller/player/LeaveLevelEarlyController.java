@@ -5,9 +5,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
-
-import lettercraze.PlayerApplication; 
 import lettercraze.model.FileIO;
+import lettercraze.model.Level;
 import lettercraze.model.Model;
 import lettercraze.view.GameView;
 import lettercraze.view.LevelPreviewView;
@@ -32,7 +31,12 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 
 	@Override
 	public void mousePressed(MouseEvent me){
-
+		
+		Level thislevel = model.getCurrentLevelObject();
+		if(thislevel.getLevelType().equals("Lightning")){
+			TimeController.stopTimer();
+		}
+ 
 		int nextLevel = model.getCurrentLevelObject().getLevelNum() + 1;
 
 		int highScore = model.getCurrentLevelObject().getHighScore();

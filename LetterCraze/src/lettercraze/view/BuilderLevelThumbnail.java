@@ -7,7 +7,6 @@ import lettercraze.model.Level;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 

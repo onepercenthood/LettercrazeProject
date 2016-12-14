@@ -1,12 +1,8 @@
 
 package lettercraze.view;
-import java.awt.BorderLayout;
 
 import java.awt.CardLayout;
-import java.awt.Dimension;
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
@@ -14,13 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.DefaultComboBoxModel;
-import java.awt.GridBagLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
 
 import lettercraze.BuilderApplication;
 import lettercraze.controller.builder.ExitWithoutSavingController;
@@ -30,18 +19,11 @@ import lettercraze.model.Model;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Container;
 import java.awt.SystemColor;
-import javax.swing.SwingConstants;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
-import java.awt.FlowLayout;
-import javax.swing.JTextArea;
+
 
 public class BuilderView extends DefaultViewPanel implements ItemListener{
 
