@@ -124,8 +124,9 @@ public class BoardView extends DefaultViewPanel implements IModelChangedView {
 	public void builderInitialize(BuilderApplication app){
 		for(int row = 0; row < 6; row++){
 			for(int col = 0; col < 6; col++){
-				//save some typing
-				Square thisSquare = model.getCurrentBoardState().getSquares()[row][col];
+				//setup a square at this location
+				Square thisSquare = new Square(row,col);
+				thisSquare.newLetter();
 				//initialize the squareview at row, col, and to hide the letter
 				squareViews[row][col] = new SquareView(thisSquare, colorPlayer, false);
 				squareViews[row][col].setPreferredSize(new Dimension(64,64));
