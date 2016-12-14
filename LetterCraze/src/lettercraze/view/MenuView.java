@@ -23,6 +23,8 @@ import java.util.ArrayList;
 
 import net.miginfocom.swing.MigLayout;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Font;
 
 public class MenuView extends DefaultViewPanel implements IModelChangedView {
 
@@ -85,29 +87,35 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		add(panel, BorderLayout.CENTER);
 
 		JLabel lblLettercrazeMainMenu = new JLabel("LetterCraze Main Menu");
+		lblLettercrazeMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+		
+		JButton btnResetAllProgress = new JButton("Reset All Progress");
 
 		gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(360, Short.MAX_VALUE)
-					.addComponent(lblLettercrazeMainMenu)
-					.addGap(319))
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(45)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 692, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(53, Short.MAX_VALUE))
+					.addContainerGap()
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addGap(23)
+					.addComponent(btnResetAllProgress)
+					.addPreferredGap(ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+					.addComponent(lblLettercrazeMainMenu, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
+					.addGap(323))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblLettercrazeMainMenu)
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 509, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(41, Short.MAX_VALUE))
+					.addGap(6)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblLettercrazeMainMenu, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnResetAllProgress))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 496, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(59, Short.MAX_VALUE))
 		);
 		
 		
@@ -228,5 +236,4 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

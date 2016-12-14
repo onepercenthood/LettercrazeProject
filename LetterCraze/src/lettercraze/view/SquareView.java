@@ -25,7 +25,7 @@ public class SquareView extends DefaultViewPanel{
 		this.letterView = new LetterView(square.getLetter());
 		int halfWidth = this.getWidth() / 2;
 		int halfHeight = this.getHeight() / 2;
-		letterView.setBounds(halfWidth, halfHeight,64,64);
+		letterView.setBounds(0, 0,72,72);
 		add(letterView);
 		//if we're supposed to show the letter, add it to the panel
 		if(!showLetter) 
