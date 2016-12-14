@@ -33,7 +33,8 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 	@Override
 	public void mousePressed(MouseEvent me){
 
-		int nextLevel = model.getCurrentLevelObject().getLevelNum();
+		int nextLevel = model.getCurrentLevelObject().getLevelNum() + 1;
+
 		int highScore = model.getCurrentLevelObject().getHighScore();
 		int currentPlayedScore = model.getCurrentBoardState().getScore();
 		boolean isNextLevelUnlocked = model.getLevel(nextLevel).getIsUnlocked();
@@ -42,15 +43,19 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 		int highStarsScored = model.getCurrentLevelObject().getHighStars(currentPlayedScore);
 
 		//***stub for later***
-		if(currentPlayedScore > highScore){
-			model.getCurrentLevelObject().updateHighScore(currentPlayedScore);
-			if((highStarsScored >= 1) & (isNextLevelUnlocked == false)){
-				model.getLevel(nextLevel).setUnLocked(true);
-			}
-			//need a get level obj method in 
-			//model.getCurrentLevelObject().setHighScore(model.getCurrentLevelObject().getHighScore());
-
+		model.getCurrentLevelObject().updateHighScore(currentPlayedScore);
+		System.out.println("highStarsScored " + highStarsScored);
+		System.out.println("isNextUnlocked " + isNextLevelUnlocked);
+		if((highStarsScored >= 1) && (isNextLevelUnlocked == false)){
+			model.getLevel(nextLevel).setUnLocked(true);
+			System.out.println("Setting level " + nextLevel + " unlocked to true");
+			MenuView menu = (MenuView) parent.getComponent(0);
+			menu.getLevels().get(nextLevel - 1).setEnabled(true);
 		}
+		//need a get level obj method in 
+		//model.getCurrentLevelObject().setHighScore(model.getCurrentLevelObject().getHighScore());
+
+
 
 		FileIO.saveLevelToDisk(model.getCurrentLevelObject());
 		FileIO.saveLevelToDisk(model.getLevel(nextLevel));
