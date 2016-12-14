@@ -84,7 +84,7 @@ public class SelectAvailableLevelController implements ActionListener{
 		System.out.println(curLevel.getLevelType());
 
 		// If it is a lightning level, the a Timer needs to be initialized 
-		if(curLevel.getLevelType() == "Lightning"){
+		if(curLevel.getLevelType().equals("Lightning")){
 			
 			// Print statements for confirmations 
 			System.out.println("Timer initialized");
