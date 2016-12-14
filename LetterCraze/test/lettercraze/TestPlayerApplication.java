@@ -18,6 +18,7 @@ import lettercraze.model.Alphabet;
 import lettercraze.model.BoardState;
 import lettercraze.model.Letter;
 import lettercraze.model.Model;
+import lettercraze.model.Puzzle;
 import lettercraze.model.Square;
 import lettercraze.model.Theme;
 import lettercraze.model.WordTable;
@@ -80,7 +81,11 @@ public class TestPlayerApplication extends TestCase {
 
 		
 		System.out.println(squares);
-		bs = new BoardState(shape);
+		
+		Puzzle puzLevel = new Puzzle();
+		
+		puzLevel.setBoardShape(shape);
+		bs = new BoardState(puzLevel);
 		
 		bs.setSquares(squares);
 
