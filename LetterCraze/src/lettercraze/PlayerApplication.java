@@ -163,7 +163,7 @@ public class PlayerApplication extends JFrame {
 				}
 				//LevelPreviewView level = new LevelPreviewView(currentLevel.getLevelType(), levelColor, currentLevel.getLevelNum(), 0, panelMain, this);
 				LevelPreviewView level = new LevelPreviewView(currentLevel, levelColor, panelMain, this);
-				LevelPreviewView levelPreviewView = new LevelPreviewView(currentLevel.getLevelType(), levelColor, currentLevel.getLevelNum(), 0, panelMain, this);
+				//LevelPreviewView levelPreviewView = new LevelPreviewView(currentLevel.getLevelType(), levelColor, currentLevel.getLevelNum(), 0, panelMain, this);
 				
 				if(totalCount <= 15){
 					if(!currentLevel.getIsUnlocked()){

@@ -90,6 +90,7 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		// setup star view here
 		JPanel starView = new JPanel();
 		starRater = new StarRater(3, this.numStars );
+		setHighScore(highScore);
 		starRater.addStarListener(new StarRater.StarListener() {
 
 			@Override
