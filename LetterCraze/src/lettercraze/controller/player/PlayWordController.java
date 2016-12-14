@@ -59,7 +59,14 @@ public class PlayWordController extends MouseAdapter{
 				//adds it to the current score and displays it
 				int value = word.calculateValue();
 				int currentScore = tempBoard.getScore();
-				int newScore = value + currentScore;
+				int newScore = 0;
+				
+				//increment score by the value of the word if puzzle
+				if(model.getCurrentLevelObject().getLevelType().equals("Puzzle"))
+					newScore = value + currentScore;
+				else //if lightning or theme, increment by one
+					newScore = currentScore + 1;
+				//set the newly incremented score
 				tempBoard.setScore(newScore);
 				
 				//checks new score against star threshold and displays update accordingly
@@ -94,7 +101,10 @@ public class PlayWordController extends MouseAdapter{
 			 
 				//floats tiles up into empty squares, fills the new empty squares and sets boardstate
 				tempBoard.floatTilesUp(tempBoard.getSquares());
-				tempBoard.fillEmptySquares(tempBoard.getSquares());
+				//re-fill the board if it is not a theme level
+				if(!model.getCurrentLevelObject().getLevelType().equals("Theme"))
+					tempBoard.fillEmptySquares(tempBoard.getSquares());
+								
 				model.setCurrentBoardState(tempBoard);
 				 
 				//repaints all changed attributes

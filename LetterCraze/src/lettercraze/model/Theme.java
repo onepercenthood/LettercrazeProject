@@ -44,6 +44,7 @@ public class Theme extends Level{
 		this.starThreshold[0] = size - 2;
 		this.starThreshold[1] = size - 1;
 		this.starThreshold[2] = size;
+		
 	}
 
 	@Override

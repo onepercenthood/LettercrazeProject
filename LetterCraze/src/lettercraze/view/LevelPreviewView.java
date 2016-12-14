@@ -163,7 +163,7 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		int i = 0;
 		for(i = 0; i < 3; i ++){
 			System.out.println(highScore + ", " + starThreshold[i]);
-			if(highScore > starThreshold[i]){
+			if(highScore >= starThreshold[i]){
 				numStars = i +1;
 				System.out.println("Set starRater to: " + numStars);
 			}
