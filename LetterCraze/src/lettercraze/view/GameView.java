@@ -68,6 +68,10 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	private JPanel parent;
 
 	private JButton btnAddWord;
+	
+	private JButton btnUndoMove;
+	
+	private JButton btnClearWord;
 
 	private PlayerApplication app;
 
@@ -180,12 +184,12 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		add(btnAddWord);		
 		btnAddWord.addMouseListener(new PlayWordController(app, model, this ));
 		
-		JButton btnClearWord = new JButton("Clear Word");
+		btnClearWord = new JButton("Clear Word");
 		btnClearWord.setBounds(243, 42, 117, 29);
 		btnClearWord.addMouseListener(new ClearWordController(app, this.boardview, model));
 		add(btnClearWord);
 		
-		JButton btnUndoMove = new JButton("Undo Move");
+		btnUndoMove = new JButton("Undo Move");
 		btnUndoMove.setBounds(116, 42, 117, 29);
 		btnUndoMove.addMouseListener(new UndoController(app, model, this));
 		add(btnUndoMove);
@@ -326,5 +330,24 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	}
 	public void setBackgroundRed(){
 		this.setBackground(Color.RED);
+	}
+	
+	public JButton getBtnAddWord() {
+		return btnAddWord;
+	}
+
+
+	public void setBtnAddWord(JButton btnAddWord) {
+		this.btnAddWord = btnAddWord;
+	}
+
+
+	public JButton getBtnUndoMove() {
+		return btnUndoMove;
+	}
+
+
+	public void setBtnUndoMove(JButton btnUndoMove) {
+		this.btnUndoMove = btnUndoMove;
 	}
 }
