@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -120,9 +121,9 @@ public class PlayerApplication extends JFrame {
         panelMain.setPreferredSize(new Dimension(initialWidth, initialHeight));
         setContentPane(panelMain);
         
-        initializeViewClasses();
+        //initializeViewClasses();
 		
-//		panelMain.add(splashView, splashView.getName());
+		//panelMain.add(splashView, splashView.getName());
 		//gameView = new GameView(model, panelMain, this);
 		//panelMain.add(gameView, gameView.getPanelName());
 		panelMain.add(menuView, menuView.getPanelName());
@@ -144,24 +145,15 @@ public class PlayerApplication extends JFrame {
 	 */
 	public void loadInLevels(){
 		int col =5;
-		int row = 3;
+		int row = 3; 
 
-		int total_count = 0;
-
-		String[] levelTypes = {"Puzzle", "Lightning", "Theme"};
-		Color[] levelColors = {Color.GREEN, Color.ORANGE, Color.PINK};
-
-		String levelType;
-		int levelI;
+		int totalCount = 1;
+		Iterator<Level> levelIterator = model.getAllLevels().iterator();
 		Level currentLevel;
-		for( int rowi = 0; rowi < row; rowi++ ){
+		while(levelIterator.hasNext()){
+			currentLevel = levelIterator.next();
 
-			for( int coli=0; coli < col; coli++){
-				System.out.println(total_count);
-				total_count += 1;
-				currentLevel = model.getLevel(total_count);
-				levelI = total_count % 3;
-				levelType = levelTypes[levelI];
+				System.out.println(totalCount);
 
 				Color levelColor = Color.RED;
 				if(currentLevel.getLevelType().equals("Puzzle")){
@@ -175,39 +167,27 @@ public class PlayerApplication extends JFrame {
 				}
 				//LevelPreviewView level = new LevelPreviewView(currentLevel.getLevelType(), levelColor, currentLevel.getLevelNum(), 0, panelMain, this);
 				LevelPreviewView level = new LevelPreviewView(currentLevel, levelColor, panelMain, this);
-				if(!currentLevel.getIsUnlocked()){
-					level.setEnabled(false);
+				LevelPreviewView levelPreviewView = new LevelPreviewView(currentLevel.getLevelType(), levelColor, currentLevel.getLevelNum(), 0, panelMain, this);
+				
+				
+				if(totalCount <= 15){
+					if(!currentLevel.getIsUnlocked()){
+						levelPreviewView.setEnabled(false);
+					}
+					menuView.addMenuItemToDefault(levelPreviewView);
+				}else{
+					menuView.addMenuItemToCustom(levelPreviewView);
 				}
 				
-				menuView.addMenuItemToDefault(level);
-				
-			}
-
+			totalCount += 1;
 		}
 		
-		panelMain.repaint();
-	}
-	
-	public void loadInCustomLevels(){
-		int col =5;
-		int row = 3;
-
-		int total_count = 0;
-
-		String[] levelTypes = {"Puzzle", "Lightning", "Theme"};
-		Color[] levelColors = {Color.GREEN, Color.ORANGE, Color.PINK};
-
-		String levelType;
-		int levelI;
-		Level currentLevel;
-		for( int rowi = 0; rowi < row; rowi++ ){
+		/*for( int rowi = 0; rowi < row; rowi++ ){
 
 			for( int coli=0; coli < col; coli++){
 				System.out.println(total_count);
 				total_count += 1;
 				currentLevel = model.getLevel(total_count);
-				levelI = total_count % 3;
-				levelType = levelTypes[levelI];
 
 				Color levelColor = Color.RED;
 				if(currentLevel.getLevelType().equals("Puzzle")){
@@ -221,18 +201,17 @@ public class PlayerApplication extends JFrame {
 				}
 				LevelPreviewView level = new LevelPreviewView(currentLevel.getLevelType(), levelColor, currentLevel.getLevelNum(), 0, panelMain, this);
 				
-				if(!currentLevel.getIsUnlocked()){
-					level.setEnabled(false);
-				}
 				
-				menuView.addMenuItemToDefault(level);
+				
 				
 			}
 
-		}
+		}*/
 		
 		panelMain.repaint();
 	}
+	
+	
 	 
 	/**
 	 * Invoked whenever model is changed and the application needs to refresh

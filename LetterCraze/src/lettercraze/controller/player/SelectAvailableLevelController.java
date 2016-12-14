@@ -19,7 +19,7 @@ import lettercraze.view.LevelPreviewView;
 public class SelectAvailableLevelController implements ActionListener{
 
 	/**the model object to be manipulated **/
-	Model mod;
+	Model model;
 	
 	/** the top level application **/
 	PlayerApplication app;
@@ -36,7 +36,7 @@ public class SelectAvailableLevelController implements ActionListener{
 		this.levelNum = lvl;
 		this.cardlayout = cl;
 		this.app = app;
-		this.mod = app.getModel();
+		this.model = app.getModel();
 	}
 	
 	public SelectAvailableLevelController(Integer levelNumber, CardLayout cardLayout, PlayerApplication app2) {
@@ -45,7 +45,7 @@ public class SelectAvailableLevelController implements ActionListener{
 		this.levelNum = levelNumber;
 		this.cardlayout = cardLayout;
 		this.app = app2;
-		this.mod = app.getModel();
+		this.model = app.getModel();
 		//mod.initiateLevel(levelNum);
 		//app.getModel().initiateLevel(levelNum);
 	}
@@ -64,27 +64,35 @@ public class SelectAvailableLevelController implements ActionListener{
 		 */
 		//mod.initiateLevel(levelNum);
 		//switch to GameView
-		Level curLevel = app.getModel().getLevel(levelNum);
-		//app.getModel().setCurrentBoardState(new BoardState(curLevel.getBoardShape()));
-		app.getModel().setCurrentBoardState(new BoardState(curLevel));
 		
-		//GameView curGameView = app.getGameView();
-		gameView = new GameView(mod, levelNum, app.getCardLayoutParent(), app);
+		// Get the Current Level and create a new BoardState with that Level's Board Shape 
+		Level curLevel = model.getLevel(levelNum);
+		model.setCurrentBoardState(new BoardState(curLevel.getBoardShape()));
+		
+		// Create a new GameView with the model
+		gameView = new GameView(model, levelNum, app.getCardLayoutParent(), app);
 		app.getCardLayoutParent().add(gameView, gameView.getPanelName());
+		
+		// Paint the Squares onto the GameView 
 		gameView.getBoardView().repaintAllSquares();
-		//Level curLevel = app.getModel().getLevel(levelNum);
+		
+		
+		// Display the Game View to the Player 
 		cardlayout.show(app.getCardLayoutParent(), "GameView");
-		//curGameView.updateLevelTypeLabel(curLevel.getLevelType());
+		
+		System.out.println(curLevel.getLevelType());
 
-		if( curLevel.getLevelType() == "Lightning" ){
+		// If it is a lightning level, the a Timer needs to be initialized 
+		if(curLevel.getLevelType() == "Lightning"){
 			
+			// Print statements for confirmations 
 			System.out.println("Timer initialized");
 			System.out.print("Time till exp: " + ((Lightning) curLevel).getSeconds());
 			
-			
-			//TimeController timeCont = new TimeController(app, app.getModel(), curGameView, ((Lightning) curLevel).getSeconds());
-			
-			//TimeController.startTimer(((Lightning) curLevel).getSeconds() * 1000, timeCont);
+			// Create Time Instance 
+			TimeController timeCont = new TimeController(app, app.getModel(), gameView, ((Lightning) curLevel).getSeconds());
+			//Start the timer, the timer runs and updates the GUI in its own thread
+			TimeController.startTimer(((Lightning) curLevel).getSeconds() * 1000, timeCont);
 			
 		}
 		else if(curLevel.getLevelType() == "Theme"){
