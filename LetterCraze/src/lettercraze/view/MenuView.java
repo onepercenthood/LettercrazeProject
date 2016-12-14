@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 
 import lettercraze.BuilderApplication;
 import lettercraze.PlayerApplication;
+import lettercraze.controller.player.ResetDataController;
+import lettercraze.controller.player.SelectAvailableLevelController;
 import lettercraze.model.Model;
 
 import javax.swing.GroupLayout;
@@ -91,6 +93,8 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JButton btnResetAllProgress = new JButton("Reset All Progress");
+		btnResetAllProgress.addActionListener(new ResetDataController()); 
+		add(btnResetAllProgress, "Reset Data Button");
 
 		gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
