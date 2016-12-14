@@ -160,34 +160,14 @@ public class FileIO {
 		    return levels;
 	}
 	
+	/**
+	 * Get the total number of levels in Default and Custom folders 
+	 * @return Integer 
+	 */
 	public int getNumLevels(){
 		File levelFolder = new File("levels");
 		File[] levelFiles = levelFolder.listFiles();
 		return levelFiles.length;
 	}
-	
-	public static void main(String args[]){
-		boolean[][] sampleShape = new boolean[6][6];
-		boolean active = true;
-		for(int row = 0; row < 6; row++){
-			for(int col = 0; col < 6; col++){
-				sampleShape[row][col] = active;
-				//active = !active;
-			}
-			//active = !active;
-		}
-		Puzzle level1 = new Puzzle(1, new int[]{1, 2, 3} , 10);
-		level1.setBoardShape(sampleShape);
-		level1.setUnLocked(true);
-		
-		
-		FileIO.saveLevelToDisk(level1);
-		ArrayList<Level> levels = FileIO.loadDefaultLevelsFromDisk();
-		Iterator<Level> i = levels.iterator();
-		Level l = i.next();
-		System.out.println("size of 1: " + levels.size());
-		System.out.println("level 1: " + l.getLevelType());
-		
-		
-	}
+
 }
