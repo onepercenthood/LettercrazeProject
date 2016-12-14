@@ -93,7 +93,7 @@ public class MenuView extends DefaultViewPanel implements IModelChangedView {
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JButton btnResetAllProgress = new JButton("Reset All Progress");
-		btnResetAllProgress.addActionListener(new ResetDataController()); 
+		btnResetAllProgress.addActionListener(new ResetDataController(this)); 
 		add(btnResetAllProgress, "Reset Data Button");
  
 		gl_panel = new GroupLayout(panel);

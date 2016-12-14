@@ -48,6 +48,9 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	private PlayerApplication app;
 
 	private int[] starThreshold;
+
+	private Level level;
+	
 		
 	public LevelPreviewView(String levelType, Color color, Integer levelNumber, Integer numStars, JPanel cl, PlayerApplication app){
 		this.levelType = levelType;
@@ -61,6 +64,7 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	}
 	
 	public LevelPreviewView(Level level, Color color, JPanel parent, PlayerApplication app){
+		this.level = level;
 		this.levelType = level.getLevelType();
 		this.levelNumber = level.getLevelNum();
 		this.highScore = level.getHighScore();
@@ -181,6 +185,12 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	public int getLevelNum() {
 		
 		return levelNumber.intValue();
+	}
+
+	public void updateInfo() {
+		setHighScore(level.getHighScore());
+		setEnabled(level.getIsUnlocked());
+		this.repaint();
 	}
 	
 }
