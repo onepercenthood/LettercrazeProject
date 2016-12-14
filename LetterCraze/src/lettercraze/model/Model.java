@@ -50,12 +50,17 @@ public class Model {
 			e.printStackTrace();
 		}
 		
-				
+		 		
 		levels = FileIO.loadDefaultLevelsFromDisk();
 		System.out.println(levels);
-		ArrayList<Level> custom = new ArrayList<Level>();
-		custom = FileIO.loadCustomLevelsFromDisk();
-		levels.addAll(custom);
+		try {
+			ArrayList<Level> custom = new ArrayList<Level>();
+			custom = FileIO.loadCustomLevelsFromDisk();
+			levels.addAll(custom);
+		} catch (Exception e){
+			System.err.println("No Custom Levels!");
+		}
+		
 		System.out.println(levels);
 		
 	}
