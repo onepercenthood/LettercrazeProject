@@ -40,10 +40,12 @@ public class UndoController extends MouseAdapter{
 		Word remove = model.getCurrentBoardState().getFoundWords().get(index);
 		System.out.println(remove.getLetters());
 
-		if(model.getCurrentWord() != null || model.getCurrentWord().getWordLength() == 0){
-			model.getCurrentBoardState().deselectAllSquares();
-			model.setCurrentWord(null);
-			gameView.getBoardView().repaintAllSquares();
+		if(model.getCurrentWord() != null){
+			if(model.getCurrentWord().getWordLength() != 0){
+				model.getCurrentBoardState().deselectAllSquares();
+				model.setCurrentWord(null);
+				gameView.getBoardView().repaintAllSquares();
+			}
 		}
 		//takes the calculated score of the played word
 		//adds it to the current score and displays it
@@ -54,7 +56,7 @@ public class UndoController extends MouseAdapter{
 
 
 		//checks new score against star threshold and displays update accordingly
-		int currentStars = model.getLevel(model.getCurrentLevel() + 1).getHighStars(newScore);
+		int currentStars = model.getLevel(model.getCurrentLevel()).getHighStars(newScore);
 		model.getCurrentBoardState().setStars(currentStars);
 
 		model.getCurrentBoardState().getFoundWords().remove(model.getCurrentBoardState().getFoundWords().size()-1);
@@ -63,7 +65,7 @@ public class UndoController extends MouseAdapter{
 		gameView.removeWordModel();
 
 		if(gameView.getLevelType().getText().equals("Puzzle")){
-			Puzzle puzzle = (Puzzle) model.getLevel(model.getCurrentLevel() + 1);
+			Puzzle puzzle = (Puzzle) model.getLevel(model.getCurrentLevel());
 			int wordsLeft = puzzle.getMaxWords() - model.getCurrentBoardState().getFoundWords().size();
 			gameView.setTypeSpecificLabel("Moves Left: " + wordsLeft);
 		}

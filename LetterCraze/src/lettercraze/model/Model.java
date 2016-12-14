@@ -188,7 +188,7 @@ public class Model {
 	}
 	
 	public int getCurrentLevel(){
-		return this.currentLevel;
+		return this.currentLevel + 1;
 	}
 	
 	public Level getCurrentLevelObject(){
@@ -196,7 +196,7 @@ public class Model {
 	}
 	
 	public void setCurrentLevel(int currentLevel) {
-		this.currentLevel = currentLevel;
+		this.currentLevel = currentLevel - 1;
 	}
 }
 
