@@ -11,6 +11,7 @@ import lettercraze.model.Model;
 import lettercraze.model.Puzzle;
 import lettercraze.model.Word;
 import lettercraze.view.GameView;
+import lettercraze.view.SquareView;
 
 public class UndoController extends MouseAdapter{
 
@@ -31,12 +32,18 @@ public class UndoController extends MouseAdapter{
 	}
 	
 	public void mousePressed(MouseEvent me){
+		
 		//model.getBoardStateArray().remove(model.getBoardStateArray().size()-1);
 		//int index = model.getCurrentBoardState().getFoundWords().size();
 		int index = model.getCurrentBoardState().getFoundWords().size() - 1;
 		//Word remove = model.getCurrentBoardState().getFoundWords().get(0);
 		Word remove = model.getCurrentBoardState().getFoundWords().get(index);
 		System.out.println(remove.getLetters());
+		
+
+		model.getCurrentBoardState().deselectAllSquares();
+		model.setCurrentWord(null);
+		gameView.getBoardView().repaintAllSquares();
 		
 		//takes the calculated score of the played word
 		//adds it to the current score and displays it
