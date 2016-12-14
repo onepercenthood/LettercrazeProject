@@ -95,5 +95,8 @@ public class TimeController implements ActionListener {
         timer.start();
     }
 	
+    public static void stopTimer(){
+    	timer.stop();
+    }
 
 }
