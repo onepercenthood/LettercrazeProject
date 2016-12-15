@@ -18,7 +18,7 @@ public class Alphabet {
 	 * Allows for iteration in order of entry. */
 	public static final LinkedHashMap<String,Letter> letters = new LinkedHashMap<String,Letter>();
 	private static Alphabet instance;
-	
+	 
 	/**
 	 * Create Alphabet Instance 
 	 */
