@@ -69,11 +69,12 @@ public class LeaveLevelEarlyController extends MouseAdapter{
 		if(thislevel.getLevelNum() < 16){
 			boolean isNextLevelUnlocked = model.getLevel(nextLevel).getIsUnlocked();
 			//check if first star was reached, if next level not unlocked
-			if((highStarsScored >= 1) && (isNextLevelUnlocked == false)){
+			if((highStarsScored >= 1)){
+				// && (isNextLevelUnlocked == false)
 				model.getLevel(nextLevel).setUnLocked(true);
 				System.out.println("Setting level " + nextLevel + " unlocked to true");
 				MenuView menu = (MenuView) parent.getComponent(0);
-				menu.getLevels().get(nextLevel - 1).setEnabled(true);
+				menu.getLevels().get(nextLevel-1).setEnabled(true);
 			}
 			FileIO.saveLevelToDisk(model.getLevel(nextLevel));
 		}
