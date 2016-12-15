@@ -77,7 +77,7 @@ public class SaveLevelController extends MouseAdapter{
 			} 
 			else {
 				Level level;
-
+ 
 				//if the level was already saved, use the saved level number & overwrite
 				if(panel.getLevelLoaded() != null){
 					level = panel.compileLevelInfo(shape, panel.getLevelLoaded().getLevelNum());
@@ -91,7 +91,7 @@ public class SaveLevelController extends MouseAdapter{
 						numLevels = 1;
 					}
 					level = panel.compileLevelInfo(shape, numLevels);
-
+  
 				} 
 
 				System.out.println(level.debugString());
