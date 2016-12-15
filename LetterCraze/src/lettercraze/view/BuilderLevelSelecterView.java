@@ -56,10 +56,6 @@ public class BuilderLevelSelecterView extends JPanel{
 			parent.repaint();
 
 		} else {
-<<<<<<< HEAD
-=======
-			
->>>>>>> refs/heads/J
 			System.err.println("There were no levels on the disk!");
 		}
 		

@@ -22,9 +22,6 @@ public class Theme extends Level{
 	/** Holds the targetWords that can be found to complete the Level */
 	protected ArrayList<String> targetWords = new ArrayList<String>();
 	
-	/** holds the words that are actually placed in the level */
-	protected ArrayList<String> usedWords = new ArrayList<String>();
-
 	/** Default constructor necessary for Jackson deserialization.*/
 	public Theme(){};
 	
@@ -92,22 +89,12 @@ public class Theme extends Level{
 		return targetWords;
 	}
 
-	/**
-	 * get the list of words used in the level
-	 * @return ArrayList<String>
-	 */
-	public ArrayList<String> getUsedWords() {
-		return usedWords;
-	}
-
+	
 	/**
 	 * set the list of words to find in the level, and update the star thresholds
 	 * @param usedWords
 	 */
 	public void setUsedWords(ArrayList<Word> usedWords) {
-		for(Word w: usedWords){
-			this.usedWords.add(w.getWordString());
-		}
 		int size = usedWords.size();
 		this.starThreshold[0] = size - 2;
 		this.starThreshold[1] = size - 1;

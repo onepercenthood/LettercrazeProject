@@ -272,45 +272,4 @@ public class ThemeBuilder {
 		return targets;
 	}
 
-
-	/**
-	 * Main static method to run the JFrame.
-	 * @param args System arguments
-	 */
-	public static void main(String args[]){
-		Model model = new Model();
-		BoardState b = model.getCurrentBoardState();
-		ArrayList<String> targets = new ArrayList<String>();
-		targets.add("Lit");
-		targets.add("Tips");
-		targets.add("Finals");
-		targets.add("Quit");
-		targets.add("Adequate");
-		targets.add("Suck");
-		targets.add("extravagant");
-		targets.add("pedantic");
-		ThemeBuilder tbuild = new ThemeBuilder(b, targets);
-		System.out.println(tbuild.targetWords);
-		for(Word w : tbuild.targetWords){
-			System.out.println(w.getWordString());
-			for(Square s: w.getLetters()){
-				int row = s.getRow();
-				int col = s.getColumn();
-				String letter = s.getLetter().getLetter();
-				System.out.print(letter + "(" + row + ", " + col + ")     ");
-			}
-			System.out.println();
-		}
-
-		tbuild.printAllSquares();
-
-		System.out.println(tbuild.getTotalCharacters(tbuild.targetWords));
-
-		tbuild.populateSquares();
-
-		tbuild.printAllSquares();
-	}
-
-
-
 }
