@@ -11,6 +11,9 @@ import junit.framework.TestCase;
  */
 public class TestWord extends TestCase {
 	
+	/**
+	 * Test Word 
+	 */
 	public void testWord(){
 		
 		// Test letters to use

@@ -2,8 +2,16 @@ package lettercraze.model;
 
 import junit.framework.TestCase;
 
+/**
+ * Test case for Square
+ * @author Hoodie
+ *
+ */
 public class TestSquare extends TestCase {
 
+	/**
+	 *  Test Square 
+	 */
 	public void testSquare(){
 		
 		//Create Test Squares 
@@ -19,14 +27,17 @@ public class TestSquare extends TestCase {
 		assertFalse(test1.isActive);
 		assertFalse(test1.isSelected);
 		
+		
 		// Check to see if toggleActive() & toggleSelected() toggle
 		// true to false and false to true 
 		assertEquals(test1.toggleActive(), true);
 		assertEquals(test1.toggleSelected(), true);
 		assertEquals(test1.isActive(), true);
 		assertEquals(test1.isSelected(), true);
+		
+		
 		assertEquals(test1.toggleActive(), true);
-		assertEquals(test1.toggleSelected(), true);
+		assertEquals(test1.toggleSelected(), false);
 		assertEquals(test1.isActive(), false);
 		assertEquals(test1.isSelected(), false);
 		

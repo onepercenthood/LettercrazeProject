@@ -4,8 +4,17 @@ import java.util.ArrayList;
 
 import junit.framework.TestCase;
 
+/**
+ * Test case for Level
+ * 
+ * @author Hoodie
+ *
+ */
 public class TestLevel extends TestCase {
 
+		/**
+		 * Test Level 
+		 */
 		public void testLevel(){
 			
 			boolean[][] sampleShape = new boolean[6][6];
