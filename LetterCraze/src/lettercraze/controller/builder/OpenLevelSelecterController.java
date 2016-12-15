@@ -39,6 +39,7 @@ public class OpenLevelSelecterController extends MouseAdapter {
 	public void mousePressed(MouseEvent me){
 		System.out.println("Switching to menu view");
 		BuilderLevelSelecterView selectView = new BuilderLevelSelecterView(parent);
+		
 		parent.add(selectView, selectView.getPanelName());
 		cardLayout.show(parent, "BuilderLevelSelecter");
 	}
