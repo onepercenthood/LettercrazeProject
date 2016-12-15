@@ -57,6 +57,9 @@ public class BuilderLevelSelecterView extends JPanel{
 			parent.repaint();
 
 		} else {
+			JButton Menubutton = new JButton("Back To Menu");
+	    	Menubutton.addMouseListener(new BackToMenuController(parent, this));
+			add(Menubutton); 
 			System.err.println("There were no levels on the disk!");
 		}
 		

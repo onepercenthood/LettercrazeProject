@@ -9,6 +9,7 @@ import lettercraze.controller.builder.OpenLevelSelecterController;
 import lettercraze.model.Model;
 
 import java.awt.Font;
+import java.awt.Color;
 
 /**
  * Allows the option of either loading a level or creating a new one. First Screen of builder
@@ -31,6 +32,7 @@ public class BuilderMenuView extends DefaultViewPanel{
 	 * @param app as BuilderApplication
 	 */
 	public BuilderMenuView(JPanel cardLayoutPanel, Model m, BuilderApplication app) {
+		setBackground(new Color(204, 255, 255));
 		setLayout(null);
 		
 		this.cardLayoutPanel = cardLayoutPanel;
@@ -39,22 +41,23 @@ public class BuilderMenuView extends DefaultViewPanel{
 		
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 800, 600);
+		panel.setBackground(new Color(204, 255, 255));
+		panel.setBounds(0, 0, 969, 600);
 		add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblLettercrazeBuilder = new JLabel("LetterCraze Builder");
-		lblLettercrazeBuilder.setBounds(141, 176, 507, 73);
+		lblLettercrazeBuilder.setBounds(215, 177, 507, 73);
 		lblLettercrazeBuilder.setFont(new Font("Tahoma", Font.PLAIN, 60));
 		panel.add(lblLettercrazeBuilder);
 		
 		JButton btnNewButton = new JButton("Create New Level");
 		btnNewButton.addMouseListener(new CreateNewLevelController(app, cardLayoutPanel, model));
-		btnNewButton.setBounds(163, 319, 180, 53);
+		btnNewButton.setBounds(253, 319, 180, 53);
 		panel.add(btnNewButton);
 		
 		JButton btnEditExistingLevel = new JButton("Edit Existing Level");
-		btnEditExistingLevel.setBounds(450, 319, 180, 53);
+		btnEditExistingLevel.setBounds(499, 319, 180, 53);
 		btnEditExistingLevel.addMouseListener(new OpenLevelSelecterController(cardLayoutPanel));
 		panel.add(btnEditExistingLevel);
 		
