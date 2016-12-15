@@ -30,7 +30,7 @@ public class BuilderLevelSelecterView extends JPanel{
 	public BuilderLevelSelecterView(JPanel parent) {
 		setBackground(new Color(204, 255, 255));
 		this.parent = parent;
-		this.levels = FileIO.loadCustomLevelsFromDisk();
+		this.levels = FileIO.loadCustomLevelsFromDisk(); 
 		initialize();
 	}
 
