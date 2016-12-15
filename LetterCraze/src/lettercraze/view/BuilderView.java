@@ -13,6 +13,7 @@ import javax.swing.DefaultComboBoxModel;
 
 import lettercraze.BuilderApplication;
 import lettercraze.controller.builder.ExitWithoutSavingController;
+import lettercraze.controller.builder.PreviewLevelController;
 import lettercraze.controller.builder.ResetBoardSquaresController;
 import lettercraze.controller.builder.SaveLevelController;
 import lettercraze.model.Model;
@@ -23,6 +24,8 @@ import java.awt.SystemColor;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * BuilderView is the main screen for building levels.
@@ -147,6 +150,11 @@ public class BuilderView extends DefaultViewPanel implements ItemListener{
 		btnCloseWithoutSaving.addMouseListener(new ExitWithoutSavingController(this, cardLayoutPanel, model));
 		btnCloseWithoutSaving.setBounds(273, 118, 174, 29);
 		add(btnCloseWithoutSaving);
+		
+		JButton btnPreviewLevel = new JButton("Show Me The Money!");
+		btnPreviewLevel.addMouseListener(new PreviewLevelController(this, model, cardLayoutPanel));
+		btnPreviewLevel.setBounds(491, 118, 199, 29);
+		add(btnPreviewLevel);
 		repaint();
 	}
 

@@ -106,7 +106,6 @@ public class PlayWordController extends MouseAdapter{
 				//if lit is played the background turns red
 				if(word.getWordString().equals("LIT")){
 					gameView.setBackgroundRed();
-					gameView.makeItLit();
 				}
 				
 				//if its a puzzle level it keeps track of the moves left

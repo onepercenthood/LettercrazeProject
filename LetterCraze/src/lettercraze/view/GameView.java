@@ -242,7 +242,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 			typeSpecificLabel = new JLabel("___");
 		}
 		typeSpecificLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		typeSpecificLabel.setBounds(284, 12, 117, 16);
+		typeSpecificLabel.setBounds(284, 12, 200, 16);
 		add(typeSpecificLabel);
 		
 		btnResetLevel = new JButton("Reset Level");

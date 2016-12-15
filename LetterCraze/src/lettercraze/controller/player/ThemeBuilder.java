@@ -1,6 +1,7 @@
 package lettercraze.controller.player;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
 import lettercraze.model.Alphabet;
@@ -64,10 +65,10 @@ public class ThemeBuilder {
 	 * 
 	 * @return true if successful, false otherwise
 	 */
-	public Square[][] populateSquares(){
+	public ArrayList<Word> populateSquares(){
 		//useWords -> pick from targetWords: words that have <36 characters total
 		ArrayList<Word> useWords = pickFromList(targetWords);
-		ArrayList<Word> placedWords = new ArrayList<Word>();
+		ArrayList<Word> placedWords = new ArrayList<Word>(); 
 		//for each word in usewords:
 		//place the first square (randomly)
 		//DFS to check for placing the whole word there\
@@ -102,7 +103,7 @@ public class ThemeBuilder {
 		for(Word usedWord: placedWords)
 			System.out.print(usedWord.getWordString()+ " ");
 		System.out.println();
-		return squares;		
+		return placedWords;		
 	}
 	
 	/**
@@ -222,7 +223,7 @@ public class ThemeBuilder {
 	private ArrayList<Word> pickFromList(ArrayList<Word> targetWords2) {
 		int max = 36;
 		ArrayList<Word> useWords = new ArrayList<Word>();
-		
+		Collections.shuffle(targetWords2);
 		for(Word w: targetWords2){
 			//if this word does not bring the total too high, add it to the list
 			if(getTotalCharacters(useWords) + w.getWordLength() < max){

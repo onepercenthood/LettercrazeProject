@@ -30,7 +30,7 @@ public class BuilderLevelSelecterView extends JPanel{
 	public BuilderLevelSelecterView(JPanel parent) {
 		setBackground(new Color(204, 255, 255));
 		this.parent = parent;
-		this.levels = FileIO.loadCustomLevelsFromDisk();
+		this.levels = FileIO.loadCustomLevelsFromDisk(); 
 		initialize();
 	}
 
@@ -39,15 +39,14 @@ public class BuilderLevelSelecterView extends JPanel{
 	 */
 	public void initialize(){
 		int numLevels = levels.size();
+				
+		JButton Menubutton = new JButton("Back To Menu");
+    	Menubutton.addMouseListener(new BackToMenuController(parent, this));
+		add(Menubutton); 
 		
 		if(numLevels != 0){
-			System.out.println("Number of Levels Found: "+ numLevels);
-			setLayout(new GridLayout((int) Math.sqrt(numLevels), (int) Math.sqrt(numLevels), 10, 10));				
-			
-			JButton Menubutton = new JButton("Back To Menu");
-	    	Menubutton.addMouseListener(new BackToMenuController(parent, this));
-			add(Menubutton); 
-			
+			System.out.println("Number of Levels Found: "+ numLevels);			
+			setLayout(new GridLayout((int) Math.sqrt(numLevels), (int) Math.sqrt(numLevels), 10, 10));
 			for(Level toLoad: levels){
 				BuilderLevelThumbnail levelThumbnail = new BuilderLevelThumbnail(toLoad, parent, this);	
 				add(levelThumbnail);

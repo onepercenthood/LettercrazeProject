@@ -5,6 +5,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import lettercraze.model.FileIO;
@@ -26,13 +28,13 @@ public class SaveLevelController extends MouseAdapter{
 
 	/** the parent panel for the level-specific panels. **/
 	JPanel cardLayoutPanel;
-	
+
 	/** the parent panel for the builder/menu/levelSelector views **/
 	JPanel parentPanel;
 
 	/** the layout manager of the level-specific panels. **/
 	CardLayout cardLayout;
-	
+
 	/** the layout manager of the builder/menu/levelSelector views **/
 	CardLayout parentLayout;
 
@@ -61,11 +63,18 @@ public class SaveLevelController extends MouseAdapter{
 	 */
 	public void mousePressed(MouseEvent me){
 		boolean shape[][] = builderView.getBoardView().getBoardShape();
-		ArrayList<Level> levels = FileIO.loadCustomLevelsFromDisk();
+		ArrayList<Level> levels;
+		try{
+			levels = FileIO.loadCustomLevelsFromDisk();
+		} catch(Exception e){
+			levels = new ArrayList<Level>();
+		}
 		AbsBuilderLevelPanel panel = builderView.getCurrentLevelPanel();
-		
+
 		//check that all the information needed to build a level is filled in
 		if(!panel.isFilledOut()){
+			JLabel error = new JLabel("Some information is missing!");
+			JOptionPane.showMessageDialog(null, error);
 			System.err.println("Some information is missing!");
 		} 
 		else {
