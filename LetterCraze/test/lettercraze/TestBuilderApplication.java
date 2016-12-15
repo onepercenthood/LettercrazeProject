@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import junit.framework.TestCase;
 import lettercraze.controller.builder.BackToMenuController;
 import lettercraze.controller.builder.CreateNewLevelController;
+import lettercraze.controller.builder.EditExistingLevelController;
+import lettercraze.controller.builder.OpenLevelSelecterController;
 import lettercraze.controller.builder.ResetBoardSquaresController;
 import lettercraze.controller.builder.SaveLevelController;
 import lettercraze.view.BuilderPuzzlePanelView;
@@ -16,7 +18,7 @@ import lettercraze.view.DefaultJFrame;
 import lettercraze.view.DefaultViewPanel;
 
 /**
- * Test cases for the buidler application. The tests covered are:
+ * Test cases for the builder application. The tests covered are:
  * 
  *
  */
@@ -24,14 +26,23 @@ public class TestBuilderApplication extends TestCase {
 	
 	private BuilderApplication ba;
 	
+	/**
+	 * Create Builder Application 
+	 */
 	public TestBuilderApplication(){
 		ba = new BuilderApplication();
 	}
 	
+	/**
+	 * Create Builder Apllication to test
+	 */
 	public void testBuilderApplication(){
 		BuilderApplication ba = new BuilderApplication();
 	}
 	
+	/**
+	 * Test different parts of Builder Application
+	 */
 	public void testCreateNewLevel(){
 		CreateNewLevelController create = new CreateNewLevelController(ba, ba.getPanelMain(), ba.model);
 				
@@ -72,6 +83,16 @@ public class TestBuilderApplication extends TestCase {
 
 		
 		new SaveLevelController(ba.builderView, ba.getPanelMain(), ba.model).mousePressed(me);;
+		
+		MouseEvent me1 = new MouseEvent(ba.getPanelMain(), MouseEvent.MOUSE_PRESSED, 
+				System.currentTimeMillis(), 0, 
+				450, 319, 0, false);
+		
+		new OpenLevelSelecterController(ba.getPanelMain());
+		
+		new BackToMenuController(ba.getPanelMain(), null);
+		
+		//new EditExistingLevelController(ba.getPanelMain(), ba.model.getLevel(levelNum))
 
 		
 	}

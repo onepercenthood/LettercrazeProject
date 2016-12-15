@@ -1,9 +1,11 @@
 package lettercraze;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import junit.framework.TestCase;
@@ -21,10 +23,18 @@ import lettercraze.model.Model;
 import lettercraze.model.Puzzle;
 import lettercraze.model.Square;
 import lettercraze.model.Theme;
+import lettercraze.model.Word;
 import lettercraze.model.WordTable;
 import lettercraze.view.GameView;
+import lettercraze.view.SplashScreen;
 import lettercraze.view.SquareView;
 
+/**
+ * Test case to test Player Application
+ * 
+ * @author Hoodie
+ *
+ */
 public class TestPlayerApplication extends TestCase {
 	
 	private PlayerApplication pa;
@@ -36,7 +46,17 @@ public class TestPlayerApplication extends TestCase {
 	private boolean[][] shape;
 	private boolean[][] shapeTheme;
 
+	/**
+	 * Test Splash Screen and create Player Application to test
+	 */
 	public TestPlayerApplication(){
+		int initialWidth = 900;
+		int initialHeight = 635;
+		Dimension size = new Dimension(initialWidth, initialHeight);
+
+		JFrame splashFrame = SplashScreen.createAndShowGUI(size, "Player");
+		splashFrame.setVisible(false);
+		
 		pa = new PlayerApplication();
 //		pa.main(new String[0]);
 		cdlPanel = pa.getCardLayoutParent();
@@ -82,7 +102,7 @@ public class TestPlayerApplication extends TestCase {
 		
 		System.out.println(squares);
 		
-		Puzzle puzLevel = new Puzzle();
+		Puzzle puzLevel = new Puzzle(1, new int[]{1,2,3}, 3);
 		
 		puzLevel.setBoardShape(shape);
 		bs = new BoardState(puzLevel);
@@ -91,6 +111,9 @@ public class TestPlayerApplication extends TestCase {
 
 	}
 	
+	/**
+	 * Test Player Application 
+	 */
 	public void testPlayLevel1(){
 		
 		Model model = pa.getModel();
@@ -127,10 +150,7 @@ public class TestPlayerApplication extends TestCase {
 		SquareView firstLetter = squareViews[0][0];
 		SquareView secondLetter = squareViews[0][1];
 		SquareView thirdLetter = squareViews[0][2];
-		
-//		MouseEvent firstMP =  new MouseEvent(firstLetter, MouseEvent.MOUSE_PRESSED, 
-//				System.currentTimeMillis(), 0, 
-//				firstLetter.getLocationOnScreen().x, firstLetter.getLocationOnScreen().y, 0, false);
+
 		
 		System.out.println(firstLetter.getLetter().toString());
 		System.out.println(secondLetter.getLetter().toString());
@@ -144,8 +164,6 @@ public class TestPlayerApplication extends TestCase {
 
 		System.out.println("Word: " + word);
 		
-		
-//		model.setCurrentWord(word);
 
 		new ToggleSquareController(pa, firstLetter, model).mousePressed(null);
 		new ToggleSquareController(pa, secondLetter, model).mousePressed(null);
@@ -155,10 +173,6 @@ public class TestPlayerApplication extends TestCase {
 		
 		new ClearWordController(pa, gameView.getBoardView(), model).mousePressed(null);;
 
-		
-//		new PlayWordController(pa, model, gameView).mousePressed(null);
-//		
-//		new UndoController(pa, model, gameView).mousePressed(null);;
 		
 		new ToggleSquareController(pa, firstLetter, model).mousePressed(null);
 		new ToggleSquareController(pa, secondLetter, model).mousePressed(null);
@@ -171,13 +185,34 @@ public class TestPlayerApplication extends TestCase {
 		
 		
 		assertEquals(word, "LIT");
+		
+		Square s1 = new Square(0,1);
+		s1.setLetter(new Letter("L",2,2.1));
+		Square s2 = new Square(0,2);
+		s2.setLetter(new Letter("I",2,2.1));
+		Square s3 = new Square(0,3);
+		s3.setLetter(new Letter("T",2,2.1));
+		
+		Word testWord = new Word(s1);
+		testWord.addSquare(s2);
+		testWord.addSquare(s3);
+		
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("LIT");
+		
+		boolean validTest = testWord.isValid(list);
+		
+		assertEquals(validTest, true);
+		
+		BoardState test = new BoardState(model.getCurrentBoardState(), testWord);
 
 		assertEquals(model.getCurrentLevel(), 1 );
-				
-//		new Exi
 		
 	}
 	
+	/**
+	 * Test Player Application 
+	 */
 	public void testPlayLevel2(){
 		new SelectAvailableLevelController(2, cdl, pa).actionPerformed(null);
 		
@@ -191,6 +226,9 @@ public class TestPlayerApplication extends TestCase {
 
 	}
 	
+	/**
+	 * Test Player Application 
+	 */
 	public void testPlayLevel3(){
 		new SelectAvailableLevelController(3, cdl, pa).actionPerformed(null);
 		

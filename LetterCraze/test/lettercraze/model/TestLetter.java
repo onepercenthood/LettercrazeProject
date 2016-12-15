@@ -2,8 +2,17 @@ package lettercraze.model;
 
 import junit.framework.TestCase;
 
+/**
+ * Test Case for Letter
+ * 
+ * @author Hoodie
+ *
+ */
 public class TestLetter extends TestCase {
 
+	/**
+	 * Test Letter
+	 */
 	public void testLetter(){
 		
 		// Letter Object to Test
