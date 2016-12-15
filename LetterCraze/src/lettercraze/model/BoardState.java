@@ -64,19 +64,19 @@ public class BoardState extends BoardFiller{
 		boolean[][] shape = level.getBoardShape();
 		for(int row = 0; row < 6; row++){
 			for(int col = 0; col < 6; col++){
-				squares[row][col]= new Square(row, col);
+				squares[row][col]= new Square(row, col); 
 				if(shape[row][col]){
 					squares[row][col].toggleActive();
 				}				
 			}
 		}
-
 		switch(level.getLevelType()){
 		case "Puzzle": initialFill(squares); break;
 		case "Lightning" : initialFill(squares); break;
-		case "Theme": Theme theme = (Theme) level; 
-		initialFill(this, theme.getTargetWords());
-		break;
+		case "Theme": 
+			Theme theme = (Theme) level; 
+			theme.setUsedWords(initialFill(this, theme.getTargetWords()));
+			break;
 		default: initialFill(squares);
 		}
 		score = 0;

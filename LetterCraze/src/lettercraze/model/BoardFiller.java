@@ -303,7 +303,7 @@ public class BoardFiller{
 	 * @param targetWords as a ArrayList<String>
 	 * @return Square[][]
 	 */
-	public Square[][] initialFill(BoardState bState, ArrayList<String> targetWords) {
+	public ArrayList<Word> initialFill(BoardState bState, ArrayList<String> targetWords) {
 		// TODO Auto-generated method stub
 		ThemeBuilder tBuild = new ThemeBuilder(bState, targetWords);		
 		return tBuild.populateSquares();
