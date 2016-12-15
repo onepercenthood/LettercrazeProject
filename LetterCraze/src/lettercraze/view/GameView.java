@@ -436,21 +436,6 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		return btnResetLevel;
 	}
 
-	/**
-	 * makes the game lit AF
-	 */
-
-	public void makeItLit(){
-		try {
-			BufferedImage img = ImageIO.read(new File("lit.jpg"));
-			ImageIcon icon = new ImageIcon(img);
-			JLabel label = new JLabel(icon);
-			JOptionPane.showMessageDialog(null, label);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 
 	/**
 	 * returns the JLabel describing the type of the level

@@ -10,7 +10,9 @@ import junit.framework.TestCase;
 import lettercraze.controller.builder.BackToMenuController;
 import lettercraze.controller.builder.CreateNewLevelController;
 import lettercraze.controller.builder.EditExistingLevelController;
+import lettercraze.controller.builder.ExitPreviewController;
 import lettercraze.controller.builder.OpenLevelSelecterController;
+import lettercraze.controller.builder.PreviewLevelController;
 import lettercraze.controller.builder.ResetBoardSquaresController;
 import lettercraze.controller.builder.SaveLevelController;
 import lettercraze.view.BuilderPuzzlePanelView;
@@ -80,20 +82,17 @@ public class TestBuilderApplication extends TestCase {
 		assertEquals(bPV.getTxtfldTwoStar().getText(), "20");
 		assertEquals(bPV.getTxtfldThreeStar().getText(), "30");
 		assertEquals(bPV.getTxtfldmaxWords().getText(), "10");
-
 		
+		// Check Preview Level in Builder 
+		new PreviewLevelController(ba.builderView, ba.model, ba.builderView);
+		new ExitPreviewController(ba.builderView, null);
+		
+		// Save Level Controller 
 		new SaveLevelController(ba.builderView, ba.getPanelMain(), ba.model).mousePressed(me);;
 		
-		MouseEvent me1 = new MouseEvent(ba.getPanelMain(), MouseEvent.MOUSE_PRESSED, 
-				System.currentTimeMillis(), 0, 
-				450, 319, 0, false);
-		
+		// Open Level Test and go Back to Menu 
 		new OpenLevelSelecterController(ba.getPanelMain());
-		
 		new BackToMenuController(ba.getPanelMain(), null);
-		
-		//new EditExistingLevelController(ba.getPanelMain(), ba.model.getLevel(levelNum))
-
 		
 	}
 	
