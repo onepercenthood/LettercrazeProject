@@ -9,5 +9,7 @@ Once you create a level with the builder application, exit the builder applicati
 Player Application to play the level in the "Custom Levels" section. All Custom Levels are unlocked 
 and can be played without any prior level being played. 
 
+Run JUnit on the entire LetterCraze Project to see Code Coverage 
+
 Hint: Level 6 Theme Level is challenging and "fun" 
 
