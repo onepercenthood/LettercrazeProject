@@ -6,6 +6,11 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Iterator;
 
+/**
+ * WordTable contains the list of words allowed by the provided dictionary
+ * @author Hoodie
+ *
+ */
 public class WordTable {
 	static Hashtable<String,Boolean> table;
 	

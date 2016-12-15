@@ -55,6 +55,11 @@ public class BoardState extends BoardFiller{
 		stars = 0;
 	}
 
+	/**
+	 * Constructor for boardState objects. Takes in a level and populates the boardState
+	 * based on the information in that level.
+	 * @param level as Level
+	 */
 	public BoardState(Level level){
 		boolean[][] shape = level.getBoardShape();
 		for(int row = 0; row < 6; row++){
@@ -123,6 +128,10 @@ public class BoardState extends BoardFiller{
 		}
 	}
 
+	/**
+	 * removes the given word from the squares in the boardState
+	 * @param word as Word
+	 */
 	public void removeLetterFromSquares(Word word){
 
 		ArrayList<Square> squareArr = word.getLetters();
@@ -136,30 +145,65 @@ public class BoardState extends BoardFiller{
 
 	/**
 	 * 
-	 * Return the squares in this board state
+	 * Return the squares in this board state.
 	 * @return squares[][]
 	 */
 	public Square[][] getSquares(){
 		return squares;
 	}
 
+	/**
+	 * sets the squares in this boardstate to the given collection of squares.
+	 * @param squares
+	 */
+	public void setSquares(Square[][] squares) {
+		this.squares = squares;
+	}
+
+	/**
+	 * returns the current score
+	 * @return int
+	 */
 	public int getScore(){
 		return this.score;
 	}
 
+	/**
+	 * sets the score to the give value	
+	 * @param score as int
+	 */
 	public void setScore(int score){
 		this.score = score;
 	}
+	
+	/**
+	 * returns the number of stars earned so far in the level
+	 * @return int
+	 */
 	public int getStars(){
 		return this.stars;
 	}
+	
+	/**
+	 * sets the number of stars earned to the given value
+	 * @param stars as int
+	 */
 	public void setStars(int stars){
 		this.stars = stars;
 	}
 
+	/**
+	 * returns an arryaList<Word> of all the words currently found in the level
+	 * @return ArrayList<String>
+	 */
 	public ArrayList<Word> getFoundWords() {
 		return foundWords;
 	}
+	
+	/**
+	 * returns an arrayList<String> of all the words currently found in the level
+	 * @return ArrayList<String>
+	 */
 	public ArrayList<String> getFoundWordsStrings(){
 		ArrayList<String> stringList = new ArrayList<String>();
 		for(int i = 0; i < foundWords.size(); i++){
@@ -168,9 +212,18 @@ public class BoardState extends BoardFiller{
 		return stringList;
 	}
 
+	/**
+	 * adds the given word to the list of found words
+	 * @param word as Word
+	 * @return true if successful, false otherwise
+	 */
 	public boolean addWordToFoundWords(Word word){
 		return this.foundWords.add(word);
 	}
+	
+	/**
+	 * removes all words from the list of found words
+	 */
 	public void setClearFoundWords(){
 		int i = this.foundWords.size();
 		while(0 < i){

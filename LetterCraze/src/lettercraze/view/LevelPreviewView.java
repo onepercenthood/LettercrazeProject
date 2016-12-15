@@ -14,6 +14,12 @@ import lettercraze.controller.player.SelectAvailableLevelController;
 import lettercraze.model.Level;
 import net.miginfocom.swing.MigLayout;
 
+/**
+ * the LevelPreviewView is a thumbnail which 
+ * provides a summary of the level associated with it
+ * @author Everett
+ *
+ */
 public class LevelPreviewView extends DefaultViewPanel implements IModelChangedView {
 	
 	/**
@@ -79,6 +85,13 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	}
 	*/
 	
+	/**
+	 * Controller that takes in the level loaded from the disk, the corresponding color, the container and the parent application
+	 * @param level as Level
+	 * @param color as Color
+	 * @param parent as JPanel
+	 * @param app as PlayerApplication
+	 */
 	public LevelPreviewView(Level level, Color color, JPanel parent, PlayerApplication app){
 		this.level = level;
 		this.levelType = level.getLevelType();
@@ -166,9 +179,9 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	}
 	
 	/**
-	 * Gets the levelType textField
+	 * Gets the levelType textField.
 	 * 
-	 * @return
+	 * @return JLabel
 	 */
 	public JLabel getLevelTypeLabel(){
 		return levelTypeLabel;
@@ -177,7 +190,7 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 	/**
 	 * Returns the button for the level.
 	 * 
-	 * @return
+	 * @return JButton
 	 */
 	public JButton getLevelButton(){
 		return  this.levelButton;
@@ -209,13 +222,20 @@ public class LevelPreviewView extends DefaultViewPanel implements IModelChangedV
 		
 	}
 
+	/**
+	 * returns the number of the level associated with this LevelPreviewView
+	 * @return int
+	 */
 	public int getLevelNum() {
 		
 		return levelNumber.intValue();
 	}
 
+	/**
+	 * re-assocaiates this levelPreview with the given level
+	 * @param level
+	 */
 	public void updateInfo(Level level) {
-		this.level = level;
 		this.level = level;
 		this.levelType = level.getLevelType();
 		this.levelNumber = level.getLevelNum();

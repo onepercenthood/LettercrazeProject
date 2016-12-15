@@ -13,7 +13,11 @@ import lettercraze.model.Model;
 import lettercraze.model.Puzzle;
 import lettercraze.view.GameView;
 
-
+/**
+ * Resets the level after a click of the button
+ * @author Dean
+ *
+ */
 public class ResetLevelController extends MouseAdapter{
 
 
@@ -35,8 +39,7 @@ public class ResetLevelController extends MouseAdapter{
 	 * 
 	 * @param application Main application level
 	 * @param model Model that stores application wide data
-	 * @param gameView GameView Boundary class access to views
-	 * @param seconds seconds is the number of seconds to start the count down timer at 
+	 * @param gameView GameView Boundary class access to view 
 	 */
 	public ResetLevelController(PlayerApplication application, Model model, GameView gameView) {
 		

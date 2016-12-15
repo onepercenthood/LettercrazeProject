@@ -21,14 +21,14 @@ public class Puzzle extends Level{
 	/** Holds the maximum number of Words the Player is allowed to play in this level */
 	protected int maxWords;
 	
-	/*Default constructor necessary for Jackson deserialization*/
+	/**Default constructor necessary for Jackson deserialization*/
 	public Puzzle(){};
 	
 	/**
 	 * Constructor for a Puzzle Level 
 	 * @param levelNum is the level number 
 	 * @param starThreshold is a int[] of the threshold values to earn the 3 stars. Based on number of points
-	 * @param maxMoves is the maximum number of words the Player is allowed to make 
+	 * @param maxWords is the maximum number of words the Player is allowed to make 
 	 */
 	public Puzzle (int levelNum, int[] starThreshold, int maxWords){
 		super();
@@ -71,12 +71,19 @@ public class Puzzle extends Level{
 		return s;
 	}
 
+	/**
+	 * sets the maximum allowed words to the given value
+	 * @param maxWords as int
+	 */
 	public void setMaxWords(int maxWords) {
 		this.maxWords = maxWords;
 	}
 	
 	
-	
+	/**
+	 * returns the maximum allowed number of words
+	 * @return int
+	 */
 	public int getMaxWords() {
 		return maxWords;
 	}

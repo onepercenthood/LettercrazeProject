@@ -219,6 +219,10 @@ abstract public class Level {
 		return true;
 	}
 	
+	/**
+	 * decrements the number of the level. For use when deleting custom levels.
+	 * @return int (the new levelNumber)
+	 */
 	public int decrementLevelNumber(){
 		this.levelNum--;
 		

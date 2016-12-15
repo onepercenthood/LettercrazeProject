@@ -420,10 +420,18 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 		return btnUndoMove;
 	}
 
+	/**
+	 * sets the button to undo moves
+	 * @param btnUndoMove
+	 */
 	public void setBtnUndoMove(JButton btnUndoMove) {
 		this.btnUndoMove = btnUndoMove;
 	}
 	
+	/**
+	 * returns the button used to reset the level
+	 * @return JButton
+	 */
 	public JButton getResetLevelBtn(){
 		return btnResetLevel;
 	}

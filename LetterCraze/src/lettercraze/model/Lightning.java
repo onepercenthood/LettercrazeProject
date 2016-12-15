@@ -60,6 +60,10 @@ public class Lightning extends Level{
 		return s;
 	}
 	
+	/**
+	 * returns the number of seconds used to start the timer
+	 * @return int
+	 */
 	public int getSeconds() {
 		return seconds;
 	}
