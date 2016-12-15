@@ -166,10 +166,14 @@ public class FileIO {
 	 * Get the total number of levels in Default and Custom folders 
 	 * @return Integer 
 	 */
-	public int getNumLevels(){
-		File levelFolder = new File("levels");
-		File[] levelFiles = levelFolder.listFiles();
-		return levelFiles.length;
+	public static int getNumLevels(){
+		File customFolder = new File("custom_levels");
+		File defaultFolder = new File("default_levels");
+		File[] customFiles = customFolder.listFiles();
+		File[] defaultFiles = defaultFolder.listFiles();
+		int totalLength = customFiles.length + defaultFiles.length;
+		System.out.println("Total levels: " + customFiles.length + " + " + defaultFiles.length + " = " + totalLength);
+		return totalLength;
 	}
 
 	
