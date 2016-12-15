@@ -1,0 +1,13 @@
+Welcome To LetterCraze from Team Manganese 
+
+To play the game, run PlayerApplication.java
+To create custom levels,  run BuilderApplication.java
+
+To unlock the next level you must achieve at least one star on the previous level 
+
+Once you create a level with the builder application, exit the builder application and run the 
+Player Application to play the level in the "Custom Levels" section. All Custom Levels are unlocked 
+and can be played without any prior level being played. 
+
+Hint: Level 6 Theme Level is challenging and "fun" 
+
