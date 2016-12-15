@@ -11,6 +11,7 @@ import javax.swing.Timer;
 import lettercraze.PlayerApplication;
 import lettercraze.model.Model;
 import lettercraze.model.Puzzle;
+import lettercraze.model.Theme;
 import lettercraze.view.GameView;
 
 /**
@@ -24,29 +25,22 @@ public class ResetLevelController extends MouseAdapter{
 	private PlayerApplication application;
 	private Model model;
 	private GameView gameView;
-	
-	/** Counter to set the number of seconds for the Timer */
-	private int counter;
-	
-	/** Create Timer Instance */
-    private static Timer timer;
-   	
-	/** Delay for the time between each tick, default to 1000 mS to represent a second tick period */
-    protected int delay = 1000; 	
+
+
 	/**
 	 * 
-	 * Controls the timer functionality in the lighting type level 
+	 * Controls the reset board function for all level types
 	 * 
 	 * @param application Main application level
 	 * @param model Model that stores application wide data
 	 * @param gameView GameView Boundary class access to view 
 	 */
 	public ResetLevelController(PlayerApplication application, Model model, GameView gameView) {
-		
+
 		this.application = application;
 		this.model = model;
 		this.gameView = gameView;
-		
+
 	}
 
 	public void mousePressed(MouseEvent me){
@@ -59,20 +53,25 @@ public class ResetLevelController extends MouseAdapter{
 			gameView.removeWordModel();
 			i++;
 		}
-		
+
 		model.getCurrentBoardState().setClearFoundWords();
 		model.getCurrentBoardState().setScore(0);
 		model.getCurrentBoardState().setStars(0);
+
+		if(model.getLevel(model.getCurrentLevel()).getLevelType().equals("Theme")){
+			model.getCurrentBoardState().initialFill(model.getCurrentBoardState(), ((Theme)model.getLevel(model.getCurrentLevel())).getTargetWords());
+		}
 		
-		model.getCurrentBoardState().initialFill(model.getCurrentBoardState().getSquares());
-		
+		else{
+			model.getCurrentBoardState().initialFill(model.getCurrentBoardState().getSquares());
+		}
 		gameView.setScoreView();
 		gameView.setStarRater();
-		
+
 		gameView.getWordBox().repaint();
 		gameView.getScoreTextField().repaint();
 		gameView.getStarRater().repaint();
 		gameView.getBoardView().repaintAllSquares();
-    }
+	}
 
 }
