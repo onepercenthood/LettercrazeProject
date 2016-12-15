@@ -242,7 +242,7 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 			typeSpecificLabel = new JLabel("___");
 		}
 		typeSpecificLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		typeSpecificLabel.setBounds(284, 12, 117, 16);
+		typeSpecificLabel.setBounds(284, 12, 200, 16);
 		add(typeSpecificLabel);
 		
 		btnResetLevel = new JButton("Reset Level");
@@ -434,6 +434,21 @@ public class GameView extends DefaultViewPanel implements IModelChangedView {
 	 */
 	public JButton getResetLevelBtn(){
 		return btnResetLevel;
+	}
+
+	/**
+	 * makes the game lit AF
+	 */
+
+	public void makeItLit(){
+		try {
+			BufferedImage img = ImageIO.read(new File("lit.jpg"));
+			ImageIcon icon = new ImageIcon(img);
+			JLabel label = new JLabel(icon);
+			JOptionPane.showMessageDialog(null, label);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 
