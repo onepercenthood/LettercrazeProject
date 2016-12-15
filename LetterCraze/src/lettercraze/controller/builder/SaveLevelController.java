@@ -66,44 +66,45 @@ public class SaveLevelController extends MouseAdapter{
 		ArrayList<Level> levels;
 		try{
 			levels = FileIO.loadCustomLevelsFromDisk();
+
+			AbsBuilderLevelPanel panel = builderView.getCurrentLevelPanel();
+
+			//check that all the information needed to build a level is filled in
+			if(!panel.isFilledOut()){
+				JLabel error = new JLabel("Some information is missing!");
+				JOptionPane.showMessageDialog(null, error);
+				System.err.println("Some information is missing!");
+			} 
+			else {
+				Level level;
+
+				//if the level was already saved, use the saved level number & overwrite
+				if(panel.getLevelLoaded() != null){
+					level = panel.compileLevelInfo(shape, panel.getLevelLoaded().getLevelNum());
+
+				} //otherwise, give it a new level number at the end of the list
+				else {
+					//find how many levels are in the folder
+					int numLevels = FileIO.getNumLevels();
+					//if there were none, this will be the first
+					if(numLevels == 0){
+						numLevels = 1;
+					}
+					level = panel.compileLevelInfo(shape, numLevels+1);
+
+				} 
+
+				System.out.println(level.debugString());
+				//try to save the file, will return true if successful
+				if(FileIO.saveLevelToDisk(level)){
+					//create an anonymous exitWithOutSavingController, and exit to the menu Screen
+					new ExitWithoutSavingController(builderView, parentPanel, model).mousePressed(me);
+				} else{
+					System.err.println("There was an issue saving level:" + level.getLevelType() +", " + level.getLevelNum());
+				}
+			}
 		} catch(Exception e){
 			levels = new ArrayList<Level>();
-		}
-		AbsBuilderLevelPanel panel = builderView.getCurrentLevelPanel();
-
-		//check that all the information needed to build a level is filled in
-		if(!panel.isFilledOut()){
-			JLabel error = new JLabel("Some information is missing!");
-			JOptionPane.showMessageDialog(null, error);
-			System.err.println("Some information is missing!");
-		} 
-		else {
-			Level level;
-
-			//if the level was already saved, use the saved level number & overwrite
-			if(panel.getLevelLoaded() != null){
-				level = panel.compileLevelInfo(shape, panel.getLevelLoaded().getLevelNum());
-
-			} //otherwise, give it a new level number at the end of the list
-			else {
-				//find how many levels are in the folder
-				int numLevels = levels.size();
-				//if there were none, this will be the first
-				if(numLevels == 0){
-					numLevels = 1;
-				}
-				level = panel.compileLevelInfo(shape, 15 + numLevels);
-
-			} 
-
-			System.out.println(level.debugString());
-			//try to save the file, will return true if successful
-			if(FileIO.saveLevelToDisk(level)){
-				//create an anonymous exitWithOutSavingController, and exit to the menu Screen
-				new ExitWithoutSavingController(builderView, parentPanel, model).mousePressed(me);
-			} else{
-				System.err.println("There was an issue saving level:" + level.getLevelType() +", " + level.getLevelNum());
-			}
 		}
 	}
 
